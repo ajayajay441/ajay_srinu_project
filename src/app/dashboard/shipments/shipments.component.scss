@@ -1,32 +1,38 @@
-$step-size: 5em;
-
-div.track-step {
-  width: 70px;
-  display: inline-block;
-  margin-right: $step-size; /* size of your margin */
-  position: relative;
+$step-joiner-space: 12px;
+$step-width: 24px;
+.stepper {
+  width: 100%;
+  .step-container {
+    width: 100%;
+  }
+  .step {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  .step-joiner {
+    height: 0px;
+    border-bottom: 2px dotted #ddd;
+    position: relative;
+    left: 50%;
+    top: 12px;
+  }
+  .step-joiner.highlight {
+    border-bottom: 2px dotted red;
+  }
+  .step-joiner.disable {
+    border-bottom: 2px dotted #aaa;
+  }
+  .step-container:last-of-type .step-joiner {
+    border-bottom: none;
+  }
 }
-
-.track-step:before,
-.track-step:after {
-  content: "";
-  width: $step-size; /* size of your margin */
-  border-bottom: 2px dotted #313131;
-  position: absolute;
-  top: 50%;
+.highlight {
+  color: red !important;
 }
-:after {
-  left: 100%;
-}
-:before {
-  right: 100%;
-}
-.track-step:first-of-type:before,
-.track-step:last-of-type:after {
-  display: none;
-}
-.myBox {
-  white-space: nowrap;
-  /* */
-  text-align: center;
+.disable-text-color {
+  color: #aaa !important;
 }

@@ -1,5 +1,5 @@
 <mat-card class="mat-elevation-z0">
-    <div class="card-title mb-7" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row" fxLayoutGap="25px">
             <h2 class="mb-0">
                 Shipments
@@ -22,8 +22,9 @@
         </a>
     </div>
     <div class="card-body">
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px" class="mb-3" *ngFor="let item of [1,2,3]">
-            <!-- <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="25px" class="mb-5"
+            *ngFor="let item of [1,2,3]">
+            <div fxLayout="column">
                 <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
                     <h3 class="mb-0">
                         HBL #0938847
@@ -40,11 +41,28 @@
                         CLR: 20 Sep, 2020
                     </h6>
                 </div>
-            </div> -->
-            <div class="track-stepper">
-                <div class="track-step" *ngFor="let item of [1, 2, 3, 4, 5]">
-                    <div class="track-step-point text-center">
-                        <mat-icon>flight</mat-icon>
+            </div>
+            <div class="overflow-hidden" fxLayout="column" fxLayoutAlign="start center">
+                <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="center">
+                    <div class="step-container" *ngFor="let step of [1, 2, 3, 4, 5]; last as isLast"
+                        [style.width]="(100/3)+'%'">
+                        <div class="step-joiner" [class]=" item === 2 && step === 3 ? 'highlight' : ''">
+                        </div>
+                        <div class="step" [class]="step === 3 ? 'transform rotate-90' : ''">
+                            <mat-icon
+                                [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : 'secondary-text-color'">
+                                {{step === 3 ? 'flight': 'radio_button_unchecked'}}
+                            </mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="stepper-labels mb-3" fxLayout="row" fxLayoutAlign="center">
+                    <div class="step-label-container mx-1 text-center"
+                        *ngFor="let step of [1, 2, 3, 4, 5]; first as isFirst; last as isLast">
+                        <div class="status text-xs"
+                            [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : 'secondary-text-color'">
+                            active status for item
+                        </div>
                     </div>
                 </div>
             </div>
