@@ -1,0 +1,33 @@
+<div class="dashboard-primary-section">
+    <div fxLayout="row" fxLayoutGap="10px" fxFlexFill class="mb-10">
+        <div fxFlex="65" class="map-box" fxLayout="column">
+            <div fxFlex="25px" class="mb-10">
+                <h2 class="mb-0">
+                    Overview
+                </h2>
+            </div>
+            <div fxFlex>
+                <app-mapbox></app-mapbox>
+            </div>
+        </div>
+        <div fxFlex="35" class="quotes-todo text-right" fxLayout="column">
+            <div fxFlex="25px" class="mb-10">
+                <button mat-raised-button color="warn" class="mat-elevation-z0">
+                    <mat-icon>upload_file</mat-icon>
+                    Request Quote
+                </button>
+            </div>
+            <!-- <div fxFlex>
+                <div class="mb-10">
+                    <app-quotationcard></app-quotationcard>
+                </div>
+                <div>
+                    <app-todolistcard></app-todolistcard>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div>
+        <app-shipments></app-shipments>
+    </div>
+</div>

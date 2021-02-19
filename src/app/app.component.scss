@@ -1,0 +1,21 @@
+.header {
+  border-bottom: 1px solid #ccc;
+}
+.page {
+  height: 100vh;
+  max-height: 100vh;
+}
+.drawer-menu {
+  width: 250px;
+}
+.drawer-content {
+  background-color: #f7f8fa;
+}
+.menu-button.mat-button,
+.menu-button.mat-flat-button {
+  padding: 7px;
+  text-align: left;
+}
+.isActive {
+  color: red;
+}

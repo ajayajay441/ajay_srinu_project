@@ -1,0 +1,49 @@
+<div class="header" fxLayout="row">
+    <div fxFlex="250px" class="two_two" class="logo">
+        <!-- <img src="./../../assets/logo.png" class="m-auto" /> -->
+        <svg class="m-auto" width="123" height="65" viewBox="0 0 123 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3.13288 23.7219V12.8174H14.5446V10.9788H3.13288V2.73705H15.6858V0.898501H0.977332V23.7219H3.13288ZM20.5251 15.6703C20.5251 11.9932 21.6663 8.8233 25.9457 8.9184V6.85795C23.1878 6.85795 21.6346 7.74553 20.5885 10.3766H20.5251V7.30174H18.6231V23.7219H20.5251V15.6703ZM29.6998 14.3707C30.0802 11.2641 31.8553 8.56971 35.2154 8.56971C38.639 8.56971 40.4141 11.169 40.4141 14.3707H29.6998ZM42.4429 15.9556C42.4746 10.0596 39.7167 6.85795 35.2154 6.85795C30.524 6.85795 27.671 10.7887 27.671 15.5752C27.671 20.4252 29.9534 24.1657 35.2154 24.1657C39.3997 24.1657 41.3651 21.7883 42.3161 18.6818H40.1922C39.6216 21.0909 37.688 22.454 35.2154 22.454C31.57 22.454 29.6681 19.5059 29.6998 15.9556H42.4429ZM45.3168 18.5867C45.4753 21.6932 47.6943 24.1657 51.5616 24.1657C55.4289 24.1657 58.2501 22.5174 58.2501 19.3791C58.2501 13.071 47.726 15.8605 47.726 11.3909C47.726 9.71088 49.0256 8.56971 51.4348 8.56971C53.8122 8.56971 55.524 9.48898 55.8727 12.0249H57.8063C57.3308 8.31611 55.0168 6.85795 51.4665 6.85795C47.8211 6.85795 45.6972 8.8233 45.6972 11.5494C45.6972 18.0161 56.2214 14.656 56.2214 19.4108C56.2214 20.9958 54.9217 22.454 52.1639 22.454C49.3109 22.454 47.8528 21.4079 47.2505 18.5867H45.3168ZM75.5579 12.4687C74.9873 8.6648 72.5147 6.85795 68.7425 6.85795C63.8292 6.85795 61.1981 10.9788 61.1981 15.5435C61.1981 20.3935 63.5122 24.1657 68.7425 24.1657C72.8634 24.1657 75.1458 21.6932 75.8115 18.0478H73.7827C73.3389 20.7739 71.5638 22.454 68.7425 22.454C64.8118 22.454 63.2269 18.9987 63.2269 15.5435C63.2269 12.12 64.8435 8.56971 68.7425 8.56971C71.2785 8.56971 72.9585 10.0279 73.6242 12.4687H75.5579ZM95.6445 15.2899C95.6445 9.20369 91.5553 6.41416 87.0223 6.41416C82.4893 6.41416 78.4001 9.20369 78.4001 15.2899C78.4001 21.3762 82.4893 24.1657 87.0223 24.1657C91.5553 24.1657 95.6445 21.3762 95.6445 15.2899ZM91.0798 15.2899C91.0798 17.4455 90.4458 20.4252 87.0223 20.4252C83.5988 20.4252 82.9648 17.4455 82.9648 15.2899C82.9648 13.1344 83.5988 10.1547 87.0223 10.1547C90.4458 10.1547 91.0798 13.1344 91.0798 15.2899ZM114.009 12.0566C114.009 8.34781 111.441 6.41416 108.144 6.41416C104.943 6.41416 103.675 8.31611 103.073 9.33049H103.009V6.85795H98.7614V23.7219H103.199V14.0537C103.199 11.486 104.721 10.1547 106.686 10.1547C109.507 10.1547 109.571 12.2468 109.571 13.4831V23.7219H114.009V12.0566ZM122.863 19.0938H118.108V23.7219H122.863V19.0938Z"
+                fill="#313131" />
+        </svg>
+    </div>
+    <div class="w-full" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="search-form">
+            <form>
+                <mat-form-field class="search-input">
+                    <mat-label class="secondary-text-color">Search</mat-label>
+                    <mat-icon matPrefix class="search-icon secondary-text-color">search</mat-icon>
+                    <input type="search" matInput />
+                </mat-form-field>
+            </form>
+        </div>
+        <div fxLayout="row" class="notifications-user" fxLayoutAlign="end center">
+            <div class="mx-3 relative">
+                <!-- <span class="notification-indicator absolute"></span> -->
+                <button mat-icon-button aria-label="Notificationss">
+                    <mat-icon matBadge="7" matBadgeColor="warn">notifications_none</mat-icon>
+                    <!-- Include text description of the icon's meaning for screen-readers -->
+                    <span class="cdk-visually-hidden">
+                        There are 7 notifications
+                    </span>
+                </button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <img [src]="'https://www.w3schools.com/howto/img_avatar.png'" alt="Avatar" class="avatar mx-3" />
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="user-name-email">
+                        <h5> Ajay Kumar Bunga </h5>
+                        <h6 class="secondary-text-color">
+                            Principal Software Engineer
+                        </h6>
+                    </div>
+                    <div class="mx-3">
+                        <button mat-icon-button aria-label="Profile">
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

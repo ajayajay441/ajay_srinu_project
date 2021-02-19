@@ -1,0 +1,53 @@
+<mat-card class="mat-elevation-z0">
+    <div class="card-title mb-7" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutGap="25px">
+            <h2 class="mb-0">
+                Shipments
+            </h2>
+            <button mat-stroked-button [color]="shipmentType === 'bookamrked'?'warn':'light'" class="mat-elevation-z0"
+                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                Bookmarked
+            </button>
+            <button mat-stroked-button [color]="shipmentType === 'arriving'?'warn':'light'" class="mat-elevation-z0"
+                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                Arriving
+            </button>
+            <button mat-stroked-button [color]="shipmentType === 'booked'?'warn':'light'" class="mat-elevation-z0"
+                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                Booked
+            </button>
+        </div>
+        <a class="underline secondary-text-color">
+            View all
+        </a>
+    </div>
+    <div class="card-body">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="25px" class="mb-3" *ngFor="let item of [1,2,3]">
+            <!-- <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
+                    <h3 class="mb-0">
+                        HBL #0938847
+                    </h3>
+                    <h5 class="mb-0 secondary-text-color">
+                        SEW-EURODRIVE INDIA PVT. LTD. (CHENNAI)
+                    </h5>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
+                    <h6 class="mb-0">
+                        BOE: 20 Sep, 2020
+                    </h6>
+                    <h6 class="mb-0">
+                        CLR: 20 Sep, 2020
+                    </h6>
+                </div>
+            </div> -->
+            <div class="track-stepper">
+                <!-- <div class="track-step" *ngFor="let item of [1, 2, 3, 4, 5]">
+                    <div class="track-step-point text-center">
+                        <mat-icon>flight</mat-icon>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</mat-card>

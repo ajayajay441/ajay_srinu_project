@@ -1,0 +1,35 @@
+.header {
+  height: 70px;
+  .logo {
+    img {
+      width: 100px;
+    }
+  }
+  .user-profile-menu {
+    width: 250px;
+  }
+  .search-form,
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+mat-icon.search-icon {
+  top: 7px !important;
+  margin-right: 7px !important;
+  position: relative;
+}
+
+.notifications-user {
+  min-width: 300px;
+  h6,
+  h5 {
+    margin-bottom: 0px !important;
+  }
+}
+.avatar {
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

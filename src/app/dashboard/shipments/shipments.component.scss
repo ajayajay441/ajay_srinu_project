@@ -1,0 +1,32 @@
+$step-size: 5em;
+
+div.track-step {
+  width: 70px;
+  display: inline-block;
+  margin-right: $step-size; /* size of your margin */
+  position: relative;
+}
+
+.track-step:before,
+.track-step:after {
+  content: "";
+  width: $step-size; /* size of your margin */
+  border-bottom: 2px dotted #313131;
+  position: absolute;
+  top: 50%;
+}
+:after {
+  left: 100%;
+}
+:before {
+  right: 100%;
+}
+.track-step:first-of-type:before,
+.track-step:last-of-type:after {
+  display: none;
+}
+.myBox {
+  white-space: nowrap;
+  /* */
+  text-align: center;
+}
