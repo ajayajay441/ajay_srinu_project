@@ -1,5 +1,5 @@
 @import "tailwind.scss";
-@import "vars.scss";
+@import "variables.scss";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -58,8 +58,18 @@ body {
     color: rgba(41, 41, 41, 1) !important;
   }
 }
+
 .secondary-text-color {
   color: rgba(41, 41, 41, 0.7) !important;
+}
+.light-text-color {
+  color: $light-color !important;
+}
+.dark-text-color {
+  color: $dark-color !important;
+}
+.medium-text-color {
+  color: $medium-color !important;
 }
 .no-margin,
 .mb-0 {
