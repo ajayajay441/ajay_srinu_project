@@ -9,7 +9,7 @@ import { DashboardModule } from './../app/dashboard/dashboard.module';
 // components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     FlexLayoutModule,
     AppRoutingModule,
+    HttpClientModule,
     DashboardModule
   ],
   providers: [],
