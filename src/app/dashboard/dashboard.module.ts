@@ -8,6 +8,8 @@ import { MapboxComponent } from './mapbox/mapbox.component';
 import { QuotationcardComponent } from './quotationcard/quotationcard.component';
 import { TodolistcardComponent } from './todolistcard/todolistcard.component';
 import { ShipmentsComponent } from './shipments/shipments.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { SchedulesComponent } from './schedules/schedules.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ShipmentsComponent } from './shipments/shipments.component';
     MapboxComponent,
     QuotationcardComponent,
     TodolistcardComponent,
-    ShipmentsComponent
+    ShipmentsComponent,
+    PurchaseComponent,
+    SchedulesComponent
   ],
   imports: [
     CommonModule,

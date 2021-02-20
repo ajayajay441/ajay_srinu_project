@@ -1,0 +1,55 @@
+<mat-card class="mat-elevation-z0">
+    <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutGap="25px">
+            <h2 class="mb-0">
+                Schedules
+            </h2>
+            <button mat-stroked-button [color]="scheduleType === 'air'?'warn':'light'" class="mat-elevation-z0"
+                [class]="scheduleType === 'air'? '' : 'secondary-text-color'">
+                Air
+            </button>
+            <button mat-stroked-button [color]="scheduleType === 'ocean'?'warn':'light'" class="mat-elevation-z0"
+                [class]="scheduleType === 'ocean'? '' : 'secondary-text-color'">
+                Ocean
+            </button>
+        </div>
+        <a class="underline secondary-text-color">
+            View all
+        </a>
+    </div>
+    <div class="card-body">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
+            <h3 class="mb-0">
+                Picked-up PO's
+            </h3>
+            <h3 class="mb-0 secondary-text-color">
+                Origins
+            </h3>
+            <h3 class="mb-0 secondary-text-color">
+                Booked Number HBL
+            </h3>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="mb-3">
+            <h5 class="mb-0">
+                PO-202091
+            </h5>
+            <h5 class="mb-0">
+                New-York, NY
+            </h5>
+            <h5 class="mb-0">
+                12203939488777754
+            </h5>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
+            <h5 class="mb-0">
+                PO-202091
+            </h5>
+            <h5 class="mb-0">
+                New-York, NY
+            </h5>
+            <h5 class="mb-0">
+                12203939488777754
+            </h5>
+        </div>
+    </div>
+</mat-card>
