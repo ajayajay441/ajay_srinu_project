@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardModule } from './dashboardpage/dashboard.module';
+
 // components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';

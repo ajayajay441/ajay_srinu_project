@@ -4,15 +4,33 @@
     </div>
     <div class="page-container h-full overflow-auto">
         <div fxFlex="250px" class="drawer-menu">
-            <div class="menu-label secondary-text-color m-2">
-                <button mat-button disabled class="w-full h-full menu-button">
+            <div class="menu-label">
+                <button mat-button color="accent" disabled class="w-full h-full menu-button">
                     MAIN
                 </button>
             </div>
-            <div *ngFor="let item of menuList" class="my-1" [class]="item.route === currentRoute ? 'isActive' : ''">
+            <div *ngFor="let item of menuList" class="my-1">
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-tab"
+                    [class.active]="item.route === currentRoute">
+                    <button mat-button [color]="item.route === currentRoute ? 'primary' : 'accent'"
+                        class="p-3 w-full h-full menu-button" (click)="goTo(item.route)">
+                        <mat-icon matPrefix class="menu-item-icon mr-3"
+                            [color]="item.route === currentRoute ? 'primary' : 'accent'" [svgIcon]="item.icon">
+                        </mat-icon>
+                        {{item.label}}
+                    </button>
+                </div>
+            </div>
+            <!--  -->
+            <div class="menu-label m-2">
+                <button mat-button disabled class="w-full h-full menu-button">
+                    HELP
+                </button>
+            </div>
+            <div *ngFor="let item of menuList" class="my-1">
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-tab"
                     [class]="item.route === currentRoute ? 'active': ''">
-                    <button mat-button [color]="item.route === currentRoute ? 'warn' : ''"
+                    <button mat-button [color]="item.route === currentRoute ? 'primary' : 'accent'"
                         class="p-3 w-full h-full menu-button" (click)="goTo(item.route)">
                         <mat-icon matPrefix class="menu-item-icon mr-3" color="primary" [svgIcon]="item.icon">
                         </mat-icon>

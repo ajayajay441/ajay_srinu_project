@@ -5,19 +5,19 @@
                 Shipments
             </h2>
             <button mat-stroked-button [color]="shipmentType === 'bookamrked'?'warn':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                [class]="shipmentType === 'booked'? '' : ''">
                 Bookmarked
             </button>
             <button mat-stroked-button [color]="shipmentType === 'arriving'?'warn':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                [class]="shipmentType === 'booked'? '' : ''">
                 Arriving
             </button>
             <button mat-stroked-button [color]="shipmentType === 'booked'?'warn':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : 'secondary-text-color'">
+                [class]="shipmentType === 'booked'? '' : ''">
                 Booked
             </button>
         </div>
-        <a class="underline cursor-pointer secondary-text-color" (click)="goTo('/shipments', 'data')">
+        <a class="underline cursor-pointer" (click)="goTo('/shipments', 'data')">
             View all
         </a>
     </div>
@@ -29,7 +29,7 @@
                     <h3 class="mb-0">
                         HBL #0938847
                     </h3>
-                    <h5 class="mb-0 secondary-text-color">
+                    <h5 class="mb-0">
                         SEW-EURODRIVE INDIA PVT. LTD. (CHENNAI)
                     </h5>
                 </div>
@@ -43,41 +43,27 @@
                 </div>
             </div>
             <div class="overflow-hidden" fxLayout="column" fxLayoutAlign="start center">
-
-
-
-
-
-
                 <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="center">
                     <div class="step-container" *ngFor="let step of [1, 2, 3, 4, 5, 6, 7]; last as isLast" fxFlex>
                         <div class="step-joiner" [class]="item === 2 && step === 3 ? 'highlight' : ''">
                         </div>
                         <div class="step" [class]="step === 3 ? 'transform rotate-90' : ''">
                             <mat-icon
-                                [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : 'secondary-text-color'">
+                                [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : ''">
                                 {{step === 3 ? 'flight': 'radio_button_unchecked'}}
                             </mat-icon>
                         </div>
                     </div>
                 </div>
-
                 <div class="stepper-labels mb-3" fxLayout="row" fxLayoutAlign="center">
                     <div fxFlex class="step-label-container mx-1 text-center"
                         *ngFor="let step of [1, 2, 3, 4, 5, 6, 7]; first as isFirst; last as isLast">
                         <div class="status text-xs"
-                            [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : 'secondary-text-color'">
+                            [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : ''">
                             active status for item
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
