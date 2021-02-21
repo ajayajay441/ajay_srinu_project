@@ -1,6 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -13,24 +16,28 @@ export class AppComponent {
   title = 'frescon';
   currentRoute = '';
   menuList: NavMenuItem[] = [
-    { name: 'Overview', label: 'Overview', route: '/overview', icon: 'face', isActive: true },
-    { name: 'Leaderboard', label: 'Leaderboard', route: '/leaderboard', icon: 'opacity', isActive: false },
-    { name: 'Administration', label: 'Administration', route: '/administration', icon: 'play_circle', isActive: false },
-    {
-      name: 'Spreadsheets', label: 'Spreadsheets', route: '/spreadsheets', icon: 'play_circle', isActive: false,
-      subMenu: [
-        { name: 'sub menu 1', label: 'SubMenu1', route: '/test', icon: 'face', isActive: false },
-        { name: 'sub menu 2', label: 'SubMenu2', route: '/test2', icon: 'opacity', isActive: false },
-      ]
-    },
+    { name: 'Overview', label: 'Overview', route: '/dashboard', icon: 'overview', isActive: true },
+    { name: 'Shipments', label: 'Shipments', route: '/shipments', icon: 'shipments', isActive: false },
+    { name: 'Administration', label: 'Administration', route: '/administration', icon: 'shipments', isActive: false },
   ];
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event) => {
       this.currentRoute = this.router.url;
       console.log('router url', this.router.url);
     });
+    this.matIconRegistry.addSvgIcon(
+      "overview",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/menu-overview.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "shipments",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/menu-overview.svg")
+    );
   }
 
   onMenuItemClick(menuItem: NavMenuItem) {

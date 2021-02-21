@@ -1,0 +1,60 @@
+<mat-card class="mat-elevation-z0">
+    <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutGap="25px">
+            <h2 class="mb-0">
+                Schedules
+            </h2>
+            <button mat-stroked-button [color]="scheduleType === 'air'?'warn':'light'" class="mat-elevation-z0"
+                [class]="scheduleType === 'air'? '' : 'secondary-text-color'">
+                Air
+            </button>
+            <button mat-stroked-button [color]="scheduleType === 'ocean'?'warn':'light'" class="mat-elevation-z0"
+                [class]="scheduleType === 'ocean'? '' : 'secondary-text-color'">
+                Ocean
+            </button>
+        </div>
+        <a class="underline secondary-text-color">
+            View all
+        </a>
+    </div>
+    <div class="card-body">
+        <div fxLayout="column" fxLayoutAlign="center space-between">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="py-3 schedules-table-header">
+                <h3 fxFlex class="mb-0">
+                    Cut Off Date
+                </h3>
+                <h3 fxFlex class="mb-0 secondary-text-color">
+                    Origin Date
+                </h3>
+                <h3 fxFlex class="mb-0 secondary-text-color">
+                    Origin Date
+                </h3>
+                <h3 fxFlex class="mb-0 secondary-text-color">
+                    Origin Date
+                </h3>
+                <h3 fxFlex class="mb-0 secondary-text-color">
+
+                </h3>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="my-3 schedule-item">
+                <h5 fxFlex class="mb-0">
+                    20 Sep, 2021
+                </h5>
+                <h5 fxFlex class="mb-0">
+                    21 Sep, 2021
+                </h5>
+                <h5 fxFlex class="mb-0">
+                    22 Sep, 2021
+                </h5>
+                <h5 fxFlex class="mb-0">
+                    22 Sep, 2021
+                </h5>
+                <div fxFlex>
+                    <button mat-raised-button color="warn" class="mat-elevation-z0">
+                        Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

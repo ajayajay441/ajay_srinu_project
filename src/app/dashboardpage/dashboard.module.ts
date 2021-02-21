@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppMaterialModule } from './../app-material.module';
+import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard.component';
 import { MapboxComponent } from './mapbox/mapbox.component';

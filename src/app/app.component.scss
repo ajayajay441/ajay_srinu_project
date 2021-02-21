@@ -19,3 +19,14 @@
 .isActive {
   color: red;
 }
+.menu-tab {
+  border-left: 5px solid transparent;
+}
+.menu-tab.active {
+  border-left: 5px solid red;
+}
+.menu-item-icon {
+  svg {
+    width: 18px;
+  }
+}

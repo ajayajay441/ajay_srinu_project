@@ -75,6 +75,7 @@ body {
 .mb-0 {
   margin-bottom: 0px !important;
 }
-mat-card {
-  box-shadow: none;
+.mat-primary svg {
+  fill: $red-color;
+  color: $red-color;
 }

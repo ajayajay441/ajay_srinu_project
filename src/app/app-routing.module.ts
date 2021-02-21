@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TestComponent } from './test/test.component';
+import { DashboardComponent } from './dashboardpage/dashboard.component';
+import { ShipmentspageComponent } from './shipmentspage/shipmentspage.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/overview',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   {
-    path: 'overview',
+    path: 'dashboard',
     component: DashboardComponent
   },
   {
-    path: 'test',
-    component: TestComponent
+    path: 'shipments',
+    component: ShipmentspageComponent
   },
   {
     path: '**',
-    redirectTo: '/overview',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   }
 ];

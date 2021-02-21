@@ -1,5 +1,5 @@
 <div class="dashboard-primary-section">
-    <div fxLayout="row" fxLayoutGap="10px" fxFlexFill class="mb-10">
+    <div fxLayout="row" fxLayoutGap="15px" fxFlexFill class="mb-10">
         <div fxFlex="65" class="map-box" fxLayout="column">
             <div fxFlex="25px" class="mb-10">
                 <h2 class="mb-0">
@@ -27,15 +27,15 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="mb-10">
         <app-shipments></app-shipments>
     </div>
-    <div fxLayout="row">
-        <div fxFlex="50" class="map-box" fxLayout="column">
-        <app-purchase></app-purchase>
-    </div>
-    <div fxFlex="50" class="map-box" fxLayout="column">
-        <div><app-schedules></app-schedules></div>
-    </div>
+    <div fxLayout="row" fxLayoutGap="15px" class="mb-10">
+        <div fxFlex="50">
+            <app-purchase></app-purchase>
+        </div>
+        <div fxFlex="50">
+            <app-schedules></app-schedules>
+        </div>
     </div>
 </div>

@@ -10,31 +10,18 @@
                 </button>
             </div>
             <div *ngFor="let item of menuList" class="my-1" [class]="item.route === currentRoute ? 'isActive' : ''">
-                <div *ngIf="item.subMenu">
-                    <div fxLayout="row" fxLayoutAlign="space-between center">
-                        <button mat-button [color]="item.route === currentRoute ? 'warn' : ''"
-                            class="p-3 w-full h-full menu-button" (click)="item.isExpanded = !item.isExpanded">
-                            <mat-icon matPrefix class="search-icon mr-3">{{item.icon}}</mat-icon>
-                            {{item.label}}
-                        </button>
-                        <button mat-icon-button aria-label="Toggle submenu">
-                            <mat-icon *ngIf="item.subMenu" matPrefix class="submenu-toggle-icon"
-                                (click)="item.isExpanded = !item.isExpanded">
-                                {{item.isExpanded ? 'arrow_drop_up': 'arrow_drop_down'}}
-                            </mat-icon>
-                        </button>
-                    </div>
-                </div>
-                <div *ngIf="!item.subMenu">
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-tab"
+                    [class]="item.route === currentRoute ? 'active': ''">
                     <button mat-button [color]="item.route === currentRoute ? 'warn' : ''"
-                        (click)="onMenuItemClick(item)" class="p-3 w-full h-full menu-button">
-                        <mat-icon matPrefix class="search-icon mr-3">{{item.icon}}</mat-icon>
+                        class="p-3 w-full h-full menu-button" (click)="goTo(item.route)">
+                        <mat-icon matPrefix class="menu-item-icon mr-3" color="primary" [svgIcon]="item.icon">
+                        </mat-icon>
                         {{item.label}}
                     </button>
                 </div>
             </div>
         </div>
-        <div class="w-full p-3 h-full drawer-content overflow-auto">
+        <div class="w-full p-5 h-full drawer-content overflow-auto">
             <router-outlet>
             </router-outlet>
         </div>
