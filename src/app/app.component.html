@@ -27,7 +27,7 @@
                     HELP
                 </button>
             </div>
-            <div *ngFor="let item of menuList" class="my-1">
+            <div *ngFor="let item of helpMenuList" class="my-1">
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="menu-tab"
                     [class]="item.route === currentRoute ? 'active': ''">
                     <button mat-button [color]="item.route === currentRoute ? 'primary' : 'accent'"

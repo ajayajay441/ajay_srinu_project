@@ -18,7 +18,17 @@ export class AppComponent {
   menuList: NavMenuItem[] = [
     { name: 'Overview', label: 'Overview', route: '/dashboard', icon: 'overview', isActive: true },
     { name: 'Shipments', label: 'Shipments', route: '/shipments', icon: 'shipments', isActive: false },
-    { name: 'Administration', label: 'Administration', route: '/administration', icon: 'shipments', isActive: false },
+    { name: 'Quotes', label: 'Quotes', route: '/quotes', icon: 'quotes', isActive: false },
+    { name: 'PO', label: 'PO', route: '/po', icon: 'po', isActive: false },
+    { name: 'Billing', label: 'Billing', route: '/billing', icon: 'billing', isActive: false },
+    { name: 'Insights', label: 'Insights', route: '/insights', icon: 'insights', isActive: false },
+    { name: 'Partners', label: 'Partners', route: '/partners', icon: 'partners', isActive: false },
+  ];
+  helpMenuList: NavMenuItem[] = [
+    { name: 'Messages', label: 'Messages', route: '/messages', icon: 'messages', isActive: true },
+    { name: 'Library', label: 'Library', route: '/library', icon: 'library', isActive: false },
+    { name: 'Settings', label: 'Settings', route: '/settings', icon: 'settings', isActive: false },
+    { name: 'Support', label: 'Support', route: '/support', icon: 'support', isActive: false },
   ];
   constructor(
     private router: Router,
@@ -36,8 +46,45 @@ export class AppComponent {
     );
     this.matIconRegistry.addSvgIcon(
       "shipments",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/menu-overview.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/shipments.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "quotes",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/quotes.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "po",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/po.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "billing",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/billing.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "insights",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/insights.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "partners",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/partners.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "messages",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/messages.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "library",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/library.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "settings",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/settings.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "support",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/support.svg")
+    );
+
   }
 
   onMenuItemClick(menuItem: NavMenuItem) {
