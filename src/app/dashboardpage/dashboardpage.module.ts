@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardpageComponent } from './dashboardpage.component';
 import { MapboxComponent } from './mapbox/mapbox.component';
 import { QuotationcardComponent } from './quotationcard/quotationcard.component';
 import { TodolistcardComponent } from './todolistcard/todolistcard.component';
@@ -13,7 +13,7 @@ import { SchedulesComponent } from './schedules/schedules.component';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
+    DashboardpageComponent,
     MapboxComponent,
     QuotationcardComponent,
     TodolistcardComponent,
@@ -28,4 +28,4 @@ import { SchedulesComponent } from './schedules/schedules.component';
     FlexLayoutModule
   ]
 })
-export class DashboardModule { }
+export class DashboardPageModule { }

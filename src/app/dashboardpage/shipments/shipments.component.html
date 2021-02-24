@@ -4,15 +4,15 @@
             <h2 class="mb-0">
                 Shipments
             </h2>
-            <button mat-stroked-button [color]="shipmentType === 'bookamrked'?'warn':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : ''">
+            <button mat-stroked-button [color]="shipmentType === 'bookamrked'?'primary':'light'"
+                class="mat-elevation-z0" [class]="shipmentType === 'booked'? '' : ''">
                 Bookmarked
             </button>
-            <button mat-stroked-button [color]="shipmentType === 'arriving'?'warn':'light'" class="mat-elevation-z0"
+            <button mat-stroked-button [color]="shipmentType === 'arriving'?'primary':'light'" class="mat-elevation-z0"
                 [class]="shipmentType === 'booked'? '' : ''">
                 Arriving
             </button>
-            <button mat-stroked-button [color]="shipmentType === 'booked'?'warn':'light'" class="mat-elevation-z0"
+            <button mat-stroked-button [color]="shipmentType === 'booked'?'primary':'light'" class="mat-elevation-z0"
                 [class]="shipmentType === 'booked'? '' : ''">
                 Booked
             </button>
@@ -47,7 +47,7 @@
                     <div class="step-container" *ngFor="let step of [1, 2, 3, 4, 5, 6, 7]; last as isLast" fxFlex>
                         <div class="step-joiner" [class]="item === 2 && step === 3 ? 'highlight' : ''">
                         </div>
-                        <div class="step" [class]="step === 3 ? 'transform rotate-90' : ''">
+                        <div class="step">
                             <mat-icon
                                 [class]="item === 2 && step === 4 ? 'highlight' : step > 3 ? 'disable-text-color' : ''">
                                 {{step === 3 ? 'flight': 'radio_button_unchecked'}}

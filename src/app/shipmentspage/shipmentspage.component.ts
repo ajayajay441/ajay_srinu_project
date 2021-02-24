@@ -7,15 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./shipmentspage.component.scss']
 })
 export class ShipmentspageComponent implements OnInit {
+  shipments = [
+    { name: 'ajay', seemore: false },
+    { name: 'srinu', seemore: false },
+  ];
 
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+
   }
 
-  goTo(routePageName: string) {
-    this.router.navigate([`${routePageName}`]); // navigate to other page
+  toggleShipmentDataView(shipment: any) {
+    console.log(shipment, 'card expand or collapse');
   }
 }

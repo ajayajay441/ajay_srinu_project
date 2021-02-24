@@ -5,12 +5,16 @@ import { FormsModule } from '@angular/forms';
 //modules
 import { AppMaterialModule } from './app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DashboardModule } from './dashboardpage/dashboard.module';
 
 // components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+
+// pages
+import { DashboardPageModule } from './dashboardpage/dashboardpage.module';
+import { ShipmentspageModule } from './shipmentspage/shipmentspage.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
-    DashboardModule
+    DashboardPageModule,
+    ShipmentspageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

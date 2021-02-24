@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  templateUrl: './dashboardpage.component.html',
+  styleUrls: ['./dashboardpage.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardpageComponent implements OnInit {
 
   constructor(
     private router: Router,

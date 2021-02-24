@@ -1,0 +1,50 @@
+@import "./../../variables.scss";
+
+.light-color-button {
+  color: #c4c4c4 !important;
+}
+.mat-form-field {
+  max-width: 100px;
+}
+.status-tracker-container {
+  width: 80%;
+  max-width: 800px;
+}
+.stepper {
+  width: 100%;
+  .step-container {
+    width: 100%;
+  }
+  .step {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  .step-joiner {
+    height: 0px;
+    border-bottom: 2px dotted #ddd;
+    position: relative;
+    left: 50%;
+    top: 12px;
+  }
+  .step-joiner.highlight {
+    border-bottom: 2px dotted $fresonprimarycolor;
+  }
+  .step-joiner.disable {
+    border-bottom: 2px dotted $fresonprimarycolor;
+  }
+  .step-container:last-of-type .step-joiner {
+    border-bottom: none;
+  }
+}
+
+::ng-deep {
+  .mat-tab-label-active {
+    .mat-tab-label-content {
+      color: $fresonprimarycolor !important;
+    }
+  }
+}
