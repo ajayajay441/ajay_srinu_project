@@ -11,6 +11,7 @@ export class ShipmentspageComponent implements OnInit {
     { name: 'ajay', seemore: false },
     { name: 'srinu', seemore: false },
   ];
+  viewShipmentsType = 'bookmarked';
 
   constructor(
     private router: Router,

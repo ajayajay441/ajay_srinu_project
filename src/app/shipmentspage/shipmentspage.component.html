@@ -31,13 +31,14 @@
                     <h2 class="mb-0">
                         Shipments
                     </h2>
-                    <button mat-stroked-button class="mat-elevation-z0" color="primary">
+                    <button mat-stroked-button color="primary"
+                        [class.light-color-button]="viewShipmentsType !== 'bookmarked'">
                         Bookmarked
                     </button>
-                    <button mat-stroked-button>
+                    <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
                         Arriving
                     </button>
-                    <button mat-stroked-button class="mat-elevation-z0">
+                    <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'booked'">
                         Booked
                     </button>
                 </div>
