@@ -5,15 +5,15 @@
                 Shipments
             </h2>
             <button mat-stroked-button [color]="shipmentType === 'bookamrked'?'primary':'light'"
-                class="mat-elevation-z0" [class]="shipmentType === 'booked'? '' : ''">
+                class="mat-elevation-z0" [class]="shipmentType === 'booked'? '' : ''" (click)="getDashboardShipments('Bookmarked')">
                 Bookmarked
             </button>
             <button mat-stroked-button [color]="shipmentType === 'arriving'?'primary':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : ''">
+                [class]="shipmentType === 'booked'? '' : ''" (click)="getDashboardShipments('Arriving')">
                 Arriving
             </button>
             <button mat-stroked-button [color]="shipmentType === 'booked'?'primary':'light'" class="mat-elevation-z0"
-                [class]="shipmentType === 'booked'? '' : ''">
+                [class]="shipmentType === 'booked'? '' : ''" (click)="getDashboardShipments('Booked')">
                 Booked
             </button>
         </div>
@@ -21,24 +21,24 @@
             View all
         </a>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngFor="let element of data">
         <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="25px" class="mb-5"
             *ngFor="let item of [1,2,3]">
             <div fxLayout="column">
                 <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
                     <h3 class="mb-0">
-                        HBL #0938847
+                        {{ element['hbl-number'] }}
                     </h3>
                     <h5 class="mb-0">
-                        SEW-EURODRIVE INDIA PVT. LTD. (CHENNAI)
+                        {{ element['customer-name'] }}
                     </h5>
                 </div>
                 <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
                     <h6 class="mb-0">
-                        BOE: 20 Sep, 2020
+                        {{ element.ETA }}
                     </h6>
                     <h6 class="mb-0">
-                        CLR: 20 Sep, 2020
+                        {{ element.ETD }}
                     </h6>
                 </div>
             </div>

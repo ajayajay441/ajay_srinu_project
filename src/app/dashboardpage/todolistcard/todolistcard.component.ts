@@ -30,7 +30,7 @@ export class TodolistcardComponent implements OnInit {
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardThingsToDo(userData.Token);
+          return this.dashboardService.getDashboardThingsToDo(userData.Token,status, 2);
         })
       )
       .subscribe((response: any) => {

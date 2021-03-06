@@ -16,7 +16,7 @@ export class AppComponent {
   title = 'frescon';
   currentRoute = '';
   menuList: NavMenuItem[] = [
-    { name: 'Overview', label: 'Overview', route: '/dashboard', icon: 'overview', isActive: true },
+    { name: 'Dashboard', label: 'Dashboard', route: '/dashboard', icon: 'dashboard', isActive: true },
     { name: 'Shipments', label: 'Shipments', route: '/shipments', icon: 'shipments', isActive: false },
     { name: 'Quotes', label: 'Quotes', route: '/quotes', icon: 'quotes', isActive: false },
     { name: 'PO', label: 'PO', route: '/po', icon: 'po', isActive: false },
@@ -41,7 +41,7 @@ export class AppComponent {
       console.log('router url', this.router.url);
     });
     this.matIconRegistry.addSvgIcon(
-      "overview",
+      "dashboard",
       this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/menu-overview.svg")
     );
     this.matIconRegistry.addSvgIcon(

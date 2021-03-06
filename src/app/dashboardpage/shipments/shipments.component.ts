@@ -21,7 +21,7 @@ export class ShipmentsComponent implements OnInit {
     'ETA delayed',
     'Delivered'
   ];
-  data = [];
+  data:any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;
@@ -62,7 +62,8 @@ export class ShipmentsComponent implements OnInit {
         switchMap((userData) => {
           return this.dashboardService.getDashboardShipments(
             userData.Token,
-            status
+            status,
+            2
           );
         })
       )

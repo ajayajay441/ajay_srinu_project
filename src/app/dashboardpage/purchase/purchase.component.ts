@@ -38,7 +38,7 @@ export class PurchaseComponent implements OnInit {
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardPO(userData.Token, status);
+          return this.dashboardService.getDashboardPO(userData.Token, status, 2);
         })
       )
       .subscribe((response: any) => {

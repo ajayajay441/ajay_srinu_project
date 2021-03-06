@@ -6,7 +6,7 @@
             </h1>
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center"
                 *ngFor="let item of ['Status', 'Mode', 'Date', 'Product']" class="shipments-page-selectbox">
-                <h3 class="mb-0">Status:</h3>
+                <h3 class="mb-0">{{item}}</h3>
                 <mat-form-field class="w-full">
                     <!-- <mat-label>Status</mat-label> -->
                     <mat-select>
@@ -20,7 +20,7 @@
         <div fxFlex="20" class="text-right">
             <button mat-raised-button color="primary" class="mat-elevation-z0">
                 <mat-icon>upload_file</mat-icon>
-                Load plan
+                Buyer Console
             </button>
         </div>
     </div>
@@ -137,7 +137,7 @@
                     <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
                         <button mat-raised-button color="primary" class="mat-elevation-z0">
                             <mat-icon>upload_file</mat-icon>
-                            Load plan
+                            Pre Alert Documents
                         </button>
                         <div class="cursor-pointer" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center"
                             (click)="item.seemore = !item.seemore">

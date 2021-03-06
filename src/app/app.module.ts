@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 // pages
 import { DashboardPageModule } from './dashboardpage/dashboardpage.module';
 import { ShipmentspageModule } from './shipmentspage/shipmentspage.module';
+import { QuotationspageModule } from './quotationspage/quotationspage.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ShipmentspageModule } from './shipmentspage/shipmentspage.module';
     AppRoutingModule,
     HttpClientModule,
     DashboardPageModule,
-    ShipmentspageModule
+    ShipmentspageModule,
+    QuotationspageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

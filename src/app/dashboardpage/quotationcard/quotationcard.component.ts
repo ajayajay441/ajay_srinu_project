@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../_services';
   styleUrls: ['./quotationcard.component.scss']
 })
 export class QuotationcardComponent implements OnInit {
-  data = [];
+  data:any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;
@@ -39,7 +39,8 @@ export class QuotationcardComponent implements OnInit {
         switchMap((userData) => {
           return this.dashboardService.getDashboardQuotation(
             userData.Token,
-            status
+            status,
+            1
           );
         })
       )

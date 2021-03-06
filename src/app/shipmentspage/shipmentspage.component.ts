@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ShipmentspageComponent implements OnInit {
   shipments = [
-    { name: 'ajay', seemore: false },
-    { name: 'srinu', seemore: false },
+    { name: 'cargo', seemore: false },
+    { name: 'Booked', seemore: false },
   ];
   viewShipmentsType = 'bookmarked';
 

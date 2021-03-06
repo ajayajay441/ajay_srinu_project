@@ -33,7 +33,8 @@ export class SchedulesComponent implements OnInit {
         switchMap((userData) => {
           return this.dashboardService.getDashboardSailings(
             userData.Token,
-            status
+            status,
+            2
           );
         })
       )
