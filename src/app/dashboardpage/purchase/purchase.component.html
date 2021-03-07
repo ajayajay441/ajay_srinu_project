@@ -1,42 +1,85 @@
 <mat-card class="mat-elevation-z0">
-    <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxLayout="row" fxLayoutGap="25px">
-            <h2 class="mb-0">
-                Purchase
-            </h2>
-            <button mat-stroked-button class="mat-elevation-z0">
-                Upcoming
-            </button>
-            <button mat-stroked-button class="mat-elevation-z0">
-                Picked-up
-            </button>
-        </div>
-        <a class="underline">
-            View all
-        </a>
+  <div
+    class="card-title mb-9"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxLayout="row" fxLayoutGap="25px">
+      <h2 class="mb-0">Purchase</h2>
+      <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
+        Upcoming
+      </button>
+      <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
+        Picked-up
+      </button>
     </div>
-    <div class="card-body">
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="py-3 purchases-table-header">
-            <h3 fxFlex class="mb-0">
-                Picked-up PO’s
-            </h3>
-            <h3 fxFlex class="mb-0">
-                Origins
-            </h3>
-            <h3 fxFlex class="mb-0">
-                Booked Number HBL
-            </h3>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" class="my-3 purchase-item">
-            <h5 fxFlex class="mb-0">
-                PO-202334
-            </h5>
-            <h5 fxFlex class="mb-0">
-                New-York, NY
-            </h5>
-            <h5 fxFlex class="mb-0">
-                12203939488777754
-            </h5>
-        </div>
+    <a class="underline accent"> View all </a>
+  </div>
+  <div class="card-body" fxHide fxShow.gt-md>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+      class="py-3 purchases-table-header"
+    >
+      <h3 fxFlex class="mb-0">Picked-up PO’s</h3>
+      <h3 fxFlex class="mb-0">Origins</h3>
+      <h3 fxFlex class="mb-0">Booked Number HBL</h3>
     </div>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+      class="my-3 purchase-item"
+      *ngFor="let element of data"
+    >
+      <h5 fxFlex class="mb-0">
+        {{ element.ponumber }}
+      </h5>
+      <h5 fxFlex class="mb-0">
+        {{ element.origin }}
+      </h5>
+      <h5 fxFlex class="mb-0">
+        {{ element["hbl-number"] }}
+      </h5>
+    </div>
+  </div>
+  <div class="card-body" fxShow fxHide.gt-md>
+    <!-- <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+      class="py-3 purchases-table-header"
+    >
+      <h3 fxFlex class="mb-0">Picked-up PO’s</h3>
+      <h3 fxFlex class="mb-0">Origins</h3>
+      <h3 fxFlex class="mb-0">Booked Number HBL</h3>
+    </div> -->
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center start"
+      fxLayoutGap="10px"
+      class="my-3 purchase-item"
+      *ngIf="data && data[0]"
+    >
+      <p fxFlex>
+        <span class="font-bold">Picked-up PO’s :</span>
+        <span>{{ data[0].ponumber }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Origins :</span>
+        <span>{{ data[0].origin }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Booked Number HBL :</span>
+        <span>{{ data[0]["hbl-number"] }}</span>
+      </p>
+      <!-- <p fxFlex class="mb-0">
+        {{ element.origin }}
+      </p>
+      <p fxFlex class="mb-0">
+        {{ element["hbl-number"] }}
+      </p> -->
+    </div>
+  </div>
 </mat-card>

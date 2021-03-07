@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../_services';
 })
 export class SchedulesComponent implements OnInit {
   scheduleType = 'air';
-  dataSource = [];
+  dataSource:any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;

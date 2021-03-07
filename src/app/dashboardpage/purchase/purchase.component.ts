@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../_services';
 })
 export class PurchaseComponent implements OnInit {
   purchaseType = 'upcoming';
-  data = [];
+  data:any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;

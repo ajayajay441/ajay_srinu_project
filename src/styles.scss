@@ -16,3 +16,22 @@ body {
 .mb-0 {
   margin-bottom: 0px !important;
 }
+
+.mat-primary {
+  svg {
+    fill: $fresonprimarycolor;
+    color: $fresonprimarycolor;
+  }
+}
+.mat-accent {
+  svg {
+    fill: $fresonaccentcolor;
+    color: $fresonaccentcolor;
+  }
+}
+.mat-stroked-button.mat-primary {
+  border-color: $fresonprimarycolor;
+}
+.accent {
+  color: $fresonaccentcolor !important;
+}

@@ -19,9 +19,14 @@ mat-icon.search-icon {
   margin-right: 7px !important;
   position: relative;
 }
-
+@media (min-width: 998px) { 
+  .notifications-user {
+  min-width: 300px; 
+}
+}
 .notifications-user {
-  min-width: 300px;
+  // min-width: 300px;
+ 
   h6,
   h5 {
     margin-bottom: 0px !important;

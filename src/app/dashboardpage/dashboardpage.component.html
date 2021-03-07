@@ -1,41 +1,47 @@
 <div class="dashboard-page">
-    <div fxLayout="row" fxLayoutGap="15px" fxFlexFill class="mb-10">
-        <div fxFlex="65" class="map-box" fxLayout="column">
-            <div fxFlex="25px" class="mb-10">
-                <h2 class="mb-0">
-                    Overview
-                </h2>
-            </div>
-            <div fxFlex>
-                <app-mapbox></app-mapbox>
-            </div>
-        </div>
-        <div fxFlex="35" class="quotes-todo text-right" fxLayout="column">
-            <div fxFlex="25px" class="mb-10">
-                <button mat-raised-button color="primary" class="mat-elevation-z0">
-                    <mat-icon>upload_file</mat-icon>
-                    Request Quote
-                </button>
-            </div>
-            <div fxFlex>
-                <div class="mb-10">
-                    <app-quotationcard></app-quotationcard>
-                </div>
-                <div>
-                    <app-todolistcard></app-todolistcard>
-                </div>
-            </div>
-        </div>
+  <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
+    <div class="mb-10">
+      <h2 class="mb-0">Overview</h2>
     </div>
     <div class="mb-10">
-        <app-shipments></app-shipments>
+      <button mat-raised-button color="primary" class="mat-elevation-z0">
+        <mat-icon>upload_file</mat-icon>
+        Request Quote
+      </button>
     </div>
-    <div fxLayout="row" fxLayoutGap="15px" class="mb-10">
-        <div fxFlex="50">
-            <app-purchase></app-purchase>
-        </div>
-        <div fxFlex="50">
-            <app-schedules></app-schedules>
-        </div>
+  </div>
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="15px"
+    fxFlexFill
+    class="mb-10"
+  >
+    <div fxFlex="65" class="map-box" fxLayout="column">
+      <div fxFlex>
+        <app-mapbox></app-mapbox>
+      </div>
     </div>
+    <div fxFlex="35" class="quotes-todo text-right" fxLayout="column">
+      <div fxFlex>
+        <div class="mb-10">
+          <app-quotationcard></app-quotationcard>
+        </div>
+        <div>
+          <app-todolistcard></app-todolistcard>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-10">
+    <app-shipments></app-shipments>
+  </div>
+  <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" class="mb-10">
+    <div fxFlex>
+      <app-purchase></app-purchase>
+    </div>
+    <div fxFlex>
+      <app-schedules></app-schedules>
+    </div>
+  </div>
 </div>

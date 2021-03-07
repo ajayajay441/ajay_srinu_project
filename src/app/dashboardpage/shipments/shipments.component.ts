@@ -14,13 +14,20 @@ import { AuthenticationService } from '../../_services';
 })
 export class ShipmentsComponent implements OnInit {
   shipmentType = 'booked';
-  transitStatusSteps = [
-    'Cargo received',
-    'In transit',
-    'Actual departed',
-    'ETA delayed',
-    'Delivered'
-  ];
+  shipmentStatusTypes = [
+    { label: 'Bookmarked', value: 'BOOKMARKED' },
+    { label: 'Arriving', value: 'ARRIVING' },
+    { label: 'Booked', value: 'BOOKED' },
+    ];
+    activeShipmentStatusType:any = 'ARRIVING';
+    transitStatuses = [
+      { label: 'Booked', value: 'BOOKED' },
+      { label: 'Cargo received', value: 'RECEIVED' },
+      { label: 'In transit', value: 'IN TRANSIT' },
+      { label: 'Actual departed', value: 'DEPARTED' },
+      { label: 'ETA delayed', value: 'DELAYED' },
+      { label: 'Delivered', value: 'DELIVERED' },
+      ];
   data:any = [];
   error: any;
   loading = true;
@@ -42,27 +49,30 @@ export class ShipmentsComponent implements OnInit {
   ngOnInit(): void {
     this.getDashboardShipments();
   }
-
+  
   goTo(routePageName: string, data: any) {
     console.log('data', data)
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   getDashboardShipments(value?: string) {
-    let status = '';
-    if (value == 'Bookmarked') {
-      status = 'BOOKMARK';
-    } else if (value == 'Arriving') {
-      status = 'ARRIVING';
-    } else if (value == 'Booked') {
-      status = 'BOOKED';
-    }
+    // let status = value;
+    if(value) this.activeShipmentStatusType = value;
+    console.log(this.activeShipmentStatusType);
+
+    // if (value == 'Bookmarked') {
+    //   status = 'BOOKMARK';
+    // } else if (value == 'Arriving') {
+    //   status = 'ARRIVING';
+    // } else if (value == 'Booked') {
+    //   status = 'BOOKED';
+    // }
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
           return this.dashboardService.getDashboardShipments(
             userData.Token,
-            status,
+            this.activeShipmentStatusType,
             2
           );
         })
