@@ -1,36 +1,3 @@
 $fresonprimarycolor: #f01e1e;
 $fresonaccentcolor: #313131;
 $fresonlightcolor: #c4c4c4;
-
-.mat-primary {
-  svg {
-    fill: $fresonprimarycolor;
-    color: $fresonprimarycolor;
-  }
-  p,
-  label,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $fresonprimarycolor;
-  }
-}
-.mat-accent {
-  svg {
-    fill: $fresonaccentcolor;
-    color: $fresonaccentcolor;
-  }
-  p,
-  label,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $fresonaccentcolor;
-  }
-}

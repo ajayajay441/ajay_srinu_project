@@ -53,7 +53,7 @@
       </div>
     </mat-card>
   </div>
-  <div class="mb-10" *ngFor="let shipment of shipments">
+  <div class="mb-10" *ngFor="let shipment of data">
     <mat-card class="mat-elevation-z0">
       <div class="card-body">
         <div fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
@@ -164,7 +164,9 @@
               fxLayoutAlign="start center"
               (click)="shipment.seemore = !shipment.seemore"
             >
-              <a class="underline"> See more </a>
+              <a class="underline">
+                {{ shipment.seemore ? "See less" : "See more" }}
+              </a>
               <span class="material-icons"> expand_more </span>
             </div>
           </div>

@@ -35,3 +35,15 @@ body {
 .accent {
   color: $fresonaccentcolor !important;
 }
+.mat-primary {
+  svg {
+    fill: $fresonprimarycolor;
+    color: $fresonprimarycolor;
+  }
+}
+.mat-accent {
+  svg {
+    fill: $fresonaccentcolor;
+    color: $fresonaccentcolor;
+  }
+}
