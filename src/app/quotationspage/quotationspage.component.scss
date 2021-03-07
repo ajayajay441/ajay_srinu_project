@@ -55,15 +55,24 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
-th{
+th {
   font-family: Helvetica;
-font-style: normal;
-font-weight: bold;
+  font-style: normal;
+  font-weight: bold;
   color: #313131;
   font-size: 16px;
-
 }
-td{
-  font-size: 15px ;
+td {
+  font-size: 15px;
   color: #313131;
+}
+
+td.mat-cell {
+  border-bottom-style: none;
+}
+th.mat-header-cell {
+  border-bottom-style: none;
+}
+.mat-header-row {
+  background-color: #f7f8fa;
 }
