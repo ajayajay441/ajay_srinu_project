@@ -162,7 +162,10 @@
               fxLayout="row"
               fxLayoutGap="5px"
               fxLayoutAlign="start center"
-              (click)="shipment.seemore = !shipment.seemore"
+              (click)="
+                shipment.seemore = !shipment.seemore;
+                shipment.seemore && seeMoreShipmentData('id')
+              "
             >
               <a class="underline">
                 {{ shipment.seemore ? "See less" : "See more" }}
@@ -268,6 +271,11 @@
             </mat-tab>
             <mat-tab label="Activity">
               <div class="mat-tab-content my-3">Activity</div>
+            </mat-tab>
+            <mat-tab label="Actions">
+              <div class="mat-tab-content my-3">
+                <app-actions></app-actions>
+              </div>
             </mat-tab>
             <!-- <mat-tab label="Actions"> <div class="mat-tab-content my-3"> Actions </div> </mat-tab> <mat-tab label="Cargo details"> <div class="mat-tab-content my-3"> Crago Details </div> </mat-tab> <mat-tab label="Documents"> <div class="mat-tab-content my-3"> Documents </div> </mat-tab> <mat-tab label="CAN"> <div class="mat-tab-content my-3"> CAN </div> </mat-tab> -->
           </mat-tab-group>

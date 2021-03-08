@@ -14,6 +14,7 @@ import { DashboardService } from "../_services/dashboard.service";
 })
 export class ShipmentspageComponent implements OnInit {
   data: any = [];
+  cargo: any = [];
   shipments = [];
   viewShipmentsType = "bookmarked";
 
@@ -26,60 +27,70 @@ export class ShipmentspageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getDashboardShipments();
+    // this.getDashboardShipments();
+    this.getShipmentDetails();
   }
 
   toggleShipmentDataView(shipment: any) {
     console.log(shipment, "card expand or collapse");
   }
-  // getShipmentDetails(value?:string) {
-  //   let status='';
-  //   // if(value=='Picked up POs'){
-  //   //   status='PICKED_UP'
-  //   // }else if(value=='Upcoming POs'){
-  //   //   status='UPCOMING'
-  //   // }else if(value=='Action Required'){
-  //   //   status='ACTION_REQUIRED'
-  //   // }
-  //   this.authenticationService.refreshToken()
-  //     .pipe(
-  //       switchMap((userData) => {
-  //         return this.shipmentService.getShipmentDetails(userData.Token,status);
-  //       })
-  //     ).subscribe((response:any) => {
-  //     this.data = response.ShipmentCard;
-  //     this.data.forEach(function (element:any) {
-  //       element.seemore = false;
-  //     });
-  //     console.log("Shipmentpage Response",response.ShipmentCard);
-  //   });
-  // }
-  getDashboardShipments(value?: string) {
+  getShipmentDetails(value?: string) {
     let status = "";
-    if (value == "Bookmarked") {
-      status = "BOOKMARK";
-    } else if (value == "Arriving") {
-      status = "ARRIVING";
-    } else if (value == "Booked") {
-      status = "BOOKED";
-    }
+    // if(value=='Picked up POs'){
+    //   status='PICKED_UP'
+    // }else if(value=='Upcoming POs'){
+    //   status='UPCOMING'
+    // }else if(value=='Action Required'){
+    //   status='ACTION_REQUIRED'
+    // }
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardShipments(
+          return this.shipmentService.getShipmentDetails(
             userData.Token,
-            status,
-            10
+            status
           );
         })
       )
       .subscribe((response: any) => {
-        this.data = response.Shipments;
-        // this.data.forEach(function (element:any) {
-        //         element.seemore = false;
-        //       });
-        console.log("ship resp", response.Shipments);
+        this.data = response.ShipmentCard;
+        this.data.forEach(function (element: any) {
+          element.seemore = false;
+        });
+        console.log("Shipmentpage Response", response.ShipmentCard);
       });
   }
+
+  seeMoreShipmentData(id: any) {
+    console.log(id);
+  }
+  // getDashboardShipments(value?: string) {
+  //   let status = "";
+  //   if (value == "Bookmarked") {
+  //     status = "BOOKMARK";
+  //   } else if (value == "Arriving") {
+  //     status = "ARRIVING";
+  //   } else if (value == "Booked") {
+  //     status = "BOOKED";
+  //   }
+  //   this.authenticationService
+  //     .refreshToken()
+  //     .pipe(
+  //       switchMap((userData) => {
+  //         return this.dashboardService.getDashboardShipments(
+  //           userData.Token,
+  //           status,
+  //           10
+  //         );
+  //       })
+  //     )
+  //     .subscribe((response: any) => {
+  //       this.data = response.Shipments;
+  //       // this.data.forEach(function (element:any) {
+  //       //         element.seemore = false;
+  //       //       });
+  //       console.log("ship resp", response.Shipments);
+  //     });
+  // }
 }
