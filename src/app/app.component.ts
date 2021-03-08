@@ -105,6 +105,6 @@ interface NavMenuItem {
   route: string,
   icon: string,
   isActive?: boolean,
-  isExpanded?: boolean
+  isExpanded?: boolean,
   subMenu?: NavMenuItem[]
 }

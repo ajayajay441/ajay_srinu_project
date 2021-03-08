@@ -13,7 +13,7 @@ import { DashboardService } from "../_services/dashboard.service";
   styleUrls: ["./shipmentspage.component.scss"],
 })
 export class ShipmentspageComponent implements OnInit {
-  data: any = [];
+  data: any = [{ "hbl-number": "400551000083", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "This is only a booking information and subsequent milestones will be updated.", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "09-MAR-21", "mode": "SEA", "pre_alert_document": " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "", seemore: true }, { "hbl-number": "DXB2100001", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "Cargo Received Confirmation", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "10-MAR-21", "mode": "SEA", "pre_alert_document": " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "" }];;
   cargo: any = [];
   shipments = [];
   viewShipmentsType = "bookmarked";
@@ -24,7 +24,7 @@ export class ShipmentspageComponent implements OnInit {
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // this.getDashboardShipments();
@@ -36,13 +36,6 @@ export class ShipmentspageComponent implements OnInit {
   }
   getShipmentDetails(value?: string) {
     let status = "";
-    // if(value=='Picked up POs'){
-    //   status='PICKED_UP'
-    // }else if(value=='Upcoming POs'){
-    //   status='UPCOMING'
-    // }else if(value=='Action Required'){
-    //   status='ACTION_REQUIRED'
-    // }
     this.authenticationService
       .refreshToken()
       .pipe(
@@ -65,32 +58,24 @@ export class ShipmentspageComponent implements OnInit {
   seeMoreShipmentData(id: any) {
     console.log(id);
   }
-  // getDashboardShipments(value?: string) {
-  //   let status = "";
-  //   if (value == "Bookmarked") {
-  //     status = "BOOKMARK";
-  //   } else if (value == "Arriving") {
-  //     status = "ARRIVING";
-  //   } else if (value == "Booked") {
-  //     status = "BOOKED";
-  //   }
-  //   this.authenticationService
-  //     .refreshToken()
-  //     .pipe(
-  //       switchMap((userData) => {
-  //         return this.dashboardService.getDashboardShipments(
-  //           userData.Token,
-  //           status,
-  //           10
-  //         );
-  //       })
-  //     )
-  //     .subscribe((response: any) => {
-  //       this.data = response.Shipments;
-  //       // this.data.forEach(function (element:any) {
-  //       //         element.seemore = false;
-  //       //       });
-  //       console.log("ship resp", response.Shipments);
-  //     });
-  // }
+  getDashboardShipments(value?: string) {
+    // this.authenticationService
+    //   .refreshToken()
+    //   .pipe(
+    //     switchMap((userData) => {
+    //       return this.dashboardService.getDashboardShipments(
+    //         userData.Token,
+    //         status,
+    //         10
+    //       );
+    //     })
+    //   )
+    //   .subscribe((response: any) => {
+    //     this.data = response.Shipments;
+    //     // this.data.forEach(function (element:any) {
+    //     //         element.seemore = false;
+    //     //       });
+    //     console.log("ship resp", response.Shipments);
+    //   });
+  }
 }

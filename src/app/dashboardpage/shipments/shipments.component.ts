@@ -18,17 +18,17 @@ export class ShipmentsComponent implements OnInit {
     { label: 'Bookmarked', value: 'BOOKMARKED' },
     { label: 'Arriving', value: 'ARRIVING' },
     { label: 'Booked', value: 'BOOKED' },
-    ];
-    activeShipmentStatusType:any = 'ARRIVING';
-    transitStatuses = [
-      { label: 'Booked', value: 'BOOKED' },
-      { label: 'Cargo received', value: 'RECEIVED' },
-      { label: 'In transit', value: 'IN TRANSIT' },
-      { label: 'Actual departed', value: 'DEPARTED' },
-      { label: 'ETA delayed', value: 'DELAYED' },
-      { label: 'Delivered', value: 'DELIVERED' },
-      ];
-  data:any = [];
+  ];
+  activeShipmentStatusType: any = 'ARRIVING';
+  transitStatuses = [
+    { label: 'Booked', value: 'BOOKED' },
+    { label: 'Cargo received', value: 'RECEIVED' },
+    { label: 'In transit', value: 'IN TRANSIT' },
+    { label: 'Actual departed', value: 'DEPARTED' },
+    { label: 'ETA delayed', value: 'DELAYED' },
+    { label: 'Delivered', value: 'DELIVERED' },
+  ];
+  data: any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;
@@ -49,39 +49,31 @@ export class ShipmentsComponent implements OnInit {
   ngOnInit(): void {
     this.getDashboardShipments();
   }
-  
+
   goTo(routePageName: string, data: any) {
     console.log('data', data)
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   getDashboardShipments(value?: string) {
-    // let status = value;
-    if(value) this.activeShipmentStatusType = value;
+    if (value) this.activeShipmentStatusType = value;
     console.log(this.activeShipmentStatusType);
-
-    // if (value == 'Bookmarked') {
-    //   status = 'BOOKMARK';
-    // } else if (value == 'Arriving') {
-    //   status = 'ARRIVING';
-    // } else if (value == 'Booked') {
-    //   status = 'BOOKED';
-    // }
-    this.authenticationService
-      .refreshToken()
-      .pipe(
-        switchMap((userData) => {
-          return this.dashboardService.getDashboardShipments(
-            userData.Token,
-            this.activeShipmentStatusType,
-            2
-          );
-        })
-      )
-      .subscribe((response: any) => {
-        this.data = response.Shipments;
-        this.loading = false;
-        console.log('ship resp', response.Shipments);
-      });
+    this.data = [{ "hbl-number": "400551000083", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "This is only a booking information and subsequent milestones will be updated.", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "09-MAR-21", "mode": "SEA", "pre_alert_document": "https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "" }, { "hbl-number": "DXB2100001", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "Cargo Received Confirmation", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "10-MAR-21", "mode": "SEA", "pre_alert_document": "https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "" }];
+    // this.authenticationService
+    //   .refreshToken()
+    //   .pipe(
+    //     switchMap((userData) => {
+    //       return this.dashboardService.getDashboardShipments(
+    //         userData.Token,
+    //         this.activeShipmentStatusType,
+    //         2
+    //       );
+    //     })
+    //   )
+    //   .subscribe((response: any) => {
+    //     this.data = response.Shipments;
+    //     this.loading = false;
+    //     console.log('ship resp', response.Shipments);
+    //   });
   }
 
 }
