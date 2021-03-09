@@ -7,8 +7,8 @@ import { ShipmentspageComponent } from "./shipmentspage.component";
 import { ShipmentmapviewComponent } from "./shipmentmapview/shipmentmapview.component";
 import { ActionsComponent } from "./actions/actions.component";
 import { ShipmentactivityComponent } from "./shipmentactivity/shipmentactivity.component";
-// import { MapboxComponent } from "../dashboardpage/mapbox/mapbox.component";
 import { DashboardPageModule } from "../dashboardpage/dashboardpage.module";
+import { CargodetailsComponent } from "./cargodetails/cargodetails.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { DashboardPageModule } from "../dashboardpage/dashboardpage.module";
     ActionsComponent,
     ShipmentmapviewComponent,
     ShipmentactivityComponent,
+    CargodetailsComponent
   ],
   imports: [
     CommonModule,

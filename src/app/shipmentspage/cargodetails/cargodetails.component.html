@@ -1,0 +1,17 @@
+<div *ngFor="let cargo of [1, 2]" class="mb-5">
+    <div class="cargo-header py-3">
+        <h3 class="mb-0">
+            Notify Name : Motherson SUMI SYSTEM Ltd. (NODIA) #129939884
+        </h3>
+    </div>
+    <div class="cargo-description py-3">
+        <div fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="start center">
+            <div class="cargo-deatil" *ngFor="let details of cargoDetails">
+                <p class="mb-0">
+                    <span class="font-bold mr-2">{{details.label}}: </span>
+                    <span>{{details.value}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

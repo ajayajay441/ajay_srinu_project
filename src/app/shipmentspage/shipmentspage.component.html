@@ -125,6 +125,11 @@
         <mat-expansion-panel [expanded]="shipment.seemore" (opened)="shipment.seemore = true"
           (closed)="shipment.seemore = false" class="mat-elevation-z0">
           <mat-tab-group mat-align-tabs="start" color="primary" *ngIf="shipment.seemore">
+            <mat-tab label="Cargo Details">
+              <div class="mat-tab-content my-3">
+                <app-cargodetails></app-cargodetails>
+              </div>
+            </mat-tab>
             <mat-tab label="Activity">
               <app-shipmentactivity [shipment]="shipment"></app-shipmentactivity>
             </mat-tab>
