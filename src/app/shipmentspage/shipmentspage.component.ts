@@ -13,7 +13,46 @@ import { DashboardService } from "../_services/dashboard.service";
   styleUrls: ["./shipmentspage.component.scss"],
 })
 export class ShipmentspageComponent implements OnInit {
-  data: any = [{ "hbl-number": "400551000083", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "This is only a booking information and subsequent milestones will be updated.", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "09-MAR-21", "mode": "SEA", "pre_alert_document": " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "", seemore: true }, { "hbl-number": "DXB2100001", "customer-name": "SHANMU", "ponumber": "", "clearance-flag": "N", "boe-no": "BOEDEMO", "clr-no": "DDD", "latest-update": "Cargo Received Confirmation", "origin": "MUMBAI", "ETD": "05-MAR-21", "destination": "DUBAI", "ETA": "10-MAR-21", "mode": "SEA", "pre_alert_document": " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1", "status": "IN TRANSIT", "eta-flag": "" }];;
+  data: any = [
+    {
+      "hbl-number": "400551000083",
+      "customer-name": "SHANMU",
+      ponumber: "",
+      "clearance-flag": "N",
+      "boe-no": "BOEDEMO",
+      "clr-no": "DDD",
+      "latest-update":
+        "This is only a booking information and subsequent milestones will be updated.",
+      origin: "MUMBAI",
+      ETD: "05-MAR-21",
+      destination: "DUBAI",
+      ETA: "09-MAR-21",
+      mode: "SEA",
+      pre_alert_document:
+        " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
+      status: "IN TRANSIT",
+      "eta-flag": "",
+      seemore: true,
+    },
+    {
+      "hbl-number": "DXB2100001",
+      "customer-name": "SHANMU",
+      ponumber: "",
+      "clearance-flag": "N",
+      "boe-no": "BOEDEMO",
+      "clr-no": "DDD",
+      "latest-update": "Cargo Received Confirmation",
+      origin: "MUMBAI",
+      ETD: "05-MAR-21",
+      destination: "DUBAI",
+      ETA: "10-MAR-21",
+      mode: "SEA",
+      pre_alert_document:
+        " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
+      status: "IN TRANSIT",
+      "eta-flag": "",
+    },
+  ];
   cargo: any = [];
   shipments = [];
   viewShipmentsType = "bookmarked";
@@ -24,7 +63,7 @@ export class ShipmentspageComponent implements OnInit {
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // this.getDashboardShipments();
@@ -48,9 +87,9 @@ export class ShipmentspageComponent implements OnInit {
       )
       .subscribe((response: any) => {
         this.data = response.ShipmentCard;
-        this.data.forEach(function (element: any) {
-          element.seemore = false;
-        });
+        // this.data.forEach(function (element: any) {
+        //   element.seemore = false;
+        // });
         console.log("Shipmentpage Response", response.ShipmentCard);
       });
   }

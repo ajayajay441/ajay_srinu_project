@@ -1,0 +1,220 @@
+<div class="ebooking-page">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
+    <h1 class="mb-0">E-Booking</h1>
+    <button mat-raised-button color="primary" class="mat-elevation-z0">
+      <mat-icon>upload_file</mat-icon>
+      Generate Quote
+    </button>
+  </div>
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">Add a New Shipment</h1></mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <div class="mb-0">
+          <mat-card class="mat-elevation-z0">
+            <div fxLayout="row" class="mb-0">
+              <h3>Shipment name</h3>
+            </div>
+            <div
+              class="card-title mb-9"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+            >
+              <div fxLayout="row" fxLayoutGap="25px">
+                <!-- <p class="mb-0 capitalize">{{sendMessageViaOption}}</p> -->
+                <mat-form-field appearance="outline">
+                  <!-- <mat-label>Outline form field</mat-label> -->
+                  <input matInput placeholder="Placeholder" />
+                  <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                  <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="mb-0">
+          <mat-card class="mat-elevation-z0">
+            <div fxLayout="row" class="mb-0 card-title">
+              <h3>Select Freight Method</h3>
+            </div>
+            <div class="card-body">
+              <div fxLayout="row wrap" fxLayoutGap="25px">
+                <div *ngFor="let action of [1, 2, 3, 4]" class="my-2">
+                  <button
+                    mat-stroked-button
+                    color="primary"
+                    [class.light-color-button]="
+                      viewShipmentsType !== 'bookmarked'
+                    "
+                  >
+                    LCL
+                  </button>
+                  <!-- <button
+                  class="my-2"
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  FCL
+                </button>
+                <button
+                  class="my-2"
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  Air
+                </button>
+                <button
+                  class="my-2"
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  Road
+                </button> -->
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="mb-0">
+          <mat-card class="mat-elevation-z0">
+            <div fxLayout="row" class="mb-0">
+              <h3>Import / Export</h3>
+            </div>
+            <div
+              class="card-title mb-9"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+            >
+              <div fxLayout="row" fxLayoutGap="25px">
+                <button
+                  mat-stroked-button
+                  color="primary"
+                  [class.light-color-button]="
+                    viewShipmentsType !== 'bookmarked'
+                  "
+                >
+                  Import
+                </button>
+                <button
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  Export
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="mb-0">
+          <mat-card class="mat-elevation-z0">
+            <div fxLayout="row" class="mb-0">
+              <h3>Incoterms</h3>
+            </div>
+            <div
+              class="card-title mb-9"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+            >
+              <div fxLayout="row" fxLayoutGap="25px">
+                <button
+                  mat-stroked-button
+                  color="primary"
+                  [class.light-color-button]="
+                    viewShipmentsType !== 'bookmarked'
+                  "
+                >
+                  FOB
+                </button>
+                <button
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  EXW
+                </button>
+                <button
+                  mat-stroked-button
+                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
+                >
+                  Others
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">Shipment Origin</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">Shipment Destination</h1></mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            ><h1 class="mb-0">Value added services</h1></mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            ><h1 class="mb-0">Cargo & Container</h1></mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -1,26 +1,24 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from "./app-routing.module";
+import { FormsModule } from "@angular/forms";
 //modules
-import { AppMaterialModule } from './app-material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppMaterialModule } from "./app-material.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 // components
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
+import { HttpClientModule } from "@angular/common/http";
 
 // pages
-import { DashboardPageModule } from './dashboardpage/dashboardpage.module';
-import { ShipmentspageModule } from './shipmentspage/shipmentspage.module';
-import { QuotationspageModule } from './quotationspage/quotationspage.module';
+import { DashboardPageModule } from "./dashboardpage/dashboardpage.module";
+import { ShipmentspageModule } from "./shipmentspage/shipmentspage.module";
+import { QuotationspageModule } from "./quotationspage/quotationspage.module";
+import { EbookingpageModule } from "./ebookingpage/ebookingpage.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     AppMaterialModule,
     FormsModule,
@@ -29,9 +27,10 @@ import { QuotationspageModule } from './quotationspage/quotationspage.module';
     HttpClientModule,
     DashboardPageModule,
     ShipmentspageModule,
-    QuotationspageModule
+    QuotationspageModule,
+    EbookingpageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,8 +4,8 @@
   fxLayoutAlign="start center"
   class="py-3 header-row"
 >
-  <div fxFlex="250px" class="mb-0">Date</div>
-  <div fxFlex class="mb-0">Things Todo</div>
+  <div fxFlex="250px" class="px-3">Date</div>
+  <div fxFlex class="px-3">Things Todo</div>
 </div>
 <div
   fxLayout="row"
@@ -13,10 +13,19 @@
   fxLayoutGap="10px"
   class="py-3"
 >
-  <div fxFlex="250px" class="mb-0">12/12/2020</div>
-  <div fxFlex class="mb-0">
-    Dear Sir/Madam,Please find attached Pre Alert documents for the subject
-    shipment for your kind perusal
+  <div fxFlex="250px" class="px-3">12/12/2020</div>
+  <div
+    fxFlex
+    class="px-3"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+  >
+    <p>
+      Dear Sir/Madam,Please find attached Pre Alert documents for the subject
+      shipment for your kind perusal
+    </p>
+    <button mat-stroked-button color="primary">LCL</button>
   </div>
 </div>
 <div
@@ -25,8 +34,8 @@
   fxLayoutGap="10px"
   class="py-3"
 >
-  <div fxFlex="250px" class="mb-0">12/12/2020</div>
-  <div fxFlex class="mb-0">
+  <div fxFlex="250px">12/12/2020</div>
+  <div fxFlex>
     Dear Sir/Madam,Please find attached Pre Alert documents for the subject
     shipment for your kind perusal
   </div>

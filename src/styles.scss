@@ -47,3 +47,19 @@ body {
     color: $fresonaccentcolor;
   }
 }
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  border-radius: 0px !important ;
+}
+// .mat-form-field-appearance-outline .mat-form-field-outline-end,
+// .mat-form-field-appearance-outline .mat-form-field-outline-start {
+//   border-radius: 0px !important;
+// }
+.mat-form-field-appearance-outline {
+  .mat-form-field-outline-end,
+  .mat-form-field-outline-start {
+    border-radius: 0px !important;
+  }
+}

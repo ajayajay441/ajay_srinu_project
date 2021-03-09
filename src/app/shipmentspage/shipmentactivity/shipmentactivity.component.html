@@ -1,73 +1,111 @@
-<div class="mat-tab-content my-3" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
-    <div fxFlex="70" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center start">
-        <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="w-full">
-            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
-                <img [src]="'https://www.w3schools.com/howto/img_avatar.png'" alt="Avatar" class="avatar" />
-                <p class="mb-0">User Name</p>
-            </div>
-            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
-                <p fxFlex class="mb-0">Viewed By:</p>
-                <mat-form-field fxFlex class="w-full">
-                    <mat-select [(ngModel)]="viewedby">
-                        <mat-option [value]="viewedby"> 3 Parties </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <button mat-raised-button color="primary" class="mat-elevation-z0">
-                Review
-            </button>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center start" class="w-full">
-            <h2> Your Message </h2>
-            <mat-form-field class="message-textarea mb-10">
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput></textarea>
+<div
+  class="mat-tab-content my-3"
+  fxLayout="row"
+  fxLayoutGap="15px"
+  fxLayoutAlign="start center"
+>
+  <div
+    fxFlex="70"
+    fxLayout="column"
+    fxLayoutGap="25px"
+    fxLayoutAlign="center start"
+  >
+    <div
+      fxLayout="row"
+      fxLayoutGap="15px"
+      fxLayoutAlign="space-between center"
+      class="w-full"
+    >
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+        <img
+          [src]="'https://www.w3schools.com/howto/img_avatar.png'"
+          alt="Avatar"
+          class="avatar"
+        />
+        <p class="mb-0">User Name</p>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+        <p fxFlex class="mb-0">Viewed By:</p>
+        <mat-form-field fxFlex class="w-full">
+          <mat-select [(ngModel)]="viewedby">
+            <mat-option [value]="viewedby"> 3 Parties </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" class="mat-elevation-z0">
+        Review
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center start" class="w-full">
+      <h2>Your Message</h2>
+      <mat-form-field class="message-textarea mb-10">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+        <p class="mb-0">Send to:</p>
+        <mat-form-field fxFlex class="w-full">
+          <mat-select [(ngModel)]="sendto">
+            <mat-option [value]="sendto"> Shipper </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="mat-elevation-z0">
+          Send message
+        </button>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center start" class="w-full">
+      <div
+        fxLayout="row"
+        fxLayoutGap="15px"
+        fxLayoutAlign="start center"
+        class="mb-7"
+      >
+        <button
+          mat-icon-button
+          aria-label="Add another party"
+          color="primary"
+          class="text-left"
+          (click)="addAnotherParty()"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
+        <p class="mb-0">Add another party</p>
+      </div>
+      <div
+        *ngFor="let party of sendMessageToParties; let i = index"
+        class="ml-3 mb-7"
+      >
+        <div
+          fxLayout="row"
+          fxLayoutGap="10px"
+          fxLayoutAlign="start center"
+          class="party-name-edit"
+        >
+          <div class="party-name mr-3">
+            <h3 class="mb-0 w-full" *ngIf="!inEditMode">
+              {{ party.name }}
+            </h3>
+            <mat-form-field class="w-full" *ngIf="inEditMode">
+              <input matInput [(ngModel)]="party.name" />
             </mat-form-field>
-            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
-                <p class="mb-0">Send to: </p>
-                <mat-form-field fxFlex class="w-full">
-                    <mat-select [(ngModel)]="sendto">
-                        <mat-option [value]="sendto"> Shipper </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <button mat-raised-button color="primary" class="mat-elevation-z0">
-                    Send message
-                </button>
-            </div>
+          </div>
+          <a class="pointer underline" (click)="inEditMode = !inEditMode">
+            Edit name
+          </a>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center start" class="w-full">
-            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center" class="mb-7">
-                <button mat-icon-button aria-label="Add another party" color="primary" class="text-left"
-                    (click)="addAnotherParty()">
-                    <mat-icon>add_circle</mat-icon>
-                </button>
-                <p class="mb-0">Add another party</p>
-            </div>
-            <div *ngFor="let party of sendMessageToParties; let i = index;" class="ml-3 mb-7">
-                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="party-name-edit">
-                    <div class="party-name mr-3">
-                        <h3 class="mb-0 w-full" *ngIf="!inEditMode">
-                            {{party.name}}
-                        </h3>
-                        <mat-form-field class="w-full" *ngIf="inEditMode">
-                            <input matInput [(ngModel)]="party.name">
-                        </mat-form-field>
-                    </div>
-                    <a class="pointer underline" (click)="inEditMode = !inEditMode"> Edit name </a>
-                </div>
-                <div *ngFor="let sendMessageViaOption of ['email', 'phone']">
-                    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
-                        <mat-radio-button [value]="sendMessageViaOption" color="primary">
-                        </mat-radio-button>
-                        <p class="mb-0 capitalize">{{sendMessageViaOption}}</p>
-                        <mat-form-field class="ml-2">
-                            <input matInput>
-                        </mat-form-field>
-                    </div>
-                </div>
-            </div>
+        <div *ngFor="let sendMessageViaOption of ['email', 'phone']">
+          <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+            <mat-radio-button [value]="sendMessageViaOption" color="primary">
+            </mat-radio-button>
+            <p class="mb-0 capitalize">{{ sendMessageViaOption }}</p>
+            <mat-form-field class="ml-2">
+              <input matInput />
+            </mat-form-field>
+          </div>
         </div>
+      </div>
     </div>
-    <div fxFlex="30">
-    </div>
+  </div>
+  <div fxFlex="30"></div>
 </div>
