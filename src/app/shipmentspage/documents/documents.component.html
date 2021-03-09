@@ -4,8 +4,8 @@
   fxLayoutAlign="start center"
   class="py-3 header-row"
 >
-  <div fxFlex="250px" class="px-3">Date</div>
-  <div fxFlex class="px-3">Things Todo</div>
+  <div fxFlex="250px" class="px-3">Document Date</div>
+  <div fxFlex class="px-3">Document Name</div>
 </div>
 <div
   fxLayout="row"
@@ -22,6 +22,11 @@
     fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
   >
-    <p>Dear Sir/Madam,Please find attached Pre Alert documents</p>
+    <div fxFlex><p>Cargo Arrival Notice & Explanations</p></div>
+    <div fxFlex>
+      <button mat-raised-button color="primary" class="mat-elevation-z0">
+        <mat-icon>upload_file</mat-icon> Download
+      </button>
+    </div>
   </div>
 </div>
