@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, AfterViewInit } from '@angular/core';
 import '@angular/compiler';
 import * as mapboxgl from 'mapbox-gl';
 
@@ -10,23 +10,26 @@ import * as mapboxgl from 'mapbox-gl';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class MapboxComponent implements OnInit {
+export class MapboxComponent implements OnInit, AfterViewInit {
   template: any = '';
-  constructor() {
-    // drawMap();
+
+  constructor(private _elementRef: ElementRef) {
   }
+
   ngOnInit(): void {
-    this.drawMap();
   }
 
-  drawMap(): any {
-    const mapboxAccessToken = 'pk.eyJ1IjoiYmhhcmF0aG5ld2FnZWdsb2JhbCIsImEiOiJja2ZoN3A3ajUwOXk3MnVwOHQ1N3Z0YmJ2In0.dadI7LZ4521ocUTJ3Y4JtA';
+  ngAfterViewInit(): void {
+    this.drawMap(this._elementRef.nativeElement.querySelector('#map'));
+  }
 
+  drawMap(container: HTMLElement): any {
+    const mapboxAccessToken = 'pk.eyJ1IjoiYmhhcmF0aG5ld2FnZWdsb2JhbCIsImEiOiJja2ZoN3A3ajUwOXk3MnVwOHQ1N3Z0YmJ2In0.dadI7LZ4521ocUTJ3Y4JtA';
     Object.assign(mapboxgl, {
       accessToken: mapboxAccessToken
     });
     const map: any = new mapboxgl.Map({
-      container: 'map', // container id
+      container, // container
       style: 'mapbox://styles/mapbox/light-v10', // style URL mapbox://styles/mapbox/streets-v11
       center: [74.5, 20], // starting position [lng, lat]
       zoom: 1// starting zoom
@@ -212,7 +215,6 @@ export class MapboxComponent implements OnInit {
           ]
         }
       });
-
       map.addLayer({
         id: 'places',
         type: 'symbol',
@@ -222,30 +224,25 @@ export class MapboxComponent implements OnInit {
           'icon-allow-overlap': true
         }
       });
-      map.on('click', 'places', (e: any) => {
-        const coordinates: any = e.features[0].geometry.coordinates.slice();
-        const description: any = e.features[0].properties.description;
-
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(description)
-          .addTo(map);
-      });
-      // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', 'places', () => {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      // Change it back to a pointer when it leaves.
-      map.on('mouseleave', 'places', () => {
-        map.getCanvas().style.cursor = '';
-      });
-
-
+    });
+    map.on('click', 'places', (e: any) => {
+      const coordinates: any = e.features[0].geometry.coordinates.slice();
+      const description: any = e.features[0].properties.description;
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+      new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+    });
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'places', () => {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'places', () => {
+      map.getCanvas().style.cursor = '';
     });
   }
 }

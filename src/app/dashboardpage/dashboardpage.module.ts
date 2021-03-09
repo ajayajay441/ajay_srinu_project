@@ -26,6 +26,9 @@ import { SchedulesComponent } from './schedules/schedules.component';
     FormsModule,
     AppMaterialModule,
     FlexLayoutModule
+  ],
+  exports: [
+    MapboxComponent
   ]
 })
 export class DashboardPageModule { }

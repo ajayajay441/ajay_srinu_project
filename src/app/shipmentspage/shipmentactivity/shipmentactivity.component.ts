@@ -10,10 +10,11 @@ export class ShipmentactivityComponent implements OnInit {
   @Input() shipment: any;
   viewedby: string = '3 Parties';
   sendto: string = 'Shipper';
-  emptyParty: Party = { name: '', email: '', phone: '' };
+  emptyParty: Party = { name: 'New party 1', email: '', phone: '' };
   sendMessageToParties: Party[] = [
     this.emptyParty
   ];
+  inEditMode: boolean = false;
   sendMessageViaOptions: string[] = ['email', 'phone'];
 
   constructor() { }

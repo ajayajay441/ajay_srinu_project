@@ -44,6 +44,17 @@
                 <p class="mb-0">Add another party</p>
             </div>
             <div *ngFor="let party of sendMessageToParties; let i = index;" class="ml-3 mb-7">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                    <div class="party-name mr-3">
+                        <h3 class="mb-0 w-full" *ngIf="!inEditMode">
+                            {{party.name}}
+                        </h3>
+                        <mat-form-field class="w-full" *ngIf="inEditMode">
+                            <input matInput [(ngModel)]="party.name">
+                        </mat-form-field>
+                    </div>
+                    <a class="" (click)="inEditMode = !inEditMode"> Edit name </a>
+                </div>
                 <div *ngFor="let sendMessageViaOption of ['email', 'phone']">
                     <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
                         <mat-radio-button [value]="sendMessageViaOption" color="primary">
