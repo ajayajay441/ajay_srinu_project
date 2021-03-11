@@ -61,23 +61,32 @@
         <div fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
           <div fxLayout="row" fxLayoutGap="50px" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
-              <h3 class="mb-0">HBL #0938847</h3>
-              <p class="mb-0">SEW-EURODRIVE INDIA PVT. LTD. (CHENNAI)</p>
+              <h3 class="mb-0">{{ shipment.booking_number }}</h3>
+              <p class="mb-0">{{ shipment.customer_name }}</p>
             </div>
             <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start center">
-              <div
-                *ngFor="
-                  let item of [
-                    { label: 'Container No.', content: 'TEMU7464420' },
-                    { label: 'MBL No.', content: '320610011972' },
-                    { label: 'Mode', content: 'LCL-FCL' },
-                    { label: 'ToS', content: 'FOB' }
-                  ]
-                "
-              >
+              <div>
                 <p class="mb-0">
-                  <span class="bold">{{ item.label }}</span> :
-                  {{ item.content }}
+                  <span class="bold">Container No.</span> :
+                  {{ shipment.container_no }}
+                </p>
+              </div>
+              <div>
+                <p class="mb-0">
+                  <span class="bold">MBL No.</span> :
+                  {{ shipment.master_no }}
+                </p>
+              </div>
+              <div>
+                <p class="mb-0">
+                  <span class="bold">Mode</span> :
+                  {{ shipment.mode }}
+                </p>
+              </div>
+              <div>
+                <p class="mb-0">
+                  <span class="bold">ToS</span> :
+                  {{ shipment.terms }}
                 </p>
               </div>
             </div>
@@ -86,14 +95,14 @@
             <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
               <mat-icon> public </mat-icon>
               <p class="mb-0 font-xs">
-                San Francisco, California :
-                <span class="font-bold"> 20 sep. 2021 </span>
+                {{ shipment.origin }}:
+                <span class="font-bold"> {{ shipment.ETD }} </span>
               </p>
               <span class="font-bold mx-3"> To </span>
               <mat-icon> public </mat-icon>
               <p class="mb-0 font-xs">
-                San Francisco, California :
-                <span class="font-bold"> 20 sep. 2021 </span>
+                {{ shipment.destination }}:
+                <span class="font-bold"> {{ shipment.ETA }} </span>
               </p>
             </div>
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
@@ -123,13 +132,17 @@
             >
               <div
                 class="step-container"
-                *ngFor="let step of [1, 2, 3, 4, 5, 6, 7]; last as isLast"
+                *ngFor="let step of shipment.milestones; last as isLast"
                 fxFlex
               >
                 <div class="step-joiner"></div>
                 <div class="step">
-                  <mat-icon>
-                    {{ step === 3 ? "flight" : "radio_button_unchecked" }}
+                  <mat-icon class="transform rotate-90">
+                    {{
+                      step.milestone === shipment.status
+                        ? "flight"
+                        : "radio_button_unchecked"
+                    }}
                   </mat-icon>
                 </div>
               </div>
@@ -143,21 +156,24 @@
                 fxFlex
                 class="step-label-container mx-1 text-center"
                 *ngFor="
-                  let step of [1, 2, 3, 4, 5, 6, 7];
+                  let step of shipment.milestones;
                   first as isFirst;
                   last as isLast
                 "
               >
                 <div class="status text-xs">
-                  <h5 class="mb-0">shipment #{{ shipment.name }}</h5>
-                  <h6>step #{{ step }}</h6>
+                  <h5 class="mb-0">{{ step.milestone }}</h5>
+                  <h6>{{ step.date }}</h6>
                 </div>
               </div>
             </div>
           </div>
           <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
             <button mat-raised-button color="primary" class="mat-elevation-z0">
-              <mat-icon>upload_file</mat-icon> Load plan
+              <mat-icon>upload_file</mat-icon>
+              <a href="{{ shipment.pre_alert_document }}" target="_blank"
+                >Pre Alert Documents</a
+              >
             </button>
             <div
               class="cursor-pointer"
@@ -166,7 +182,7 @@
               fxLayoutAlign="start center"
               (click)="
                 shipment.seemore = !shipment.seemore;
-                shipment.seemore && seeMoreShipmentData('id')
+                shipment.seemore && seeMoreShipmentData(shipment)
               "
             >
               <a class="underline">
@@ -197,19 +213,19 @@
               ></app-shipmentactivity>
             </mat-tab>
             <mat-tab label="Cargo Details">
-              <div class="mat-tab-content my-3">
-                <app-cargodetails></app-cargodetails>
+              <div class="mat-tab-content my-3" *ngIf="cargo">
+                <app-cargodetails [cargo]="cargo"></app-cargodetails>
               </div>
             </mat-tab>
 
-            <mat-tab label="Actions">
+            <mat-tab label="Actions" *ngIf="updates">
               <div class="mat-tab-content my-3">
-                <app-actions></app-actions>
+                <app-actions [updates]="updates"></app-actions>
               </div>
             </mat-tab>
-            <mat-tab label="Documents">
+            <mat-tab label="Documents" *ngIf="cargo">
               <div class="mat-tab-content my-3">
-                <app-documents></app-documents>
+                <app-documents [documents]="documents"></app-documents>
               </div>
             </mat-tab>
             <mat-tab label="CAN">

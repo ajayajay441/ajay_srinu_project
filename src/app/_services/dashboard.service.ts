@@ -1,114 +1,118 @@
-﻿import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {LocalStorageService} from "./local-storage.service";
-import {environment} from "../../environments/environment";
-import {AuthenticationService} from './authentication.service';
-import {map} from 'rxjs/operators';
-import {first} from "rxjs/internal/operators";
+﻿import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { LocalStorageService } from "./local-storage.service";
+import { environment } from "../../environments/environment";
+import { AuthenticationService } from "./authentication.service";
+import { map } from "rxjs/operators";
+import { first } from "rxjs/internal/operators";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class DashboardService {
-  constructor(private http: HttpClient,
-              private localStorageService: LocalStorageService,
-              private authenticationService: AuthenticationService) {
-  }
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService,
+    private authenticationService: AuthenticationService
+  ) {}
 
- getDashboardShipments(refreshToken?:string,status?:string, limit?:any) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-    const limitValue = limit? limit: 'ALL';
-     let url;
-     if(status!=''){
-         url=`${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`
-     }else{
-         url=`${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=&limit=${limitValue}`
-     }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
-        this.authenticationService.refreshToken()
+  getDashboardShipments(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status != "") {
+      url = `${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=&limit=${limitValue}`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        this.authenticationService
+          .refreshToken()
           .pipe(first())
           .subscribe({
-            next: () => {
-
-            },
-            error: error => {
-            }
+            next: () => {},
+            error: (error) => {},
           });
         return response;
-      }));
+      })
+    );
   }
 
-  getDashboardQuotation(refreshToken?:string,status?:string, limit?:any) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-    const limitValue = limit? limit: 'ALL';
+  getDashboardQuotation(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
     let url;
-    if(status!=''){
-      url=`${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`
-    }else{
-        url=`${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`
+    if (status != "") {
+      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
     }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
         return response;
-      }));
+      })
+    );
   }
 
-  getDashboardInvoice(refreshToken?:string,status?:string) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-      let url;
-      if(status!=''||status!=undefined){
-          url=`${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`;
-      }else{
-          url=`${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status`;
-      }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
+  getDashboardInvoice(refreshToken?: string, status?: string) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url;
+    if (status != "" || status != undefined) {
+      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
         return response;
-      }))
+      })
+    );
   }
 
-  getDashboardThingsToDo(refreshToken?:string,status?:string, limit?:any) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-    const limitValue = limit? limit: 'ALL';
-      let url;
-      if(status!=''){
-          url=`${environment.apiUrl}/getdashboardThings?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
-      }else{
-          url=`${environment.apiUrl}/getdashboardThings?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
-      }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
+  getDashboardThingsToDo(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status != "") {
+      url = `${environment.apiUrl}/getdashboardThings?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardThings?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
         return response;
-      }))
+      })
+    );
   }
 
-  getDashboardSailings(refreshToken?:string,status?:string, limit?:any) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-    const limitValue = limit? limit: 'ALL';
-      let url;
-      if(status!=''){
-          url=`${environment.apiUrl}/getdashboardSailings?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
-      }else{
-          url=`${environment.apiUrl}/getdashboardSailings?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
-      }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
+  getDashboardSailings(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status != "") {
+      url = `${environment.apiUrl}/getdashboardSailings?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardSailings?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
         return response;
-      }))
+      })
+    );
   }
 
-  getDashboardPO(refreshToken?:string,status?:string, limit?:any) {
-    const jwtToken = this.localStorageService.getItem('jwtToken');
-    const limitValue = limit? limit: 'ALL';
-      let url;
-      if(status!=''){
-          url=`${environment.apiUrl}/getdashboardPO?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
-      }else{
-          url=`${environment.apiUrl}/getdashboardPO?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
-      }
-    return this.http.get<any>(url)
-      .pipe(map((response: Response) => {
+  getDashboardPO(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status != "") {
+      url = `${environment.apiUrl}/getdashboardPO?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardPO?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
         return response;
-      }))
+      })
+    );
   }
-
 }

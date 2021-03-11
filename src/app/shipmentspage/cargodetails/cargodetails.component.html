@@ -1,17 +1,63 @@
-<div *ngFor="let cargo of [1, 2]" class="mb-5">
-    <div class="cargo-header py-3">
-        <h3 class="mb-0">
-            Notify Name : Motherson SUMI SYSTEM Ltd. (NODIA) #129939884
-        </h3>
+<div class="mb-5">
+  <div class="cargo-header py-3">
+    <h3 class="mb-0">Notify Name : {{ cargoDetails.notify_name }}</h3>
+  </div>
+  <div class="cargo-description py-3">
+    <div fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="start center">
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Number of Pieces: </span>
+          <span>{{ cargoDetails.no_of_pieces }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Commodity: </span>
+          <span>{{ cargoDetails.Commodity }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Gross Weight: </span>
+          <span>{{ cargoDetails.gross_weight }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Volume: </span>
+          <span>{{ cargoDetails.volume }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Shipper Invoice: </span>
+          <span>{{ cargoDetails.shipper_invoice_no }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">POL: </span>
+          <span>{{ cargoDetails.POL }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">POD: </span>
+          <span>{{ cargoDetails.POD }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Express Original: </span>
+          <span>{{ cargoDetails.express_original }}</span>
+        </p>
+      </div>
+      <div class="cargo-deatil">
+        <p class="mb-0">
+          <span class="font-bold mr-2">Container No: </span>
+          <span>{{ cargoDetails.container_no }}</span>
+        </p>
+      </div>
     </div>
-    <div class="cargo-description py-3">
-        <div fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="start center">
-            <div class="cargo-deatil" *ngFor="let details of cargoDetails">
-                <p class="mb-0">
-                    <span class="font-bold mr-2">{{details.label}}: </span>
-                    <span>{{details.value}}</span>
-                </p>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

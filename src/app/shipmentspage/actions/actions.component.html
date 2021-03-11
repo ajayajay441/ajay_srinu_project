@@ -12,9 +12,9 @@
   fxLayoutAlign="start center"
   fxLayoutGap="10px"
   class="py-3"
-  *ngFor="let action of [1, 2]"
+  *ngFor="let update of updates"
 >
-  <div fxFlex="250px" class="px-3">12/12/2020</div>
+  <div fxFlex="250px" class="px-3">{{ update.remarks_date }}</div>
   <div
     fxFlex
     class="px-3"
@@ -22,6 +22,6 @@
     fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
   >
-    <p>Dear Sir/Madam,Please find attached Pre Alert documents</p>
+    <p>{{ update.remarks_description }}</p>
   </div>
 </div>

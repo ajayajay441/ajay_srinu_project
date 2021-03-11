@@ -58,4 +58,36 @@ export class ShipmentService {
       })
     );
   }
+
+  getShipmentTabsData(
+    refreshToken?: string,
+    status?: string,
+    booking_no?: any,
+    company_code?: any,
+    segment_code?: any,
+    limit?: any
+  ) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "";
+    let url;
+    if (status != "") {
+      // url=`${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`
+      url = `${environment.apiUrl}/getshipmentdetail?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}&booking_no=${booking_no}&company_code=${company_code}&segment_code=${segment_code}`;
+    } else {
+      ``;
+      url = `${environment.apiUrl}/getshipmentdetail?user_token=${jwtToken}&sauth_token=${refreshToken}&limit=${limitValue}&status=&booking_no=${booking_no}&company_code=${company_code}&segment_code=${segment_code}`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        this.authenticationService
+          .refreshToken()
+          .pipe(first())
+          .subscribe({
+            next: () => {},
+            error: (error) => {},
+          });
+        return response;
+      })
+    );
+  }
 }

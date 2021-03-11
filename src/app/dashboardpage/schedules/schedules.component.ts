@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DashboardService } from '../../_services/dashboard.service';
-import { Subscription } from 'rxjs/index';
-import { switchMap } from 'rxjs/operators';
-import { AuthenticationService } from '../../_services';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { DashboardService } from "../../_services/dashboard.service";
+import { Subscription } from "rxjs/index";
+import { switchMap } from "rxjs/operators";
+import { AuthenticationService } from "../../_services";
 @Component({
-  selector: 'app-schedules',
-  templateUrl: './schedules.component.html',
-  styleUrls: ['./schedules.component.scss']
+  selector: "app-schedules",
+  templateUrl: "./schedules.component.html",
+  styleUrls: ["./schedules.component.scss"],
 })
 export class SchedulesComponent implements OnInit {
-  scheduleType = 'air';
-  dataSource:any = [];
+  scheduleType = "air";
+  dataSource: any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;
@@ -26,7 +26,7 @@ export class SchedulesComponent implements OnInit {
   }
 
   getDashboardSailings(value?: string) {
-    let status = value ? value : '';
+    let status = value ? value : "";
     this.authenticationService
       .refreshToken()
       .pipe(
@@ -41,11 +41,10 @@ export class SchedulesComponent implements OnInit {
       .subscribe((response: any) => {
         this.dataSource = response.schedules;
         this.loading = false;
-        console.log('Schedule Response', response.schedules);
+        console.log("Schedule Response", response.schedules);
       });
   }
-  onValChange(event:any): any {
+  onValChange(event: any): any {
     console.log(event);
   }
-
 }

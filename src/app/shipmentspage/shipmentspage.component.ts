@@ -13,48 +13,13 @@ import { DashboardService } from "../_services/dashboard.service";
   styleUrls: ["./shipmentspage.component.scss"],
 })
 export class ShipmentspageComponent implements OnInit {
-  data: any = [
-    {
-      "hbl-number": "400551000083",
-      "customer-name": "SHANMU",
-      ponumber: "",
-      "clearance-flag": "N",
-      "boe-no": "BOEDEMO",
-      "clr-no": "DDD",
-      "latest-update":
-        "This is only a booking information and subsequent milestones will be updated.",
-      origin: "MUMBAI",
-      ETD: "05-MAR-21",
-      destination: "DUBAI",
-      ETA: "09-MAR-21",
-      mode: "SEA",
-      pre_alert_document:
-        " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
-      status: "IN TRANSIT",
-      "eta-flag": "",
-      seemore: true,
-    },
-    {
-      "hbl-number": "DXB2100001",
-      "customer-name": "SHANMU",
-      ponumber: "",
-      "clearance-flag": "N",
-      "boe-no": "BOEDEMO",
-      "clr-no": "DDD",
-      "latest-update": "Cargo Received Confirmation",
-      origin: "MUMBAI",
-      ETD: "05-MAR-21",
-      destination: "DUBAI",
-      ETA: "10-MAR-21",
-      mode: "SEA",
-      pre_alert_document:
-        " https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
-      status: "IN TRANSIT",
-      "eta-flag": "",
-    },
-  ];
-  cargo: any = [];
+  data: any = [];
+  cargo: any;
+  documents: any;
+  updates: any;
+  CAN: any;
   shipments = [];
+  tabdata: any = [];
   viewShipmentsType = "bookmarked";
 
   constructor(
@@ -66,7 +31,6 @@ export class ShipmentspageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getDashboardShipments();
     this.getShipmentDetails();
   }
 
@@ -94,27 +58,37 @@ export class ShipmentspageComponent implements OnInit {
       });
   }
 
+  getShipmentTabDetails(id?: any) {
+    let status = "";
+    let booking_no = id.booking_number;
+    let company_code = id.company_code;
+    let segment_code = id.segment_code;
+    this.authenticationService
+      .refreshToken()
+      .pipe(
+        switchMap((userData) => {
+          return this.shipmentService.getShipmentTabsData(
+            userData.Token,
+            status,
+            booking_no,
+            company_code,
+            segment_code
+          );
+        })
+      )
+      .subscribe((response: any) => {
+        this.cargo = response.cargo_details;
+        this.documents = response.documents;
+        this.updates = response.updates;
+        this.CAN = response.CAN;
+        // this.data.forEach(function (element: any) {
+        //   element.seemore = false;
+        // });
+        console.log("Shipmentpage Response", response);
+      });
+  }
   seeMoreShipmentData(id: any) {
     console.log(id);
-  }
-  getDashboardShipments(value?: string) {
-    // this.authenticationService
-    //   .refreshToken()
-    //   .pipe(
-    //     switchMap((userData) => {
-    //       return this.dashboardService.getDashboardShipments(
-    //         userData.Token,
-    //         status,
-    //         10
-    //       );
-    //     })
-    //   )
-    //   .subscribe((response: any) => {
-    //     this.data = response.Shipments;
-    //     // this.data.forEach(function (element:any) {
-    //     //         element.seemore = false;
-    //     //       });
-    //     console.log("ship resp", response.Shipments);
-    //   });
+    this.getShipmentTabDetails(id);
   }
 }
