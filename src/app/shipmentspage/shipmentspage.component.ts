@@ -21,6 +21,7 @@ export class ShipmentspageComponent implements OnInit {
   shipments = [];
   tabdata: any = [];
   viewShipmentsType = "bookmarked";
+  loading: boolean = true;
 
   constructor(
     private router: Router,
@@ -51,9 +52,7 @@ export class ShipmentspageComponent implements OnInit {
       )
       .subscribe((response: any) => {
         this.data = response.ShipmentCard;
-        // this.data.forEach(function (element: any) {
-        //   element.seemore = false;
-        // });
+        this.loading = false;
         console.log("Shipmentpage Response", response.ShipmentCard);
       });
   }

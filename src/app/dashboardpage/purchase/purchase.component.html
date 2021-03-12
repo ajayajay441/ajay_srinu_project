@@ -6,12 +6,22 @@
   >
     <div fxLayout="row" fxLayoutGap="25px">
       <h2 class="mb-0">Purchase</h2>
-      <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
-        Upcoming
+      <button
+        mat-stroked-button
+        class="mat-elevation-z0"
+        fxHide
+        fxShow.gt-md
+        *ngFor="let purchaseStatusType of ['UPCOMING', 'PICKED-UP']"
+        [color]="
+          purchaseStatusType == activePurchaseStatusType ? 'primary' : 'light'
+        "
+        (click)="getDashboardPO(purchaseStatusType)"
+      >
+        {{ purchaseStatusType }}
       </button>
-      <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
+      <!-- <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
         Picked-up
-      </button>
+      </button> -->
     </div>
     <a class="underline accent"> View all </a>
   </div>

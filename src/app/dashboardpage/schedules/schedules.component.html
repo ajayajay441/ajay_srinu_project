@@ -7,24 +7,19 @@
     <div fxLayout="row" fxLayoutGap="25px">
       <h2 class="mb-0">Schedules</h2>
       <button
+        *ngFor="let scheduleStatusType of scheduleStatusTypes"
         fxHide
         fxShow.gt-md
         mat-stroked-button
-        [color]="scheduleType === 'air' ? 'warn' : 'light'"
+        [color]="
+          scheduleStatusType.value == activeScheduleStatusType
+            ? 'primary'
+            : 'light'
+        "
         class="mat-elevation-z0"
-        [class]="scheduleType === 'air' ? '' : ''"
+        (click)="getDashboardSailings(scheduleStatusType.value)"
       >
-        Air
-      </button>
-      <button
-        fxHide
-        fxShow.gt-md
-        mat-stroked-button
-        [color]="scheduleType === 'ocean' ? 'warn' : 'light'"
-        class="mat-elevation-z0"
-        [class]="scheduleType === 'ocean' ? '' : ''"
-      >
-        Ocean
+        {{ scheduleStatusType.value }}
       </button>
     </div>
     <a class="underline"> View all </a>

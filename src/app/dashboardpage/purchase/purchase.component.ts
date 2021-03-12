@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DashboardService } from '../../_services/dashboard.service';
-import { Subscription } from 'rxjs/index';
-import { switchMap } from 'rxjs/operators';
-import { AuthenticationService } from '../../_services';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { DashboardService } from "../../_services/dashboard.service";
+import { Subscription } from "rxjs/index";
+import { switchMap } from "rxjs/operators";
+import { AuthenticationService } from "../../_services";
 @Component({
-  selector: 'app-purchase',
-  templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.scss']
+  selector: "app-purchase",
+  templateUrl: "./purchase.component.html",
+  styleUrls: ["./purchase.component.scss"],
 })
 export class PurchaseComponent implements OnInit {
-  purchaseType = 'upcoming';
-  data:any = [];
+  activePurchaseStatusType: any = "UPCOMING";
+  data: any = [];
   error: any;
   loading = true;
   subscription: Subscription | undefined;
@@ -26,30 +26,34 @@ export class PurchaseComponent implements OnInit {
   }
 
   getDashboardPO(value?: string) {
-    let status = '';
-    if (value == 'Picked up POs') {
-      status = 'PICKED_UP';
-    } else if (value == 'Upcoming POs') {
-      status = 'UPCOMING';
-    } else if (value == 'Action Required') {
-      status = 'ACTION_REQUIRED';
-    }
+    // let status = "";
+    // if (value == "Picked up POs") {
+    //   status = "PICKED_UP";
+    // } else if (value == "Upcoming POs") {
+    //   status = "UPCOMING";
+    // } else if (value == "Action Required") {
+    //   status = "ACTION_REQUIRED";
+    // }
+    if (value) this.activePurchaseStatusType = value;
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardPO(userData.Token, status, 2);
+          return this.dashboardService.getDashboardPO(
+            userData.Token,
+            this.activePurchaseStatusType,
+            2
+          );
         })
       )
       .subscribe((response: any) => {
         this.data = response.PO;
         this.loading = false;
-        console.log('PO Response', response.PO);
+        console.log("PO Response", response.PO);
       });
   }
-  onValChange(event:any): any {
+  onValChange(event: any): any {
     console.log(event);
     alert(event);
   }
-
 }

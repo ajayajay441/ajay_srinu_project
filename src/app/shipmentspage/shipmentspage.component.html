@@ -29,7 +29,7 @@
     </div>
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon> Load plan
+        <mat-icon>upload_file</mat-icon> Buyer Console
       </button>
     </div>
   </div>
@@ -55,6 +55,7 @@
       </div>
     </mat-card>
   </div>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
   <div class="mb-10" *ngFor="let shipment of data">
     <mat-card class="mat-elevation-z0">
       <div class="card-body">
@@ -223,14 +224,14 @@
                 <app-actions [updates]="updates"></app-actions>
               </div>
             </mat-tab>
-            <mat-tab label="Documents" *ngIf="cargo">
+            <mat-tab label="Documents" *ngIf="documents">
               <div class="mat-tab-content my-3">
                 <app-documents [documents]="documents"></app-documents>
               </div>
             </mat-tab>
-            <mat-tab label="CAN">
+            <mat-tab label="CAN" *ngIf="CAN">
               <div class="mat-tab-content my-3">
-                <app-can></app-can>
+                <app-can [CAN]="CAN"></app-can>
               </div>
             </mat-tab>
           </mat-tab-group>

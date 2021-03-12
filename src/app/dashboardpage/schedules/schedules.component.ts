@@ -10,10 +10,15 @@ import { AuthenticationService } from "../../_services";
   styleUrls: ["./schedules.component.scss"],
 })
 export class SchedulesComponent implements OnInit {
-  scheduleType = "air";
+  // scheduleType = "air";
+  scheduleStatusTypes = [
+    { label: "Air", value: "AIR" },
+    { label: "Ocean", value: "OCEAN" },
+  ];
   dataSource: any = [];
   error: any;
   loading = true;
+  activeScheduleStatusType: any = "AIR";
   subscription: Subscription | undefined;
   constructor(
     private http: HttpClient,
@@ -26,14 +31,14 @@ export class SchedulesComponent implements OnInit {
   }
 
   getDashboardSailings(value?: string) {
-    let status = value ? value : "";
+    if (value) this.activeScheduleStatusType = value;
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
           return this.dashboardService.getDashboardSailings(
             userData.Token,
-            status,
+            this.activeScheduleStatusType,
             2
           );
         })

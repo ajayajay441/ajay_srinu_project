@@ -12,9 +12,9 @@
   fxLayoutAlign="start center"
   fxLayoutGap="10px"
   class="py-3"
-  *ngFor="let action of [1, 2]"
+  *ngFor="let CAN of CANData"
 >
-  <div fxFlex="250px" class="px-3">12/12/2020</div>
+  <div fxFlex="250px" class="px-3">{{ CAN.document_date }}</div>
   <div
     fxFlex
     class="px-3"
@@ -22,10 +22,11 @@
     fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
   >
-    <p fxFlex>Dear Sir/Madam,Please find attached Pre Alert documents</p>
-    <div fxFlex>
+    <p fxFlex>{{ CAN.document_name }}</p>
+    <div fxFlex class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon> Download
+        <mat-icon>upload_file</mat-icon>
+        <a href="{{ CAN.link }}" target="_blank"> Download</a>
       </button>
     </div>
   </div>
