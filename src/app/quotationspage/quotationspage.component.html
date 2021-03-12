@@ -57,12 +57,15 @@
             Contracts
           </button>
         </div>
-        <p>
-          <mat-icon matPrefix class="search-icon">search</mat-icon
-          ><mat-label class=""
-            >Search Quote by Ref No, Origin, Destination...</mat-label
-          >
-        </p>
+
+        <div class="search-form">
+          <span class="search-input">
+            <mat-icon matPrefix class="search-icon">search</mat-icon>
+            <mat-label class=""
+              >Search Quote by Ref No, Origin, Destination...</mat-label
+            >
+          </span>
+        </div>
       </div>
     </mat-card>
   </div>
@@ -125,8 +128,8 @@
           </ng-container>
           <ng-container matColumnDef="details">
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-            <td mat-cell *matCellDef="let element">
-              <a>{{ element.details }}</a>
+            <td mat-cell *matCellDef="let element" class="mat-primary">
+              <a class="underline cursor-pointer">{{ element.details }}</a>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -51,15 +51,16 @@
             </div>
             <div class="card-body">
               <div fxLayout="row wrap" fxLayoutGap="25px">
-                <div *ngFor="let action of [1, 2, 3, 4]" class="my-2">
+                <div
+                  *ngFor="let action of ['LCL', 'FCL', 'Air', 'Road']"
+                  class="my-2"
+                >
                   <button
                     mat-stroked-button
-                    color="primary"
-                    [class.light-color-button]="
-                      viewShipmentsType !== 'bookmarked'
-                    "
+                    [color]="bookingType === action ? 'primary' : 'light'"
+                    [class.light-color-button]="bookingType !== 'LCL'"
                   >
-                    LCL
+                    {{ action }}
                   </button>
                   <!-- <button
                   class="my-2"

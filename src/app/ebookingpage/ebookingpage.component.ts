@@ -7,7 +7,8 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 })
 export class EbookingpageComponent implements OnInit {
   panelOpenState = false;
-  viewShipmentsType = "bookmarked";
+  viewShipmentsType = "LCL";
+  bookingType = "LCL";
   constructor() {}
 
   ngOnInit(): void {}
