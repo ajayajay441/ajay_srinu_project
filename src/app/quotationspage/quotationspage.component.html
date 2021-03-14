@@ -49,7 +49,9 @@
         <div *ngIf="quotationType === 'quotations'">
           <app-quotationslist [filter]="filter"></app-quotationslist>
         </div>
-        <!-- <app-contractslist></app-contractslist> -->
+        <div *ngIf="quotationType === 'contracts'">
+          <app-contractslist [filter]="filter"></app-contractslist>
+        </div>
       </div>
     </mat-card>
   </div>

@@ -13,3 +13,10 @@ th.mat-header-cell,
 .mat-header-row {
   background-color: $fresconheaderscolor;
 }
+tr.detail-row {
+  height: 0;
+}
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}

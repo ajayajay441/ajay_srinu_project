@@ -1,11 +1,19 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from "@angular/material/sort";
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: 'app-quotationslist',
   templateUrl: './quotationslist.component.html',
-  styleUrls: ['./quotationslist.component.scss']
+  styleUrls: ['./quotationslist.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class QuotationslistComponent implements OnInit {
   @Input() filter: string;
@@ -84,6 +92,7 @@ export class QuotationslistComponent implements OnInit {
     },
   ];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  expandedElement: PeriodicElement | null = null;
 
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -98,8 +107,6 @@ export class QuotationslistComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // this.dataSource.filterPredicate =
-    //   (data: PeriodicElement, filter: string) => data.name.indexOf(filter) != -1;
     this.dataSource.sort = this.sort;
   }
 
@@ -119,4 +126,5 @@ export interface PeriodicElement {
   service: string;
   status: string;
   details: string;
+  isExpanded?: boolean
 }
