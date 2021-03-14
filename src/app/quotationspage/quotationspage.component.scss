@@ -1,19 +1,11 @@
 @import "./../../variables.scss";
 
 .light-color-button {
-  color: #c4c4c4 !important;
-}
-.mat-form-field {
-  max-width: 100px;
+  color: $fresonlightcolor !important;
 }
 .status-tracker-container {
   width: 80%;
   max-width: 800px;
-}
-
-tr,
-th {
-  height: 70px !important;
 }
 ::ng-deep {
   .mat-tab-label-active {
@@ -22,37 +14,8 @@ th {
     }
   }
 }
-table {
-  width: 100%;
-}
 mat-icon.search-icon {
   top: 7px !important;
   margin-right: 7px !important;
   position: relative;
-}
-th.mat-sort-header-sorted {
-  color: black;
-}
-th {
-  font-family: Helvetica;
-  font-style: normal;
-  font-weight: bold;
-  color: #313131;
-  font-size: 16px;
-}
-td {
-  font-size: 15px;
-  color: #313131;
-}
-td:last-child {
-  color: #f01e1e;
-}
-td.mat-cell {
-  border-bottom-style: none;
-}
-th.mat-header-cell {
-  border-bottom-style: none;
-}
-.mat-header-row {
-  background-color: #f7f8fa;
 }

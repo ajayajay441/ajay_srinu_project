@@ -1,0 +1,15 @@
+@import "./../../../variables.scss";
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 70px;
+}
+td.mat-cell,
+th.mat-header-cell,
+.mat-footer-cell {
+  border-bottom-style: none;
+  color: $fresonaccentcolor;
+}
+.mat-header-row {
+  background-color: $fresconheaderscolor;
+}

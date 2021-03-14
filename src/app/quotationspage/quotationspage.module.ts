@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuotationspageComponent } from './quotationspage.component';
+import { QuotationslistComponent } from './quotationslist/quotationslist.component';
 
 
 
 @NgModule({
-  declarations: [QuotationspageComponent],
+  declarations: [
+    QuotationspageComponent,
+    QuotationslistComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

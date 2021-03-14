@@ -1,23 +1,8 @@
 <div class="shipments-page">
-  <div
-    fxLayout="row"
-    fxLayoutGap="15px"
-    class="mb-10"
-    fxLayoutAlign="space-between center"
-  >
-    <div
-      fxFlex="80"
-      fxLayout="row wrap"
-      fxLayoutGap="25px"
-      fxLayoutAlign="start center"
-    >
+  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
+    <div fxFlex="80" fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="start center">
       <h1 class="mb-0">Quotations</h1>
-      <div
-        fxLayout="row"
-        fxLayoutGap="15px"
-        fxLayoutAlign="space-between center"
-        class="shipments-page-selectbox"
-      >
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="shipments-page-selectbox">
         <h3 class="mb-0">Type:</h3>
         <mat-form-field class="w-full">
           <!-- <mat-label>Status</mat-label> -->
@@ -36,35 +21,24 @@
   </div>
   <div class="mb-10">
     <mat-card class="mat-elevation-z0">
-      <div
-        class="card-title mb-9"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
+      <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row" fxLayoutGap="25px">
           <h2 class="mb-0">Quotations</h2>
-          <button
-            mat-stroked-button
-            color="primary"
-            [class.light-color-button]="viewShipmentsType !== 'bookmarked'"
-          >
-            Quotations
-          </button>
-          <button
-            mat-stroked-button
-            [class.light-color-button]="viewShipmentsType !== 'arriving'"
-          >
-            Contracts
+          <button mat-stroked-button [color]="quotationType === _quotationType.value ? 'primary' : ''"
+            [class.light-color-button]="quotationType !== _quotationType.value"
+            (click)="quotationType = _quotationType.value" *ngFor="let _quotationType of quotationTypes">
+            {{_quotationType.label}}
           </button>
         </div>
-
         <div class="search-form">
-          <span class="search-input">
-            <mat-icon matPrefix class="search-icon">search</mat-icon>
-            <mat-label class=""
-              >Search Quote by Ref No, Origin, Destination...</mat-label
-            >
-          </span>
+          <form>
+            <mat-form-field class="quotations-search-input">
+              <mat-label class="">Search</mat-label>
+              <mat-icon matPrefix class="search-icon">search</mat-icon>
+              <input type="search" matInput [ngModel]="filter" name="filterField"
+                (ngModelChange)='filterChanged($event)' />
+            </mat-form-field>
+          </form>
         </div>
       </div>
     </mat-card>
@@ -72,69 +46,10 @@
   <div class="mb-10">
     <mat-card class="mat-elevation-z0">
       <div class="card-body">
-        <table
-          mat-table
-          [dataSource]="dataSource"
-          matSort
-          class="mat-elevation-z0"
-        >
-          <!-- Position Column -->
-          <ng-container matColumnDef="qtno">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>QT No</th>
-            <td mat-cell *matCellDef="let element">{{ element.qtno }}</td>
-          </ng-container>
-
-          <!-- Name Column -->
-          <ng-container matColumnDef="reference">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Reference</th>
-            <td mat-cell *matCellDef="let element">{{ element.reference }}</td>
-          </ng-container>
-
-          <!-- Weight Column -->
-          <ng-container matColumnDef="origin">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Origin</th>
-            <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="destination">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              Destination
-            </th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.destination }}
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="qtexpiry">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>QT Expiry</th>
-            <td mat-cell *matCellDef="let element">{{ element.qtexpiry }}</td>
-          </ng-container>
-          <ng-container matColumnDef="amount">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-            <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
-          </ng-container>
-          <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-            <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-          </ng-container>
-          <ng-container matColumnDef="service">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Service</th>
-            <td mat-cell *matCellDef="let element">{{ element.service }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-          </ng-container>
-          <ng-container matColumnDef="details">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-            <td mat-cell *matCellDef="let element" class="mat-primary">
-              <a class="underline cursor-pointer">{{ element.details }}</a>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
+        <div *ngIf="quotationType === 'quotations'">
+          <app-quotationslist [filter]="filter"></app-quotationslist>
+        </div>
+        <!-- <app-contractslist></app-contractslist> -->
       </div>
     </mat-card>
   </div>

@@ -22,11 +22,19 @@ body {
     fill: $fresonprimarycolor;
     color: $fresonprimarycolor;
   }
+  a {
+    color: $fresonprimarycolor;
+    border-bottom-color: $fresonprimarycolor;
+  }
 }
 .mat-accent {
   svg {
     fill: $fresonaccentcolor;
     color: $fresonaccentcolor;
+  }
+  a {
+    color: $fresonprimarycolor;
+    border-bottom-color: $fresonprimarycolor;
   }
 }
 .mat-stroked-button.mat-primary {
@@ -35,28 +43,12 @@ body {
 .accent {
   color: $fresonaccentcolor !important;
 }
-.mat-primary {
-  svg {
-    fill: $fresonprimarycolor;
-    color: $fresonprimarycolor;
-  }
-}
-.mat-accent {
-  svg {
-    fill: $fresonaccentcolor;
-    color: $fresonaccentcolor;
-  }
-}
 .mat-button,
 .mat-icon-button,
 .mat-stroked-button,
 .mat-flat-button {
   border-radius: 0px !important ;
 }
-// .mat-form-field-appearance-outline .mat-form-field-outline-end,
-// .mat-form-field-appearance-outline .mat-form-field-outline-start {
-//   border-radius: 0px !important;
-// }
 .mat-form-field-appearance-outline {
   .mat-form-field-outline-end,
   .mat-form-field-outline-start {
