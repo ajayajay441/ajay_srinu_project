@@ -1,3 +1,7 @@
 .mat-expansion-panel-header {
   height: 70px;
 }
+
+::ng-deep .no-bottom-padding .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}

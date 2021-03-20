@@ -1,10 +1,5 @@
 <div class="ebooking-page">
-  <div
-    fxLayout="row"
-    fxLayoutGap="15px"
-    class="mb-10"
-    fxLayoutAlign="space-between center"
-  >
+  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
     <h1 class="mb-0">E-Booking</h1>
     <button mat-raised-button color="primary" class="mat-elevation-z0">
       <mat-icon>upload_file</mat-icon>
@@ -13,10 +8,7 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Add a New Shipment</h1>
@@ -44,15 +36,9 @@
             </div>
             <div class="card-body">
               <div fxLayout="row wrap" fxLayoutGap="25px">
-                <div
-                  *ngFor="let action of ['LCL', 'FCL', 'Air', 'Road']"
-                  class="my-2"
-                >
-                  <button
-                    mat-stroked-button
-                    [color]="bookingType === action ? 'primary' : 'light'"
-                    [class.light-color-button]="bookingType !== 'LCL'"
-                  >
+                <div *ngFor="let action of ['LCL', 'FCL', 'Air', 'Road']" class="my-2">
+                  <button mat-stroked-button [color]="bookingType === action ? 'primary' : 'light'"
+                    [class.light-color-button]="bookingType !== 'LCL'">
                     {{ action }}
                   </button>
                   <!-- <button
@@ -86,25 +72,14 @@
             <div fxLayout="row" class="mb-0">
               <h3>Import / Export</h3>
             </div>
-            <div
-              class="card-title mb-9"
-              fxLayout="row"
-              fxLayoutAlign="space-between center"
-            >
+            <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
               <div fxLayout="row" fxLayoutGap="25px">
-                <button
-                  mat-stroked-button
-                  color="primary"
-                  [class.light-color-button]="
+                <button mat-stroked-button color="primary" [class.light-color-button]="
                     viewShipmentsType !== 'bookmarked'
-                  "
-                >
+                  ">
                   Import
                 </button>
-                <button
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
+                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
                   Export
                 </button>
               </div>
@@ -116,31 +91,17 @@
             <div fxLayout="row" class="mb-0">
               <h3>Incoterms</h3>
             </div>
-            <div
-              class="card-title mb-9"
-              fxLayout="row"
-              fxLayoutAlign="space-between center"
-            >
+            <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
               <div fxLayout="row" fxLayoutGap="25px">
-                <button
-                  mat-stroked-button
-                  color="primary"
-                  [class.light-color-button]="
+                <button mat-stroked-button color="primary" [class.light-color-button]="
                     viewShipmentsType !== 'bookmarked'
-                  "
-                >
+                  ">
                   FOB
                 </button>
-                <button
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
+                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
                   EXW
                 </button>
-                <button
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
+                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
                   Others
                 </button>
               </div>
@@ -153,10 +114,7 @@
 
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Origin</h1>
@@ -169,13 +127,13 @@
             </div>
             <div class="card-title mb-9">
               <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="no-bottom-padding">
                   <mat-select [(ngModel)]="sendto">
                     <mat-option [value]="sendto"> Shipper </mat-option>
                   </mat-select>
                 </mat-form-field>
 
-                <p>check box</p>
+                <p class="">check box</p>
               </div>
             </div>
           </mat-card>
@@ -185,10 +143,7 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Destination</h1>
@@ -200,10 +155,7 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Value added services</h1>
@@ -216,16 +168,9 @@
                 <h3>{{ valueService.name }}</h3>
               </div>
               <div class="card-body">
-                <mat-radio-group
-                  color="primary"
-                  aria-label="Select an option"
-                  [(ngModel)]="ebooking[valueService.label]"
-                >
-                  <mat-radio-button
-                    class="mr-3"
-                    [value]="option.value"
-                    *ngFor="let option of valueService.options"
-                  >
+                <mat-radio-group color="primary" aria-label="Select an option"
+                  [(ngModel)]="ebooking[valueService.label]">
+                  <mat-radio-button class="mr-3" [value]="option.value" *ngFor="let option of valueService.options">
                     {{ option.label }}
                   </mat-radio-button>
                 </mat-radio-group>
@@ -233,10 +178,7 @@
             </mat-card>
           </div>
         </div>
-        <button
-          class="mat-raised-button"
-          (click)="getalueAndServicesSelectedValues()"
-        >
+        <button class="mat-raised-button" (click)="getalueAndServicesSelectedValues()">
           Test
         </button>
       </mat-expansion-panel>
@@ -244,10 +186,7 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Cargo & Container</h1>
