@@ -29,81 +29,21 @@
             </div>
           </mat-card>
         </div>
-        <div class="mb-0">
+        <div class="mb-0" *ngFor="let shipmentOption of shipmentOptions">
           <mat-card class="mat-elevation-z0">
             <div fxLayout="row" class="mb-0 card-title">
-              <h3>Select Freight Method</h3>
+              <h3>Select {{shipmentOption.name}}</h3>
             </div>
             <div class="card-body">
               <div fxLayout="row wrap" fxLayoutGap="25px">
-                <div *ngFor="let action of ['LCL', 'FCL', 'Air', 'Road']" class="my-2">
-                  <button mat-stroked-button [color]="bookingType === action ? 'primary' : 'light'"
-                    [class.light-color-button]="bookingType !== 'LCL'">
-                    {{ action }}
+                <div *ngFor="let currentOption of shipmentOption.options" class="my-2">
+                  <button mat-stroked-button
+                    [color]="currentOption === shipmentOption.selectedValue ? 'primary' : 'light'"
+                    [class.light-color-button]="currentOption !== shipmentOption.selectedValue"
+                    (click)="shipmentOption.selectedValue = currentOption; getShipmentOptions()">
+                    {{ currentOption }}
                   </button>
-                  <!-- <button
-                  class="my-2"
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
-                  FCL
-                </button>
-                <button
-                  class="my-2"
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
-                  Air
-                </button>
-                <button
-                  class="my-2"
-                  mat-stroked-button
-                  [class.light-color-button]="viewShipmentsType !== 'arriving'"
-                >
-                  Road
-                </button> -->
                 </div>
-              </div>
-            </div>
-          </mat-card>
-        </div>
-        <div class="mb-0">
-          <mat-card class="mat-elevation-z0">
-            <div fxLayout="row" class="mb-0">
-              <h3>Import / Export</h3>
-            </div>
-            <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
-              <div fxLayout="row" fxLayoutGap="25px">
-                <button mat-stroked-button color="primary" [class.light-color-button]="
-                    viewShipmentsType !== 'bookmarked'
-                  ">
-                  Import
-                </button>
-                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
-                  Export
-                </button>
-              </div>
-            </div>
-          </mat-card>
-        </div>
-        <div class="mb-0">
-          <mat-card class="mat-elevation-z0">
-            <div fxLayout="row" class="mb-0">
-              <h3>Incoterms</h3>
-            </div>
-            <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
-              <div fxLayout="row" fxLayoutGap="25px">
-                <button mat-stroked-button color="primary" [class.light-color-button]="
-                    viewShipmentsType !== 'bookmarked'
-                  ">
-                  FOB
-                </button>
-                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
-                  EXW
-                </button>
-                <button mat-stroked-button [class.light-color-button]="viewShipmentsType !== 'arriving'">
-                  Others
-                </button>
               </div>
             </div>
           </mat-card>

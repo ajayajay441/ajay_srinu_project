@@ -7,9 +7,6 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 })
 export class EbookingpageComponent implements OnInit {
   panelOpenState = false;
-  viewShipmentsType = "LCL";
-  bookingType = "LCL";
-
   ebooking: any = {};
   sendto: string = "Shipper";
   valueService: any = [
@@ -47,10 +44,39 @@ export class EbookingpageComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  shipmentOptions = [
+    {
+      label: 'freightMethods',
+      name: 'Freight Methods',
+      options: ['LCL', 'FCL', 'Air', 'Road'],
+      selectedValue: 'LCL'
+    },
+    {
+      label: 'importExport',
+      name: 'Import/Export',
+      options: ['Import', 'Export'],
+      selectedValue: 'Import'
+    },
+    {
+      label: 'incoterms',
+      name: 'Incoterms',
+      options: ['FOB', 'EXW', 'Others'],
+      selectedValue: 'FOB'
+    },
+  ];
 
-  ngOnInit(): void {}
+
+
+  viewShipmentsType = 'LCL';
+  constructor() { }
+
+  ngOnInit(): void { }
   getalueAndServicesSelectedValues() {
     console.log("ebooking", this.ebooking);
+  }
+  getShipmentOptions() {
+    const result: any = {};
+    this.shipmentOptions.forEach(x => result[x.label] = x.selectedValue);
+    console.log("ebooking", result);
   }
 }
