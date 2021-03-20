@@ -111,6 +111,7 @@ export class ShipmentsComponent implements OnInit {
       )
       .subscribe((response: any) => {
         this.data = response.Shipments;
+        window.dispatchEvent(new Event("resize"));
         this.loading = false;
         console.log("ship resp", response.Shipments);
       });

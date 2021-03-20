@@ -46,6 +46,7 @@ export class SchedulesComponent implements OnInit {
       .subscribe((response: any) => {
         this.dataSource = response.schedules;
         this.loading = false;
+        window.dispatchEvent(new Event("resize"));
         console.log("Schedule Response", response.schedules);
       });
   }
