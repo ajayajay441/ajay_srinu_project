@@ -8,82 +8,71 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Add a New Shipment</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
-          <mat-card class="mat-elevation-z0">
-            <div class="mb-0">
-              <h3>Shipment name</h3>
+          <div class="mb-0">
+            <h3>Shipment name</h3>
+          </div>
+          <div class="mb-9">
+            <div>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Placeholder" />
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
             </div>
-            <div class="card-title mb-9">
-              <div>
-                <mat-form-field appearance="outline">
-                  <input matInput placeholder="Placeholder" />
-                  <mat-hint>Hint</mat-hint>
-                </mat-form-field>
-              </div>
-            </div>
-          </mat-card>
+          </div>
         </div>
-        <div class="mb-0" *ngFor="let shipmentOption of shipmentOptions">
-          <mat-card class="mat-elevation-z0">
-            <div fxLayout="row" class="mb-0 card-title">
-              <h3>Select {{shipmentOption.name}}</h3>
+        <div class="mb-3" *ngFor="let shipmentOption of shipmentOptions">
+          <div fxLayout="row" class="mb-0">
+            <h3>Select {{shipmentOption.name}}</h3>
+          </div>
+          <div fxLayout="row wrap" fxLayoutGap="25px">
+            <div *ngFor="let currentOption of shipmentOption.options" class="my-2">
+              <button mat-stroked-button [color]="currentOption === shipmentOption.selectedValue ? 'primary' : 'light'"
+                [class.light-color-button]="currentOption !== shipmentOption.selectedValue"
+                (click)="shipmentOption.selectedValue = currentOption">
+                {{ currentOption }}
+              </button>
             </div>
-            <div class="card-body">
-              <div fxLayout="row wrap" fxLayoutGap="25px">
-                <div *ngFor="let currentOption of shipmentOption.options" class="my-2">
-                  <button mat-stroked-button
-                    [color]="currentOption === shipmentOption.selectedValue ? 'primary' : 'light'"
-                    [class.light-color-button]="currentOption !== shipmentOption.selectedValue"
-                    (click)="shipmentOption.selectedValue = currentOption; getShipmentOptions()">
-                    {{ currentOption }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </mat-card>
+          </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Origin</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
-          <mat-card class="mat-elevation-z0">
-            <div class="mb-0">
-              <h3>Origin Port</h3>
+          <div class="mb-0">
+            <h3>Origin Port</h3>
+          </div>
+          <div class="mb-9">
+            <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto"> Shipper </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <p class="">check box</p>
             </div>
-            <div class="card-title mb-9">
-              <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
-                <mat-form-field appearance="outline" class="no-bottom-padding">
-                  <mat-select [(ngModel)]="sendto">
-                    <mat-option [value]="sendto"> Shipper </mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <p class="">check box</p>
-              </div>
-            </div>
-          </mat-card>
+          </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Destination</h1>
@@ -95,7 +84,7 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Value added services</h1>
@@ -103,30 +92,27 @@
         </mat-expansion-panel-header>
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex *ngFor="let valueService of valueService">
-            <mat-card class="mat-elevation-z0">
-              <div fxLayout="row" class="mb-0 card-title">
-                <h3>{{ valueService.name }}</h3>
-              </div>
-              <div class="card-body">
-                <mat-radio-group color="primary" aria-label="Select an option"
-                  [(ngModel)]="ebooking[valueService.label]">
-                  <mat-radio-button class="mr-3" [value]="option.value" *ngFor="let option of valueService.options">
-                    {{ option.label }}
-                  </mat-radio-button>
-                </mat-radio-group>
-              </div>
-            </mat-card>
+            <div fxLayout="row" class="mb-0">
+              <h3>{{ valueService.name }}</h3>
+            </div>
+            <div>
+              <mat-radio-group color="primary" aria-label="Select an option" [(ngModel)]="ebooking[valueService.label]">
+                <mat-radio-button class="mr-3" [value]="option.value" *ngFor="let option of valueService.options">
+                  {{ option.label }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
           </div>
         </div>
-        <button class="mat-raised-button" (click)="getalueAndServicesSelectedValues()">
+        <!-- <button class="mat-raised-button" (click)="getalueAndServicesSelectedValues()">
           Test
-        </button>
+        </button> -->
       </mat-expansion-panel>
     </mat-accordion>
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Cargo & Container</h1>
