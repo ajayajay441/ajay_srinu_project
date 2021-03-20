@@ -9,7 +9,19 @@ export class EbookingpageComponent implements OnInit {
   panelOpenState = false;
   viewShipmentsType = "LCL";
   bookingType = "LCL";
-  constructor() {}
 
-  ngOnInit(): void {}
+  ebooking: any = {};
+  valueService: any = [
+    { name: 'Aa aa aaa aaaa', label: 'aaaaaaa', options: [{ label: '111111', value: 1 }, { label: '222222', value: 0 }] },
+    { name: 'Bb bb bbbb bbbbbb', label: 'bbbbbbbb', options: [{ label: '111111', value: 1 }, { label: '222222', value: 0 }] },
+    { name: 'CCC ccc', label: 'cccccccc', options: [{ label: '111111', value: 1 }, { label: '222222', value: 0 }] },
+    { name: 'Ddd Ddd', label: 'ddddddd', options: [{ label: '111111', value: 1 }, { label: '222222', value: 0 }] },
+  ];
+
+  constructor() { }
+
+  ngOnInit(): void { }
+  getalueAndServicesSelectedValues() {
+    console.log('ebooking', this.ebooking);
+  }
 }
