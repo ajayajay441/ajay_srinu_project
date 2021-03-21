@@ -21,7 +21,7 @@ $step-width: 24px;
     top: 12px;
   }
   .step-joiner.highlight {
-    border-bottom: 2px dotted red;
+    border-bottom: 2px dotted #aaa;
   }
   .step-joiner.disable {
     border-bottom: 2px dotted #aaa;
@@ -33,9 +33,9 @@ $step-width: 24px;
 .stepper-labels {
   width: 100%;
 }
-.highlight {
-  color: red !important;
-}
+// .highlight {
+//   color: red !important;
+// }
 .disable-text-color {
   color: #aaa !important;
 }

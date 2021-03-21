@@ -1,5 +1,10 @@
 <div class="ebooking-page">
-  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
     <h1 class="mb-0">E-Booking</h1>
     <button mat-raised-button color="primary" class="mat-elevation-z0">
       <mat-icon>upload_file</mat-icon>
@@ -8,7 +13,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Add a New Shipment</h1>
@@ -22,20 +31,31 @@
             <div>
               <mat-form-field appearance="outline">
                 <input matInput placeholder="Placeholder" />
-                <mat-hint>Hint</mat-hint>
               </mat-form-field>
             </div>
           </div>
         </div>
         <div class="mb-3" *ngFor="let shipmentOption of shipmentOptions">
           <div fxLayout="row" class="mb-0">
-            <h3>Select {{shipmentOption.name}}</h3>
+            <h3>Select {{ shipmentOption.name }}</h3>
           </div>
           <div fxLayout="row wrap" fxLayoutGap="25px">
-            <div *ngFor="let currentOption of shipmentOption.options" class="my-2">
-              <button mat-stroked-button [color]="currentOption === shipmentOption.selectedValue ? 'primary' : 'light'"
-                [class.light-color-button]="currentOption !== shipmentOption.selectedValue"
-                (click)="shipmentOption.selectedValue = currentOption">
+            <div
+              *ngFor="let currentOption of shipmentOption.options"
+              class="my-2"
+            >
+              <button
+                mat-stroked-button
+                [color]="
+                  currentOption === shipmentOption.selectedValue
+                    ? 'primary'
+                    : 'light'
+                "
+                [class.light-color-button]="
+                  currentOption !== shipmentOption.selectedValue
+                "
+                (click)="shipmentOption.selectedValue = currentOption"
+              >
                 {{ currentOption }}
               </button>
             </div>
@@ -46,7 +66,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Origin</h1>
@@ -57,13 +81,71 @@
             <h3>Origin Port</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field appearance="outline" class="no-bottom-padding">
                 <mat-select [(ngModel)]="sendto">
                   <mat-option [value]="sendto"> Shipper </mat-option>
                 </mat-select>
               </mat-form-field>
-              <p class="">check box</p>
+              <mat-checkbox
+                class="example-margin"
+                color="warn"
+                [(ngModel)]="checked"
+                >Checked</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Pick-Up Location</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto"> Search Address </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto"> Zip Code </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Cargo Ready for Pickup Date</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="fill">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
             </div>
           </div>
         </div>
@@ -72,32 +154,121 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Destination</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Destination Port</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto"> Search Port </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-checkbox
+                class="example-margin"
+                color="warn"
+                [(ngModel)]="checked"
+                >Dekivery required</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Delivery Location</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto">
+                    Search Address/city
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="sendto">
+                  <mat-option [value]="sendto"> Zip Code </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Cargo Ready for Delivery Date</h3>
+          </div>
+          <div class="mb-9">
+            <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
+              <mat-form-field appearance="fill">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Value added services</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div
+          fxLayout="column"
+          fxLayout.gt-md="row"
+          fxLayoutAlign="space-between start"
+        >
           <div fxFlex *ngFor="let valueService of valueService">
             <div fxLayout="row" class="mb-0">
               <h3>{{ valueService.name }}</h3>
             </div>
-            <div>
-              <mat-radio-group color="primary" aria-label="Select an option" [(ngModel)]="ebooking[valueService.label]">
-                <mat-radio-button class="mr-3" [value]="option.value" *ngFor="let option of valueService.options">
+            <div class="mb-radio">
+              <mat-radio-group
+                color="primary"
+                aria-label="Select an option"
+                [(ngModel)]="ebooking[valueService.label]"
+              >
+                <mat-radio-button
+                  class="mr-3"
+                  [value]="option.value"
+                  *ngFor="let option of valueService.options"
+                >
                   {{ option.label }}
                 </mat-radio-button>
               </mat-radio-group>
@@ -112,7 +283,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Cargo & Container</h1>

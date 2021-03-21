@@ -15,7 +15,6 @@ import { AuthenticationService } from "../../_services";
 export class ShipmentsComponent implements OnInit {
   shipmentType = "booked";
   shipmentStatusTypes = [
-    { label: "Bookmarked", value: "BOOKMARKED" },
     { label: "Arriving", value: "ARRIVING" },
     { label: "Booked", value: "BOOKED" },
   ];

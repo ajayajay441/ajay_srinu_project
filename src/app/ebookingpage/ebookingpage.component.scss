@@ -5,3 +5,11 @@
 ::ng-deep .no-bottom-padding .mat-form-field-wrapper {
   padding-bottom: 0px;
 }
+.mb-radio {
+  margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+  .mb-radio {
+    margin-bottom: 2.25rem;
+  }
+}

@@ -6,77 +6,76 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
   styleUrls: ["./ebookingpage.component.scss"],
 })
 export class EbookingpageComponent implements OnInit {
+  checked = false;
   panelOpenState = false;
   ebooking: any = {};
   sendto: string = "Shipper";
   valueService: any = [
     {
-      name: "Aa aa aaa aaaa",
-      label: "aaaaaaa",
+      name: "Is your cargo hazardous?",
+      label: "Is your cargo hazardous?",
       options: [
         { label: "Yes", value: "yes" },
         { label: "No", value: "no" },
       ],
     },
     {
-      name: "Bb bb bbbb bbbbbb",
-      label: "bbbbbbbb",
+      name: "Is your cargo stackable?",
+      label: "Is your cargo stackable?",
       options: [
-        { label: "111111", value: 1 },
-        { label: "222222", value: 0 },
+        { label: "Yes", value: "yes" },
+        { label: "No", value: "no" },
       ],
     },
     {
-      name: "CCC ccc",
-      label: "cccccccc",
+      name: "Does your cargo require insurance?",
+      label: "Does your cargo require insurance?",
       options: [
-        { label: "111111", value: 1 },
-        { label: "222222", value: 0 },
+        { label: "Yes", value: "yes" },
+        { label: "No", value: "no" },
       ],
     },
     {
-      name: "Ddd Ddd",
-      label: "ddddddd",
+      name: "Origin clearance required?",
+      label: "Origin clearance required?",
       options: [
-        { label: "111111", value: 1 },
-        { label: "222222", value: 0 },
+        { label: "Yes", value: "yes" },
+        { label: "No", value: "no" },
       ],
     },
   ];
 
   shipmentOptions = [
     {
-      label: 'freightMethods',
-      name: 'Freight Methods',
-      options: ['LCL', 'FCL', 'Air', 'Road'],
-      selectedValue: 'LCL'
+      label: "freightMethods",
+      name: "Select Freight Methods",
+      options: ["LCL", "FCL", "Air", "Road"],
+      selectedValue: "LCL",
     },
     {
-      label: 'importExport',
-      name: 'Import/Export',
-      options: ['Import', 'Export'],
-      selectedValue: 'Import'
+      label: "importExport",
+      name: "Import/Export",
+      options: ["Import", "Export"],
+      selectedValue: "Import",
     },
     {
-      label: 'incoterms',
-      name: 'Incoterms',
-      options: ['FOB', 'EXW', 'Others'],
-      selectedValue: 'FOB'
+      label: "incoterms",
+      name: "Incoterms",
+      options: ["FOB", "EXW", "Others"],
+      selectedValue: "FOB",
     },
   ];
 
+  viewShipmentsType = "LCL";
+  constructor() {}
 
-
-  viewShipmentsType = 'LCL';
-  constructor() { }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   getalueAndServicesSelectedValues() {
     console.log("ebooking", this.ebooking);
   }
   getShipmentOptions() {
     const result: any = {};
-    this.shipmentOptions.forEach(x => result[x.label] = x.selectedValue);
+    this.shipmentOptions.forEach((x) => (result[x.label] = x.selectedValue));
     console.log("ebooking", result);
   }
 }
