@@ -39,13 +39,22 @@ export class DashboardService {
 
   getDashboardQuotation(refreshToken?: string, status?: string, limit?: any) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
-    const limitValue = limit ? limit : "ALL";
+    const limitValue = limit ? limit : "";
     let url;
     if (status != "") {
       url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
     } else {
       url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
     }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
+  getQuoteDetail(refreshToken?: string, squote_no?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/getQuotedetail?user_token=${jwtToken}&sauth_token=${refreshToken}&squote_no=${squote_no}`;
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
         return response;
