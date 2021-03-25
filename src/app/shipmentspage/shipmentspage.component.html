@@ -170,7 +170,10 @@
                 <mat-option value="seemore"> See more </mat-option>
                 <mat-option value="Map"> Map </mat-option>
                 <mat-option value="Activity"> Activity </mat-option>
+                <mat-option value="Actions"> Actions </mat-option>
                 <mat-option value="Cargo Details"> Cargo Details </mat-option>
+                <mat-option value="Documents"> Documents </mat-option>
+                <mat-option value="CAN"> CAN </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -221,10 +224,17 @@
         <div *ngIf="shipment.seemore === 'Activity'">
           <app-shipmentactivity [shipment]="shipment"></app-shipmentactivity>
         </div>
+        <div *ngIf="shipment.seemore === 'Actions'">
+          <app-actions [updates]="updates"></app-actions>
+        </div>
         <div *ngIf="shipment.seemore === 'Cargo Details'">
-          <div class="mat-tab-content my-3">
-            <app-cargodetails [cargo]="cargo"></app-cargodetails>
-          </div>
+          <app-cargodetails [cargo]="cargo"></app-cargodetails>
+        </div>
+        <div *ngIf="shipment.seemore === 'Documents'">
+          <app-documents [documents]="documents"></app-documents>
+        </div>
+        <div *ngIf="shipment.seemore === 'CAN'">
+          <app-can [CAN]="CAN"></app-can>
         </div>
       </div>
     </mat-card>
