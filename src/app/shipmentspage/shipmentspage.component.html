@@ -166,8 +166,9 @@
               <a href="{{ shipment.pre_alert_document }}" target="_blank">Pre Alert Documents</a>
             </button>
             <mat-form-field class="w-full">
-              <mat-select [(ngModel)]="shipment.seemore">
-                <mat-option value="seemore"> See more </mat-option>
+              <mat-label>See more</mat-label>
+              <mat-select [(ngModel)]="shipment.seemoreMobile">
+                <mat-option value="" *ngIf="shipment.seemoreMobile"> See less </mat-option>
                 <mat-option value="Map"> Map </mat-option>
                 <mat-option value="Activity"> Activity </mat-option>
                 <mat-option value="Actions"> Actions </mat-option>
@@ -217,23 +218,23 @@
       </div>
       <!-- // SEE MORE TABS -->
       <!-- SEE MORE MOBILE -->
-      <div fxShow fxHide.gt-md *ngIf="shipment.seemore != 'seemore'">
-        <div *ngIf="shipment.seemore === 'Map'">
+      <div fxShow fxHide.gt-md *ngIf="shipment.seemoreMobile">
+        <div *ngIf="shipment.seemoreMobile === 'Map'">
           <app-shipmentmapview></app-shipmentmapview>
         </div>
-        <div *ngIf="shipment.seemore === 'Activity'">
+        <div *ngIf="shipment.seemoreMobile === 'Activity'">
           <app-shipmentactivity [shipment]="shipment"></app-shipmentactivity>
         </div>
-        <div *ngIf="shipment.seemore === 'Actions'">
+        <div *ngIf="shipment.seemoreMobile === 'Actions'">
           <app-actions [updates]="updates"></app-actions>
         </div>
-        <div *ngIf="shipment.seemore === 'Cargo Details'">
+        <div *ngIf="shipment.seemoreMobile === 'Cargo Details'">
           <app-cargodetails [cargo]="cargo"></app-cargodetails>
         </div>
-        <div *ngIf="shipment.seemore === 'Documents'">
+        <div *ngIf="shipment.seemoreMobile === 'Documents'">
           <app-documents [documents]="documents"></app-documents>
         </div>
-        <div *ngIf="shipment.seemore === 'CAN'">
+        <div *ngIf="shipment.seemoreMobile === 'CAN'">
           <app-can [CAN]="CAN"></app-can>
         </div>
       </div>
