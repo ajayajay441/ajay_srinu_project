@@ -48,7 +48,10 @@
             </div>
         </div>
         <div>
-            <button mat-raised-button color="primary" class="mat-elevation-z0">
+            <button fxShow fxHide.gt-md mat-raised-button color="primary" class="w-full mat-elevation-z0">
+                See next step <mat-icon>arrow_right_alt</mat-icon>
+            </button>
+            <button fxHide fxShow.gt-md mat-raised-button color="primary" class="mat-elevation-z0">
                 See next step <mat-icon>arrow_right_alt</mat-icon>
             </button>
         </div>
