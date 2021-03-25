@@ -3,7 +3,7 @@
 .light-color-button {
   color: #c4c4c4 !important;
 }
-.mat-form-field {
+.mat-form-field.max100px {
   max-width: 100px;
 }
 .status-tracker-container {
@@ -13,7 +13,8 @@
 .stepper {
   width: 100%;
   .step-container {
-    width: 100%;
+    min-width: 200px;
+    max-width: 200px;
   }
   .step {
     width: 24px;

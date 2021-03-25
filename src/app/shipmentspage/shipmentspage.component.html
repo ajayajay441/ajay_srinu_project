@@ -1,53 +1,32 @@
 <div class="shipments-page">
-  <div
-    fxLayout="row"
-    fxLayoutGap="15px"
-    class="mb-10"
-    fxLayoutAlign="space-between center"
-  >
-    <div
-      fxFlex="80"
-      fxLayout="row wrap"
-      fxLayoutGap="25px"
-      fxLayoutAlign="start center"
-    >
+  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
+    <div fxFlex fxFlex.gt-md="80" fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="start center">
       <h1 class="mb-0">Shipments</h1>
-      <div
-        fxLayout="row"
-        fxLayoutGap="15px"
-        fxLayoutAlign="space-between center"
-        *ngFor="let selectionType of ['Status', 'Mode', 'Date', 'Product']"
-        class="shipments-page-selectbox"
-      >
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center"
+        *ngFor="let selectionType of ['Status', 'Mode', 'Date', 'Product']" class="shipments-page-selectbox" fxHide
+        fxShow.gt-md>
         <h3 class="mb-0">{{ selectionType }}</h3>
-        <mat-form-field class="w-full">
+        <mat-form-field class="w-full max100px">
           <mat-select>
             <mat-option> This Year </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
-    <div fxFlex="20" class="text-right">
+    <div fxFlex fxFlex.gt-md="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon>upload_file</mat-icon> Buyer Console
       </button>
     </div>
   </div>
-  <div class="mb-10">
+  <div class="mb-10" fxHide fxShow.gt-md>
     <mat-card class="mat-elevation-z0">
-      <div
-        class="card-title mb-9"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
+      <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
         <div fxLayout="row" fxLayoutGap="25px">
           <h2 class="mb-0">Shipments</h2>
-          <button
-            mat-stroked-button
-            *ngFor="let type of ['Bookmarked', 'Arriving', 'Booked']"
+          <button mat-stroked-button *ngFor="let type of ['Bookmarked', 'Arriving', 'Booked']"
             [color]="viewShipmentsType === type ? 'primary' : 'light'"
-            [class.light-color-button]="viewShipmentsType !== type"
-          >
+            [class.light-color-button]="viewShipmentsType !== type">
             {{ type }}
           </button>
         </div>
@@ -60,12 +39,15 @@
     <mat-card class="mat-elevation-z0">
       <div class="card-body">
         <div fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
-          <div fxLayout="row" fxLayoutGap="50px" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+          <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutGap.gt-md="50px"
+            fxLayoutAlign="center start" fxLayoutAlign.gt-md="start center">
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutAlign="center start"
+              fxLayoutAlign.gt-md="start center">
               <h3 class="mb-0 fw-700">{{ shipment.booking_number }}</h3>
               <p class="mb-0">{{ shipment.customer_name }}</p>
             </div>
-            <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutAlign="center start"
+              fxLayoutAlign.gt-md="start center">
               <div>
                 <p class="mb-0">
                   <span class="bold fw-700">Container No.</span> :
@@ -92,8 +74,9 @@
               </div>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutGap="50px" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+          <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutGap.gt-md="50px"
+            fxLayoutAlign="center start" fxLayoutAlign.gt-md="start center">
+            <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center" fxHide fxShow.gt-md>
               <mat-icon> public </mat-icon>
               <p class="mb-0 font-xs">
                 {{ shipment.origin }}:
@@ -107,111 +90,103 @@
               </p>
             </div>
             <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
-              <button
-                mat-stroked-button
-                class="mat-elevation-z0 light-color-button"
-              >
+              <button mat-stroked-button class="mat-elevation-z0 light-color-button">
                 PO00039274
               </button>
-              <button
-                mat-stroked-button
-                class="mat-elevation-z0 light-color-button"
-              >
+              <button mat-stroked-button class="mat-elevation-z0 light-color-button">
                 PO0008776
               </button>
             </div>
+            <div fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="center start" fxShow fxHide.gt-md>
+              <div fxLayout="row" fxLayoutGap="5px">
+                <mat-icon> public </mat-icon>
+                <p class="mb-0 font-xs">
+                  {{ shipment.origin }}:
+                  <br />
+                  <span class="font-bold"> {{ shipment.ETD }} </span>
+                </p>
+              </div>
+              <span class="font-bold mx-3"> To </span>
+              <div fxLayout="row" fxLayoutGap="5px">
+                <mat-icon> public </mat-icon>
+                <p class="mb-0 font-xs">
+                  {{ shipment.destination }}:
+                  <br />
+                  <span class="font-bold"> {{ shipment.ETA }} </span>
+                </p>
+              </div>
+            </div>
           </div>
-          <div
-            class="overflow-hidden"
-            fxLayout="column"
-            fxLayoutAlign="start center"
-          >
-            <div
-              class="w-full stepper mb-3"
-              fxLayout="row"
-              fxLayoutAlign="center"
-            >
-              <div
-                class="step-container"
-                *ngFor="let step of shipment.milestones; last as isLast"
-                fxFlex
-              >
+
+          <!-- STEPPER -->
+          <div class="overflow-auto" fxLayout="column">
+            <div class="stepper mb-3" fxLayout="row">
+              <div class="step-container" *ngFor="let step of shipment.milestones; last as isLast" fxFlex>
                 <div class="step-joiner"></div>
                 <div class="step">
                   <mat-icon class="transform rotate-90">
                     {{
-                      step.milestone === shipment.status
-                        ? "flight"
-                        : "radio_button_unchecked"
+                    step.milestone === shipment.status
+                    ? "flight"
+                    : "radio_button_unchecked"
                     }}
                   </mat-icon>
                 </div>
               </div>
             </div>
-            <div
-              class="w-full stepper-labels mb-3"
-              fxLayout="row"
-              fxLayoutAlign="center"
-            >
-              <div
-                fxFlex
-                class="step-label-container mx-1 text-center"
-                *ngFor="
-                  let step of shipment.milestones;
-                  first as isFirst;
-                  last as isLast
-                "
-              >
-                <div class="status text-xs">
+            <div class="stepper mb-3" fxLayout="row">
+              <div class="step-container" *ngFor="let step of shipment.milestones; last as isLast" fxFlex>
+                <div class="step-label text-center">
                   <h5 class="mb-0">{{ step.milestone }}</h5>
                   <h6>{{ step.date }}</h6>
                 </div>
               </div>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
+          <!-- // STEPPER -->
+          <!-- BUTTONS -->
+          <div fxHide fxShow.gt-md fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start center">
             <button mat-raised-button color="primary" class="mat-elevation-z0">
               <mat-icon>upload_file</mat-icon>
-              <a href="{{ shipment.pre_alert_document }}" target="_blank"
-                >Pre Alert Documents</a
-              >
+              <a href="{{ shipment.pre_alert_document }}" target="_blank">Pre Alert Documents</a>
             </button>
-            <div
-              class="cursor-pointer"
-              fxLayout="row"
-              fxLayoutGap="5px"
-              fxLayoutAlign="start center"
-              (click)="
+            <div class="cursor-pointer" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center" (click)="
                 shipment.seemore = !shipment.seemore;
                 shipment.seemore && seeMoreShipmentData(shipment)
-              "
-            >
+              ">
               <a class="underline">
                 {{ shipment.seemore ? "See less" : "See more" }}
               </a>
               <span class="material-icons"> expand_more </span>
             </div>
           </div>
+          <div fxShow fxHide.gt-md fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center start">
+            <button mat-raised-button color="primary" class="w-full mat-elevation-z0">
+              <mat-icon>upload_file</mat-icon>
+              <a href="{{ shipment.pre_alert_document }}" target="_blank">Pre Alert Documents</a>
+            </button>
+            <mat-form-field class="w-full">
+              <mat-select [(ngModel)]="shipment.seemore">
+                <mat-option value="seemore"> See more </mat-option>
+                <mat-option value="Map"> Map </mat-option>
+                <mat-option value="Activity"> Activity </mat-option>
+                <mat-option value="Cargo Details"> Cargo Details </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- // BUTTONS -->
         </div>
       </div>
-      <div class="shipments-seemore" [class.my-10]="shipment.seemore">
-        <mat-expansion-panel
-          [expanded]="shipment.seemore"
-          (opened)="shipment.seemore = true"
-          (closed)="shipment.seemore = false"
-          class="mat-elevation-z0"
-        >
-          <mat-tab-group
-            mat-align-tabs="start"
-            color="primary"
-            *ngIf="shipment.seemore"
-            ><mat-tab label="Map">
+      <!-- SEE MORE TABS -->
+      <div class="shipments-seemore" [class.my-10]="shipment.seemore" fxHide fxShow.gt-md>
+        <mat-expansion-panel [expanded]="shipment.seemore" (opened)="shipment.seemore = true"
+          (closed)="shipment.seemore = false" class="mat-elevation-z0">
+          <mat-tab-group mat-align-tabs="start" color="primary" *ngIf="shipment.seemore">
+            <mat-tab label="Map">
               <app-shipmentmapview></app-shipmentmapview>
             </mat-tab>
             <mat-tab label="Activity">
-              <app-shipmentactivity
-                [shipment]="shipment"
-              ></app-shipmentactivity>
+              <app-shipmentactivity [shipment]="shipment"></app-shipmentactivity>
             </mat-tab>
             <mat-tab label="Cargo Details">
               <div class="mat-tab-content my-3" *ngIf="cargo">
@@ -236,6 +211,21 @@
             </mat-tab>
           </mat-tab-group>
         </mat-expansion-panel>
+      </div>
+      <!-- // SEE MORE TABS -->
+      <!-- SEE MORE MOBILE -->
+      <div fxShow fxHide.gt-md *ngIf="shipment.seemore != 'seemore'">
+        <div *ngIf="shipment.seemore === 'Map'">
+          <app-shipmentmapview></app-shipmentmapview>
+        </div>
+        <div *ngIf="shipment.seemore === 'Activity'">
+          <app-shipmentactivity [shipment]="shipment"></app-shipmentactivity>
+        </div>
+        <div *ngIf="shipment.seemore === 'Cargo Details'">
+          <div class="mat-tab-content my-3">
+            <app-cargodetails [cargo]="cargo"></app-cargodetails>
+          </div>
+        </div>
       </div>
     </mat-card>
   </div>
