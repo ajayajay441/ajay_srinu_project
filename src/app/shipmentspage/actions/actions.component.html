@@ -1,27 +1,48 @@
-<div
-  fxLayout="row"
-  fxLayoutGap="10px"
-  fxLayoutAlign="start center"
-  class="py-3 header-row"
->
-  <div fxFlex="250px" class="px-3">Date</div>
-  <div fxFlex class="px-3">Things Todo</div>
-</div>
-<div
-  fxLayout="row"
-  fxLayoutAlign="start center"
-  fxLayoutGap="10px"
-  class="py-3"
-  *ngFor="let update of updates"
->
-  <div fxFlex="250px" class="px-3">{{ update.remarks_date }}</div>
+<div fxHide fxShow.gt-md>
   <div
-    fxFlex
-    class="px-3"
     fxLayout="row"
-    fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
+    fxLayoutAlign="start center"
+    class="py-3 header-row"
   >
-    <p>{{ update.remarks_description }}</p>
+    <div fxFlex="250px" class="px-3">Date</div>
+    <div fxFlex class="px-3">Things Todo</div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+    class="py-3"
+    *ngFor="let update of updates"
+  >
+    <div fxFlex="250px" class="px-3">{{ update.remarks_date }}</div>
+    <div
+      fxFlex
+      class="px-3"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="10px"
+    >
+      <p>{{ update.remarks_description }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- mobile view -->
+<div fxShow fxhide.gt-md>
+  <h2>Actions</h2>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    fxLayoutGap="10px"
+    class="my-3 purchase-item header-row"
+    *ngFor="let update of updates"
+  >
+    <h5 fxFlex class="mb-1 bold">
+      {{ update.remarks_date }}
+    </h5>
+    <h5 fxFlex class="mb-1 bold">
+      {{ update.remarks_description }}
+    </h5>
   </div>
 </div>

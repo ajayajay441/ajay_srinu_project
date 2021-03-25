@@ -1,35 +1,60 @@
-<div
-  fxLayout="row"
-  fxLayoutGap="10px"
-  fxLayoutAlign="start center"
-  class="py-3 header-row"
->
-  <div fxFlex="250px" class="px-3">Document Date</div>
-  <div fxFlex class="px-3">Document Name</div>
-</div>
-<div
-  fxLayout="row"
-  fxLayoutAlign="start center"
-  fxLayoutGap="10px"
-  class="py-3 header-row"
-  *ngFor="let doc of documents"
->
-  <div fxFlex="250px" class="px-3">{{ doc.document_date }}</div>
+<div fxHide fxShow.gt-md>
   <div
-    fxFlex
-    class="px-3"
     fxLayout="row"
-    fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
+    fxLayoutAlign="start center"
+    class="py-3 header-row"
   >
-    <div fxFlex>
-      <p>{{ doc.document_name }}</p>
+    <div fxFlex="250px" class="px-3">Document Date</div>
+    <div fxFlex class="px-3">Document Name</div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+    class="py-3"
+    *ngFor="let doc of documents"
+  >
+    <div fxFlex="250px" class="px-3">{{ doc.document_date }}</div>
+    <div
+      fxFlex
+      class="px-3"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="10px"
+    >
+      <div fxFlex>
+        <p>{{ doc.document_name }}</p>
+      </div>
+      <div fxFlex class="text-right">
+        <button mat-raised-button color="primary" class="mat-elevation-z0">
+          <mat-icon>upload_file</mat-icon>
+          <a href="{{ doc.link }}" target="_blank"> Download</a>
+        </button>
+      </div>
     </div>
-    <div fxFlex class="text-right">
+  </div>
+</div>
+<div fxShow fxhide.gt-md>
+  <h2>Documents</h2>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    fxLayoutGap="10px"
+    class="my-3 purchase-item header-row"
+    *ngFor="let doc of documents"
+  >
+    <h5 fxFlex class="mb-1 bold">
+      {{ doc.document_date }}
+    </h5>
+    <h5 fxFlex class="mb-1 bold">
+      {{ doc.document_name }}
+    </h5>
+    <h5 fxFlex class="mb-1">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon>upload_file</mat-icon>
         <a href="{{ doc.link }}" target="_blank"> Download</a>
       </button>
-    </div>
+    </h5>
   </div>
 </div>

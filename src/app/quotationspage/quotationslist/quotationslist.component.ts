@@ -32,80 +32,37 @@ import { AuthenticationService } from "../../_services";
 export class QuotationslistComponent implements OnInit {
   @Input() filter: string;
   displayedColumns: string[] = [
-    "qtno",
-    "reference",
+    "quotation-number",
+    "weight",
     "origin",
     "destination",
-    "qtexpiry",
-    "amount",
-    "weight",
+    "reference-number",
+    "expiry_date",
     "service",
+    "amount",
     "status",
     "details",
   ];
   data: PeriodicElement[] = [
-    {
-      qtno: "US-DXB001",
-      reference: "US-DXB001",
-      origin: "America",
-      destination: "Lyon",
-      qtexpiry: "20/01/2021",
-      amount: "AED 2000",
-      weight: "2334 kg.",
-      service: "FCL IMP",
-      status: "Pending",
-      details: "Details",
-    },
-    {
-      qtno: "US-DXB001",
-      reference: "US-DXB001",
-      origin: "Brazil",
-      destination: "Xyon",
-      qtexpiry: "20/01/2021",
-      amount: "AED 2000",
-      weight: "2334 kg.",
-      service: "FCL IMP",
-      status: "Pending",
-      details: "Details",
-    },
-    {
-      qtno: "US-DXB001",
-      reference: "US-DXB001",
-      origin: "India",
-      destination: "Fyon",
-      qtexpiry: "20/01/2021",
-      amount: "AED 2000",
-      weight: "2334 kg.",
-      service: "FCL IMP",
-      status: "Pending",
-      details: "Details",
-    },
-    {
-      qtno: "US-DXB001",
-      reference: "US-DXB001",
-      origin: "South Africa",
-      destination: "Ayon",
-      qtexpiry: "20/01/2021",
-      amount: "AED 2000",
-      weight: "2334 kg.",
-      service: "FCL IMP",
-      status: "Pending",
-      details: "Details",
-    },
-    {
-      qtno: "US-DXB001",
-      reference: "US-DXB001",
-      origin: "West Indies",
-      destination: "Ryon",
-      qtexpiry: "20/01/2021",
-      amount: "AED 2000",
-      weight: "2334 kg.",
-      service: "FCL IMP",
-      status: "Pending",
-      details: "Details",
-    },
+    // {
+    //   amount: "US-DXB001",
+    //   currecy_code: "AED",
+    //   customer_name: "SHANMU",
+    //   destination: "MUMBAI",
+    //   expiry_date: "10/11/2020",
+    //   origin: "CHENNAI",
+    //   places: "CHENNAI",
+    //   "quotation-number": "2012080074",
+    //   "reference-number": "2012080074",
+    //   service: "SEA",
+    //   type: "FCL",
+    //   volume: "1250000",
+    //   weight: "500",
+    //   status: "",
+    //   details: "Details",
+    // },
   ];
-  dataSource = new MatTableDataSource(this.data);
+  dataSource = new MatTableDataSource();
   expandedElement: PeriodicElement | null = null;
 
   @ViewChild(MatSort)
@@ -128,6 +85,7 @@ export class QuotationslistComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
+
   getDashboardQuotation(value?: string) {
     let status = "";
     if (value == "Review Quote") {
@@ -146,11 +104,12 @@ export class QuotationslistComponent implements OnInit {
       )
       .subscribe((response: any) => {
         this.data = response.Quotation;
+        this.dataSource = new MatTableDataSource(response.Quotation);
         // this.loading = false;
         console.log("Quotation response", response.Quotation);
       });
   }
-  getQuoteDetail(quoteNo?: any) {
+  getQuoteDetail(quoteNo: any) {
     this.authenticationService
       .refreshToken()
       .pipe(
@@ -169,20 +128,25 @@ export class QuotationslistComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getDashboardQuotation();
-    this.getQuoteDetail();
+    // this.getQuoteDetail();
   }
 }
 
 export interface PeriodicElement {
-  qtno: string;
-  reference: string;
-  origin: string;
-  destination: string;
-  qtexpiry: string;
   amount: string;
-  weight: string;
+  currecy_code: string;
+  customer_name: string;
+  destination: string;
+  expiry_date: string;
+  origin: string;
+  places: string;
+  "quotation-number": string;
+  "reference-number": string;
   service: string;
-  status: string;
+  type: string;
+  volume: string;
+  weight: string;
   details: string;
+  status: string;
   isExpanded?: boolean;
 }

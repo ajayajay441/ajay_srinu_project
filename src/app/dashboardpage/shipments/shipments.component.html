@@ -81,17 +81,27 @@
             ></div>
             <div class="step">
               <mat-icon
+                *ngIf="status.value === element.status"
+                [class]="
+                  status.value === element.status
+                    ? 'highlight transform '
+                    : 'disable-text-color'
+                "
+                [svgIcon]="
+                  element.mode === 'AIR' ? 'fresconflight' : 'fresconShip'
+                "
+              >
+                <!-- {{ element.mode === "AIR" ? "flight" : "fresconShip" }} -->
+              </mat-icon>
+              <mat-icon
+                *ngIf="status.value !== element.status"
                 [class]="
                   status.value === element.status
                     ? 'highlight transform rotate-90'
                     : 'disable-text-color'
                 "
               >
-                {{
-                  status.value === element.status
-                    ? "flight"
-                    : "radio_button_unchecked"
-                }}
+                {{ "radio_button_unchecked" }}
               </mat-icon>
             </div>
           </div>
