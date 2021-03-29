@@ -29,7 +29,7 @@ export class ShipmentspageComponent implements OnInit {
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getShipmentDetails();
@@ -40,21 +40,22 @@ export class ShipmentspageComponent implements OnInit {
   }
   getShipmentDetails(value?: string) {
     let status = "";
-    this.authenticationService
-      .refreshToken()
-      .pipe(
-        switchMap((userData) => {
-          return this.shipmentService.getShipmentDetails(
-            userData.Token,
-            status
-          );
-        })
-      )
-      .subscribe((response: any) => {
-        this.data = response.ShipmentCard;
-        this.loading = false;
-        console.log("Shipmentpage Response", response.ShipmentCard);
-      });
+    this.loading = false;
+    // this.authenticationService
+    //   .refreshToken()
+    //   .pipe(
+    //     switchMap((userData) => {
+    //       return this.shipmentService.getShipmentDetails(
+    //         userData.Token,
+    //         status
+    //       );
+    //     })
+    //   )
+    //   .subscribe((response: any) => {
+    //     this.data = response.ShipmentCard;
+    //     this.loading = false;
+    //     console.log("Shipmentpage Response", response.ShipmentCard);
+    //   });
   }
 
   getShipmentTabDetails(id?: any) {
@@ -89,5 +90,8 @@ export class ShipmentspageComponent implements OnInit {
   seeMoreShipmentData(id: any) {
     console.log(id);
     this.getShipmentTabDetails(id);
+  }
+  onChangePage(page: number) {
+    console.log('page', page);
   }
 }

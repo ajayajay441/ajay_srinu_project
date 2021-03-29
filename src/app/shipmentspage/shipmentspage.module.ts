@@ -11,6 +11,7 @@ import { CANComponent } from "./can/can.component";
 import { ShipmentactivityComponent } from "./shipmentactivity/shipmentactivity.component";
 import { DashboardPageModule } from "../dashboardpage/dashboardpage.module";
 import { CargodetailsComponent } from "./cargodetails/cargodetails.component";
+import { PaginatorComponent } from "@app/paginator/paginator.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CargodetailsComponent } from "./cargodetails/cargodetails.component";
     ShipmentmapviewComponent,
     ShipmentactivityComponent,
     CargodetailsComponent,
+    PaginatorComponent
   ],
   imports: [
     CommonModule,
@@ -30,4 +32,4 @@ import { CargodetailsComponent } from "./cargodetails/cargodetails.component";
     DashboardPageModule,
   ],
 })
-export class ShipmentspageModule {}
+export class ShipmentspageModule { }

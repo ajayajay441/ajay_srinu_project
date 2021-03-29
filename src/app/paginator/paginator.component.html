@@ -1,0 +1,25 @@
+currentpage:{{currentpage}}
+totalpages {{totalpages}}
+
+<br />
+<br />
+<div class="paginator-component" fxLayout="row">
+    <div>
+        <button mat-stroked-button [disabled]="currentpage === 1" (click)="setCurrentPage(currentpage-1)">
+            Prev Page
+        </button>
+    </div>
+    <!-- <div *ngFor="let page of pagesInView" fxLayout="row">
+        <button mat-icon-button [color]="page === currentpage ? 'primary' : 'light'" (click)="setCurrentPage(page)">
+            {{page}}
+        </button>
+    </div> -->
+    <button color="primary" mat-stroked-button disabled>
+        {{currentpage}}
+    </button>
+    <div>
+        <button mat-stroked-button [disabled]="currentpage === totalpages" (click)="setCurrentPage(currentpage+1)">
+            Next Page
+        </button>
+    </div>
+</div>

@@ -240,4 +240,6 @@
       </div>
     </mat-card>
   </div>
+  <!-- pagination buttons -->
+  <app-paginator [currentpage]="1" [totalpages]="10" (changePage)="onChangePage($event)"></app-paginator>
 </div>

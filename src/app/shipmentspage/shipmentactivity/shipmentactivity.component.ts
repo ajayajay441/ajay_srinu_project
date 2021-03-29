@@ -14,7 +14,7 @@ export class ShipmentactivityComponent implements OnInit {
   inEditMode: boolean = false;
   sendMessageViaOptions: string[] = ["email", "phone"];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     console.log("shipment", this.shipment);
@@ -24,6 +24,7 @@ export class ShipmentactivityComponent implements OnInit {
     this.sendMessageToParties.push(this.emptyParty);
     console.log("this.sendMessageToParties", this.sendMessageToParties);
   }
+
 }
 
 interface Party {
