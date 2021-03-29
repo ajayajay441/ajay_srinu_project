@@ -1,33 +1,59 @@
-<div
-  fxLayout="row"
-  fxLayoutGap="10px"
-  fxLayoutAlign="start center"
-  class="py-3 header-row"
->
-  <div fxFlex="250px" class="px-3">Document Date</div>
-  <div fxFlex class="px-3">Cargo Arrival Notice</div>
-</div>
-<div
-  fxLayout="row"
-  fxLayoutAlign="start center"
-  fxLayoutGap="10px"
-  class="py-3"
-  *ngFor="let CAN of CANData"
->
-  <div fxFlex="250px" class="px-3">{{ CAN.document_date }}</div>
+<div fxHide fxShow.gt-md>
   <div
-    fxFlex
-    class="px-3"
     fxLayout="row"
-    fxLayoutAlign="space-between center"
     fxLayoutGap="10px"
+    fxLayoutAlign="start center"
+    class="py-3 header-row"
   >
-    <p fxFlex>{{ CAN.document_name }}</p>
-    <div fxFlex class="text-right">
+    <div fxFlex="250px" class="px-3">Document Date</div>
+    <div fxFlex class="px-3">Cargo Arrival Notice</div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+    class="py-3"
+    *ngFor="let CAN of CANData"
+  >
+    <div fxFlex="250px" class="px-3">{{ CAN.document_date }}</div>
+    <div
+      fxFlex
+      class="px-3"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="10px"
+    >
+      <p fxFlex>{{ CAN.document_name }}</p>
+      <div fxFlex class="text-right">
+        <button mat-raised-button color="primary" class="mat-elevation-z0">
+          <mat-icon>upload_file</mat-icon>
+          <a href="{{ CAN.link }}" target="_blank"> Download</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- mobile view -->
+<div fxShow fxhide.gt-md>
+  <h2>CAN</h2>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    fxLayoutGap="10px"
+    class="my-3 purchase-item header-row"
+    *ngFor="let CAN of CANData"
+  >
+    <h5 fxFlex class="mb-1 bold">
+      {{ CAN.document_date }}
+    </h5>
+    <h5 fxFlex class="mb-1 bold">
+      {{ CAN.document_name }}
+    </h5>
+    <h5 fxFlex class="mb-1">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon>upload_file</mat-icon>
         <a href="{{ CAN.link }}" target="_blank"> Download</a>
       </button>
-    </div>
+    </h5>
   </div>
 </div>

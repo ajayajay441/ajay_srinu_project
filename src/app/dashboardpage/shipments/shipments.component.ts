@@ -42,7 +42,13 @@ export class ShipmentsComponent implements OnInit {
     this.matIconRegistry.addSvgIcon(
       "fresconflight",
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../assets/icons/fresconflight.svg"
+        "../../../assets/icons/fresconflight.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      "fresconShip",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../../assets/icons/ship.svg"
       )
     );
   }

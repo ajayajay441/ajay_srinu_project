@@ -26,32 +26,34 @@
     <a class="underline accent"> View all </a>
   </div>
   <div class="card-body" fxHide fxShow.gt-md>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="start center"
-      fxLayoutGap="10px"
-      class="py-3 purchases-table-header"
-    >
-      <h3 fxFlex class="mb-0">Picked-up PO’s</h3>
-      <h3 fxFlex class="mb-0">Origins</h3>
-      <h3 fxFlex class="mb-0">Booked Number HBL</h3>
-    </div>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="start center"
-      fxLayoutGap="10px"
-      class="my-3 purchase-item"
-      *ngFor="let element of data"
-    >
-      <h5 fxFlex class="mb-0">
-        {{ element.ponumber }}
-      </h5>
-      <h5 fxFlex class="mb-0">
-        {{ element.origin }}
-      </h5>
-      <h5 fxFlex class="mb-0">
-        {{ element["hbl-number"] }}
-      </h5>
+    <div fxLayout="column" fxLayoutAlign="center space-between">
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="10px"
+        class="py-3 purchases-table-header"
+      >
+        <h3 fxFlex class="mb-0">Picked-up PO’s</h3>
+        <h3 fxFlex class="mb-0">Origins</h3>
+        <h3 fxFlex class="mb-0">Booked Number HBL</h3>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="10px"
+        class="my-3 purchase-item"
+        *ngFor="let element of data"
+      >
+        <h5 fxFlex class="mb-0">
+          {{ element.ponumber }}
+        </h5>
+        <h5 fxFlex class="mb-0">
+          {{ element.origin }}
+        </h5>
+        <h5 fxFlex class="mb-0">
+          {{ element["hbl-number"] }}
+        </h5>
+      </div>
     </div>
   </div>
   <div class="card-body" fxShow fxHide.gt-md>

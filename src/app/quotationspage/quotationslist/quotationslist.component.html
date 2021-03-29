@@ -6,9 +6,13 @@
   multiTemplateDataRows
 >
   <!-- Position Column -->
-  <ng-container matColumnDef="qtno">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>QT No</th>
-    <td mat-cell *matCellDef="let element">{{ element.qtno }}</td>
+  <ng-container matColumnDef="quotation-number">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="quotation-number">
+      QT No
+    </th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["quotation-number"] }}
+    </td>
   </ng-container>
 
   <!-- for expansion panel every row expansion details -->
@@ -28,9 +32,11 @@
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="reference">
+  <ng-container matColumnDef="reference-number">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Reference</th>
-    <td mat-cell *matCellDef="let element">{{ element.reference }}</td>
+    <td mat-cell *matCellDef="let element">
+      {{ element["reference-number"] }}
+    </td>
   </ng-container>
 
   <!-- Weight Column -->
@@ -46,9 +52,9 @@
       {{ element.destination }}
     </td>
   </ng-container>
-  <ng-container matColumnDef="qtexpiry">
+  <ng-container matColumnDef="expiry_date">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>QT Expiry</th>
-    <td mat-cell *matCellDef="let element">{{ element.qtexpiry }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.expiry_date }}</td>
   </ng-container>
   <ng-container matColumnDef="amount">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
@@ -74,9 +80,12 @@
     <td mat-cell *matCellDef="let element" class="mat-primary">
       <a
         class="underline cursor-pointer"
-        (click)="expandedElement = expandedElement === element ? null : element"
+        (click)="
+          expandedElement = expandedElement === element ? null : element;
+          getQuoteDetail(element['quotation-number'])
+        "
       >
-        {{ element.details }}
+        Details
       </a>
     </td>
   </ng-container>
