@@ -5,7 +5,7 @@ import { FormsModule } from "@angular/forms";
 //modules
 import { AppMaterialModule } from "./app-material.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
-
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 // components
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -16,6 +16,8 @@ import { DashboardPageModule } from "./dashboardpage/dashboardpage.module";
 import { ShipmentspageModule } from "./shipmentspage/shipmentspage.module";
 import { QuotationspageModule } from "./quotationspage/quotationspage.module";
 import { EbookingpageModule } from "./ebookingpage/ebookingpage.module";
+import { InvoicepageModule } from "./invoicepage/invoicepage.module";
+import { PurchaseorderpageModule } from "./purchaseorderpage/purchaseorderpage.module";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -29,8 +31,11 @@ import { EbookingpageModule } from "./ebookingpage/ebookingpage.module";
     ShipmentspageModule,
     QuotationspageModule,
     EbookingpageModule,
+    InvoicepageModule,
+    PurchaseorderpageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, InvoicepageModule],
 })
 export class AppModule {}
+platformBrowserDynamic().bootstrapModule(AppModule);

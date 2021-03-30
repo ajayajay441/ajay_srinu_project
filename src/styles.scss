@@ -17,15 +17,15 @@ body {
   margin-bottom: 0px !important;
 }
 
-.mat-primary:not(.mat-button-base.mat-primary) {
+.mat-primary:not(button) {
   svg {
     fill: $fresonprimarycolor;
     color: $fresonprimarycolor;
   }
-  a {
-    color: $fresonprimarycolor;
-    border-bottom-color: $fresonprimarycolor;
-  }
+}
+a.mat-primary {
+  color: $fresonprimarycolor;
+  border-bottom-color: $fresonprimarycolor;
 }
 .mat-accent {
   svg {

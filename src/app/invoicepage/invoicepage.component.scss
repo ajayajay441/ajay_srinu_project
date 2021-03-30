@@ -1,0 +1,76 @@
+@import "./../../variables.scss";
+
+.light-color-button {
+  color: $fresonlightcolor !important;
+}
+.status-tracker-container {
+  width: 80%;
+  max-width: 800px;
+}
+::ng-deep {
+  .mat-tab-label-active {
+    .mat-tab-label-content {
+      color: $fresonprimarycolor !important;
+    }
+  }
+}
+mat-icon.search-icon {
+  top: 7px !important;
+  margin-right: 7px !important;
+  position: relative;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 70px;
+}
+td.mat-cell,
+th.mat-header-cell,
+.mat-footer-cell {
+  border-bottom-style: none;
+  color: $fresonaccentcolor;
+}
+.mat-header-row {
+  background-color: $fresconheaderscolor;
+}
+tr.detail-row {
+  height: 0;
+}
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.inv_box {
+  width: 302px;
+  height: 155px;
+  background: #ffffff;
+  .para {
+    color: #696974;
+  }
+}
+.green {
+  color: #3dd598;
+  font-size: 16px;
+  svg {
+    display: inline-block !important;
+  }
+}
+.schedules-table-header {
+  background-color: #f7f8fa;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.schedule-item {
+  height: 50px;
+}
+.header-row {
+  background-color: #f7f8fa;
+}
+.bold {
+  font-weight: bold !important;
+}
+a {
+  // color: #fff !important;
+}

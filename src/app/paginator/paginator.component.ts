@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-paginator',
-  templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.scss']
+  selector: "app-paginator",
+  templateUrl: "./paginator.component.html",
+  styleUrls: ["./paginator.component.scss"],
 })
 export class PaginatorComponent implements OnInit {
   @Input() currentpage: number = 1;
@@ -17,26 +17,30 @@ export class PaginatorComponent implements OnInit {
   public pagesInView: number[] = [];
   private changeBy = 1;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.pagesInView = this.getPagesInView();
-    console.log('this.pagesInView', this.pagesInView);
+    console.log("this.pagesInView", this.pagesInView);
   }
 
   getPagesInView() {
-    let initialPages: any = [...new Array(this.noOfPagesInView).keys()].map(x => ++x);
+    let initialPages: any = [...new Array(this.noOfPagesInView).keys()].map(
+      (x) => ++x
+    );
     if (this.currentpage < this.noOfPagesInView) {
       return initialPages;
     } else if (this.currentpage != this.totalpages) {
-      console.log('aaa', this.changeBy, this.pagesInView.map(el => el + (this.changeBy)));
-      return this.pagesInView.length ?
-        this.pagesInView.map(el => el + (this.changeBy)) :
-        initialPages;
+      console.log(
+        "aaa",
+        this.changeBy,
+        this.pagesInView.map((el) => el + this.changeBy)
+      );
+      return this.pagesInView.length
+        ? this.pagesInView.map((el) => el + this.changeBy)
+        : initialPages;
     } else {
-      return this.pagesInView.length ?
-        this.pagesInView :
-        initialPages;
+      return this.pagesInView.length ? this.pagesInView : initialPages;
     }
 
     // 1 => 12345
@@ -51,6 +55,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   setCurrentPage(page: number) {
+    debugger;
     if (this.currentpage !== page) {
       this.currentpage = page;
       if (this.currentpage === this.totalpages && this.changeBy === 1) {

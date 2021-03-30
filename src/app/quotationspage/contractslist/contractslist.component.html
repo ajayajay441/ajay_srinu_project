@@ -56,6 +56,7 @@
                 mat-raised-button
                 color="primary"
                 class="mat-elevation-z0"
+                (click)="goTo('/ebooking', 'data')"
               >
                 Create Booking
               </button>
@@ -87,9 +88,9 @@
   </ng-container>
   <ng-container matColumnDef="details">
     <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-    <td mat-cell *matCellDef="let element" class="mat-primary">
+    <td mat-cell *matCellDef="let element">
       <a
-        class="underline cursor-pointer"
+        class="underline cursor-pointer mat-primary"
         (click)="element.isExpanded = !element.isExpanded"
       >
         See Details

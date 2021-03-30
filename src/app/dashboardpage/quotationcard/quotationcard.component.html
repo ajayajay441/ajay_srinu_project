@@ -11,7 +11,7 @@
   </div>
   <div class="card-body">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <h3 class="mb-0">
+      <h3 class="mb-0 bold">
         {{ element["quotation-number"] }}
       </h3>
       <h5 class="mb-0">
@@ -24,7 +24,7 @@
       fxLayoutGap="10px"
       class="mb-3"
     >
-      <h5 class="mb-0">
+      <h5 class="mb-0 bold">
         {{ element.origin }}
       </h5>
       <mat-icon *ngIf="element.mode === 'AIR'" class="transform rotate-90"
@@ -67,19 +67,21 @@
           fill="black"
         />
       </svg>
-      <h5 class="mb-0">
+      <h5 class="mb-0 bold">
         {{ element.destination }}
       </h5>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
       <h5 class="mb-0">
-        Place: <span>{{ element.places }}</span>
+        <span class="font-bold"> Place: </span><span>{{ element.places }}</span>
       </h5>
       <h5 class="mb-0">
-        Weight: <span>{{ element.weight }}</span>
+        <span class="font-bold"> Weight: </span
+        ><span>{{ element.weight }}</span>
       </h5>
       <h5 class="mb-0">
-        Volume: <span>{{ element.volume }}</span>
+        <span class="font-bold"> Volume: </span
+        ><span>{{ element.volume }}</span>
       </h5>
     </div>
   </div>

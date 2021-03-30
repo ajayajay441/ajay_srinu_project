@@ -22,42 +22,70 @@ export class ShipmentspageComponent implements OnInit {
   tabdata: any = [];
   viewShipmentsType = "bookmarked";
   loading: boolean = true;
-
+  currentPage: any;
+  lastPage: any;
+  filters: any;
+  sendto: string = "";
+  shipmentStatusTypes = [
+    { label: "Arriving", value: "ARRIVING" },
+    { label: "Booked", value: "BOOKED" },
+  ];
+  activeShipmentStatusType: any = "";
   constructor(
     private router: Router,
     private http: HttpClient,
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getShipmentDetails();
+    this.getdashboardfilter();
   }
 
   toggleShipmentDataView(shipment: any) {
     console.log(shipment, "card expand or collapse");
   }
-  getShipmentDetails(value?: string) {
-    let status = "";
-    this.loading = false;
-    // this.authenticationService
-    //   .refreshToken()
-    //   .pipe(
-    //     switchMap((userData) => {
-    //       return this.shipmentService.getShipmentDetails(
-    //         userData.Token,
-    //         status
-    //       );
-    //     })
-    //   )
-    //   .subscribe((response: any) => {
-    //     this.data = response.ShipmentCard;
-    //     this.loading = false;
-    //     console.log("Shipmentpage Response", response.ShipmentCard);
-    //   });
-  }
+  getShipmentDetails(value?: string, page?: any) {
+    let pageNo = page ? page : "1";
+    // let status = "";
+    if (value) this.activeShipmentStatusType = value;
+    // this.loading = false;
+    this.authenticationService
+      .refreshToken()
+      .pipe(
+        switchMap((userData) => {
+          return this.shipmentService.getShipmentDetails(
+            userData.Token,
+            this.activeShipmentStatusType,
+            pageNo,
+            10
+          );
+        })
+      )
+      .subscribe((response: any) => {
+        this.data = response.ShipmentCard;
+        this.currentPage = Number(response.currentPage);
+        this.lastPage = Number(response.lastPage);
 
+        this.loading = false;
+        console.log("Shipmentpage Response", response.ShipmentCard);
+      });
+  }
+  getdashboardfilter() {
+    this.authenticationService
+      .refreshToken()
+      .pipe(
+        switchMap((userData) => {
+          return this.shipmentService.getdashboardfilter(userData.Token);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log("Filter Values", response);
+        this.filters = response;
+      });
+  }
   getShipmentTabDetails(id?: any) {
     let status = "";
     let booking_no = id.booking_number;
@@ -91,7 +119,10 @@ export class ShipmentspageComponent implements OnInit {
     console.log(id);
     this.getShipmentTabDetails(id);
   }
-  onChangePage(page: number) {
-    console.log('page', page);
+  onChangePage(page: any) {
+    console.log("page", page, this.sendto);
+    let status = this.activeShipmentStatusType;
+    this.loading = true;
+    this.getShipmentDetails(status, page);
   }
 }

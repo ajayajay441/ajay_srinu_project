@@ -4,6 +4,8 @@ import { DashboardpageComponent } from "./dashboardpage/dashboardpage.component"
 import { EbookingpageComponent } from "./ebookingpage/ebookingpage.component";
 import { QuotationspageComponent } from "./quotationspage/quotationspage.component";
 import { ShipmentspageComponent } from "./shipmentspage/shipmentspage.component";
+import { InvoicepageComponent } from "./invoicepage/invoicepage.component";
+import { PurchaseorderpageComponent } from "./purchaseorderpage/purchaseorderpage.component";
 
 const routes: Routes = [
   {
@@ -26,7 +28,15 @@ const routes: Routes = [
 
   {
     path: "po",
+    component: PurchaseorderpageComponent,
+  },
+  {
+    path: "ebooking",
     component: EbookingpageComponent,
+  },
+  {
+    path: "invoice",
+    component: InvoicepageComponent,
   },
   {
     path: "**",

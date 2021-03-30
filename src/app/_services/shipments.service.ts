@@ -14,14 +14,19 @@ export class ShipmentService {
     private authenticationService: AuthenticationService
   ) {}
 
-  getShipmentDetails(refreshToken?: string, status?: string) {
+  getShipmentDetails(
+    refreshToken?: string,
+    status?: string,
+    spagesize?: any,
+    sperpage?: any
+  ) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
     let url;
     if (status != "") {
       // url=`${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`
-      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`;
+      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&spagesize=${spagesize}&sperpage=${sperpage}`;
     } else {
-      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=`;
+      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=&spagesize=${spagesize}&sperpage=${sperpage}`;
     }
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
@@ -45,6 +50,38 @@ export class ShipmentService {
     } else {
       url = `${environment.apiUrl}/getshipmentupdates_filter?user_token=${jwtToken}&sauth_token=${refreshToken}&status=`;
     }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        this.authenticationService
+          .refreshToken()
+          .pipe(first())
+          .subscribe({
+            next: () => {},
+            error: (error) => {},
+          });
+        return response;
+      })
+    );
+  }
+  getdashboardfilter(refreshToken?: string) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/getdashboardfilter?user_token=${jwtToken}&sauth_token=${refreshToken}`;
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        this.authenticationService
+          .refreshToken()
+          .pipe(first())
+          .subscribe({
+            next: () => {},
+            error: (error) => {},
+          });
+        return response;
+      })
+    );
+  }
+  getebooking_shipper(refreshToken?: string, value?: string) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/getebooking_shipper?user_token=${jwtToken}&sauth_token=${refreshToken}&ssearch_key=${value}`;
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
         this.authenticationService

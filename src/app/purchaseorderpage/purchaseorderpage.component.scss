@@ -1,0 +1,21 @@
+@import "./../../variables.scss";
+
+.light-color-button {
+  color: $fresonlightcolor !important;
+}
+.status-tracker-container {
+  width: 80%;
+  max-width: 800px;
+}
+::ng-deep {
+  .mat-tab-label-active {
+    .mat-tab-label-content {
+      color: $fresonprimarycolor !important;
+    }
+  }
+}
+mat-icon.search-icon {
+  top: 7px !important;
+  margin-right: 7px !important;
+  position: relative;
+}

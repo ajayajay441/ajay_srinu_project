@@ -62,13 +62,14 @@ export class DashboardService {
     );
   }
 
-  getDashboardInvoice(refreshToken?: string, status?: string) {
+  getDashboardInvoice(refreshToken?: string, status?: string, limit?: any) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "";
     let url;
     if (status != "" || status != undefined) {
-      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`;
+      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
     } else {
-      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status`;
+      url = `${environment.apiUrl}/getdashboardInvoice?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
     }
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
@@ -76,7 +77,15 @@ export class DashboardService {
       })
     );
   }
-
+  getinvoicedetail(refreshToken?: string, sinvoice_no?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/getinvoicedetail?user_token=${jwtToken}&sauth_token=${refreshToken}&sinvoice_no=${sinvoice_no}`;
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
   getDashboardThingsToDo(refreshToken?: string, status?: string, limit?: any) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
     const limitValue = limit ? limit : "ALL";

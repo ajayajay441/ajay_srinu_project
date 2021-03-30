@@ -64,45 +64,7 @@ export class ShipmentsComponent implements OnInit {
   getDashboardShipments(value?: string) {
     if (value) this.activeShipmentStatusType = value;
     console.log(this.activeShipmentStatusType);
-    this.data = [
-      {
-        "hbl-number": "400551000083",
-        "customer-name": "SHANMU",
-        ponumber: "",
-        "clearance-flag": "N",
-        "boe-no": "BOEDEMO",
-        "clr-no": "DDD",
-        "latest-update":
-          "This is only a booking information and subsequent milestones will be updated.",
-        origin: "MUMBAI",
-        ETD: "05-MAR-21",
-        destination: "DUBAI",
-        ETA: "09-MAR-21",
-        mode: "SEA",
-        pre_alert_document:
-          "https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
-        status: "IN TRANSIT",
-        "eta-flag": "",
-      },
-      {
-        "hbl-number": "DXB2100001",
-        "customer-name": "SHANMU",
-        ponumber: "",
-        "clearance-flag": "N",
-        "boe-no": "BOEDEMO",
-        "clr-no": "DDD",
-        "latest-update": "Cargo Received Confirmation",
-        origin: "MUMBAI",
-        ETD: "05-MAR-21",
-        destination: "DUBAI",
-        ETA: "10-MAR-21",
-        mode: "SEA",
-        pre_alert_document:
-          "https://freightsystems.com/frescon_api/service.asmx/Document_Download?doc_uid=20210110030083&sl_no=1",
-        status: "IN TRANSIT",
-        "eta-flag": "",
-      },
-    ];
+    // this.data = /,
     this.authenticationService
       .refreshToken()
       .pipe(

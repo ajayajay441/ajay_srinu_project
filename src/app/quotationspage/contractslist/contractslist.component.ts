@@ -8,7 +8,7 @@ import {
   trigger,
 } from "@angular/animations";
 import { MatTableDataSource } from "@angular/material/table";
-
+import { Router } from "@angular/router";
 @Component({
   selector: "app-contractslist",
   templateUrl: "./contractslist.component.html",
@@ -65,7 +65,7 @@ export class ContractslistComponent implements OnInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor() {
+  constructor(private router: Router) {
     this.filter = "";
   }
 
@@ -79,6 +79,10 @@ export class ContractslistComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  goTo(routePageName: string, data: any) {
+    console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
+  }
 }
 
 export interface PeriodicElement {

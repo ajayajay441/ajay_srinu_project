@@ -1,15 +1,59 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-
+import { FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { ShipmentService } from "../_services/shipments.service";
+import { Subscription } from "rxjs/index";
+import { switchMap } from "rxjs/operators";
+import { AuthenticationService } from "../_services";
+import { DashboardService } from "../_services/dashboard.service";
+const cargoContainerType = [
+  {
+    label: "type",
+    name: "Type",
+    options: ["Box", "Bundle"],
+    selectedValue: null,
+  },
+  {
+    label: "noOfPieces",
+    name: "Type",
+    options: ["1", "2", "3"],
+    selectedValue: null,
+  },
+  {
+    label: "width",
+    name: "Width",
+    selectedValue: null,
+  },
+  {
+    label: "height",
+    name: "Height",
+    selectedValue: null,
+  },
+  {
+    label: "length",
+    name: "Length",
+    selectedValue: null,
+  },
+  {
+    label: "weight",
+    name: "Weight",
+    selectedValue: null,
+  },
+];
 @Component({
   selector: "app-ebookingpage",
   templateUrl: "./ebookingpage.component.html",
   styleUrls: ["./ebookingpage.component.scss"],
 })
 export class EbookingpageComponent implements OnInit {
+  myControl = new FormControl();
+  shipper: any;
   checked = false;
   panelOpenState = false;
   ebooking: any = {};
   sendto: string = "Shipper";
+  originDataList: any;
   valueService: any = [
     {
       name: "Is your cargo hazardous?",
@@ -44,7 +88,7 @@ export class EbookingpageComponent implements OnInit {
       ],
     },
   ];
-
+  cargoContainerTypes = [cargoContainerType];
   shipmentOptions = [
     {
       label: "freightMethods",
@@ -67,7 +111,14 @@ export class EbookingpageComponent implements OnInit {
   ];
 
   viewShipmentsType = "LCL";
-  constructor() {}
+
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private shipmentService: ShipmentService,
+    private authenticationService: AuthenticationService,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {}
   getalueAndServicesSelectedValues() {
@@ -77,5 +128,72 @@ export class EbookingpageComponent implements OnInit {
     const result: any = {};
     this.shipmentOptions.forEach((x) => (result[x.label] = x.selectedValue));
     console.log("ebooking", result);
+  }
+  callApi(val: any) {
+    this.shipper = val;
+    if (val.length >= 6) {
+      this.authenticationService
+        .refreshToken()
+        .pipe(
+          switchMap((userData) => {
+            return this.shipmentService.getebooking_shipper(
+              userData.Token,
+              this.shipper
+            );
+          })
+        )
+        .subscribe((response: any) => {
+          this.originDataList = response.shipperlist;
+          console.log("origin response", response);
+        });
+    }
+  }
+  addCargotype() {
+    this.cargoContainerTypes.push([
+      {
+        label: "type",
+        name: "Type",
+        options: ["Box", "Bundle"],
+        selectedValue: null,
+      },
+      {
+        label: "noOfPieces",
+        name: "Type",
+        options: ["1", "2", "3"],
+        selectedValue: null,
+      },
+      {
+        label: "width",
+        name: "Width",
+        selectedValue: null,
+      },
+      {
+        label: "height",
+        name: "Height",
+        selectedValue: null,
+      },
+      {
+        label: "length",
+        name: "Length",
+        selectedValue: null,
+      },
+      {
+        label: "weight",
+        name: "Weight",
+        selectedValue: null,
+      },
+    ]);
+  }
+  removeCargoType() {
+    this.cargoContainerTypes.pop();
+  }
+  getCargoContainerTypeData() {
+    // this.cargoContainerTypes.forEach()
+    const result: any = [];
+    this.cargoContainerTypes.forEach((type, i) => {
+      result[i] = {};
+      type.forEach((field) => (result[i][field.label] = field.selectedValue));
+    });
+    console.log("result", result);
   }
 }

@@ -88,24 +88,28 @@ export class QuotationslistComponent implements OnInit {
 
   getDashboardQuotation(value?: string) {
     let status = "";
-    if (value == "Review Quote") {
-      status = "REVIEW_QUOTES";
-    } else if (value == "Approved Quote") {
-      status = "APPROVED_QUOTES";
-    } else if (value == "Enquiry") {
-      status = "ENQUIRY";
-    }
+    // if (value == "Review Quote") {
+    //   status = "REVIEW_QUOTES";
+    // } else if (value == "Approved Quote") {
+    //   status = "APPROVED_QUOTES";
+    // } else if (value == "Enquiry") {
+    //   status = "ENQUIRY";
+    // }
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardQuotation(userData.Token);
+          return this.dashboardService.getDashboardQuotation(
+            userData.Token,
+            status
+          );
         })
       )
       .subscribe((response: any) => {
         this.data = response.Quotation;
         this.dataSource = new MatTableDataSource(response.Quotation);
         // this.loading = false;
+        this.dataSource.sort = this.sort;
         console.log("Quotation response", response.Quotation);
       });
   }
