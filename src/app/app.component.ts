@@ -1,10 +1,12 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { filter } from 'rxjs/operators';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,10 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'frescon';
   currentRoute = '';
+  drawer!: MatDrawer;
   menuList: NavMenuItem[] = [
     { name: 'Dashboard', label: 'Dashboard', route: '/dashboard', icon: 'dashboard', isActive: true },
     { name: 'Shipments', label: 'Shipments', route: '/shipments', icon: 'shipments', isActive: false },
@@ -30,10 +33,14 @@ export class AppComponent {
     { name: 'Settings', label: 'Settings', route: '/settings', icon: 'settings', isActive: false },
     { name: 'Support', label: 'Support', route: '/support', icon: 'support', isActive: false },
   ];
+  watcher: any;
+  gtMd = false;
   constructor(
     private router: Router,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer) {
+    private domSanitizer: DomSanitizer,
+    mediaObserver: MediaObserver
+  ) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event) => {
@@ -84,7 +91,9 @@ export class AppComponent {
       "support",
       this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/icons/support.svg")
     );
-
+    this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
+      this.gtMd = !['xs', 'sm', 'md'].includes(change.mqAlias);
+    });
   }
 
   onMenuItemClick(menuItem: NavMenuItem) {
@@ -95,7 +104,12 @@ export class AppComponent {
     }
   }
 
-  goTo(routePageName: string) {
+  ngOnDestroy() {
+    this.watcher.unsubscribe();
+  }
+
+  goTo(routePageName: string, drawer?: MatDrawer) {
+    drawer && drawer.close();
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
 }
