@@ -37,14 +37,20 @@ export class DashboardService {
     );
   }
 
-  getDashboardQuotation(refreshToken?: string, status?: string, limit?: any) {
+  getDashboardQuotation(
+    refreshToken?: string,
+    status?: string,
+    limit?: any,
+    filetr?: any
+  ) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
     const limitValue = limit ? limit : "";
+    const filetrValue = filetr ? filetr : "";
     let url;
     if (status != "") {
-      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}`;
+      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit=${limitValue}&sfilter_status=${filetrValue}`;
     } else {
-      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
+      url = `${environment.apiUrl}/getdashboardQuotation?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}&sfilter_status=${filetrValue}`;
     }
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
@@ -101,7 +107,28 @@ export class DashboardService {
       })
     );
   }
-
+  getDashboardMap(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status !== "") {
+      url = `${environment.apiUrl}/getdashboardMap?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit`;
+    } else {
+      url = `${environment.apiUrl}/getdashboardMap?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        this.authenticationService
+          .refreshToken()
+          .pipe(first())
+          .subscribe({
+            next: () => {},
+            error: (error) => {},
+          });
+        return response;
+      })
+    );
+  }
   getDashboardSailings(refreshToken?: string, status?: string, limit?: any) {
     const jwtToken = this.localStorageService.getItem("jwtToken");
     const limitValue = limit ? limit : "ALL";
@@ -127,6 +154,35 @@ export class DashboardService {
     } else {
       url = `${environment.apiUrl}/getdashboardPO?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit=${limitValue}`;
     }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
+
+  //po page API
+
+  getpurchaseorder(refreshToken?: string, status?: string, limit?: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    const limitValue = limit ? limit : "ALL";
+    let url;
+    if (status != "") {
+      url = `${environment.apiUrl}/getpurchaseorder?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&limit`;
+    } else {
+      url = `${environment.apiUrl}/getpurchaseorder?user_token=${jwtToken}&sauth_token=${refreshToken}&status&limit`;
+    }
+    return this.http.get<any>(url).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
+
+  //getpurchaseorderdetail
+  getpurchaseorderdetail(refreshToken?: string, spo_number?: string) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/getpurchaseorderdetail?user_token=${jwtToken}&sauth_token=${refreshToken}&spo_number	=${spo_number}`;
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
         return response;

@@ -23,7 +23,7 @@
       >
         <h3 class="mb-0">Status</h3>
         <mat-form-field class="w-full max100px">
-          <mat-select>
+          <mat-select (selectionChange)="onStatusChange($event.value)">
             <mat-option
               *ngFor="let status of filters.status"
               [value]="status.value"
@@ -43,7 +43,7 @@
       >
         <h3 class="mb-0">Mode</h3>
         <mat-form-field class="w-full max100px">
-          <mat-select>
+          <mat-select (selectionChange)="onModeChange($event.value)">
             <mat-option *ngFor="let mode of filters.mode" [value]="mode.value">
               {{ mode.name }}
             </mat-option>
@@ -76,6 +76,7 @@
       </button>
     </div>
   </div>
+
   <div class="mb-10" fxHide fxShow.gt-md>
     <mat-card class="mat-elevation-z0">
       <div
@@ -406,6 +407,7 @@
     </mat-card>
   </div>
   <app-paginator
+    *ngIf="!loading"
     [currentpage]="currentPage"
     [totalpages]="lastPage"
     (changePage)="onChangePage($event)"

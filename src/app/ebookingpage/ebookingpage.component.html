@@ -1,5 +1,10 @@
 <div class="ebooking-page">
-  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
     <h1 class="mb-0">E-Booking</h1>
     <button mat-raised-button color="primary" class="mat-elevation-z0">
       <mat-icon>upload_file</mat-icon>
@@ -8,7 +13,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Add a New Shipment</h1>
@@ -21,7 +30,11 @@
           <div class="mb-9">
             <div>
               <mat-form-field appearance="outline">
-                <input matInput placeholder="Placeholder" />
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  [(ngModel)]="ebooking.sShipperName"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -31,14 +44,22 @@
             <h3>Select {{ shipmentOption.name }}</h3>
           </div>
           <div fxLayout="row wrap" fxLayoutGap="25px">
-            <div *ngFor="let currentOption of shipmentOption.options" class="my-2">
-              <button mat-stroked-button [color]="
+            <div
+              *ngFor="let currentOption of shipmentOption.options"
+              class="my-2"
+            >
+              <button
+                mat-stroked-button
+                [color]="
                   currentOption === shipmentOption.selectedValue
                     ? 'primary'
                     : 'light'
-                " [class.light-color-button]="
+                "
+                [class.light-color-button]="
                   currentOption !== shipmentOption.selectedValue
-                " (click)="shipmentOption.selectedValue = currentOption">
+                "
+                (click)="shipmentOption.selectedValue = currentOption"
+              >
                 {{ currentOption }}
               </button>
             </div>
@@ -49,7 +70,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Origin</h1>
@@ -60,17 +85,32 @@
             <h3>Origin Port</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="25px" fxLayoutAlign="start start">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field>
-                <input type="text" matInput [(ngModel)]="shipper" (ngModelChange)="callApi($event)"
-                  [matAutocomplete]="auto" />
+                <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="ebooking.shipper"
+                  (ngModelChange)="callApi($event)"
+                  [matAutocomplete]="auto"
+                />
                 <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let item of originDataList">
+                  <mat-option
+                    *ngFor="let item of originDataList"
+                    [value]="item.name"
+                  >
                     {{ item.name }}
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked">Checked</mat-checkbox>
+              <mat-checkbox color="warn" [(ngModel)]="checked"
+                >Checked</mat-checkbox
+              >
             </div>
           </div>
         </div>
@@ -80,7 +120,12 @@
             <h3>Pick-Up Location</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="25px" fxLayoutAlign="start start">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field appearance="outline" class="no-bottom-padding">
                 <mat-select [(ngModel)]="sendto">
                   <mat-option [value]="sendto"> Search Address </mat-option>
@@ -99,11 +144,19 @@
             <h3>Cargo Ready for Pickup Date</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="25px" fxLayoutAlign="start start">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field appearance="fill">
                 <mat-label>MM/DD/YYYY</mat-label>
                 <input matInput [matDatepicker]="picker" />
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
@@ -114,7 +167,11 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Shipment Destination</h1>
@@ -125,13 +182,20 @@
             <h3>Destination Port</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="25px" fxLayoutAlign="start start">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field appearance="outline" class="no-bottom-padding">
                 <mat-select [(ngModel)]="sendto">
                   <mat-option [value]="sendto"> Search Port </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked">Dekivery required</mat-checkbox>
+              <mat-checkbox color="warn" [(ngModel)]="checked"
+                >Dekivery required</mat-checkbox
+              >
             </div>
           </div>
         </div>
@@ -141,7 +205,12 @@
             <h3>Delivery Location</h3>
           </div>
           <div class="mb-9">
-            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="25px" fxLayoutAlign="start start">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
               <mat-form-field appearance="outline" class="no-bottom-padding">
                 <mat-select [(ngModel)]="sendto">
                   <mat-option [value]="sendto">
@@ -166,7 +235,10 @@
               <mat-form-field appearance="fill">
                 <mat-label>MM/DD/YYYY</mat-label>
                 <input matInput [matDatepicker]="picker" />
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
@@ -177,20 +249,36 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Value added services</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-between start">
+        <div
+          fxLayout="column"
+          fxLayout.gt-md="row"
+          fxLayoutAlign="space-between start"
+        >
           <div fxFlex *ngFor="let valueService of valueService">
             <div fxLayout="row" class="mb-0">
               <h3>{{ valueService.name }}</h3>
             </div>
             <div class="mb-radio">
-              <mat-radio-group color="primary" aria-label="Select an option" [(ngModel)]="ebooking[valueService.label]">
-                <mat-radio-button class="mr-3" [value]="option.value" *ngFor="let option of valueService.options">
+              <mat-radio-group
+                color="primary"
+                aria-label="Select an option"
+                [(ngModel)]="ebooking[valueService.label]"
+              >
+                <mat-radio-button
+                  class="mr-3"
+                  [value]="option.value"
+                  *ngFor="let option of valueService.options"
+                >
                   {{ option.label }}
                 </mat-radio-button>
               </mat-radio-group>
@@ -205,23 +293,38 @@
   </div>
   <div class="mb-10">
     <mat-accordion>
-      <mat-expansion-panel class="mat-elevation-z0" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h1 class="mb-0">Cargo & Container</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="mb-9" *ngFor="
+        <div
+          class="mb-9"
+          *ngFor="
             let item of cargoContainerTypes;
             last as isLast;
             first as isFirst
-          ">
-          <div fxLayout="column" fxLayout.gt-md="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
+          "
+        >
+          <div
+            fxLayout="column"
+            fxLayout.gt-md="row wrap"
+            fxLayoutGap="10px"
+            fxLayoutAlign="start center"
+          >
             <div *ngFor="let field of item">
               <div *ngIf="field.options">
                 <mat-form-field appearance="outline" class="no-bottom-padding">
                   <mat-select [(ngModel)]="field.selectedValue">
-                    <mat-option *ngFor="let option of field.options" [value]="option">
+                    <mat-option
+                      *ngFor="let option of field.options"
+                      [value]="option"
+                    >
                       {{ option }}
                     </mat-option>
                   </mat-select>
@@ -229,23 +332,42 @@
               </div>
               <div *ngIf="!field.options">
                 <mat-form-field appearance="outline">
-                  <input matInput placeholder="Placeholder" [(ngModel)]="field.selectedValue" />
+                  <input
+                    matInput
+                    placeholder="Placeholder"
+                    [(ngModel)]="field.selectedValue"
+                  />
                 </mat-form-field>
               </div>
             </div>
-            <button mat-raised-button color="primary" class="mat-elevation-z0"
-              *ngIf="isFirst && cargoContainerTypes.length === 1" (click)="addCargotype()">
+            <button
+              mat-raised-button
+              color="primary"
+              class="mat-elevation-z0"
+              *ngIf="isFirst && cargoContainerTypes.length === 1"
+              (click)="addCargotype()"
+            >
               add
             </button>
-            <button mat-raised-button color="primary" class="mat-elevation-z0"
-              *ngIf="isLast && cargoContainerTypes.length === 2" (click)="removeCargoType()">
+            <button
+              mat-raised-button
+              color="primary"
+              class="mat-elevation-z0"
+              *ngIf="isLast && cargoContainerTypes.length === 2"
+              (click)="removeCargoType()"
+            >
               Remove
             </button>
           </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <button mat-raised-button color="primary" class="mat-elevation-z0" (click)="getCargoContainerTypeData()">
+    <button
+      mat-raised-button
+      color="primary"
+      class="mat-elevation-z0"
+      (click)="getCargoContainerTypeData()"
+    >
       Confirm
     </button>
   </div>

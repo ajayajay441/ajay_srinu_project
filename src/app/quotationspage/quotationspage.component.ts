@@ -28,6 +28,8 @@ export class QuotationspageComponent implements OnInit {
   ];
   quotationType = "quotations"; // default selection
   filter: string = "";
+  data: any;
+  loading = true;
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -46,6 +48,27 @@ export class QuotationspageComponent implements OnInit {
   filterChanged(filter: string) {
     this.modelChanged.next(filter);
   }
-
-  ngOnInit(): void {}
+  getDashboardQuotation(value?: string) {
+    let status = "";
+    this.authenticationService
+      .refreshToken()
+      .pipe(
+        switchMap((userData) => {
+          return this.dashboardService.getDashboardQuotation(
+            userData.Token,
+            status,
+            ""
+          );
+        })
+      )
+      .subscribe((response: any) => {
+        this.data = response.Quotation;
+        // this.loading = false;
+        this.loading = false;
+        console.log("Quotation response", response.Quotation);
+      });
+  }
+  ngOnInit(): void {
+    this.getDashboardQuotation();
+  }
 }

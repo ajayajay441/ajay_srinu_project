@@ -48,7 +48,7 @@ const cargoContainerType = [
 })
 export class EbookingpageComponent implements OnInit {
   myControl = new FormControl();
-  shipper: any;
+  // shipper: any;
   checked = false;
   panelOpenState = false;
   ebooking: any = {};
@@ -130,7 +130,7 @@ export class EbookingpageComponent implements OnInit {
     console.log("ebooking", result);
   }
   callApi(val: any) {
-    this.shipper = val;
+    this.ebooking.shipper = val;
     if (val.length >= 6) {
       this.authenticationService
         .refreshToken()
@@ -138,7 +138,7 @@ export class EbookingpageComponent implements OnInit {
           switchMap((userData) => {
             return this.shipmentService.getebooking_shipper(
               userData.Token,
-              this.shipper
+              this.ebooking.shipper
             );
           })
         )
@@ -146,6 +146,8 @@ export class EbookingpageComponent implements OnInit {
           this.originDataList = response.shipperlist;
           console.log("origin response", response);
         });
+    } else if (!val.length) {
+      this.originDataList = [];
     }
   }
   addCargotype() {
@@ -189,6 +191,10 @@ export class EbookingpageComponent implements OnInit {
   }
   getCargoContainerTypeData() {
     // this.cargoContainerTypes.forEach()
+    this.shipmentOptions.forEach(
+      (x) => (this.ebooking[x.label] = x.selectedValue)
+    );
+    console.log(this.ebooking);
     const result: any = [];
     this.cargoContainerTypes.forEach((type, i) => {
       result[i] = {};

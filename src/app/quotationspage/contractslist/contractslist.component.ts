@@ -9,6 +9,8 @@ import {
 } from "@angular/animations";
 import { MatTableDataSource } from "@angular/material/table";
 import { Router } from "@angular/router";
+import { MatPaginator } from "@angular/material/paginator";
+
 @Component({
   selector: "app-contractslist",
   templateUrl: "./contractslist.component.html",
@@ -26,44 +28,30 @@ import { Router } from "@angular/router";
 })
 export class ContractslistComponent implements OnInit {
   @Input() filter: string;
+  @Input() data: any;
   displayedColumns: string[] = [
-    "contractRef",
-    "validFrom",
-    "validTo",
-    "signedby",
+    "reference-number",
+    "valid_from",
+    "expiry_date",
+    "approved_by",
     "details",
   ];
-  displayedColumns1: string[] = [
-    "service",
-    "from",
-    "to",
-    "term",
-    "createBooking",
-  ];
-  ELEMENT_DATA1: SubElement[] = [
-    {
-      service: "FSL-98001",
-      from: "Jan 1, 2021",
-      to: "Jan 1, 2021",
-      term: "Hemand",
-      createBooking: "Details",
-    },
-  ];
-  ELEMENT_DATA: PeriodicElement[] = [
-    {
-      contractRef: "FSL-98001",
-      validFrom: "Jan 1, 2021",
-      validTo: "Jan 1, 2021",
-      signedby: "Hemand",
-      details: "Details",
-    },
-  ];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  dataSource1 = new MatTableDataSource(this.ELEMENT_DATA1);
+  // ELEMENT_DATA: PeriodicElement[] = [
+  //   {
+  //     "reference-number": "FSL-98001",
+  //     valid_from: "Jan 1, 2021",
+  //     expiry_date: "Jan 1, 2021",
+  //     approved_by: "SHANMU",
+  //     details: "Details",
+  //   },
+  // ];
+  dataSource = new MatTableDataSource();
   expandedElement: PeriodicElement | null = null;
 
   @ViewChild(MatSort)
   sort!: MatSort;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(private router: Router) {
     this.filter = "";
@@ -78,7 +66,11 @@ export class ContractslistComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource(this.data);
+    setTimeout(() => (this.dataSource.paginator = this.paginator));
+    setTimeout(() => (this.dataSource.sort = this.sort));
+  }
   goTo(routePageName: string, data: any) {
     console.log("data", data);
     this.router.navigate([`${routePageName}`]); // navigate to other page
@@ -86,17 +78,10 @@ export class ContractslistComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  contractRef: string;
-  validFrom: string;
-  validTo: string;
-  signedby: string;
+  "reference-number": string;
+  valid_from: string;
+  expiry_date: string;
+  approved_by: string;
   details: string;
   isExpanded?: boolean;
-}
-export interface SubElement {
-  service: string;
-  from: string;
-  to: string;
-  term: string;
-  createBooking: string;
 }

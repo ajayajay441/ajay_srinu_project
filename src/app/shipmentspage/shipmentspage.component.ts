@@ -26,6 +26,7 @@ export class ShipmentspageComponent implements OnInit {
   lastPage: any;
   filters: any;
   sendto: string = "";
+  modeVal: string = "";
   shipmentStatusTypes = [
     { label: "Arriving", value: "ARRIVING" },
     { label: "Booked", value: "BOOKED" },
@@ -38,7 +39,7 @@ export class ShipmentspageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
   ) {}
-
+  shipmentDetailSubscription: any;
   ngOnInit(): void {
     this.getShipmentDetails();
     this.getdashboardfilter();
@@ -48,11 +49,12 @@ export class ShipmentspageComponent implements OnInit {
     console.log(shipment, "card expand or collapse");
   }
   getShipmentDetails(value?: string, page?: any) {
+    this.loading = true;
     let pageNo = page ? page : "1";
     // let status = "";
     if (value) this.activeShipmentStatusType = value;
     // this.loading = false;
-    this.authenticationService
+    this.shipmentDetailSubscription = this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
@@ -60,7 +62,10 @@ export class ShipmentspageComponent implements OnInit {
             userData.Token,
             this.activeShipmentStatusType,
             pageNo,
-            10
+            10,
+            this.modeVal,
+            "01-OCT-2020",
+            "20-OCT-2020"
           );
         })
       )
@@ -72,6 +77,9 @@ export class ShipmentspageComponent implements OnInit {
         this.loading = false;
         console.log("Shipmentpage Response", response.ShipmentCard);
       });
+  }
+  ngOnDestroy() {
+    this.shipmentDetailSubscription.unsubscribe();
   }
   getdashboardfilter() {
     this.authenticationService
@@ -118,6 +126,14 @@ export class ShipmentspageComponent implements OnInit {
   seeMoreShipmentData(id: any) {
     console.log(id);
     this.getShipmentTabDetails(id);
+  }
+  onModeChange(val: any) {
+    this.modeVal = val;
+    this.getShipmentDetails();
+  }
+  onStatusChange(val: any) {
+    this.activeShipmentStatusType = val;
+    this.getShipmentDetails();
   }
   onChangePage(page: any) {
     console.log("page", page, this.sendto);

@@ -14,6 +14,7 @@ import { Subscription } from "rxjs/index";
 import { Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../../_services";
+import { MatPaginator } from "@angular/material/paginator";
 @Component({
   selector: "app-quotationslist",
   templateUrl: "./quotationslist.component.html",
@@ -31,6 +32,7 @@ import { AuthenticationService } from "../../_services";
 })
 export class QuotationslistComponent implements OnInit {
   @Input() filter: string;
+  @Input() data: any;
   displayedColumns: string[] = [
     "quotation-number",
     "weight",
@@ -43,31 +45,13 @@ export class QuotationslistComponent implements OnInit {
     "status",
     "details",
   ];
-  data: PeriodicElement[] = [
-    // {
-    //   amount: "US-DXB001",
-    //   currecy_code: "AED",
-    //   customer_name: "SHANMU",
-    //   destination: "MUMBAI",
-    //   expiry_date: "10/11/2020",
-    //   origin: "CHENNAI",
-    //   places: "CHENNAI",
-    //   "quotation-number": "2012080074",
-    //   "reference-number": "2012080074",
-    //   service: "SEA",
-    //   type: "FCL",
-    //   volume: "1250000",
-    //   weight: "500",
-    //   status: "",
-    //   details: "Details",
-    // },
-  ];
+
   dataSource = new MatTableDataSource();
   expandedElement: PeriodicElement | null = null;
+  po: any;
+  documents: any;
 
-  @ViewChild(MatSort)
-  sort!: MatSort;
-
+  loading = true;
   constructor(
     private http: HttpClient,
     private dashboardService: DashboardService,
@@ -75,6 +59,7 @@ export class QuotationslistComponent implements OnInit {
     private router: Router
   ) {
     this.filter = "";
+    console.log("... a new instance of LandComponent has been created");
   }
 
   ngOnChanges(changes: any) {
@@ -82,57 +67,29 @@ export class QuotationslistComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+  @ViewChild(MatSort)
+  sort!: MatSort;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
-  getDashboardQuotation(value?: string) {
-    let status = "";
-    // if (value == "Review Quote") {
-    //   status = "REVIEW_QUOTES";
-    // } else if (value == "Approved Quote") {
-    //   status = "APPROVED_QUOTES";
-    // } else if (value == "Enquiry") {
-    //   status = "ENQUIRY";
-    // }
-    this.authenticationService
-      .refreshToken()
-      .pipe(
-        switchMap((userData) => {
-          return this.dashboardService.getDashboardQuotation(
-            userData.Token,
-            status
-          );
-        })
-      )
-      .subscribe((response: any) => {
-        this.data = response.Quotation;
-        this.dataSource = new MatTableDataSource(response.Quotation);
-        // this.loading = false;
-        this.dataSource.sort = this.sort;
-        console.log("Quotation response", response.Quotation);
-      });
-  }
   getQuoteDetail(quoteNo: any) {
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getQuoteDetail(
-            userData.Token,
-            "2040050155"
-          );
+          return this.dashboardService.getQuoteDetail(userData.Token, quoteNo);
         })
       )
       .subscribe((response: any) => {
-        this.data = response.Quotation;
-        // this.loading = false;
         console.log("Quote Details response", response.quotedetails);
+        this.po = response.quotedetails[0].po;
+        this.documents = response.quotedetails[0].documents;
       });
   }
   ngOnInit(): void {
-    this.getDashboardQuotation();
-    // this.getQuoteDetail();
+    this.dataSource = new MatTableDataSource(this.data);
+    setTimeout(() => (this.dataSource.paginator = this.paginator));
+    setTimeout(() => (this.dataSource.sort = this.sort));
   }
 }
 

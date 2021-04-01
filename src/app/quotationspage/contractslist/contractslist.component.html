@@ -1,114 +1,125 @@
-<table
-  mat-table
-  [dataSource]="dataSource"
-  matSort
-  class="w-full mat-elevation-z0"
-  multiTemplateDataRows
->
-  <!-- Position Column -->
-  <ng-container matColumnDef="contractRef">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Contract Ref</th>
-    <td mat-cell *matCellDef="let element">{{ element.contractRef }}</td>
-  </ng-container>
+<div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="w-full mat-elevation-z0"
+    multiTemplateDataRows
+  >
+    <!-- Position Column -->
+    <ng-container matColumnDef="reference-number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Contract Ref</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element["reference-number"] }}
+      </td>
+    </ng-container>
 
-  <!-- for expansion panel every row expansion details -->
-  <ng-container matColumnDef="expandedDetail">
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [attr.colspan]="displayedColumns.length"
-      [attr.rowspan]="displayedColumns.length"
-    >
-      <div
-        class="element-detail"
-        [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'"
+    <!-- for expansion panel every row expansion details -->
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="displayedColumns.length"
       >
-        <!-- Accordian-->
+        <div
+          class="element-detail"
+          [@detailExpand]="
+            element == expandedElement ? 'expanded' : 'collapsed'
+          "
+        >
+          <!-- Accordian-->
 
-        <div class="card-body1">
-          <div><h1>Additional Infos</h1></div>
-          <hr class="py-1" />
-          <div></div>
-          <div
-            fxLayout="row"
-            fxLayoutAlign="start center"
-            fxLayoutGap="10px"
-            class="py-3 Accordian-table-header"
-          >
-            <h3 fxFlex class="mb-0">Service</h3>
-            <h3 fxFlex class="mb-0">From</h3>
-            <h3 fxFlex class="mb-0">To</h3>
-            <h3 fxFlex class="mb-0">Term</h3>
-            <h3 fxFlex class="mb-0"></h3>
-          </div>
-          <div
-            fxLayout="row"
-            fxLayoutAlign="start center"
-            fxLayoutGap="10px"
-            class="my-3 purchase-item"
-          >
-            <h5 fxFlex class="mb-0">Air</h5>
-            <h5 fxFlex class="mb-0">ABC</h5>
-            <h5 fxFlex class="mb-0">DEF</h5>
-            <h5 fxFlex class="mb-0">XYZ</h5>
-            <h5 fxFlex class="mb-0">
-              <button
-                mat-raised-button
-                color="primary"
-                class="mat-elevation-z0"
-                (click)="goTo('/ebooking', 'data')"
-              >
-                Create Booking
-              </button>
-            </h5>
+          <div class="card-body1">
+            <div><h1>Additional Infos</h1></div>
+            <hr class="py-1" />
+            <div></div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+              class="py-3 Accordian-table-header"
+            >
+              <h3 fxFlex class="mb-0">Service</h3>
+              <h3 fxFlex class="mb-0">From</h3>
+              <h3 fxFlex class="mb-0">To</h3>
+              <h3 fxFlex class="mb-0">Term</h3>
+              <h3 fxFlex class="mb-0"></h3>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+              class="my-3 purchase-item"
+            >
+              <h5 fxFlex class="mb-0">{{ element.service }}</h5>
+              <h5 fxFlex class="mb-0">{{ element.origin }}</h5>
+              <h5 fxFlex class="mb-0">{{ element.destination }}</h5>
+              <h5 fxFlex class="mb-0">{{ element.type }}</h5>
+              <h5 fxFlex class="mb-0">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  class="mat-elevation-z0"
+                  (click)="goTo('/ebooking', 'data')"
+                >
+                  Create Booking
+                </button>
+              </h5>
+            </div>
           </div>
         </div>
-      </div>
-    </td>
-  </ng-container>
+      </td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="validFrom">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
-    <td mat-cell *matCellDef="let element">{{ element.validFrom }}</td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="valid_from">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
+      <td mat-cell *matCellDef="let element">{{ element.valid_from }}</td>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="validTo">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid To</th>
-    <td mat-cell *matCellDef="let element">{{ element.validTo }}</td>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="expiry_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid To</th>
+      <td mat-cell *matCellDef="let element">{{ element.expiry_date }}</td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="signedby">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Signed by</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.signedby }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="details">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-    <td mat-cell *matCellDef="let element">
-      <a
-        class="underline cursor-pointer mat-primary"
-        (click)="element.isExpanded = !element.isExpanded"
-      >
-        See Details
-      </a>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="approved_by">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Signed by</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.approved_by }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element">
+        <a
+          class="underline cursor-pointer mat-primary"
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        >
+          See Details
+        </a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-  <tr
-    mat-row
-    *matRowDef="let element; columns: displayedColumns"
-    class="element-row"
-    [class.expanded-row]="element.isExpanded"
-  ></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: displayedColumns"
+      class="element-row"
+      [class.expanded-row]="element.isExpanded"
+    ></tr>
 
-  <tr
-    mat-row
-    *matRowDef="let row; columns: ['expandedDetail']"
-    class="detail-row"
-  ></tr>
-</table>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row"
+    ></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

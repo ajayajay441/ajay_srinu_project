@@ -30,13 +30,13 @@
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon>upload_file</mat-icon>
-        Download
+        <a target="_blank" href="{{ downloadLink }}">Download</a>
       </button>
     </div>
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon>upload_file</mat-icon>
-        Ageing + O/s report
+        <a target="_blank" href="{{ agingLink }}">Ageing + O/s report</a>
       </button>
     </div>
   </div>
@@ -50,7 +50,7 @@
       <div class="inv_box">
         <div class="my-3 mx-3 text-base"><strong>Total due amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
-          <strong>$27632</strong
+          <strong>{{ totalDueAmount }}</strong
           ><span class="green px-2"
             >+2.5%<svg
               width="12"
@@ -71,15 +71,15 @@
           </span>
         </div>
         <div class="my-3 mx-3 text-base para">
-          Number of unpaid invoices : 54
+          Number of unpaid invoices : {{ unPaidInvoice }}
         </div>
       </div>
       <div class="inv_box">
         <div class="my-3 mx-3 text-base"><strong>Overdue amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
-          <strong>$20199</strong
+          <strong>{{ overDueAmount }}</strong
           ><span class="green px-2"
-            >+0.5%<svg
+            ><svg
               width="12"
               height="12"
               viewBox="0 0 12 12"
@@ -98,7 +98,7 @@
           </span>
         </div>
         <div class="my-3 mx-3 text-base para">
-          Number of unpaid invoices : 54
+          Number of unpaid invoices : {{ unPaidInvoice }}
         </div>
       </div>
     </div>
@@ -187,31 +187,36 @@
                         fxLayoutGap="10px"
                         class="py-3 schedules-table-header"
                       >
-                        <h3 fxFlex class="mb-0">Ref. Number</h3>
-                        <h3 fxFlex class="mb-0">PO N°</h3>
-                        <h3 fxFlex class="mb-0">Origin</h3>
-                        <h3 fxFlex class="mb-0">Destination</h3>
-                        <h3 fxFlex class="mb-0">Chargeable weight</h3>
-                        <h3 fxFlex class="mb-0">Supplier</h3>
-                        <h3 fxFlex class="mb-0">Container Number</h3>
-                        <h3 fxFlex class="mb-0">Mode</h3>
-                        <h3 fxFlex class="mb-0">Shipment</h3>
+                        <h5 fxFlex class="mb-0">Ref. Number</h5>
+                        <h5 fxFlex class="mb-0">PO N°</h5>
+                        <h5 fxFlex class="mb-0">Origin</h5>
+                        <h5 fxFlex class="mb-0">Destination</h5>
+                        <h5 fxFlex class="mb-0">Chargeable weight</h5>
+                        <h5 fxFlex class="mb-0">Supplier</h5>
+                        <h5 fxFlex class="mb-0">Container Number</h5>
+                        <h5 fxFlex class="mb-0">Mode</h5>
+                        <h5 fxFlex class="mb-0">Shipment</h5>
                       </div>
                       <div
                         fxLayout="row"
                         fxLayoutAlign="start center"
                         fxLayoutGap="10px"
                         class="my-3 schedule-item"
+                        *ngFor="let po of invoice_po"
                       >
-                        <h5 fxFlex class="mb-0">21390</h5>
-                        <h5 fxFlex class="mb-0">21390</h5>
-                        <h5 fxFlex class="mb-0">21390</h5>
-                        <h5 fxFlex class="mb-0">Parallel Inc.</h5>
-                        <h5 fxFlex class="mb-0">Parallel Inc.</h5>
-                        <h5 fxFlex class="mb-0">Parallel Inc.</h5>
-                        <h5 fxFlex class="mb-0">3499485 / 349943 / 349943</h5>
-                        <h5 fxFlex class="mb-0">Air</h5>
-                        <h5 fxFlex class="mb-0">Air</h5>
+                        <h5 fxFlex class="mb-0">{{ po.invoiceno }}</h5>
+                        <h5 fxFlex class="mb-0">{{ po.order_no }}</h5>
+                        <h5 fxFlex class="mb-0">
+                          {{ po.originport.portname }}
+                        </h5>
+                        <h5 fxFlex class="mb-0">
+                          {{ po.destinationport.portname }}
+                        </h5>
+                        <h5 fxFlex class="mb-0">{{ po.gross_weight }}</h5>
+                        <h5 fxFlex class="mb-0">{{ po.customername }}</h5>
+                        <h5 fxFlex class="mb-0">{{ po.container_no }}</h5>
+                        <h5 fxFlex class="mb-0">{{ po.shipmentby }}</h5>
+                        <h5 fxFlex class="mb-0">{{ po.shipmenttype }}</h5>
                       </div>
                     </div>
                   </div>
@@ -235,8 +240,11 @@
                         fxLayoutAlign="start center"
                         fxLayoutGap="10px"
                         class="py-3"
+                        *ngFor="let document of invoice_documents"
                       >
-                        <div fxFlex="250px" class="px-3">Date</div>
+                        <div fxFlex="250px" class="px-3">
+                          {{ document.document_date }}
+                        </div>
                         <div
                           fxFlex
                           class="px-3"
@@ -245,7 +253,7 @@
                           fxLayoutGap="10px"
                         >
                           <div fxFlex>
-                            <p>Name</p>
+                            <p>{{ document.document_name }}</p>
                           </div>
                           <div fxFlex class="text-right">
                             <button
@@ -254,7 +262,9 @@
                               class="mat-elevation-z0"
                             >
                               <mat-icon>upload_file</mat-icon>
-                              <a href="" target="_blank"> Download</a>
+                              <a href="{{ document.link }}" target="_blank">
+                                Download</a
+                              >
                             </button>
                           </div>
                         </div>

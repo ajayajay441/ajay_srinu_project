@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.1.71/fresconapi/api/frescon'
+  apiUrl: "http://demo.newage-global.com/fresconapi/api/frescon",
 };
 
 /*

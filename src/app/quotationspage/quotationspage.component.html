@@ -1,8 +1,23 @@
 <div class="shipments-page">
-  <div fxLayout="row" fxLayoutGap="15px" class="mb-10" fxLayoutAlign="space-between center">
-    <div fxFlex="80" fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="start center">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      fxFlex="80"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="start center"
+    >
       <h1 class="mb-0">Quotations</h1>
-      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="shipments-page-selectbox">
+      <div
+        fxLayout="row"
+        fxLayoutGap="15px"
+        fxLayoutAlign="space-between center"
+        class="shipments-page-selectbox"
+      >
         <h3 class="mb-0">Type:</h3>
         <mat-form-field class="w-full">
           <!-- <mat-label>Status</mat-label> -->
@@ -21,13 +36,21 @@
   </div>
   <div class="mb-10">
     <mat-card class="mat-elevation-z0">
-      <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
+      <div
+        class="card-title mb-9"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
         <div fxLayout="row" fxLayoutGap="25px">
           <h2 class="mb-0">Quotations</h2>
-          <button mat-stroked-button [color]="quotationType === _quotationType.value ? 'primary' : ''"
+          <button
+            mat-stroked-button
+            [color]="quotationType === _quotationType.value ? 'primary' : ''"
             [class.light-color-button]="quotationType !== _quotationType.value"
-            (click)="quotationType = _quotationType.value" *ngFor="let _quotationType of quotationTypes">
-            {{_quotationType.label}}
+            (click)="quotationType = _quotationType.value"
+            *ngFor="let _quotationType of quotationTypes"
+          >
+            {{ _quotationType.label }}
           </button>
         </div>
         <div class="search-form">
@@ -35,8 +58,13 @@
             <mat-form-field class="quotations-search-input">
               <mat-label class="">Search</mat-label>
               <mat-icon matPrefix class="search-icon">search</mat-icon>
-              <input type="search" matInput [ngModel]="filter" name="filterField"
-                (ngModelChange)='filterChanged($event)' />
+              <input
+                type="search"
+                matInput
+                [ngModel]="filter"
+                name="filterField"
+                (ngModelChange)="filterChanged($event)"
+              />
             </mat-form-field>
           </form>
         </div>
@@ -46,11 +74,17 @@
   <div class="mb-10">
     <mat-card class="mat-elevation-z0">
       <div class="card-body">
-        <div *ngIf="quotationType === 'quotations'">
-          <app-quotationslist [filter]="filter"></app-quotationslist>
+        <div *ngIf="quotationType === 'quotations' && data">
+          <app-quotationslist
+            [filter]="filter"
+            [data]="data"
+          ></app-quotationslist>
         </div>
         <div *ngIf="quotationType === 'contracts'">
-          <app-contractslist [filter]="filter"></app-contractslist>
+          <app-contractslist
+            [filter]="filter"
+            [data]="data"
+          ></app-contractslist>
         </div>
       </div>
     </mat-card>

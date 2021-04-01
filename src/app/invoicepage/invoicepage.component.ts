@@ -47,6 +47,11 @@ export class InvoicepageComponent implements OnInit {
   dataSource = new MatTableDataSource();
   expandedElement: PeriodicElement | null = null;
   loading = true;
+  overDueAmount: any;
+  totalDueAmount: any;
+  unPaidInvoice: any;
+  downloadLink: string = "";
+  agingLink: string = "";
   activeScheduleStatusType: any = "PENDING";
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -58,6 +63,8 @@ export class InvoicepageComponent implements OnInit {
   activeInvoiceStatusType: any = "";
   quotationType = "pending"; // default selection
   filter: string = "";
+  invoice_po: any;
+  invoice_documents: any;
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -86,6 +93,7 @@ export class InvoicepageComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   getDashboardInvoice(value?: string) {
+    console.log("how many times");
     if (value) this.activeInvoiceStatusType = value;
     this.authenticationService
       .refreshToken()
@@ -94,7 +102,7 @@ export class InvoicepageComponent implements OnInit {
           return this.dashboardService.getDashboardInvoice(
             userData.Token,
             this.activeInvoiceStatusType,
-            100
+            10
           );
         })
       )
@@ -102,9 +110,14 @@ export class InvoicepageComponent implements OnInit {
         this.dataSource = new MatTableDataSource(response["invoice-data"]);
         setTimeout(() => (this.dataSource.paginator = this.paginator));
         this.dataSource.sort = this.sort;
+        this.overDueAmount = response.Over_Due;
+        this.totalDueAmount = response.Total_Due;
+        this.unPaidInvoice = response.UnpaidInvoice;
         this.loading = false;
+        this.downloadLink = response.outstanding_link;
+        this.agingLink = response.Ageing_Report_link;
         window.dispatchEvent(new Event("resize"));
-        console.log("Invoice Response", response["invoice-data"]);
+        // console.log("Invoice Response", response["invoice-data"]);
       });
   }
   getinvoicedetail(sinvoice_no?: any) {
@@ -119,6 +132,8 @@ export class InvoicepageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
+        this.invoice_po = response.invoicedetails.invoice_po;
+        this.invoice_documents = response.invoicedetails.documents;
         console.log("Invoice Details Response", response);
       });
   }
