@@ -102,7 +102,9 @@
             {{ shipmentStatusType.value }}
           </button>
         </div>
-        <a class="underline cursor-pointer"> View all </a>
+        <a class="underline cursor-pointer" (click)="getShipmentDetails()">
+          View all
+        </a>
       </div>
     </mat-card>
   </div>

@@ -96,12 +96,10 @@
             <ng-container matColumnDef="sku">
               <th mat-header-cell *matHeaderCellDef>SKU</th>
               <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.edit" class="w-20"
-                  >{{ element.sku }}
-                </span>
-                <mat-form-field *ngIf="element.edit">
+                <span class="w-20">{{ element.sku }} </span>
+                <!-- <mat-form-field *ngIf="element.edit">
                   <input type="text" matInput [(ngModel)]="element.sku" />
-                </mat-form-field>
+                </mat-form-field> -->
               </td>
             </ng-container>
 
@@ -109,29 +107,27 @@
             <ng-container matColumnDef="description">
               <th mat-header-cell *matHeaderCellDef>Description</th>
               <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.edit">{{ element.description }} </span>
-                <mat-form-field *ngIf="element.edit" class="w-20">
+                <span>{{ element.description }} </span>
+                <!-- <mat-form-field *ngIf="element.edit" class="w-20">
                   <input
                     type="text"
                     matInput
                     [(ngModel)]="element.description"
                   />
-                </mat-form-field>
+                </mat-form-field> -->
               </td>
             </ng-container>
             <ng-container matColumnDef="shipmentno">
               <th mat-header-cell *matHeaderCellDef>Shipment N°</th>
               <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.edit" class="w-20"
-                  >{{ element.shipmentno }}
-                </span>
-                <mat-form-field *ngIf="element.edit">
+                <span class="w-20">{{ element.shipmentno }} </span>
+                <!-- <mat-form-field *ngIf="element.edit">
                   <input
                     type="text"
                     matInput
                     [(ngModel)]="element.shipmentno"
                   />
-                </mat-form-field>
+                </mat-form-field> -->
               </td>
             </ng-container>
 
@@ -139,16 +135,14 @@
             <ng-container matColumnDef="delivery_date">
               <th mat-header-cell *matHeaderCellDef>Delivery Date</th>
               <td mat-cell *matCellDef="let element">
-                <span *ngIf="!element.edit" class="w-20"
-                  >{{ element.delivery_date }}
-                </span>
-                <mat-form-field *ngIf="element.edit">
+                <span class="w-20">{{ element.delivery_date }} </span>
+                <!-- <mat-form-field *ngIf="element.edit">
                   <input
                     type="text"
                     matInput
                     [(ngModel)]="element.delivery_date"
                   />
-                </mat-form-field>
+                </mat-form-field> -->
               </td>
             </ng-container>
             <ng-container matColumnDef="Ordered">
@@ -205,10 +199,14 @@
                   Edit
                 </button>
                 <button
-                  mat-button
+                  mat-stroked-button
                   color="primary"
                   *ngIf="element.edit"
-                  (click)="element.edit = !element.edit; saveData(element)"
+                  (click)="
+                    element.edit = !element.edit;
+                    saveData(element);
+                    goTo('/ebooking', 'element')
+                  "
                 >
                   Done
                 </button>

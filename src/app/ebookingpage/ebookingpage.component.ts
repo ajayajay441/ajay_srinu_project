@@ -9,35 +9,35 @@ import { AuthenticationService } from "../_services";
 import { DashboardService } from "../_services/dashboard.service";
 const cargoContainerType = [
   {
-    label: "type",
+    label: "Type",
     name: "Type",
     options: ["Box", "Bundle"],
     selectedValue: null,
   },
   {
-    label: "noOfPieces",
-    name: "Type",
+    label: "No ofPieces",
+    name: "NoofPieces",
     options: ["1", "2", "3"],
     selectedValue: null,
   },
   {
-    label: "width",
+    label: "Width",
     name: "Width",
     selectedValue: null,
   },
   {
-    label: "height",
+    label: "Height",
     name: "Height",
     selectedValue: null,
   },
   {
-    label: "length",
+    label: "Length",
     name: "Length",
     selectedValue: null,
   },
   {
-    label: "weight",
-    name: "Weight",
+    label: "GrossWeight",
+    name: "GrossWeight",
     selectedValue: null,
   },
 ];
@@ -47,7 +47,6 @@ const cargoContainerType = [
   styleUrls: ["./ebookingpage.component.scss"],
 })
 export class EbookingpageComponent implements OnInit {
-  myControl = new FormControl();
   // shipper: any;
   checked = false;
   panelOpenState = false;
@@ -56,7 +55,7 @@ export class EbookingpageComponent implements OnInit {
   originDataList: any;
   valueService: any = [
     {
-      name: "Is your cargo hazardous?",
+      name: "sHazardous",
       label: "Is your cargo hazardous?",
       options: [
         { label: "Yes", value: "yes" },
@@ -64,7 +63,7 @@ export class EbookingpageComponent implements OnInit {
       ],
     },
     {
-      name: "Is your cargo stackable?",
+      name: "sStackable",
       label: "Is your cargo stackable?",
       options: [
         { label: "Yes", value: "yes" },
@@ -72,7 +71,7 @@ export class EbookingpageComponent implements OnInit {
       ],
     },
     {
-      name: "Does your cargo require insurance?",
+      name: "sCargoreqinsur",
       label: "Does your cargo require insurance?",
       options: [
         { label: "Yes", value: "yes" },
@@ -80,7 +79,7 @@ export class EbookingpageComponent implements OnInit {
       ],
     },
     {
-      name: "Origin clearance required?",
+      name: "sOrginclearancereqd",
       label: "Origin clearance required?",
       options: [
         { label: "Yes", value: "yes" },
@@ -118,7 +117,9 @@ export class EbookingpageComponent implements OnInit {
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) {}
+  ) {
+    console.log("eBooking route data", this.router);
+  }
 
   ngOnInit(): void {}
   getalueAndServicesSelectedValues() {
@@ -153,35 +154,35 @@ export class EbookingpageComponent implements OnInit {
   addCargotype() {
     this.cargoContainerTypes.push([
       {
-        label: "type",
+        label: "Type",
         name: "Type",
         options: ["Box", "Bundle"],
         selectedValue: null,
       },
       {
-        label: "noOfPieces",
-        name: "Type",
+        label: "NoofPieces",
+        name: "NoofPieces",
         options: ["1", "2", "3"],
         selectedValue: null,
       },
       {
-        label: "width",
+        label: "Width",
         name: "Width",
         selectedValue: null,
       },
       {
-        label: "height",
+        label: "Height",
         name: "Height",
         selectedValue: null,
       },
       {
-        label: "length",
+        label: "Length",
         name: "Length",
         selectedValue: null,
       },
       {
-        label: "weight",
-        name: "Weight",
+        label: "GrossWeight",
+        name: "GrossWeight",
         selectedValue: null,
       },
     ]);
@@ -195,11 +196,14 @@ export class EbookingpageComponent implements OnInit {
       (x) => (this.ebooking[x.label] = x.selectedValue)
     );
     console.log(this.ebooking);
-    const result: any = [];
+    const lcontainer: any = [];
     this.cargoContainerTypes.forEach((type, i) => {
-      result[i] = {};
-      type.forEach((field) => (result[i][field.label] = field.selectedValue));
+      lcontainer[i] = {};
+      type.forEach(
+        (field) => (lcontainer[i][field.label] = field.selectedValue)
+      );
     });
-    console.log("result", result);
+    this.ebooking.lcontainer = lcontainer;
+    console.log("result", lcontainer);
   }
 }

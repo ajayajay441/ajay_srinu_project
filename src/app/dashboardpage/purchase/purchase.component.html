@@ -23,7 +23,9 @@
         Picked-up
       </button> -->
     </div>
-    <a class="underline accent"> View all </a>
+    <a class="underline accent cursor-pointer" (click)="goTo('/po', 'data')">
+      View all
+    </a>
   </div>
   <div class="card-body" fxHide fxShow.gt-md>
     <div fxLayout="column" fxLayoutAlign="center space-between">

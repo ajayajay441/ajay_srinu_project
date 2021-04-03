@@ -14,7 +14,8 @@ import { DashboardService } from "../_services/dashboard.service";
 import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
-import { RouterModule } from "@angular/router";
+// import { RouterModule } from "@angular/router";
+import { Router } from "@angular/router";
 export interface PeriodicElement {
   Ordered: number;
   balance: number;
@@ -59,14 +60,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class PurchaseorderpageComponent implements OnInit {
   data: any;
   displayedColumns: string[] = [
-    "Ordered",
-    "balance",
-    "booked",
-    "closed",
-    "delivery_date",
+    "sku",
     "description",
     "shipmentno",
-    "sku",
+    "delivery_date",
+    "Ordered",
+    "booked",
+    "closed",
+    "balance",
     "actions",
   ];
   dataSource = new MatTableDataSource();
@@ -97,7 +98,7 @@ export class PurchaseorderpageComponent implements OnInit {
     private http: HttpClient,
     private dashboardService: DashboardService,
     private authenticationService: AuthenticationService,
-    private router: RouterModule
+    private router: Router
   ) {}
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -144,6 +145,10 @@ export class PurchaseorderpageComponent implements OnInit {
         this.dataSource = new MatTableDataSource(response.PO_detail);
         this.Request_Quote_link = response.Request_Quote_link;
       });
+  }
+  goTo(routePageName: string, data: any) {
+    console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   saveData(row: any) {
     console.log("row", row);

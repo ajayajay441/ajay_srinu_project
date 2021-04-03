@@ -11,6 +11,7 @@
       Generate Quote
     </button>
   </div>
+  <!-- Add a New Shipment -->
   <div class="mb-10">
     <mat-accordion>
       <mat-expansion-panel
@@ -68,6 +69,8 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
+  <!-- Shipment Origin -->
   <div class="mb-10">
     <mat-accordion>
       <mat-expansion-panel
@@ -127,12 +130,12 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="sendto">
-                  <mat-option [value]="sendto"> Search Address </mat-option>
+                <mat-select [(ngModel)]="ebooking.sPickupplace">
+                  <mat-option [value]="sendto"> Shipper </mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="sendto">
+                <mat-select [(ngModel)]="ebooking.sPickupzipcode">
                   <mat-option [value]="sendto"> Zip Code </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -165,6 +168,8 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
+  <!-- Shipment Destination -->
   <div class="mb-10">
     <mat-accordion>
       <mat-expansion-panel
@@ -212,14 +217,14 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="sendto">
+                <mat-select [(ngModel)]="ebooking.sDlylocation">
                   <mat-option [value]="sendto">
                     Search Address/city
                   </mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="sendto">
+                <mat-select [(ngModel)]="ebooking.sDlyzipcode">
                   <mat-option [value]="sendto"> Zip Code </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -247,6 +252,8 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
+  <!-- Value added services -->
   <div class="mb-10">
     <mat-accordion>
       <mat-expansion-panel
@@ -266,13 +273,13 @@
         >
           <div fxFlex *ngFor="let valueService of valueService">
             <div fxLayout="row" class="mb-0">
-              <h3>{{ valueService.name }}</h3>
+              <h3>{{ valueService.label }}</h3>
             </div>
             <div class="mb-radio">
               <mat-radio-group
                 color="primary"
                 aria-label="Select an option"
-                [(ngModel)]="ebooking[valueService.label]"
+                [(ngModel)]="ebooking[valueService.name]"
               >
                 <mat-radio-button
                   class="mr-3"
@@ -291,6 +298,177 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
+  <!-- Enter Customer Informations -->
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">Enter Customer Informations</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Shipper</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field>
+                <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="ebooking.shipper"
+                  (ngModelChange)="callApi($event)"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let item of originDataList"
+                    [value]="item.name"
+                  >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-checkbox color="warn" [(ngModel)]="checked"
+                >Pick-up required</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Address</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="ebooking.sPickupplace">
+                  <mat-option [value]="sendto"> Shipper </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-select [(ngModel)]="ebooking.sPickupzipcode">
+                  <mat-option [value]="sendto"> Zip Code </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Cargo Ready for Pickup Date</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="fill">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!--  First Notify Informations-->
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">First Notify Informations</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>First Notify</h3>
+          </div>
+          <div class="mb-5">
+            <div>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  [(ngModel)]="ebooking.sShipperName"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Adderess</h3>
+          </div>
+          <div class="mb-5">
+            <div>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  [(ngModel)]="ebooking.sShipperName"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Cargo Ready for Pickup Date</h3>
+          </div>
+          <div class="mb-9">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="fill">
+                <mat-label>MM/DD/YYYY</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!-- Cargo & Container -->
   <div class="mb-10">
     <mat-accordion>
       <mat-expansion-panel
@@ -319,6 +497,7 @@
           >
             <div *ngFor="let field of item">
               <div *ngIf="field.options">
+                <h5>{{ field.name }}</h5>
                 <mat-form-field appearance="outline" class="no-bottom-padding">
                   <mat-select [(ngModel)]="field.selectedValue">
                     <mat-option
@@ -331,7 +510,8 @@
                 </mat-form-field>
               </div>
               <div *ngIf="!field.options">
-                <mat-form-field appearance="outline">
+                <h5>{{ field.name }}</h5>
+                <mat-form-field appearance="outline" class="no-bottom-padding">
                   <input
                     matInput
                     placeholder="Placeholder"

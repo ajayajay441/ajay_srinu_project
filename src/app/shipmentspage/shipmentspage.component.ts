@@ -38,9 +38,12 @@ export class ShipmentspageComponent implements OnInit {
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-  ) {}
+  ) {
+    console.log("Constructor");
+  }
   shipmentDetailSubscription: any;
   ngOnInit(): void {
+    console.log("OnInIt");
     this.getShipmentDetails();
     this.getdashboardfilter();
   }
@@ -79,7 +82,8 @@ export class ShipmentspageComponent implements OnInit {
       });
   }
   ngOnDestroy() {
-    this.shipmentDetailSubscription.unsubscribe();
+    console.log("Destroy");
+    // this.shipmentDetailSubscription.unsubscribe();
   }
   getdashboardfilter() {
     this.authenticationService

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DashboardService } from "../../_services/dashboard.service";
 import { Subscription } from "rxjs/index";
+import { Router } from "@angular/router";
+
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../../_services";
 @Component({
@@ -18,7 +20,8 @@ export class PurchaseComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dashboardService: DashboardService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +54,10 @@ export class PurchaseComponent implements OnInit {
         this.loading = false;
         console.log("PO Response", response.PO);
       });
+  }
+  goTo(routePageName: string, data: any) {
+    console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   onValChange(event: any): any {
     console.log(event);
