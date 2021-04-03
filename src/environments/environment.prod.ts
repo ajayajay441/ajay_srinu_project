@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: "http://demo.newage-global.com/fresconapi/api/frescon",
 };

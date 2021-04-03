@@ -3,14 +3,20 @@
     <div class="mb-10">
       <h2 class="mb-0">Overview</h2>
     </div>
-    <div class="mb-10">
+    <div class="mb-10" *ngIf="data">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon>
-        Request Quote
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
+        <a href="{{ data }}" target="_blank">Request Quote</a>
       </button>
     </div>
   </div>
-  <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxFlexFill class="mb-10">
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="15px"
+    fxFlexFill
+    class="mb-10"
+  >
     <div fxFlex="65" class="map-box" fxLayout="column">
       <div fxFlex>
         <app-mapbox></app-mapbox>

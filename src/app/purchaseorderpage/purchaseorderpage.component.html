@@ -36,7 +36,7 @@
     </div>
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon>
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a href="{{ Request_Quote_link }}" target="_blank">Request Quote</a>
       </button>
     </div>
@@ -149,7 +149,11 @@
               <th mat-header-cell *matHeaderCellDef>Ordered</th>
               <td mat-cell *matCellDef="let element">
                 <span *ngIf="!element.edit">{{ element.Ordered }} </span>
-                <mat-form-field *ngIf="element.edit" class="w-20">
+                <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
                   <input type="text" matInput [(ngModel)]="element.Ordered" />
                 </mat-form-field>
               </td>
@@ -160,7 +164,11 @@
               <th mat-header-cell *matHeaderCellDef>Booked</th>
               <td mat-cell *matCellDef="let element">
                 <span *ngIf="!element.edit">{{ element.booked }} </span>
-                <mat-form-field *ngIf="element.edit" class="w-20">
+                <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
                   <input type="text" matInput [(ngModel)]="element.booked" />
                 </mat-form-field>
               </td>
@@ -169,7 +177,11 @@
               <th mat-header-cell *matHeaderCellDef>Closed</th>
               <td mat-cell *matCellDef="let element">
                 <span *ngIf="!element.edit">{{ element.closed }} </span>
-                <mat-form-field *ngIf="element.edit" class="w-20">
+                <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
                   <input type="text" matInput [(ngModel)]="element.closed" />
                 </mat-form-field>
               </td>
@@ -180,7 +192,11 @@
               <th mat-header-cell *matHeaderCellDef>Balance</th>
               <td mat-cell *matCellDef="let element">
                 <span *ngIf="!element.edit">{{ element.balance }} </span>
-                <mat-form-field *ngIf="element.edit" class="w-20">
+                <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
                   <input type="text" matInput [(ngModel)]="element.balance" />
                 </mat-form-field>
               </td>

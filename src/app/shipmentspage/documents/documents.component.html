@@ -28,7 +28,7 @@
       </div>
       <div fxFlex class="text-right">
         <button mat-raised-button color="primary" class="mat-elevation-z0">
-          <mat-icon>upload_file</mat-icon>
+          <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
           <a href="{{ doc.link }}" target="_blank"> Download</a>
         </button>
       </div>
@@ -52,7 +52,7 @@
     </h5>
     <h5 fxFlex class="mb-1">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon>
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a href="{{ doc.link }}" target="_blank"> Download</a>
       </button>
     </h5>

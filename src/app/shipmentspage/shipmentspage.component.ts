@@ -28,8 +28,9 @@ export class ShipmentspageComponent implements OnInit {
   sendto: string = "";
   modeVal: string = "";
   shipmentStatusTypes = [
-    { label: "Arriving", value: "ARRIVING" },
     { label: "Booked", value: "BOOKED" },
+    { label: "INTRANSIT", value: "INTRANSIT" },
+    { label: "ARRIVED", value: "ARRIVED" },
   ];
   activeShipmentStatusType: any = "";
   constructor(
@@ -81,10 +82,10 @@ export class ShipmentspageComponent implements OnInit {
         console.log("Shipmentpage Response", response.ShipmentCard);
       });
   }
-  ngOnDestroy() {
-    console.log("Destroy");
-    // this.shipmentDetailSubscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   console.log("Destroy");
+  //   // this.shipmentDetailSubscription.unsubscribe();
+  // }
   getdashboardfilter() {
     this.authenticationService
       .refreshToken()

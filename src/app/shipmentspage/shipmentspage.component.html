@@ -72,7 +72,7 @@
     </div>
     <div fxFlex fxFlex.gt-md="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon> Buyer Console
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon> Buyer Console
       </button>
     </div>
   </div>
@@ -275,7 +275,7 @@
             fxLayoutAlign="start center"
           >
             <button mat-raised-button color="primary" class="mat-elevation-z0">
-              <mat-icon>upload_file</mat-icon>
+              <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
               <a href="{{ shipment.pre_alert_document }}" target="_blank"
                 >Pre Alert Documents</a
               >
@@ -308,7 +308,7 @@
               color="primary"
               class="w-full mat-elevation-z0"
             >
-              <mat-icon>upload_file</mat-icon>
+              <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
               <a href="{{ shipment.pre_alert_document }}" target="_blank"
                 >Pre Alert Documents</a
               >

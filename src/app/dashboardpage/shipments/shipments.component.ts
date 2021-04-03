@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
 import { DashboardService } from "../../_services/dashboard.service";
 import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
@@ -32,7 +31,6 @@ export class ShipmentsComponent implements OnInit {
   loading = true;
   subscription: Subscription | undefined;
   constructor(
-    private http: HttpClient,
     private dashboardService: DashboardService,
     private authenticationService: AuthenticationService,
     private matIconRegistry: MatIconRegistry,

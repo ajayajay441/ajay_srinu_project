@@ -81,7 +81,7 @@
                 </div>
               </mat-card>
             </mat-tab>
-            <mat-tab label="Documents">
+            <mat-tab label="Documents" *ngIf="documents.length">
               <mat-card class="mat-elevation-z0">
                 <div class="card-body">
                   <div fxHide fxShow.gt-md>
@@ -120,7 +120,10 @@
                             color="primary"
                             class="mat-elevation-z0"
                           >
-                            <mat-icon>upload_file</mat-icon>
+                            <mat-icon
+                              [svgIcon]="'download'"
+                              class="pr-2"
+                            ></mat-icon>
                             <a href="{{ item.link }}" target="_blank">
                               Download</a
                             >

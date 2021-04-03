@@ -115,6 +115,12 @@ export class AppComponent implements OnDestroy {
         console.log("router url", this.router.url);
       });
     this.matIconRegistry.addSvgIcon(
+      "download",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "./../assets/icons/download.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
       "dashboard",
       this.domSanitizer.bypassSecurityTrustResourceUrl(
         "./../assets/icons/menu-overview.svg"

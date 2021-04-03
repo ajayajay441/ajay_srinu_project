@@ -29,13 +29,13 @@
     </div>
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon>
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a target="_blank" href="{{ downloadLink }}">Download</a>
       </button>
     </div>
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <mat-icon>upload_file</mat-icon>
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a target="_blank" href="{{ agingLink }}">Ageing + O/s report</a>
       </button>
     </div>
@@ -261,7 +261,10 @@
                               color="primary"
                               class="mat-elevation-z0"
                             >
-                              <mat-icon>upload_file</mat-icon>
+                              <mat-icon
+                                [svgIcon]="'download'"
+                                class="pr-2"
+                              ></mat-icon>
                               <a href="{{ document.link }}" target="_blank">
                                 Download</a
                               >
