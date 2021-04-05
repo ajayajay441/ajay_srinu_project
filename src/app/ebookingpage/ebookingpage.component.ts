@@ -7,6 +7,8 @@ import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
 import { DashboardService } from "../_services/dashboard.service";
+import { LocalStorageService } from "../_services/local-storage.service";
+
 const cargoContainerType = [
   {
     label: "Type",
@@ -90,19 +92,19 @@ export class EbookingpageComponent implements OnInit {
   cargoContainerTypes = [cargoContainerType];
   shipmentOptions = [
     {
-      label: "freightMethods",
+      label: "sMode",
       name: "Select Freight Methods",
       options: ["LCL", "FCL", "Air", "Road"],
       selectedValue: "LCL",
     },
     {
-      label: "importExport",
+      label: "sExportImport",
       name: "Import/Export",
       options: ["Import", "Export"],
       selectedValue: "Import",
     },
     {
-      label: "incoterms",
+      label: "sTosName",
       name: "Incoterms",
       options: ["FOB", "EXW", "Others"],
       selectedValue: "FOB",
@@ -116,7 +118,8 @@ export class EbookingpageComponent implements OnInit {
     private http: HttpClient,
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private localStorageService: LocalStorageService
   ) {
     console.log("eBooking route data", this.router);
   }
@@ -125,11 +128,13 @@ export class EbookingpageComponent implements OnInit {
   getalueAndServicesSelectedValues() {
     console.log("ebooking", this.ebooking);
   }
-  getShipmentOptions() {
-    const result: any = {};
-    this.shipmentOptions.forEach((x) => (result[x.label] = x.selectedValue));
-    console.log("ebooking", result);
-  }
+  // getShipmentOptions() {
+  //   const result: any = {};
+  //   this.shipmentOptions.forEach(
+  //     (x) => (this.ebooking[x.label] = x.selectedValue)
+  //   );
+  //   console.log("ebooking", result);
+  // }
   callApi(val: any) {
     this.ebooking.shipper = val;
     if (val.length >= 6) {
@@ -190,6 +195,20 @@ export class EbookingpageComponent implements OnInit {
   removeCargoType() {
     this.cargoContainerTypes.pop();
   }
+  createEbooking() {
+    // this.data = /,
+    this.authenticationService
+      .refreshToken()
+      .pipe(
+        switchMap((userData: any) => {
+          return this.dashboardService.createEbooking(this.ebooking);
+        })
+      )
+      .subscribe((response: any) => {
+        console.log("ship resp", response);
+        // this.data = response.Request_Quote_link;
+      });
+  }
   getCargoContainerTypeData() {
     // this.cargoContainerTypes.forEach()
     this.shipmentOptions.forEach(
@@ -204,6 +223,9 @@ export class EbookingpageComponent implements OnInit {
       );
     });
     this.ebooking.lcontainer = lcontainer;
+    this.ebooking.user_token = this.localStorageService.getItem("jwtToken");
     console.log("result", lcontainer);
+    this.createEbooking();
   }
+  // this.localStorageService.getItem("jwtToken")
 }

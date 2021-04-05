@@ -1,5 +1,5 @@
 <!-- <mat-spinner *ngIf="loading" class="spinner"></mat-spinner> -->
-<div>
+<div fxHide fxShow.gt-md>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -217,4 +217,64 @@
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
   ></mat-paginator>
+</div>
+<div>
+  <div class="card-body" fxShow fxHide.gt-md>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center start"
+      fxLayoutGap="10px"
+      class="my-3 purchase-item"
+      *ngFor="let element of data"
+    >
+      <p fxFlex>
+        <span class="font-bold">QT No : </span>
+        <span>{{ element["quotation-number"] }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Reference :</span>
+        <span>{{ element["reference-number"] }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Origin :</span>
+        <span>{{ element.origin }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Destination :</span>
+        <span>{{ element.destination }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">QT Expiry :</span>
+        <span>{{ element.expiry_date }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Amount :</span>
+        <span>{{ element.amount }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Weight :</span>
+        <span>{{ element.weight }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Service :</span>
+        <span>{{ element.service }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Status :</span>
+        <span>{{ element.status }}</span>
+      </p>
+
+      <p fxFlex>
+        <a
+          class="underline cursor-pointer mat-primary"
+          (click)="
+            expandedElement = expandedElement === element ? null : element;
+            getQuoteDetail(element['quotation-number'])
+          "
+        >
+          Details
+        </a>
+      </p>
+    </div>
+  </div>
 </div>

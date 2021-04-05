@@ -189,4 +189,13 @@ export class DashboardService {
       })
     );
   }
+  createEbooking(data: any) {
+    const jwtToken = this.localStorageService.getItem("jwtToken");
+    let url = `${environment.apiUrl}/create_ebooking`;
+    return this.http.post<any>(url, data).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
 }

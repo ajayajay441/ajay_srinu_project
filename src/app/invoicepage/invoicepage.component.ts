@@ -92,6 +92,7 @@ export class InvoicepageComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+  invoiceData: any;
   getDashboardInvoice(value?: string) {
     console.log("how many times");
     if (value) this.activeInvoiceStatusType = value;
@@ -107,6 +108,7 @@ export class InvoicepageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
+        this.invoiceData = response["invoice-data"];
         this.dataSource = new MatTableDataSource(response["invoice-data"]);
         setTimeout(() => (this.dataSource.paginator = this.paginator));
         this.dataSource.sort = this.sort;

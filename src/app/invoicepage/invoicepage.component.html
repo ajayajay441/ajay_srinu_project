@@ -11,12 +11,14 @@
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <h1 class="mb-0">Invoice</h1>
+      <h1 class="mb-0 pl-2">Invoice</h1>
       <div
         fxLayout="row"
         fxLayoutGap="15px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
+        fxHide
+        fxShow.gt-md
       >
         <h3 class="mb-0">Filter:</h3>
         <mat-form-field class="w-full">
@@ -43,7 +45,8 @@
   <div class="mb-10">
     <div
       class="mb-9"
-      fxLayout="row"
+      fxLayout="column"
+      fxLayout.gt-md="row"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
@@ -113,6 +116,8 @@
         <div fxLayout="row" fxLayoutGap="25px">
           <h2 class="mb-0">Invoices</h2>
           <button
+            fxHide
+            fxShow.gt-md
             mat-stroked-button
             *ngFor="let _invoiceType of invoiceTypes"
             [color]="
@@ -126,7 +131,7 @@
             {{ _invoiceType.label }}
           </button>
         </div>
-        <div class="search-form">
+        <div class="search-form" fxHide fxShow.gt-md>
           <form>
             <mat-form-field class="quotations-search-input">
               <mat-label class="">Search</mat-label>
@@ -145,7 +150,7 @@
     </mat-card>
   </div>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div class="mb-10" *ngIf="!loading">
+  <div class="mb-10" *ngIf="!loading" fxHide fxShow.gt-md>
     <table
       mat-table
       [dataSource]="dataSource"
@@ -352,5 +357,54 @@
       [pageSizeOptions]="[5, 10, 20]"
       showFirstLastButtons
     ></mat-paginator>
+  </div>
+  <div class="mb-10">
+    <div
+      fxLayout="column"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="10px"
+      class="my-3 purchase-item"
+      *ngFor="let element of invoiceData"
+    >
+      <p fxFlex>
+        <span class="font-bold">Invoice N°: </span>
+        <span>{{ element.inv_number }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> Invoice Date : </span>
+        <span>{{ element.inv_date }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> House N° :</span>
+        <span>{{ element.house_no }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> Due Date :</span>
+        <span>{{ element.due_date }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> Days :</span>
+        <span>{{ element.days }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> Amount :</span>
+        <span>{{ element.amount }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold"> Balance :</span>
+        <span>{{ element.balance }}</span>
+      </p>
+
+      <p fxFlex>
+        <a
+          class="underline cursor-pointer mat-primary"
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        >
+          Details
+        </a>
+      </p>
+    </div>
   </div>
 </div>

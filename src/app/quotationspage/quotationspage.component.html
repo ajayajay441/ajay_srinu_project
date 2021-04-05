@@ -2,21 +2,24 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-10"
+    class="mb-10 mt-10"
     fxLayoutAlign="space-between center"
   >
     <div
-      fxFlex="80"
+      fxFlex
+      fxFlex.gt-md="80"
       fxLayout="row wrap"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <h1 class="mb-0">Quotations</h1>
+      <h1 class="mb-0 pl-2">Quotations</h1>
       <div
         fxLayout="row"
         fxLayoutGap="15px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
+        fxHide
+        fxShow.gt-md
       >
         <h3 class="mb-0">Type:</h3>
         <mat-form-field class="w-full">
@@ -27,10 +30,10 @@
         </mat-form-field>
       </div>
     </div>
-    <div fxFlex="20" class="text-right">
+    <div fxFlex fxFlex.gt-md="20" class="text-right pr-2">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
-        Request Quote
+        <a> Request Quote </a>
       </button>
     </div>
   </div>
@@ -44,6 +47,8 @@
         <div fxLayout="row" fxLayoutGap="25px">
           <h2 class="mb-0">Quotations</h2>
           <button
+            fxHide
+            fxShow.gt-md
             mat-stroked-button
             [color]="quotationType === _quotationType.value ? 'primary' : ''"
             [class.light-color-button]="quotationType !== _quotationType.value"
@@ -53,7 +58,7 @@
             {{ _quotationType.label }}
           </button>
         </div>
-        <div class="search-form">
+        <div class="search-form" fxHide fxShow.gt-md>
           <form>
             <mat-form-field class="quotations-search-input">
               <mat-label class="">Search</mat-label>
