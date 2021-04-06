@@ -25,7 +25,7 @@ export class ShipmentspageComponent implements OnInit {
   loading: boolean = true;
   currentPage: any;
   lastPage: any;
-  filters: any;
+  filters: any = { status: [] };
   sendto: string = "";
   modeVal: string = "";
   shipmentStatusTypes = [

@@ -1,59 +1,92 @@
-<div class="mat-tab-content my-3" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutAlign="start">
-    <div fxFlex class="shipment-map">
-        <app-mapbox></app-mapbox>
+<div
+  class="mat-tab-content my-3"
+  fxLayout="column"
+  fxLayout.gt-md="row"
+  fxLayoutGap="15px"
+  fxLayoutAlign="start"
+>
+  <div fxFlex class="shipment-map">
+    <!-- <app-mapbox></app-mapbox> -->
+  </div>
+  <div fxFlex class="shipment-map-details">
+    <div>
+      <h2 class="mb-0">John’s Mill - Dubai UAE</h2>
+      <p>Dubai Mall First Grand Atrium - Dubai United Arab Emirates</p>
     </div>
-    <div fxFlex class="shipment-map-details">
-        <div>
-            <h2 class="mb-0">John’s Mill - Dubai UAE</h2>
-            <p>
-                Dubai Mall First Grand Atrium - Dubai United Arab Emirates
-            </p>
-        </div>
-        <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start" class="my-4">
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start" class="my-4">
+      <mat-icon>airport_shuttle</mat-icon>
+      <p class="mb-0">
+        <span class="font-bold">2 Trucks Pick-up : </span>
+        <br fxShow fxHide.gt-md />
+        <span class="font-thin">1 Day - July 25th, 2020</span>
+      </p>
+    </div>
+    <div class="mb-10">
+      <div
+        *ngFor="let shipmentTruck of [1, 2]"
+        class="shipment-map-details-itemtrack py-2"
+      >
+        <div fxLayout="column">
+          <div
+            fxLayout="row"
+            fxLayoutGap="15px"
+            fxLayoutAlign="start"
+            class="my-1"
+          >
             <mat-icon>airport_shuttle</mat-icon>
-            <p class="mb-0">
-                <span class="font-bold">2 Trucks Pick-up : </span>
-                <br fxShow fxHide.gt-md />
-                <span class="font-thin">1 Day - July 25th, 2020</span>
-            </p>
-        </div>
-        <div class="mb-10">
-            <div *ngFor="let shipmentTruck of [1, 2]" class="shipment-map-details-itemtrack py-2">
-                <div fxLayout="column">
-                    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="start" class="my-1">
-                        <mat-icon>airport_shuttle</mat-icon>
-                        <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start">
-                            <h3 class="mb-0">EFS 26546</h3>
-                            <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="15px" fxLayoutAlign="center start"
-                                fxLayoutAlign.gt-md="start center" class="my-1">
-                                <p class="mb-0" *ngFor="
-                              let shipmentTruckStatus of [
-                                { label: 'CRD', content: 'Sep 18th, 2020' },
-                                {
-                                  label: 'Departed',
-                                  content: 'Sep 19th, 2020'
-                                },
-                                { label: 'Arrived', content: 'Sep 20th, 2020' }
-                              ]
-                            ">
-                                    <span class="font-bold">
-                                        {{ shipmentTruckStatus.label }} :
-                                    </span>
-                                    <span> {{ shipmentTruckStatus.content }} </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start">
+              <h3 class="mb-0">EFS 26546</h3>
+              <div
+                fxLayout="column"
+                fxLayout.gt-md="row"
+                fxLayoutGap="15px"
+                fxLayoutAlign="center start"
+                fxLayoutAlign.gt-md="start center"
+                class="my-1"
+              >
+                <p
+                  class="mb-0"
+                  *ngFor="
+                    let shipmentTruckStatus of [
+                      { label: 'CRD', content: 'Sep 18th, 2020' },
+                      {
+                        label: 'Departed',
+                        content: 'Sep 19th, 2020'
+                      },
+                      { label: 'Arrived', content: 'Sep 20th, 2020' }
+                    ]
+                  "
+                >
+                  <span class="font-bold">
+                    {{ shipmentTruckStatus.label }} :
+                  </span>
+                  <span> {{ shipmentTruckStatus.content }} </span>
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-        <div>
-            <button fxShow fxHide.gt-md mat-raised-button color="primary" class="w-full mat-elevation-z0">
-                See next step <mat-icon>arrow_right_alt</mat-icon>
-            </button>
-            <button fxHide fxShow.gt-md mat-raised-button color="primary" class="mat-elevation-z0">
-                See next step <mat-icon>arrow_right_alt</mat-icon>
-            </button>
-        </div>
+      </div>
     </div>
+    <div>
+      <button
+        fxShow
+        fxHide.gt-md
+        mat-raised-button
+        color="primary"
+        class="w-full mat-elevation-z0"
+      >
+        See next step <mat-icon>arrow_right_alt</mat-icon>
+      </button>
+      <button
+        fxHide
+        fxShow.gt-md
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z0"
+      >
+        See next step <mat-icon>arrow_right_alt</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
