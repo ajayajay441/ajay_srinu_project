@@ -48,6 +48,16 @@ export class QuotationspageComponent implements OnInit {
   filterChanged(filter: string) {
     this.modelChanged.next(filter);
   }
+  //type
+  quoteLink: any;
+  quotationFilters: string[] = ["Approved", "Expired", "Pending", "Declined"];
+  // Approved, Expired, Pending, Declined
+  sfilter_status: string = "";
+  //Filter change
+  onQuotationFilterSelect(quotationFilter: string) {
+    // console.log(quotationFilter);
+    this.getDashboardQuotation(quotationFilter);
+  }
   getDashboardQuotation(value?: string) {
     let status = "";
     this.authenticationService
@@ -57,7 +67,8 @@ export class QuotationspageComponent implements OnInit {
           return this.dashboardService.getDashboardQuotation(
             userData.Token,
             status,
-            ""
+            "",
+            value
           );
         })
       )
@@ -65,7 +76,8 @@ export class QuotationspageComponent implements OnInit {
         this.data = response.Quotation;
         // this.loading = false;
         this.loading = false;
-        console.log("Quotation response", response.Quotation);
+        this.quoteLink = response.Quote_link;
+        // console.log("Quotation response", response.Quotation);
       });
   }
   ngOnInit(): void {

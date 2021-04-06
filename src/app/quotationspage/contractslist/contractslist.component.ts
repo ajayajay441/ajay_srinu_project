@@ -72,7 +72,7 @@ export class ContractslistComponent implements OnInit {
     setTimeout(() => (this.dataSource.sort = this.sort));
   }
   goTo(routePageName: string, data: any) {
-    console.log("data", data);
+    // console.log("data", data);
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
 }

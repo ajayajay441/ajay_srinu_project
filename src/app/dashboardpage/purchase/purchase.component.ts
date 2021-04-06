@@ -52,15 +52,15 @@ export class PurchaseComponent implements OnInit {
       .subscribe((response: any) => {
         this.data = response.PO;
         this.loading = false;
-        console.log("PO Response", response.PO);
+        // console.log("PO Response", response.PO);
       });
   }
   goTo(routePageName: string, data: any) {
-    console.log("data", data);
+    // console.log("data", data);
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   onValChange(event: any): any {
-    console.log(event);
+    // console.log(event);
     alert(event);
   }
 }

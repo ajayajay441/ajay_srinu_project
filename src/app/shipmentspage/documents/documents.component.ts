@@ -12,6 +12,6 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.documentsTabData = this.documents;
-    console.log("documents", this.documentsTabData);
+    // console.log("documents", this.documentsTabData);
   }
 }

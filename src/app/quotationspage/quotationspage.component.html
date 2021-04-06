@@ -22,10 +22,19 @@
         fxShow.gt-md
       >
         <h3 class="mb-0">Type:</h3>
-        <mat-form-field class="w-full">
+        <mat-form-field class="w-full" appearance="outline">
           <!-- <mat-label>Status</mat-label> -->
-          <mat-select>
-            <mat-option> History </mat-option>
+          <mat-select
+            [(ngModel)]="sfilter_status"
+            (ngModelChange)="onQuotationFilterSelect(sfilter_status)"
+            color="accent"
+          >
+            <mat-option
+              [value]="filter"
+              *ngFor="let filter of quotationFilters"
+            >
+              {{ filter }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -33,7 +42,7 @@
     <div fxFlex fxFlex.gt-md="20" class="text-right pr-2">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
-        <a> Request Quote </a>
+        <a href="{{ quoteLink }}" target="_blank"> Request Quote </a>
       </button>
     </div>
   </div>

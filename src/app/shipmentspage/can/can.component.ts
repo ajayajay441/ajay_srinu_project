@@ -12,6 +12,6 @@ export class CANComponent implements OnInit {
 
   ngOnInit(): void {
     this.CANData = this.CAN;
-    console.log("CAN", this.CAN);
+    // console.log("CAN", this.CAN);
   }
 }

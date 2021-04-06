@@ -12,6 +12,6 @@ export class ActionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.updatesData = this.updates;
-    console.log("updates", this.updatesData);
+    // console.log("updates", this.updatesData);
   }
 }

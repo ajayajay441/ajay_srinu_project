@@ -59,7 +59,7 @@ export class QuotationslistComponent implements OnInit {
     private router: Router
   ) {
     this.filter = "";
-    console.log("... a new instance of LandComponent has been created");
+    // console.log("... a new instance of LandComponent has been created");
   }
 
   ngOnChanges(changes: any) {
@@ -81,7 +81,7 @@ export class QuotationslistComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log("Quote Details response", response.quotedetails);
+        // console.log("Quote Details response", response.quotedetails);
         this.po = response.quotedetails[0].po;
         this.documents = response.quotedetails[0].documents;
       });

@@ -21,7 +21,7 @@ export class PaginatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.pagesInView = this.getPagesInView();
-    console.log("this.pagesInView", this.pagesInView);
+    // console.log("this.pagesInView", this.pagesInView);
   }
 
   getPagesInView() {
@@ -31,11 +31,11 @@ export class PaginatorComponent implements OnInit {
     if (this.currentpage < this.noOfPagesInView) {
       return initialPages;
     } else if (this.currentpage != this.totalpages) {
-      console.log(
-        "aaa",
-        this.changeBy,
-        this.pagesInView.map((el) => el + this.changeBy)
-      );
+      // console.log(
+      //   "aaa",
+      //   this.changeBy,
+      //   this.pagesInView.map((el) => el + this.changeBy)
+      // );
       return this.pagesInView.length
         ? this.pagesInView.map((el) => el + this.changeBy)
         : initialPages;

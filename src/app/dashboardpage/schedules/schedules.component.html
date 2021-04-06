@@ -58,7 +58,12 @@
           {{ element.ETD }}
         </h5>
         <div fxFlex>
-          <button mat-raised-button color="warn" class="mat-elevation-z0">
+          <button
+            mat-raised-button
+            color="warn"
+            class="mat-elevation-z0"
+            (click)="goTo('/ebooking', 'data')"
+          >
             Book
           </button>
         </div>

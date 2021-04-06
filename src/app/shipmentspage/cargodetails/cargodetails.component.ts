@@ -12,6 +12,6 @@ export class CargodetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargoDetails = this.cargo;
-    console.log("cargo", this.cargo);
+    // console.log("cargo", this.cargo);
   }
 }

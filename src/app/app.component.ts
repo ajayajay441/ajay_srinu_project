@@ -112,7 +112,6 @@ export class AppComponent implements OnDestroy {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
         this.currentRoute = this.router.url;
-        console.log("router url", this.router.url);
       });
     this.matIconRegistry.addSvgIcon(
       "download",
@@ -192,11 +191,7 @@ export class AppComponent implements OnDestroy {
   }
 
   onMenuItemClick(menuItem: NavMenuItem) {
-    if (menuItem.subMenu) {
-      menuItem.isExpanded = !menuItem.isExpanded;
-    } else {
-      this.goTo(menuItem.route);
-    }
+    this.goTo(menuItem.route);
   }
 
   ngOnDestroy() {

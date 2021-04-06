@@ -49,17 +49,17 @@ export class QuotationcardComponent implements OnInit {
       .subscribe((response: any) => {
         this.data = response.Quotation;
         this.loading = false;
-        console.log("Quotation response", response.Quotation);
+        // console.log("Quotation response", response.Quotation);
       });
   }
   onValChange(event: any): any {
-    console.log(event);
+    // console.log(event);
   }
   goTo(routePageName: string, data: any) {
-    console.log("data", data);
+    // console.log("data", data);
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   rowClick(): any {
-    console.log("Row click");
+    // console.log("Row click");
   }
 }

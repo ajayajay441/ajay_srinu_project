@@ -41,6 +41,7 @@ export class InvoicepageComponent implements OnInit {
     "days",
     "amount",
     "balance",
+    "download",
     "details",
   ];
 
@@ -63,8 +64,8 @@ export class InvoicepageComponent implements OnInit {
   activeInvoiceStatusType: any = "";
   quotationType = "pending"; // default selection
   filter: string = "";
-  invoice_po: any;
-  invoice_documents: any;
+  invoice_po = new Array();
+  invoice_documents = new Array();
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -94,7 +95,7 @@ export class InvoicepageComponent implements OnInit {
   }
   invoiceData: any;
   getDashboardInvoice(value?: string) {
-    console.log("how many times");
+    // console.log("how many times");
     if (value) this.activeInvoiceStatusType = value;
     this.authenticationService
       .refreshToken()
@@ -119,7 +120,7 @@ export class InvoicepageComponent implements OnInit {
         this.downloadLink = response.outstanding_link;
         this.agingLink = response.Ageing_Report_link;
         window.dispatchEvent(new Event("resize"));
-        // console.log("Invoice Response", response["invoice-data"]);
+        // // console.log("Invoice Response", response["invoice-data"]);
       });
   }
   getinvoicedetail(sinvoice_no?: any) {
@@ -136,7 +137,7 @@ export class InvoicepageComponent implements OnInit {
       .subscribe((response: any) => {
         this.invoice_po = response.invoicedetails.invoice_po;
         this.invoice_documents = response.invoicedetails.documents;
-        console.log("Invoice Details Response", response);
+        // console.log("Invoice Details Response", response);
       });
   }
 }

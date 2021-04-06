@@ -40,17 +40,17 @@ export class ShipmentspageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
   ) {
-    console.log("Constructor");
+    // console.log("Constructor");
   }
   shipmentDetailSubscription: any;
   ngOnInit(): void {
-    console.log("OnInIt");
+    // console.log("OnInIt");
     this.getShipmentDetails();
     this.getdashboardfilter();
   }
 
   toggleShipmentDataView(shipment: any) {
-    console.log(shipment, "card expand or collapse");
+    // console.log(shipment, "card expand or collapse");
   }
   getShipmentDetails(value?: string, page?: any) {
     this.loading = true;
@@ -79,11 +79,11 @@ export class ShipmentspageComponent implements OnInit {
         this.lastPage = Number(response.lastPage);
 
         this.loading = false;
-        console.log("Shipmentpage Response", response.ShipmentCard);
+        // console.log("Shipmentpage Response", response.ShipmentCard);
       });
   }
   // ngOnDestroy() {
-  //   console.log("Destroy");
+  //   // console.log("Destroy");
   //   // this.shipmentDetailSubscription.unsubscribe();
   // }
   getdashboardfilter() {
@@ -95,7 +95,7 @@ export class ShipmentspageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log("Filter Values", response);
+        // console.log("Filter Values", response);
         this.filters = response;
       });
   }
@@ -125,11 +125,15 @@ export class ShipmentspageComponent implements OnInit {
         // this.data.forEach(function (element: any) {
         //   element.seemore = false;
         // });
-        console.log("Shipmentpage Response", response);
+        // console.log("Shipmentpage Response", response);
       });
   }
+  goTo(routePageName: string, data: any) {
+    // console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
+  }
   seeMoreShipmentData(id: any) {
-    console.log(id);
+    // console.log(id);
     this.getShipmentTabDetails(id);
   }
   onModeChange(val: any) {
@@ -141,7 +145,7 @@ export class ShipmentspageComponent implements OnInit {
     this.getShipmentDetails();
   }
   onChangePage(page: any) {
-    console.log("page", page, this.sendto);
+    // console.log("page", page, this.sendto);
     let status = this.activeShipmentStatusType;
     this.loading = true;
     this.getShipmentDetails(status, page);

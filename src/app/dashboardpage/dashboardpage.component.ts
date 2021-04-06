@@ -33,7 +33,7 @@ export class DashboardpageComponent implements OnInit {
           return this.dashboardService.getDashboardShipments(
             userData.Token,
             "",
-            2
+            1
           );
         })
       )

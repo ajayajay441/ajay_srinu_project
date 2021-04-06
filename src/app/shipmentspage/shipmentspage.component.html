@@ -71,7 +71,12 @@
       </div>
     </div>
     <div fxFlex fxFlex.gt-md="20" class="text-right">
-      <button mat-raised-button color="primary" class="mat-elevation-z0">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z0"
+        (click)="goTo('/po', 'data')"
+      >
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon> Buyer Console
       </button>
     </div>

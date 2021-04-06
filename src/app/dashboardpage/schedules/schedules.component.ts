@@ -4,6 +4,7 @@ import { DashboardService } from "../../_services/dashboard.service";
 import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../../_services";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-schedules",
   templateUrl: "./schedules.component.html",
@@ -23,13 +24,17 @@ export class SchedulesComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dashboardService: DashboardService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getDashboardSailings();
   }
-
+  goTo(routePageName: string, data: any) {
+    // console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
+  }
   getDashboardSailings(value?: string) {
     if (value) this.activeScheduleStatusType = value;
     this.authenticationService
@@ -47,10 +52,10 @@ export class SchedulesComponent implements OnInit {
         this.dataSource = response.schedules;
         this.loading = false;
         window.dispatchEvent(new Event("resize"));
-        console.log("Schedule Response", response.schedules);
+        // console.log("Schedule Response", response.schedules);
       });
   }
   onValChange(event: any): any {
-    console.log(event);
+    // console.log(event);
   }
 }

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DashboardService } from '../../_services/dashboard.service';
-import { Subscription } from 'rxjs/index';
-import { switchMap } from 'rxjs/operators';
-import { AuthenticationService } from '../../_services';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { DashboardService } from "../../_services/dashboard.service";
+import { Subscription } from "rxjs/index";
+import { switchMap } from "rxjs/operators";
+import { AuthenticationService } from "../../_services";
 @Component({
-  selector: 'app-todolistcard',
-  templateUrl: './todolistcard.component.html',
-  styleUrls: ['./todolistcard.component.scss']
+  selector: "app-todolistcard",
+  templateUrl: "./todolistcard.component.html",
+  styleUrls: ["./todolistcard.component.scss"],
 })
 export class TodolistcardComponent implements OnInit {
   test_checkbox = true;
@@ -30,13 +30,17 @@ export class TodolistcardComponent implements OnInit {
       .refreshToken()
       .pipe(
         switchMap((userData) => {
-          return this.dashboardService.getDashboardThingsToDo(userData.Token,status, 2);
+          return this.dashboardService.getDashboardThingsToDo(
+            userData.Token,
+            status,
+            2
+          );
         })
       )
       .subscribe((response: any) => {
         this.data = response.Thingstodo;
         this.loading = false;
-        console.log('Things TODO Response', response.Thingstodo);
+        // console.log('Things TODO Response', response.Thingstodo);
       });
   }
 }

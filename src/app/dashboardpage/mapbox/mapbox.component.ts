@@ -35,10 +35,11 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     private domSanitizer: DomSanitizer,
     private router: Router
   ) {
-    console.log(countries);
+    // console.log("mapbox constructor");
   }
 
   ngOnInit(): void {
+    // console.log("mapbox ngOnInit");
     this.getDashboardMap();
   }
 
@@ -57,7 +58,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       .subscribe((response: any) => {
         // window.dispatchEvent(new Event("resize"));
         // this.loading = false;
-        console.log("map response", response);
+        // console.log("map response", response);
         this.data1 = response.countries;
         this.drawMap(
           this._elementRef.nativeElement.querySelector("#map"),
@@ -83,7 +84,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     //       .subscribe((response: any) => {
     //         // window.dispatchEvent(new Event("resize"));
     //         // this.loading = false;
-    //         console.log("map response", response);
+    //         // console.log("map response", response);
     //         countriesData =  response;
     //       });
     // }
@@ -194,7 +195,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         };
         return a;
       });
-      console.log("countries data", country);
+      // console.log("countries data", country);
       map.addSource("places", {
         type: "geojson",
         data: {

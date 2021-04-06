@@ -56,12 +56,12 @@ export class ShipmentsComponent implements OnInit {
   }
 
   goTo(routePageName: string, data: any) {
-    console.log("data", data);
+    // console.log("data", data);
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   getDashboardShipments(value?: string) {
     if (value) this.activeShipmentStatusType = value;
-    console.log(this.activeShipmentStatusType);
+    // console.log(this.activeShipmentStatusType);
     // this.data = /,
     this.authenticationService
       .refreshToken()
@@ -78,7 +78,7 @@ export class ShipmentsComponent implements OnInit {
         this.data = response.Shipments;
         window.dispatchEvent(new Event("resize"));
         this.loading = false;
-        console.log("ship resp", response.Shipments);
+        // console.log("ship resp", response.Shipments);
       });
   }
 }

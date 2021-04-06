@@ -29,12 +29,12 @@
         </mat-form-field>
       </div>
     </div>
-    <div fxFlex="20" class="text-right">
+    <!-- <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a target="_blank" href="{{ downloadLink }}">Download</a>
       </button>
-    </div>
+    </div> -->
     <div fxFlex="20" class="text-right">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
@@ -182,7 +182,7 @@
               color="primary"
               class="w-full"
             >
-              <mat-tab label="PO">
+              <mat-tab label="PO" *ngIf="invoice_po.length">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
                     <div fxLayout="column" fxLayoutAlign="center space-between">
@@ -227,7 +227,7 @@
                   </div>
                 </mat-card>
               </mat-tab>
-              <mat-tab label="Documents">
+              <mat-tab label="Documents" *ngIf="invoice_documents.length">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
                     <div fxHide fxShow.gt-md>
@@ -323,6 +323,19 @@
           {{ element.balance }}
         </td>
       </ng-container>
+      <ng-container matColumnDef="download">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <button mat-raised-button color="primary" class="mat-elevation-z0"> -->
+          <a
+            class="underline cursor-pointer mat-primary"
+            target="_blank"
+            href="{{ element.invoicelink }}"
+            >Download</a
+          >
+          <!-- </button> -->
+        </td>
+      </ng-container>
 
       <ng-container matColumnDef="details">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
@@ -358,7 +371,7 @@
       showFirstLastButtons
     ></mat-paginator>
   </div>
-  <div class="mb-10">
+  <div class="mb-10" fxShow fxHide.gt-md>
     <div
       fxLayout="column"
       fxLayoutAlign="space-between center"

@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ShipmentService } from "../_services/shipments.service";
 import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
-import { DashboardService } from "../_services/dashboard.service";
+import { EbookingService } from "../_services/ebooking.service";
 import { LocalStorageService } from "../_services/local-storage.service";
 
 const cargoContainerType = [
@@ -55,6 +55,7 @@ export class EbookingpageComponent implements OnInit {
   ebooking: any = {};
   sendto: string = "Shipper";
   originDataList: any;
+  shipperNameList: any;
   valueService: any = [
     {
       name: "sHazardous",
@@ -107,7 +108,7 @@ export class EbookingpageComponent implements OnInit {
       label: "sTosName",
       name: "Incoterms",
       options: ["FOB", "EXW", "Others"],
-      selectedValue: "FOB",
+      selectedValue: "",
     },
   ];
 
@@ -118,23 +119,49 @@ export class EbookingpageComponent implements OnInit {
     private http: HttpClient,
     private shipmentService: ShipmentService,
     private authenticationService: AuthenticationService,
-    private dashboardService: DashboardService,
-    private localStorageService: LocalStorageService
+    private ebookingService: EbookingService,
+    private localStorageService: LocalStorageService,
+    private activatedroute: ActivatedRoute
   ) {
-    console.log("eBooking route data", this.router);
+    // console.log("eBooking route data", this.router);
+    // console.log(
+    //   "route data collected as state",
+    //   this.router.getCurrentNavigation()?.extras.state
+    // );
   }
 
   ngOnInit(): void {}
   getalueAndServicesSelectedValues() {
-    console.log("ebooking", this.ebooking);
+    // console.log("ebooking", this.ebooking);
   }
   // getShipmentOptions() {
   //   const result: any = {};
   //   this.shipmentOptions.forEach(
   //     (x) => (this.ebooking[x.label] = x.selectedValue)
   //   );
-  //   console.log("ebooking", result);
+  //   // console.log("ebooking", result);
   // }
+  getShipperName(val: any) {
+    this.ebooking.sShipperName = val;
+    if (val.length >= 6) {
+      this.authenticationService
+        .refreshToken()
+        .pipe(
+          switchMap((userData) => {
+            return this.ebookingService.getebooking_shipper(
+              userData.Token,
+              this.ebooking.sShipperName
+            );
+          })
+        )
+        .subscribe((response: any) => {
+          this.shipperNameList = response.shipperlist;
+          // console.log("origin response", response);
+        });
+    } else if (!val.length) {
+      this.shipperNameList = [];
+    }
+  }
   callApi(val: any) {
     this.ebooking.shipper = val;
     if (val.length >= 6) {
@@ -142,7 +169,7 @@ export class EbookingpageComponent implements OnInit {
         .refreshToken()
         .pipe(
           switchMap((userData) => {
-            return this.shipmentService.getebooking_shipper(
+            return this.ebookingService.getebooking_shipper(
               userData.Token,
               this.ebooking.shipper
             );
@@ -150,7 +177,7 @@ export class EbookingpageComponent implements OnInit {
         )
         .subscribe((response: any) => {
           this.originDataList = response.shipperlist;
-          console.log("origin response", response);
+          // console.log("origin response", response);
         });
     } else if (!val.length) {
       this.originDataList = [];
@@ -201,11 +228,11 @@ export class EbookingpageComponent implements OnInit {
       .refreshToken()
       .pipe(
         switchMap((userData: any) => {
-          return this.dashboardService.createEbooking(this.ebooking);
+          return this.ebookingService.createEbooking(this.ebooking);
         })
       )
       .subscribe((response: any) => {
-        console.log("ship resp", response);
+        // console.log("ship resp", response);
         // this.data = response.Request_Quote_link;
       });
   }
@@ -214,7 +241,7 @@ export class EbookingpageComponent implements OnInit {
     this.shipmentOptions.forEach(
       (x) => (this.ebooking[x.label] = x.selectedValue)
     );
-    console.log(this.ebooking);
+    // console.log(this.ebooking);
     const lcontainer: any = [];
     this.cargoContainerTypes.forEach((type, i) => {
       lcontainer[i] = {};
@@ -224,7 +251,11 @@ export class EbookingpageComponent implements OnInit {
     });
     this.ebooking.lcontainer = lcontainer;
     this.ebooking.user_token = this.localStorageService.getItem("jwtToken");
-    console.log("result", lcontainer);
+    this.authenticationService.refreshToken();
+    this.ebooking.sauth_token = this.localStorageService.getItem(
+      "refreshToken"
+    );
+    // console.log("result", lcontainer);
     this.createEbooking();
   }
   // this.localStorageService.getItem("jwtToken")

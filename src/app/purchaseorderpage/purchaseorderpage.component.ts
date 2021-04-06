@@ -26,6 +26,7 @@ export interface PeriodicElement {
   po_number: string;
   shipmentno: string;
   sku: string;
+  isChecked?: boolean;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -108,6 +109,16 @@ export class PurchaseorderpageComponent implements OnInit {
   ngOnInit(): void {
     this.getpurchaseorder();
   }
+  balanceEdit(element: any, event: any) {
+    // console.log("oldBalance", element.balance);
+    // console.log("element", event.target.value);
+    if (Number(event.target.value) > Number(element.balance)) {
+      alert("ERROR");
+      event.target.value = element.balance;
+    } else {
+      element.balance = Number(event.target.value);
+    }
+  }
   getpurchaseorder(value?: string) {
     let status = "";
     this.authenticationService
@@ -125,8 +136,9 @@ export class PurchaseorderpageComponent implements OnInit {
         // this.data = response.Quotation;
         // // this.loading = false;
         // this.loading = false;
-        console.log("PO Page response", response);
+        // console.log("PO Page response", response);
         this.dataSource1 = new MatTableDataSource(response.purchase_order);
+        this.Request_Quote_link = response.Request_Quote_link;
       });
   }
   getpurchaseorderdetail(value?: string) {
@@ -141,17 +153,45 @@ export class PurchaseorderpageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        console.log("PO details", response.PO_detail);
+        // console.log("PO details", response.PO_detail);
+        response.PO_detail = [
+          {
+            sku: "",
+            description: "",
+            shipmentno: "",
+            delivery_date: "",
+            Ordered: 5,
+            booked: 4,
+            closed: 2,
+            balance: 3,
+            actions: "",
+          },
+          {
+            sku: "",
+            description: "",
+            shipmentno: "",
+            delivery_date: "",
+            Ordered: 5,
+            booked: 4,
+            closed: 2,
+            balance: 5,
+            actions: "",
+          },
+        ];
         this.dataSource = new MatTableDataSource(response.PO_detail);
-        this.Request_Quote_link = response.Request_Quote_link;
       });
   }
   goTo(routePageName: string, data: any) {
-    console.log("data", data);
-    this.router.navigate([`${routePageName}`]); // navigate to other page
+    // console.log("goTo::data", data.isError);
+    if (data.isError) {
+      return;
+    }
+    this.router.navigate([`${routePageName}`], {
+      state: data,
+    }); // navigate to other page
   }
   saveData(row: any) {
-    console.log("row", row);
+    // console.log("row", row);
   }
 }
 export interface PeriodicElement1 {

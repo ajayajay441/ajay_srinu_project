@@ -31,11 +31,7 @@
           <div class="mb-9">
             <div>
               <mat-form-field appearance="outline">
-                <input
-                  matInput
-                  placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sShipperName"
-                />
+                <input matInput placeholder="Placeholder" />
               </mat-form-field>
             </div>
           </div>
@@ -50,6 +46,7 @@
               class="my-2"
             >
               <button
+                *ngIf="currentOption !== 'Others'"
                 mat-stroked-button
                 [color]="
                   currentOption === shipmentOption.selectedValue
@@ -63,6 +60,15 @@
               >
                 {{ currentOption }}
               </button>
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding"
+                *ngIf="currentOption === 'Others'"
+              >
+                <mat-select [(ngModel)]="ebooking.sTosName">
+                  <mat-option [value]="sendto"> Others </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
           </div>
         </div>
@@ -98,7 +104,7 @@
                 <input
                   type="text"
                   matInput
-                  [(ngModel)]="ebooking.shipper"
+                  [(ngModel)]="ebooking.sPOL_Name"
                   (ngModelChange)="callApi($event)"
                   [matAutocomplete]="auto"
                 />
@@ -111,9 +117,9 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked"
-                >Checked</mat-checkbox
-              >
+              <mat-checkbox color="warn" [(ngModel)]="checked">
+                Checked
+              </mat-checkbox>
             </div>
           </div>
         </div>
@@ -194,7 +200,7 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="sendto">
+                <mat-select [(ngModel)]="ebooking.sPOD_Name">
                   <mat-option [value]="sendto"> Search Port </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -327,13 +333,13 @@
                 <input
                   type="text"
                   matInput
-                  [(ngModel)]="ebooking.shipper"
+                  [(ngModel)]="ebooking.sShipperName"
                   (ngModelChange)="callApi($event)"
                   [matAutocomplete]="auto"
                 />
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option
-                    *ngFor="let item of originDataList"
+                    *ngFor="let item of shipperNameList"
                     [value]="item.name"
                   >
                     {{ item.name }}
