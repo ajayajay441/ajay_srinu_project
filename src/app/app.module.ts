@@ -35,7 +35,7 @@ import { PurchaseorderpageModule } from "./purchaseorderpage/purchaseorderpage.m
     PurchaseorderpageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, InvoicepageModule],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 platformBrowserDynamic().bootstrapModule(AppModule);
