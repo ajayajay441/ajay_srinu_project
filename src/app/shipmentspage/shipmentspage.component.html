@@ -7,7 +7,7 @@
   >
     <div
       fxFlex
-      fxFlex.gt-md="80"
+      fxFlex.gt-md="85"
       fxLayout="row wrap"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
@@ -58,10 +58,15 @@
         fxHide
         fxShow.gt-md
       >
-        <h3 class="mb-0">Date</h3>
-        <mat-form-field appearance="fill">
+        <h3 class="mb-0">From</h3>
+        <mat-form-field appearance="fill" class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
-          <input matInput [matDatepicker]="picker" />
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="shipmentFromDate"
+            (ngModelChange)="shipmentFromDateChange(shipmentFromDate)"
+          />
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"
@@ -69,8 +74,32 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
+      <div
+        fxLayout="row"
+        fxLayoutGap="15px"
+        fxLayoutAlign="space-between center"
+        class="shipments-page-selectbox"
+        fxHide
+        fxShow.gt-md
+      >
+        <h3 class="mb-0">To</h3>
+        <mat-form-field appearance="fill" class="w-150">
+          <mat-label>MM/DD/YYYY</mat-label>
+          <input
+            matInput
+            [matDatepicker]="Topicker"
+            [(ngModel)]="shipmentToDate"
+            (ngModelChange)="shipmentToDateChange(shipmentToDate)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="Topicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #Topicker></mat-datepicker>
+        </mat-form-field>
+      </div>
     </div>
-    <div fxFlex fxFlex.gt-md="20" class="text-right">
+    <div fxFlex fxFlex.gt-md="15" class="text-right">
       <button
         mat-raised-button
         color="primary"

@@ -6,6 +6,7 @@ import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
 import { DashboardService } from "../_services/dashboard.service";
+import { toShortFormat } from "./../utilities";
 
 @Component({
   selector: "app-shipmentspage",
@@ -52,7 +53,12 @@ export class ShipmentspageComponent implements OnInit {
   toggleShipmentDataView(shipment: any) {
     // console.log(shipment, "card expand or collapse");
   }
-  getShipmentDetails(value?: string, page?: any) {
+  getShipmentDetails(
+    value?: string,
+    page?: any,
+    fromDate?: string,
+    toDate?: string
+  ) {
     this.loading = true;
     let pageNo = page ? page : "1";
     // let status = "";
@@ -98,6 +104,29 @@ export class ShipmentspageComponent implements OnInit {
         // console.log("Filter Values", response);
         this.filters = response;
       });
+  }
+  shipmentFromDate: any;
+  shipmentToDate: any;
+  shipmentFromDateChange(shipmentFromDate: any) {
+    console.log(toShortFormat(shipmentFromDate));
+    if (this.shipmentToDate) {
+      this.getShipmentDetails(
+        this.activeShipmentStatusType,
+        "1",
+        shipmentFromDate,
+        this.shipmentToDate
+      );
+    }
+  }
+  shipmentToDateChange(shipmentToDate: any) {
+    if (this.shipmentToDate) {
+      this.getShipmentDetails(
+        this.activeShipmentStatusType,
+        "1",
+        this.shipmentFromDate,
+        shipmentToDate
+      );
+    }
   }
   getShipmentTabDetails(id?: any) {
     let status = "";

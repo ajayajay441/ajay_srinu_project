@@ -62,10 +62,11 @@ export class InvoicepageComponent implements OnInit {
     { label: "Paid", value: "paid" },
   ];
   activeInvoiceStatusType: any = "";
-  quotationType = "pending"; // default selection
+  quotationType = "";
   filter: string = "";
   invoice_po = new Array();
   invoice_documents = new Array();
+  invoiceFilter: string = "";
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -76,11 +77,11 @@ export class InvoicepageComponent implements OnInit {
     this.modelChanged
       .pipe(debounceTime(1000))
       .pipe(distinctUntilChanged())
-      // wait 300ms after the last event before emitting last event
-      // only emit if value is different from previous value
       .subscribe((filter) => (this.filter = filter));
   }
-
+  onInvoiceFilterSelect(invoiceFilter: string) {
+    console.log(invoiceFilter);
+  }
   filterChanged(filter: string) {
     this.dataSource.filter = filter.trim().toLowerCase();
   }
@@ -95,7 +96,6 @@ export class InvoicepageComponent implements OnInit {
   }
   invoiceData: any;
   getDashboardInvoice(value?: string) {
-    // console.log("how many times");
     if (value) this.activeInvoiceStatusType = value;
     this.authenticationService
       .refreshToken()
@@ -120,7 +120,6 @@ export class InvoicepageComponent implements OnInit {
         this.downloadLink = response.outstanding_link;
         this.agingLink = response.Ageing_Report_link;
         window.dispatchEvent(new Event("resize"));
-        // // console.log("Invoice Response", response["invoice-data"]);
       });
   }
   getinvoicedetail(sinvoice_no?: any) {
@@ -137,7 +136,6 @@ export class InvoicepageComponent implements OnInit {
       .subscribe((response: any) => {
         this.invoice_po = response.invoicedetails.invoice_po;
         this.invoice_documents = response.invoicedetails.documents;
-        // console.log("Invoice Details Response", response);
       });
   }
 }
