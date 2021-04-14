@@ -42,6 +42,40 @@ $mat-fresconprimary: (
     A700: #000000,
   ),
 );
+/* For use in src/lib/core/theming/_palette.scss */
+$mat-fresconsecondary: (
+  50: #f2f2f3,
+  100: #dedee2,
+  200: #c9c9ce,
+  300: #b3b3ba,
+  400: #a2a2ac,
+  500: #92929d,
+  600: #8a8a95,
+  700: #7f7f8b,
+  800: #757581,
+  900: #63636f,
+  A100: #e6e6fd,
+  A200: #b7b7fa,
+  A400: #7f7fff,
+  A700: #6565ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
 $mat-fresconaccent: (
   50: #e6e6e6,
   100: #c1c1c1,
@@ -77,6 +111,7 @@ $mat-fresconaccent: (
 
 $frescon-primary: mat-palette($mat-fresconprimary);
 $frescon-accent: mat-palette($mat-fresconaccent);
+$frescon-secondary: mat-palette($mat-fresconsecondary);
 
 // The warn palette is optional (defaults to red).
 $frescon-warn: mat-palette($mat-red);
@@ -89,6 +124,7 @@ $frescon-theme: mat-light-theme(
       primary: $frescon-primary,
       accent: $frescon-accent,
       warn: $frescon-warn,
+      secondary: $frescon-secondary,
     ),
   )
 );

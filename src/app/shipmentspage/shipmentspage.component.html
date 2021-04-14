@@ -21,7 +21,7 @@
         fxHide
         fxShow.gt-md
       >
-        <h3 class="mb-0">Status</h3>
+        <h3 class="mb-0 secondary">Status</h3>
         <mat-form-field class="w-full max100px">
           <mat-select (selectionChange)="onStatusChange($event.value)">
             <mat-option
@@ -41,7 +41,7 @@
         fxHide
         fxShow.gt-md
       >
-        <h3 class="mb-0">Mode</h3>
+        <h3 class="mb-0 secondary">Mode</h3>
         <mat-form-field class="w-full max100px">
           <mat-select (selectionChange)="onModeChange($event.value)">
             <mat-option *ngFor="let mode of filters.mode" [value]="mode.value">
@@ -58,7 +58,7 @@
         fxHide
         fxShow.gt-md
       >
-        <h3 class="mb-0">From</h3>
+        <h3 class="mb-0 secondary">From</h3>
         <mat-form-field appearance="fill" class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input
@@ -82,7 +82,7 @@
         fxHide
         fxShow.gt-md
       >
-        <h3 class="mb-0">To</h3>
+        <h3 class="mb-0 secondary">To</h3>
         <mat-form-field appearance="fill" class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input
@@ -361,7 +361,7 @@
                 <mat-option value="Actions"> Actions </mat-option>
                 <mat-option value="Cargo Details"> Cargo Details </mat-option>
                 <mat-option value="Documents"> Documents </mat-option>
-                <mat-option value="CAN"> CAN </mat-option>
+                <!-- <mat-option value="CAN"> CAN </mat-option> -->
               </mat-select>
             </mat-form-field>
           </div>
@@ -410,11 +410,11 @@
                 <app-documents [documents]="documents"></app-documents>
               </div>
             </mat-tab>
-            <mat-tab label="CAN" *ngIf="CAN">
-              <div class="mat-tab-content my-3">
-                <app-can [CAN]="CAN"></app-can>
-              </div>
-            </mat-tab>
+            <!-- <mat-tab label="CAN" *ngIf="CAN">
+                <div class="mat-tab-content my-3">
+                  <app-can [CAN]="CAN"></app-can>
+                </div>
+              </mat-tab> -->
           </mat-tab-group>
         </mat-expansion-panel>
       </div>
@@ -436,9 +436,9 @@
         <div *ngIf="shipment.seemoreMobile === 'Documents'">
           <app-documents [documents]="documents"></app-documents>
         </div>
-        <div *ngIf="shipment.seemoreMobile === 'CAN'">
+        <!-- <div *ngIf="shipment.seemoreMobile === 'CAN'">
           <app-can [CAN]="CAN"></app-can>
-        </div>
+        </div> -->
       </div>
     </mat-card>
   </div>

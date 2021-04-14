@@ -78,7 +78,7 @@ export class ShipmentsComponent implements OnInit {
         this.data = response.Shipments;
         window.dispatchEvent(new Event("resize"));
         this.loading = false;
-        // console.log("ship resp", response.Shipments);
+        console.log("ship resp", response.Shipments);
       });
   }
 }

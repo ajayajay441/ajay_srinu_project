@@ -6,10 +6,10 @@
     fxLayoutAlign="space-between center"
   >
     <h1 class="mb-0">E-Booking</h1>
-    <button mat-raised-button color="primary" class="mat-elevation-z0">
+    <!-- <button mat-raised-button color="primary" class="mat-elevation-z0">
       <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
       Generate Quote
-    </button>
+    </button> -->
   </div>
   <!-- Add a New Shipment -->
   <div class="mb-10">
@@ -28,7 +28,7 @@
           <div class="mb-0">
             <h3>Shipment name</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div>
               <mat-form-field appearance="outline">
                 <input matInput placeholder="Placeholder" />
@@ -46,7 +46,6 @@
               class="my-2"
             >
               <button
-                *ngIf="currentOption !== 'Others'"
                 mat-stroked-button
                 [color]="
                   currentOption === shipmentOption.selectedValue
@@ -56,21 +55,38 @@
                 [class.light-color-button]="
                   currentOption !== shipmentOption.selectedValue
                 "
-                (click)="shipmentOption.selectedValue = currentOption"
+                (click)="
+                  shipmentOption.selectedValue = currentOption;
+                  scheduleApiCallMethod()
+                "
               >
                 {{ currentOption }}
               </button>
-              <mat-form-field
-                appearance="outline"
-                class="no-bottom-padding"
-                *ngIf="currentOption === 'Others'"
-              >
-                <mat-select [(ngModel)]="ebooking.sTosName">
-                  <mat-option [value]="sendto"> Others </mat-option>
-                </mat-select>
-              </mat-form-field>
             </div>
           </div>
+        </div>
+        <div>
+          <div fxLayout="row" class="mb-0">
+            <h3>Select Incoterms</h3>
+          </div>
+          <mat-form-field appearance="outline" class="no-bottom-padding">
+            <mat-select [(ngModel)]="ebooking.sTosName">
+              <!-- <mat-option [value]="sendto"> Others </mat-option> -->
+              <mat-option value="CFR">C&F COST AND FREIGHT</mat-option>
+              <mat-option value="CIF">COST, INSURANCE AND FREIGHT</mat-option>
+              <mat-option value="CIP"
+                >CARRIAGE AND INSURANCE PAID TO</mat-option
+              >
+              <mat-option value="CPT">CARRIAGE PAID TO</mat-option>
+              <mat-option value="DAP">DELIVERED AT PLACE</mat-option>
+              <mat-option value="DAT">DELIVERED AT TERMINAL</mat-option>
+              <mat-option value="DDP">DELIVERED DUTY PAID</mat-option>
+              <mat-option value="EXW">EX WORKS</mat-option>
+              <mat-option value="FAS">FREE ALONGSIDE SHIP</mat-option>
+              <mat-option value="FCA">FREE CARRIER</mat-option>
+              <mat-option value="FOB">FREE ON BOARD</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
@@ -93,27 +109,28 @@
           <div class="mb-0">
             <h3>Origin Port</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field>
+              <mat-form-field appearance="outline">
                 <input
                   type="text"
                   matInput
                   [(ngModel)]="ebooking.sPOL_Name"
-                  (ngModelChange)="callApi($event)"
-                  [matAutocomplete]="auto"
+                  (ngModelChange)="getOriginport($event)"
+                  [matAutocomplete]="originAutoComp"
                 />
-                <mat-autocomplete #auto="matAutocomplete">
+                <mat-autocomplete #originAutoComp="matAutocomplete">
                   <mat-option
                     *ngFor="let item of originDataList"
-                    [value]="item.name"
+                    [value]="item.port_name"
+                    (click)="onOriginDataListSelect(item)"
                   >
-                    {{ item.name }}
+                    {{ item.port_name }}
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
@@ -128,22 +145,29 @@
           <div class="mb-0">
             <h3>Pick-Up Location</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sPickupplace">
+              <!-- <mat-select [(ngModel)]="ebooking.sPickupplace">
                   <mat-option [value]="sendto"> Shipper </mat-option>
-                </mat-select>
+                </mat-select> -->
+              <mat-form-field appearance="outline">
+                <input
+                  [(ngModel)]="ebooking.sPickupplace"
+                  matInput
+                  placeholder="Adderess"
+                />
               </mat-form-field>
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sPickupzipcode">
-                  <mat-option [value]="sendto"> Zip Code </mat-option>
-                </mat-select>
+              <mat-form-field appearance="outline">
+                <input
+                  [(ngModel)]="ebooking.sPickupzipcode"
+                  matInput
+                  placeholder="Zipcode"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -152,21 +176,25 @@
           <div class="mb-0">
             <h3>Cargo Ready for Pickup Date</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="fill">
+              <mat-form-field appearance="outline">
                 <mat-label>MM/DD/YYYY</mat-label>
-                <input matInput [matDatepicker]="picker" />
+                <input
+                  matInput
+                  [matDatepicker]="readyDatePicker"
+                  [(ngModel)]="ebooking.sCargoReadyDate"
+                />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="picker"
+                  [for]="readyDatePicker"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #readyDatePicker></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -192,17 +220,30 @@
           <div class="mb-0">
             <h3>Destination Port</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sPOD_Name">
-                  <mat-option [value]="sendto"> Search Port </mat-option>
-                </mat-select>
+              <mat-form-field appearance="outline">
+                <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="ebooking.sFDC_Name"
+                  (ngModelChange)="getDestinationport($event)"
+                  [matAutocomplete]="destAutoComp"
+                />
+                <mat-autocomplete #destAutoComp="matAutocomplete">
+                  <mat-option
+                    *ngFor="let item of destinationDataList"
+                    [value]="item.port_name"
+                    (click)="onDestinationDataListSelect(item)"
+                  >
+                    {{ item.port_name }}
+                  </mat-option>
+                </mat-autocomplete>
               </mat-form-field>
               <mat-checkbox color="warn" [(ngModel)]="checked"
                 >Dekivery required</mat-checkbox
@@ -215,7 +256,7 @@
           <div class="mb-0">
             <h3>Delivery Location</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
@@ -223,16 +264,19 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sDlylocation">
-                  <mat-option [value]="sendto">
-                    Search Address/city
-                  </mat-option>
-                </mat-select>
+                <input
+                  [(ngModel)]="ebooking.sDlylocation"
+                  matInput
+                  placeholder="Adderess"
+                />
               </mat-form-field>
+
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sDlyzipcode">
-                  <mat-option [value]="sendto"> Zip Code </mat-option>
-                </mat-select>
+                <input
+                  [(ngModel)]="ebooking.sDlyzipcode"
+                  matInput
+                  placeholder="Zip code"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -241,16 +285,20 @@
           <div class="mb-0">
             <h3>Cargo Ready for Delivery Date</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
-              <mat-form-field appearance="fill">
+              <mat-form-field appearance="outline">
                 <mat-label>MM/DD/YYYY</mat-label>
-                <input matInput [matDatepicker]="picker" />
+                <input
+                  matInput
+                  [matDatepicker]="destinationPicker"
+                  [(ngModel)]="ebooking.sDlycargordydate"
+                />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="picker"
+                  [for]="destinationPicker"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #destinationPicker></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -322,25 +370,26 @@
           <div class="mb-0">
             <h3>Shipper</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field>
+              <mat-form-field appearance="outline">
                 <input
                   type="text"
                   matInput
                   [(ngModel)]="ebooking.sShipperName"
-                  (ngModelChange)="callApi($event)"
+                  (ngModelChange)="getShipperName($event)"
                   [matAutocomplete]="auto"
                 />
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option
                     *ngFor="let item of shipperNameList"
                     [value]="item.name"
+                    (click)="onShipperDataListSelect(item)"
                   >
                     {{ item.name }}
                   </mat-option>
@@ -357,7 +406,7 @@
           <div class="mb-0">
             <h3>Address</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
@@ -365,37 +414,85 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sPickupplace">
-                  <mat-option [value]="sendto"> Shipper </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <mat-select [(ngModel)]="ebooking.sPickupzipcode">
-                  <mat-option [value]="sendto"> Zip Code </mat-option>
-                </mat-select>
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  [(ngModel)]="ebooking.sShipperAddr"
+                />
               </mat-form-field>
             </div>
           </div>
         </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- Enter Consignee info -->
+  <div class="mb-10">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">Enter Consignee Informations</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
         <div class="mb-0">
           <div class="mb-0">
-            <h3>Cargo Ready for Pickup Date</h3>
+            <h3>Consignee</h3>
           </div>
-          <div class="mb-9">
+          <div class="mb-1">
             <div
               fxLayout="column"
               fxLayout.gt-md="row"
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="fill">
-                <mat-label>MM/DD/YYYY</mat-label>
-                <input matInput [matDatepicker]="picker" />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+              <mat-form-field appearance="outline">
+                <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="ebooking.sConsigName"
+                  (ngModelChange)="getConsigneeName($event)"
+                  [matAutocomplete]="consigneeAuto"
+                />
+                <mat-autocomplete #consigneeAuto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let item of consigneeNameList"
+                    [value]="item.name"
+                    (click)="onConsigneeDataListSelect(item)"
+                  >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-checkbox color="warn" [(ngModel)]="checked"
+                >Pick-up required</mat-checkbox
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-0">
+          <div class="mb-0">
+            <h3>Address</h3>
+          </div>
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-md="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field appearance="outline" class="no-bottom-padding">
+                <input
+                  matInput
+                  placeholder="Placeholder"
+                  [(ngModel)]="ebooking.sConsigAddr"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -424,10 +521,21 @@
             <div>
               <mat-form-field appearance="outline">
                 <input
+                  type="text"
                   matInput
-                  placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sShipperName"
+                  [(ngModel)]="ebooking.sFirstNotifyName"
+                  (ngModelChange)="getNotifyName($event)"
+                  [matAutocomplete]="notifyAuto"
                 />
+                <mat-autocomplete #notifyAuto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let item of notifyNameList"
+                    [value]="item.name"
+                    (click)="onNotifyDataListSelect(item)"
+                  >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-autocomplete>
               </mat-form-field>
             </div>
           </div>
@@ -442,31 +550,8 @@
                 <input
                   matInput
                   placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sShipperName"
+                  [(ngModel)]="ebooking.sFirstNotifyAddr"
                 />
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Cargo Ready for Pickup Date</h3>
-          </div>
-          <div class="mb-9">
-            <div
-              fxLayout="column"
-              fxLayout.gt-md="row"
-              fxLayoutGap="25px"
-              fxLayoutAlign="start start"
-            >
-              <mat-form-field appearance="fill">
-                <mat-label>MM/DD/YYYY</mat-label>
-                <input matInput [matDatepicker]="picker" />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -487,12 +572,20 @@
             <h1 class="mb-0">Cargo & Container</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div
-          class="mb-9"
+        <!-- <div
           *ngFor="
-            let item of cargoContainerTypes;
+            let cargoContainer of cargoContainers;
             last as isLast;
-            first as isFirst
+            first as isFirst;
+            let i = index
+          "
+        > -->
+        <div
+          class="mb-1"
+          *ngFor="
+            let cargoContainerType of cargoContainerTypes;
+            let isFirst = first;
+            let isLast = last
           "
         >
           <div
@@ -501,10 +594,13 @@
             fxLayoutGap="10px"
             fxLayoutAlign="start center"
           >
-            <div *ngFor="let field of item">
+            <div *ngFor="let field of cargoContainerType; let i = index">
               <div *ngIf="field.options">
                 <h5>{{ field.name }}</h5>
-                <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-form-field
+                  appearance="outline"
+                  class="no-bottom-padding w-150"
+                >
                   <mat-select [(ngModel)]="field.selectedValue">
                     <mat-option
                       *ngFor="let option of field.options"
@@ -517,7 +613,10 @@
               </div>
               <div *ngIf="!field.options">
                 <h5>{{ field.name }}</h5>
-                <mat-form-field appearance="outline" class="no-bottom-padding">
+                <mat-form-field
+                  appearance="outline"
+                  class="no-bottom-padding w-150"
+                >
                   <input
                     matInput
                     placeholder="Placeholder"
@@ -529,8 +628,8 @@
             <button
               mat-raised-button
               color="primary"
-              class="mat-elevation-z0"
-              *ngIf="isFirst && cargoContainerTypes.length === 1"
+              class="mat-elevation-z0 bttn"
+              *ngIf="cargoContainerTypes.length < 5 && isLast"
               (click)="addCargotype()"
             >
               add
@@ -538,16 +637,140 @@
             <button
               mat-raised-button
               color="primary"
-              class="mat-elevation-z0"
-              *ngIf="isLast && cargoContainerTypes.length === 2"
+              class="mat-elevation-z0 bttn"
+              *ngIf="cargoContainerTypes.length > 1"
               (click)="removeCargoType()"
             >
               Remove
             </button>
           </div>
+          <!-- </div> -->
         </div>
       </mat-expansion-panel>
     </mat-accordion>
+  </div>
+  <div class="mb-10" *ngIf="sailingData">
+    <mat-card class="mat-elevation-z0">
+      <div fxLayout="row" fxLayoutGap="25px">
+        <h2 class="mb-0">Schedules</h2>
+      </div>
+      <div
+        class="card-title mb-9"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <!-- <a class="underline"> View all </a> -->
+      </div>
+      <div class="card-body">
+        <div fxLayout="column" fxLayoutAlign="center space-between">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="10px"
+            class="py-3 schedules-table-header"
+          >
+            <h3 fxFlex class="mb-0">Origin</h3>
+            <h3 fxFlex class="mb-0">Destination</h3>
+            <h3 fxFlex class="mb-0">Cut Off</h3>
+            <h3 fxFlex class="mb-0">TTPort</h3>
+            <h3 fxFlex class="mb-0">TTLRD</h3>
+            <h3 fxFlex class="mb-0"></h3>
+            <h3 fxFlex class="mb-0"></h3>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="10px"
+            class="my-3 schedule-item"
+            *ngFor="let element of sailingData"
+          >
+            <h5 fxFlex class="mb-0">{{ element.POL_NAME }}</h5>
+            <h5 fxFlex class="mb-0">{{ element.POD_NAME }}</h5>
+            <h5 fxFlex class="mb-0">
+              {{ element.ETD }}
+            </h5>
+            <h5 fxFlex class="mb-0">
+              {{ element.VOYAGE_NO }}
+            </h5>
+            <h5 fxFlex class="mb-0">
+              {{ element.VOYAGE_NO }}
+            </h5>
+            <h5 fxFlex class="mb-0" color="warn">Fast</h5>
+            <div fxFlex>
+              <!-- <button mat-raised-button color="warn" class="mat-elevation-z0">
+                Book
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="mb-10" *ngIf="poData?.po_number">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1 class="mb-0">PO Details</h1>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="card-body">
+          <div fxLayout="column" fxLayoutAlign="center space-between">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+              class="py-3 schedules-table-header"
+            >
+              <h3 fxFlex class="mb-0">Po Number</h3>
+              <h3 fxFlex class="mb-0">SKU</h3>
+              <h3 fxFlex class="mb-0">Description</h3>
+              <h3 fxFlex class="mb-0">Shipment No</h3>
+              <h3 fxFlex class="mb-0">Delivery Date</h3>
+              <h3 fxFlex class="mb-0">Ordered</h3>
+              <h3 fxFlex class="mb-0">Booked</h3>
+              <h3 fxFlex class="mb-0">Closed</h3>
+              <h3 fxFlex class="mb-0">Balance</h3>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+              class="my-3 schedule-item"
+            >
+              <h5 fxFlex class="mb-0">{{ poData?.po_number }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.sku }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.description }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.shipmentno }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.delivery_date }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.Ordered }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.booked }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.closed }}</h5>
+              <h5 fxFlex class="mb-0">{{ poData?.balance }}</h5>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div>
+    <div class="mb-5">
+      <h5>File Upload</h5>
+      <div>
+        <!-- <mat-form-field appearance="outline"> -->
+        <input
+          type="file"
+          placeholder="Placeholder"
+          [(ngModel)]="ebooking.sFilename"
+        />
+        <!-- </mat-form-field> -->
+      </div>
+    </div>
   </div>
   <div>
     <button

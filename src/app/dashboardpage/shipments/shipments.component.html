@@ -42,12 +42,8 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h3 class="mb-0">
-            {{ element["hbl-number"] }}
-          </h3>
-          <h5 class="mb-0">
-            {{ element["customer-name"] }}
-          </h5>
+          <h3 class="mb-0">{{ element["hbl-number"] }}</h3>
+          <h5 class="mb-0">{{ element["customer-name"] }}</h5>
         </div>
         <div
           fxLayout="row"
@@ -55,11 +51,11 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h6 class="mb-0">
-            {{ element.ETA }}
+          <h6 class="mb-0" *ngIf="element.ETA">
+            <span class="font-bold">CLR:</span> {{ element.ETA }}
           </h6>
-          <h6 class="mb-0">
-            {{ element.ETD }}
+          <h6 class="mb-0" *ngIf="element.ETD">
+            <span class="font-bold">BOE:</span>{{ element.ETD }}
           </h6>
         </div>
       </div>

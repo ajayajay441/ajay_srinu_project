@@ -43,6 +43,9 @@ a.mat-primary {
 .accent {
   color: $fresonaccentcolor !important;
 }
+.secondary {
+  color: $fresconsecondarycolor !important;
+}
 .mat-button,
 .mat-icon-button,
 .mat-stroked-button,
@@ -57,4 +60,11 @@ a.mat-primary {
 }
 .spinner {
   margin: auto;
+}
+
+.mat-expansion-indicator::after,
+.mat-expansion-indicator::before {
+  border-color: #313131;
+  width: 12px;
+  height: 12px;
 }

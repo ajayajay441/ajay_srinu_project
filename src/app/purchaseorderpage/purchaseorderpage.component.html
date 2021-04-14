@@ -21,17 +21,25 @@
         <h3 class="mb-0">Type:</h3>
         <mat-form-field class="w-full">
           <!-- <mat-label>Status</mat-label> -->
-          <mat-select>
-            <mat-option> History </mat-option>
+          <mat-select
+            [(ngModel)]="poFilter"
+            (ngModelChange)="onPoFilterSelect(poFilter)"
+          >
+            <mat-option value="PENDING"> PENDING </mat-option>
+            <mat-option value="IN TRANSIT"> IN TRANSIT </mat-option>
+            <mat-option value="CLOSED"> CLOSED </mat-option>
+            <mat-option value="PENDING TO SHIP"> PENDING TO SHIP </mat-option>
+            <mat-option value="PENDING TO APPROVE">
+              PENDING TO APPROVE
+            </mat-option>
           </mat-select>
         </mat-form-field>
-        <h3 class="mb-0">Origin:</h3>
+        <!-- <h3 class="mb-0">Origin:</h3>
         <mat-form-field class="w-full">
-          <!-- <mat-label>Status</mat-label> -->
           <mat-select>
             <mat-option> History </mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
     </div>
     <div fxFlex="20" class="text-right">

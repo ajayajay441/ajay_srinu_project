@@ -53,12 +53,7 @@ export class ShipmentspageComponent implements OnInit {
   toggleShipmentDataView(shipment: any) {
     // console.log(shipment, "card expand or collapse");
   }
-  getShipmentDetails(
-    value?: string,
-    page?: any,
-    fromDate?: string,
-    toDate?: string
-  ) {
+  getShipmentDetails(value?: string, page?: any, fromDate?: any, toDate?: any) {
     this.loading = true;
     let pageNo = page ? page : "1";
     // let status = "";
@@ -74,8 +69,8 @@ export class ShipmentspageComponent implements OnInit {
             pageNo,
             10,
             this.modeVal,
-            "01-OCT-2020",
-            "20-OCT-2020"
+            fromDate ? toShortFormat(fromDate) : "",
+            toDate ? toShortFormat(toDate) : ""
           );
         })
       )

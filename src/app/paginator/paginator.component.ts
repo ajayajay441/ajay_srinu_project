@@ -55,7 +55,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   setCurrentPage(page: number) {
-    debugger;
     if (this.currentpage !== page) {
       this.currentpage = page;
       if (this.currentpage === this.totalpages && this.changeBy === 1) {

@@ -29,8 +29,8 @@
             color="accent"
           >
             <mat-option
-              [value]="filter"
               *ngFor="let _invoiceType of invoiceTypes"
+              [value]="_invoiceType.value"
             >
               {{ _invoiceType.label }}
             </mat-option>

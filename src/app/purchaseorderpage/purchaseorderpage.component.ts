@@ -60,6 +60,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class PurchaseorderpageComponent implements OnInit {
   data: any;
+  poFilter: string = "";
   displayedColumns: string[] = [
     "sku",
     "description",
@@ -119,8 +120,11 @@ export class PurchaseorderpageComponent implements OnInit {
       element.balance = Number(event.target.value);
     }
   }
+  onPoFilterSelect(val: string) {
+    this.getpurchaseorder(val);
+  }
   getpurchaseorder(value?: string) {
-    let status = "";
+    let status = value ? value : "";
     this.authenticationService
       .refreshToken()
       .pipe(
@@ -154,30 +158,30 @@ export class PurchaseorderpageComponent implements OnInit {
       )
       .subscribe((response: any) => {
         // console.log("PO details", response.PO_detail);
-        response.PO_detail = [
-          {
-            sku: "",
-            description: "",
-            shipmentno: "",
-            delivery_date: "",
-            Ordered: 5,
-            booked: 4,
-            closed: 2,
-            balance: 3,
-            actions: "",
-          },
-          {
-            sku: "",
-            description: "",
-            shipmentno: "",
-            delivery_date: "",
-            Ordered: 5,
-            booked: 4,
-            closed: 2,
-            balance: 5,
-            actions: "",
-          },
-        ];
+        // response.PO_detail = [
+        //   {
+        //     sku: "",
+        //     description: "",
+        //     shipmentno: "",
+        //     delivery_date: "",
+        //     Ordered: 5,
+        //     booked: 4,
+        //     closed: 2,
+        //     balance: 3,
+        //     actions: "",
+        //   },
+        //   {
+        //     sku: "",
+        //     description: "",
+        //     shipmentno: "",
+        //     delivery_date: "",
+        //     Ordered: 5,
+        //     booked: 4,
+        //     closed: 2,
+        //     balance: 5,
+        //     actions: "",
+        //   },
+        // ];
         this.dataSource = new MatTableDataSource(response.PO_detail);
       });
   }

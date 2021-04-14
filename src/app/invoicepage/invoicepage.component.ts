@@ -81,6 +81,7 @@ export class InvoicepageComponent implements OnInit {
   }
   onInvoiceFilterSelect(invoiceFilter: string) {
     console.log(invoiceFilter);
+    this.getDashboardInvoice(invoiceFilter);
   }
   filterChanged(filter: string) {
     this.dataSource.filter = filter.trim().toLowerCase();

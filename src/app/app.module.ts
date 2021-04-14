@@ -19,6 +19,8 @@ import { EbookingpageModule } from "./ebookingpage/ebookingpage.module";
 import { InvoicepageModule } from "./invoicepage/invoicepage.module";
 import { PurchaseorderpageModule } from "./purchaseorderpage/purchaseorderpage.module";
 
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -34,7 +36,7 @@ import { PurchaseorderpageModule } from "./purchaseorderpage/purchaseorderpage.m
     InvoicepageModule,
     PurchaseorderpageModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

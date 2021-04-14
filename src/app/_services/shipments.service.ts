@@ -27,9 +27,9 @@ export class ShipmentService {
     let url;
     if (status != "") {
       // url=`${environment.apiUrl}/getdashboardshipment?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}`
-      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&spagesize=${spagesize}&sperpage=${sperpage}&smode=${smode}&sfromdate=${sfromdate}&stodate=${stodate}`;
+      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=${status}&spagesize=${spagesize}&sperpage=${sperpage}&smode=${smode}&sfromdate=${sfromdate}&stodate=${stodate}&scountry`;
     } else {
-      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=&spagesize=${spagesize}&sperpage=${sperpage}&smode=${smode}&sfromdate=${sfromdate}&stodate=${stodate}`;
+      url = `${environment.apiUrl}/getshipmentupdates?user_token=${jwtToken}&sauth_token=${refreshToken}&status=&spagesize=${spagesize}&sperpage=${sperpage}&smode=${smode}&sfromdate=${sfromdate}&stodate=${stodate}&scountry`;
     }
     return this.http.get<any>(url).pipe(
       map((response: Response) => {
