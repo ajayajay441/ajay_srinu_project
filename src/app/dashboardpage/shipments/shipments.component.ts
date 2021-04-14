@@ -21,8 +21,8 @@ export class ShipmentsComponent implements OnInit {
   transitStatuses = [
     { label: "Booked", value: "BOOKED" },
     { label: "Cargo received", value: "RECEIVED" },
-    { label: "In transit", value: "IN TRANSIT" },
     { label: "Actual departed", value: "DEPARTED" },
+    { label: "In transit", value: "IN TRANSIT" },
     { label: "ETA delayed", value: "DELAYED" },
     { label: "Delivered", value: "DELIVERED" },
   ];
@@ -70,7 +70,7 @@ export class ShipmentsComponent implements OnInit {
           return this.dashboardService.getDashboardShipments(
             userData.Token,
             this.activeShipmentStatusType,
-            2
+            3
           );
         })
       )

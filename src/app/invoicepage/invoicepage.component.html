@@ -62,25 +62,7 @@
       <div class="inv_box">
         <div class="my-3 mx-3 text-base"><strong>Total due amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
-          <strong>{{ totalDueAmount }}</strong
-          ><span class="green px-2"
-            >+2.5%<svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.66664 11.3333V0.666667C6.66664 0.298477 6.36816 2.47154e-07 5.99997 2.47154e-07C5.63178 2.47154e-07 5.3333 0.298477 5.3333 0.666667V11.3333C5.3333 11.7015 5.63178 12 5.99997 12C6.36816 12 6.66664 11.7015 6.66664 11.3333Z"
-                fill="#3DD598"
-              />
-              <path
-                d="M5.99404 1.67906L10.1652 6.43936C10.4079 6.71628 10.8291 6.74406 11.106 6.50141C11.3829 6.25876 11.4107 5.83756 11.168 5.56064L6.49473 0.22731C6.22891 -0.0760547 5.75669 -0.0757209 5.49129 0.228018L0.831274 5.56135C0.589015 5.83861 0.617391 6.25977 0.894653 6.50203C1.17192 6.74429 1.59307 6.71591 1.83533 6.43865L5.99404 1.67906Z"
-                fill="#3DD598"
-              />
-            </svg>
-          </span>
+          <strong>{{ currecny }} {{ totalDueAmount }}</strong>
         </div>
         <div class="my-3 mx-3 text-base para">
           Number of unpaid invoices : {{ unPaidInvoice }}
@@ -89,25 +71,7 @@
       <div class="inv_box">
         <div class="my-3 mx-3 text-base"><strong>Overdue amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
-          <strong>{{ overDueAmount }}</strong
-          ><span class="green px-2"
-            ><svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.66664 11.3333V0.666667C6.66664 0.298477 6.36816 2.47154e-07 5.99997 2.47154e-07C5.63178 2.47154e-07 5.3333 0.298477 5.3333 0.666667V11.3333C5.3333 11.7015 5.63178 12 5.99997 12C6.36816 12 6.66664 11.7015 6.66664 11.3333Z"
-                fill="#3DD598"
-              />
-              <path
-                d="M5.99404 1.67906L10.1652 6.43936C10.4079 6.71628 10.8291 6.74406 11.106 6.50141C11.3829 6.25876 11.4107 5.83756 11.168 5.56064L6.49473 0.22731C6.22891 -0.0760547 5.75669 -0.0757209 5.49129 0.228018L0.831274 5.56135C0.589015 5.83861 0.617391 6.25977 0.894653 6.50203C1.17192 6.74429 1.59307 6.71591 1.83533 6.43865L5.99404 1.67906Z"
-                fill="#3DD598"
-              />
-            </svg>
-          </span>
+          <strong>{{ currecny }} {{ overDueAmount }}</strong>
         </div>
         <div class="my-3 mx-3 text-base para">
           Number of unpaid invoices : {{ unPaidInvoice }}
@@ -191,7 +155,7 @@
               color="primary"
               class="w-full"
             >
-              <mat-tab label="PO" *ngIf="invoice_po.length">
+              <mat-tab label="PO">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
                     <div fxLayout="column" fxLayoutAlign="center space-between">
@@ -236,7 +200,7 @@
                   </div>
                 </mat-card>
               </mat-tab>
-              <mat-tab label="Documents" *ngIf="invoice_documents.length">
+              <mat-tab label="Documents">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
                     <div fxHide fxShow.gt-md>

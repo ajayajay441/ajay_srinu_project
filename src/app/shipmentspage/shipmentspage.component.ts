@@ -30,7 +30,7 @@ export class ShipmentspageComponent implements OnInit {
   modeVal: string = "";
   shipmentStatusTypes = [
     { label: "Booked", value: "BOOKED" },
-    { label: "INTRANSIT", value: "INTRANSIT" },
+    { label: "IN TRANSIT", value: "IN TRANSIT" },
     { label: "ARRIVED", value: "ARRIVED" },
   ];
   activeShipmentStatusType: any = "";

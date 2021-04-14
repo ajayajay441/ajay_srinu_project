@@ -42,7 +42,9 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h3 class="mb-0">{{ element["hbl-number"] }}</h3>
+          <h3 class="mb-0">
+            <span class="font-bold">{{ element["hbl-number"] }}</span>
+          </h3>
           <h5 class="mb-0">{{ element["customer-name"] }}</h5>
         </div>
         <div
@@ -51,11 +53,11 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h6 class="mb-0" *ngIf="element.ETA">
-            <span class="font-bold">CLR:</span> {{ element.ETA }}
+          <h6 class="mb-0">
+            <span class="font-bold">BOE: {{ element["boe-no"] }}</span>
           </h6>
-          <h6 class="mb-0" *ngIf="element.ETD">
-            <span class="font-bold">BOE:</span>{{ element.ETD }}
+          <h6 class="mb-0">
+            <span class="font-bold">CLR: {{ element["clr-no"] }} </span>
           </h6>
         </div>
       </div>
@@ -65,7 +67,7 @@
         fxLayoutAlign="start center"
         fxFlex
       >
-        <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="center">
+        <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="left">
           <div
             class="step-container"
             *ngFor="let status of transitStatuses; last as isLast"

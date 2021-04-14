@@ -96,6 +96,7 @@ export class InvoicepageComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   invoiceData: any;
+  currecny: any;
   getDashboardInvoice(value?: string) {
     if (value) this.activeInvoiceStatusType = value;
     this.authenticationService
@@ -115,6 +116,7 @@ export class InvoicepageComponent implements OnInit {
         setTimeout(() => (this.dataSource.paginator = this.paginator));
         this.dataSource.sort = this.sort;
         this.overDueAmount = response.Over_Due;
+        this.currecny = response.Currency_Code;
         this.totalDueAmount = response.Total_Due;
         this.unPaidInvoice = response.UnpaidInvoice;
         this.loading = false;
