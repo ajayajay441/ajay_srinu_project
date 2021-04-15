@@ -84,15 +84,7 @@ export class PurchaseorderpageComponent implements OnInit {
     "Closed",
     "details",
   ];
-  // ELEMENT_DATA1: PeriodicElement1[] = [
-  //   {
-  //     "reference-number": "FSL-98001",
-  //     valid_from: "Jan 1, 2021",
-  //     expiry_date: "Jan 1, 2021",
-  //     approved_by: "SHANMU",
-  //     details: "Details",
-  //   },
-  // ];
+
   Request_Quote_link: any;
   dataSource1 = new MatTableDataSource();
   expandedElement: PeriodicElement1 | null = null;
@@ -110,16 +102,7 @@ export class PurchaseorderpageComponent implements OnInit {
   ngOnInit(): void {
     this.getpurchaseorder();
   }
-  balanceEdit(element: any, event: any) {
-    // console.log("oldBalance", element.balance);
-    // console.log("element", event.target.value);
-    if (Number(event.target.value) > Number(element.balance)) {
-      alert("ERROR");
-      event.target.value = element.balance;
-    } else {
-      element.balance = Number(event.target.value);
-    }
-  }
+
   onPoFilterSelect(val: string) {
     this.getpurchaseorder(val);
   }
@@ -137,65 +120,15 @@ export class PurchaseorderpageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // this.data = response.Quotation;
-        // // this.loading = false;
-        // this.loading = false;
-        // console.log("PO Page response", response);
         this.dataSource1 = new MatTableDataSource(response.purchase_order);
         this.Request_Quote_link = response.Request_Quote_link;
       });
   }
-  getpurchaseorderdetail(value?: string) {
-    this.authenticationService
-      .refreshToken()
-      .pipe(
-        switchMap((userData) => {
-          return this.dashboardService.getpurchaseorderdetail(
-            userData.Token,
-            value
-          );
-        })
-      )
-      .subscribe((response: any) => {
-        // console.log("PO details", response.PO_detail);
-        // response.PO_detail = [
-        //   {
-        //     sku: "",
-        //     description: "",
-        //     shipmentno: "",
-        //     delivery_date: "",
-        //     Ordered: 5,
-        //     booked: 4,
-        //     closed: 2,
-        //     balance: 3,
-        //     actions: "",
-        //   },
-        //   {
-        //     sku: "",
-        //     description: "",
-        //     shipmentno: "",
-        //     delivery_date: "",
-        //     Ordered: 5,
-        //     booked: 4,
-        //     closed: 2,
-        //     balance: 5,
-        //     actions: "",
-        //   },
-        // ];
-        this.dataSource = new MatTableDataSource(response.PO_detail);
-      });
-  }
-  goTo(routePageName: string, data: any) {
-    // console.log("goTo::data", data.isError);
-    if (data.isError) {
-      return;
-    }
-    this.router.navigate([`${routePageName}`], {
+
+  getpurchaseorderdetail(data: any) {
+    this.router.navigate(["/po/" + data], {
       state: data,
     }); // navigate to other page
-  }
-  saveData(row: any) {
-    // console.log("row", row);
   }
 }
 export interface PeriodicElement1 {
@@ -207,5 +140,5 @@ export interface PeriodicElement1 {
   orderpieces: number;
   intransit: number;
   closed: number;
-  isExpanded?: boolean;
+  // isExpanded?: boolean;
 }

@@ -6,6 +6,7 @@ import { QuotationspageComponent } from "./quotationspage/quotationspage.compone
 import { ShipmentspageComponent } from "./shipmentspage/shipmentspage.component";
 import { InvoicepageComponent } from "./invoicepage/invoicepage.component";
 import { PurchaseorderpageComponent } from "./purchaseorderpage/purchaseorderpage.component";
+import { PodetailsComponent } from "./purchaseorderpage/podetails/podetails.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: "po",
     component: PurchaseorderpageComponent,
+  },
+  {
+    path: "po/:id",
+    component: PodetailsComponent,
   },
   {
     path: "ebooking",

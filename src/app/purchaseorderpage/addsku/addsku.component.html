@@ -1,0 +1,112 @@
+<div class="skuwrapper">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      fxFlex="80"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="start center"
+    >
+      <h1 class="mb-0">Add SKU</h1>
+    </div>
+  </div>
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="25px"
+    fxLayoutAlign="start start"
+  >
+    <div class="mb-0">
+      <h3>SKU</h3>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Adderess" />
+      </mat-form-field>
+    </div>
+    <div class="mb-0">
+      <h3>Name</h3>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Zipcode" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="25px"
+    fxLayoutAlign="start start"
+  >
+    <!-- <mat-select [(ngModel)]="ebooking.sPickupplace">
+                  <mat-option [value]="sendto"> Shipper </mat-option>
+                </mat-select> -->
+    <div class="mb-0">
+      <h3>Package Type</h3>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Adderess" />
+      </mat-form-field>
+    </div>
+    <div class="mb-0">
+      <h3>Pieces</h3>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Zipcode" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="25px"
+    fxLayoutAlign="start start"
+  >
+    <div class="mb-0">
+      <h3>Ready Date</h3>
+
+      <mat-form-field appearance="outline">
+        <mat-label>MM/DD/YYYY</mat-label>
+        <input matInput [matDatepicker]="readyDatePicker" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="readyDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #readyDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mb-0">
+      <h3>Expected Delivery Date</h3>
+
+      <mat-form-field appearance="outline">
+        <mat-label>MM/DD/YYYY</mat-label>
+        <input matInput [matDatepicker]="DatePicker" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="DatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #DatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div
+    fxLayout="column"
+    fxLayout.gt-md="row"
+    fxLayoutGap="25px"
+    fxLayoutAlign="start start"
+  >
+    <div class="mb-0">
+      <button mat-raised-button color="" class="mat-elevation-z0">
+        <a href="" target="_blank">Cancel</a>
+      </button>
+    </div>
+    <div class="mb-0">
+      <button mat-raised-button color="primary" class="mat-elevation-z0">
+        <a href="" target="_blank">Add SKU</a>
+      </button>
+    </div>
+  </div>
+</div>

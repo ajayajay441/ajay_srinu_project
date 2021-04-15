@@ -6,10 +6,6 @@
     fxLayoutAlign="space-between center"
   >
     <h1 class="mb-0">E-Booking</h1>
-    <!-- <button mat-raised-button color="primary" class="mat-elevation-z0">
-      <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
-      Generate Quote
-    </button> -->
   </div>
   <!-- Add a New Shipment -->
   <div class="mb-10">
@@ -26,8 +22,8 @@
           </div>
           <div class="mb-1">
             <div>
-              <mat-form-field appearance="outline">
-                <input matInput placeholder="Placeholder" />
+              <mat-form-field appearance="outline" class="shipment-name">
+                <input matInput placeholder="web@plumweb.ru" />
               </mat-form-field>
             </div>
           </div>
@@ -39,10 +35,11 @@
           <div fxLayout="row wrap" fxLayoutGap="25px">
             <div
               *ngFor="let currentOption of shipmentOption.options"
-              class="my-2"
+              class="my-2 buttons"
             >
               <button
                 mat-stroked-button
+                class="btn-item"
                 [color]="
                   currentOption === shipmentOption.selectedValue
                     ? 'primary'
@@ -112,9 +109,10 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-4/12">
                 <input
                   type="text"
+                  placeholder="Search Port"
                   matInput
                   [(ngModel)]="ebooking.sPOL_Name"
                   (ngModelChange)="getOriginport($event)"
@@ -151,19 +149,13 @@
               <!-- <mat-select [(ngModel)]="ebooking.sPickupplace">
                   <mat-option [value]="sendto"> Shipper </mat-option>
                 </mat-select> -->
+
               <mat-form-field appearance="outline">
-                <input
-                  [(ngModel)]="ebooking.sPickupplace"
-                  matInput
-                  placeholder="Adderess"
-                />
+                <input [(ngModel)]="ebooking.sPickupplace" matInput />
               </mat-form-field>
+
               <mat-form-field appearance="outline">
-                <input
-                  [(ngModel)]="ebooking.sPickupzipcode"
-                  matInput
-                  placeholder="Zipcode"
-                />
+                <input [(ngModel)]="ebooking.sPickupzipcode" matInput />
               </mat-form-field>
             </div>
           </div>
@@ -241,8 +233,8 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked"
-                >Dekivery required</mat-checkbox
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="m-3.5"
+                >Delivery required</mat-checkbox
               >
             </div>
           </div>
@@ -260,19 +252,11 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input
-                  [(ngModel)]="ebooking.sDlylocation"
-                  matInput
-                  placeholder="Adderess"
-                />
+                <input [(ngModel)]="ebooking.sDlylocation" matInput />
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input
-                  [(ngModel)]="ebooking.sDlyzipcode"
-                  matInput
-                  placeholder="Zip code"
-                />
+                <input [(ngModel)]="ebooking.sDlyzipcode" matInput />
               </mat-form-field>
             </div>
           </div>
@@ -410,11 +394,7 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input
-                  matInput
-                  placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sShipperAddr"
-                />
+                <input matInput [(ngModel)]="ebooking.sShipperAddr" />
               </mat-form-field>
             </div>
           </div>
@@ -484,11 +464,7 @@
               fxLayoutAlign="start start"
             >
               <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input
-                  matInput
-                  placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sConsigAddr"
-                />
+                <input matInput [(ngModel)]="ebooking.sConsigAddr" />
               </mat-form-field>
             </div>
           </div>
@@ -543,11 +519,7 @@
           <div class="mb-5">
             <div>
               <mat-form-field appearance="outline">
-                <input
-                  matInput
-                  placeholder="Placeholder"
-                  [(ngModel)]="ebooking.sFirstNotifyAddr"
-                />
+                <input matInput [(ngModel)]="ebooking.sFirstNotifyAddr" />
               </mat-form-field>
             </div>
           </div>
@@ -613,11 +585,7 @@
                   appearance="outline"
                   class="no-bottom-padding w-150"
                 >
-                  <input
-                    matInput
-                    placeholder="Placeholder"
-                    [(ngModel)]="field.selectedValue"
-                  />
+                  <input matInput [(ngModel)]="field.selectedValue" />
                 </mat-form-field>
               </div>
             </div>
@@ -759,11 +727,7 @@
       <h5>File Upload</h5>
       <div>
         <!-- <mat-form-field appearance="outline"> -->
-        <input
-          type="file"
-          placeholder="Placeholder"
-          [(ngModel)]="ebooking.sFilename"
-        />
+        <input type="file" [(ngModel)]="ebooking.sFilename" />
         <!-- </mat-form-field> -->
       </div>
     </div>

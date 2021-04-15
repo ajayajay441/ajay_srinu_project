@@ -108,7 +108,7 @@ export class EbookingpageComponent implements OnInit {
   shipmentOptions = [
     {
       label: "sMode",
-      name: "Select Freight Methods",
+      name: "Freight Methods",
       options: ["LCL", "FCL", "Air", "Road"],
       selectedValue: "",
     },

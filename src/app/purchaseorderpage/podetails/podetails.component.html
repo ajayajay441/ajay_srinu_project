@@ -1,0 +1,213 @@
+<div class="podetails-page">
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      fxFlex="80"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="start center"
+    >
+      <h1 class="mb-0">PO</h1>
+    </div>
+    <div fxFlex="20" class="text-right">
+      <button mat-raised-button color="primary" class="mat-elevation-z0">
+        <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
+        <a href="{{ Request_Quote_link }}" target="_blank">Request Quote</a>
+      </button>
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    class="mb-10"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      fxFlex="80"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="start center"
+    >
+      <h1 class="mb-0">PO #{{ poData }}</h1>
+    </div>
+    <div fxFlex="20" class="text-right">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z0"
+        (click)="openDialog()"
+      >
+        <svg
+          width="140"
+          height="44"
+          viewBox="0 0 140 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="140" height="44" fill="#F01E1E" />
+          <path
+            d="M50.42 25.78H54.395L55.085 28H57.53L53.735 17.23H51.14L47.3 28H49.67L50.42 25.78ZM52.4 19.66H52.43L53.765 23.92H51.02L52.4 19.66ZM66.0902 17.23H63.9902V21.055H63.9602C63.6302 20.545 63.0002 19.81 61.6502 19.81C59.8952 19.81 58.3352 21.16 58.3352 23.92C58.3352 26.11 59.3252 28.21 61.6952 28.21C62.5652 28.21 63.4952 27.895 64.0052 26.995H64.0352V28H66.0902V17.23ZM60.4952 24.07C60.4952 22.81 60.9452 21.625 62.2802 21.625C63.7202 21.625 64.0802 22.915 64.0802 24.19C64.0802 25.375 63.5552 26.485 62.2202 26.485C60.8702 26.485 60.4952 25.015 60.4952 24.07ZM75.1136 17.23H73.0136V21.055H72.9836C72.6536 20.545 72.0236 19.81 70.6736 19.81C68.9186 19.81 67.3586 21.16 67.3586 23.92C67.3586 26.11 68.3486 28.21 70.7186 28.21C71.5886 28.21 72.5186 27.895 73.0286 26.995H73.0586V28H75.1136V17.23ZM69.5186 24.07C69.5186 22.81 69.9686 21.625 71.3036 21.625C72.7436 21.625 73.1036 22.915 73.1036 24.19C73.1036 25.375 72.5786 26.485 71.2436 26.485C69.8936 26.485 69.5186 25.015 69.5186 24.07ZM80.7784 24.685C80.7784 26.02 81.4534 28.285 85.3834 28.285C86.3284 28.285 89.6284 28 89.6284 24.76C89.6284 22.825 88.2784 22.225 86.8084 21.865L84.1834 21.22C83.7334 21.115 83.0434 20.935 83.0434 20.095C83.0434 19.12 84.0634 18.805 84.9184 18.805C86.8834 18.805 87.0634 19.945 87.1234 20.425H89.2834C89.2684 19.105 88.3834 16.945 85.0834 16.945C81.5884 16.945 80.9434 19.06 80.9434 20.26C80.9434 22.63 82.6234 23.02 84.3634 23.425L85.5184 23.695C86.6584 23.965 87.4684 24.19 87.4684 25.03C87.4684 26.17 86.2834 26.425 85.2184 26.425C83.2534 26.425 82.9534 25.285 82.9384 24.685H80.7784ZM93.7532 24.355L94.8032 23.275L98.1332 28H101.028L96.3782 21.64L100.773 17.23H97.8632L93.7532 21.61V17.23H91.5032V28H93.7532V24.355ZM110.788 17.23H108.493V24.325C108.493 25.63 107.863 26.38 106.318 26.38C105.268 26.38 104.398 25.72 104.398 24.22V17.23H102.103V24.37C102.133 25.45 102.358 26.32 102.943 26.98C103.903 28.045 105.373 28.285 106.363 28.285C109.078 28.285 110.788 27.07 110.788 24.235V17.23Z"
+            fill="white"
+          />
+          <rect
+            x="25.0382"
+            y="14.9429"
+            width="16.5904"
+            height="17.0857"
+            rx="8.2952"
+            fill="#F01E1E"
+            stroke="white"
+            stroke-width="0.742856"
+          />
+          <path
+            d="M32.5274 22.9273H30.1978V24.2585H32.5274V26.6H33.8586V24.2585H36.1882V22.9273H33.8586V20.5858H32.5274V22.9273Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="w-full mat-elevation-z0">
+    <ng-container matColumnDef="sku">
+      <th mat-header-cell *matHeaderCellDef>SKU</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="w-20">{{ element.sku }} </span>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">
+        <span>{{ element.description }} </span>
+        <!-- <mat-form-field *ngIf="element.edit" class="w-20">
+                  <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="element.description"
+                  />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="shipmentno">
+      <th mat-header-cell *matHeaderCellDef>Shipment N°</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="w-20">{{ element.shipmentno }} </span>
+        <!-- <mat-form-field *ngIf="element.edit">
+                  <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="element.shipmentno"
+                  />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="delivery_date">
+      <th mat-header-cell *matHeaderCellDef>Delivery Date</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="w-20">{{ element.delivery_date }} </span>
+        <!-- <mat-form-field *ngIf="element.edit">
+                  <input
+                    type="text"
+                    matInput
+                    [(ngModel)]="element.delivery_date"
+                  />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Ordered">
+      <th mat-header-cell *matHeaderCellDef>Ordered</th>
+      <td mat-cell *matCellDef="let element">
+        <span>{{ element.Ordered }} </span>
+        <!-- <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
+                  <input type="text" matInput [(ngModel)]="element.Ordered" />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="booked">
+      <th mat-header-cell *matHeaderCellDef>Booked</th>
+      <td mat-cell *matCellDef="let element">
+        <span>{{ element.booked }} </span>
+        <!-- <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
+                  <input type="text" matInput [(ngModel)]="element.booked" />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="closed">
+      <th mat-header-cell *matHeaderCellDef>Closed</th>
+      <td mat-cell *matCellDef="let element">
+        <span>{{ element.closed }} </span>
+        <!-- <mat-form-field
+                  *ngIf="element.edit"
+                  class="w-20"
+                  appearance="outline"
+                >
+                  <input type="text" matInput [(ngModel)]="element.closed" />
+                </mat-form-field> -->
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef>Balance</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="!element.edit">{{ element.balance }} </span>
+        <mat-form-field *ngIf="element.edit" class="w-20" appearance="outline">
+          <input
+            type="text"
+            matInput
+            [ngModel]="element.balance"
+            (ngModelChange)="element.isError = $event > element.balance"
+            (change)="balanceEdit(element, $event)"
+          />
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <!-- Button Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-stroked-button
+          color="primary"
+          *ngIf="!element.edit"
+          (click)="element.edit = !element.edit"
+        >
+          Edit
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          *ngIf="element.edit"
+          (click)="
+            element.edit = !element.edit;
+            saveData(element);
+            !element.isError && goTo('/ebooking', element)
+          "
+        >
+          Done
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

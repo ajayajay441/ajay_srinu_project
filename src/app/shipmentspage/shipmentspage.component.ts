@@ -67,7 +67,7 @@ export class ShipmentspageComponent implements OnInit {
             userData.Token,
             this.activeShipmentStatusType,
             pageNo,
-            10,
+            5,
             this.modeVal,
             fromDate ? toShortFormat(fromDate) : "",
             toDate ? toShortFormat(toDate) : ""
