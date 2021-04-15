@@ -4,28 +4,29 @@
     width: 100%;
   }
   .step {
-    width: 24px;
+    width: 34px;
     height: 24px;
     margin: auto;
     background-color: #fff;
     position: relative;
     z-index: 1;
+    text-align: center;
   }
   .step-joiner {
     height: 0px;
-    border-bottom: 2px dotted #ddd;
+    border-bottom: thick dotted #ddd;
     position: relative;
     left: 50%;
-    top: 12px;
+    top: 14px;
   }
   .step-joiner.highlight {
-    border-bottom: 2px dotted #aaa;
+    border-bottom-color: #aaa;
   }
   .step-joiner.disable {
-    border-bottom: 2px dotted #aaa;
+    border-bottom-color: #aaa;
   }
   .step-container:last-of-type .step-joiner {
-    border-bottom: none;
+    border-bottom-color: transparent;
   }
 }
 .stepper-labels {

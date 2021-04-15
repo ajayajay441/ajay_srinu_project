@@ -1,24 +1,12 @@
 <mat-card class="mat-elevation-z0">
-  <div
-    class="card-title mb-9"
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-  >
+  <div class="card-title mb-9" fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutGap="25px">
       <h2 class="mb-0">Shipments</h2>
-      <button
-        fxHide
-        fxShow.gt-md
-        mat-stroked-button
-        *ngFor="let shipmentStatusType of shipmentStatusTypes"
-        [color]="
+      <button fxHide fxShow.gt-md mat-stroked-button *ngFor="let shipmentStatusType of shipmentStatusTypes" [color]="
           shipmentStatusType.value == activeShipmentStatusType
             ? 'primary'
             : 'light'
-        "
-        class="mat-elevation-z0"
-        (click)="getDashboardShipments(shipmentStatusType.value)"
-      >
+        " class="mat-elevation-z0" (click)="getDashboardShipments(shipmentStatusType.value)">
         {{ shipmentStatusType.value }}
       </button>
     </div>
@@ -27,31 +15,16 @@
     </a>
   </div>
   <div class="card-body">
-    <div
-      fxLayout="column"
-      fxLayout.gt-md="row"
-      fxLayoutAlign="space-between start"
-      class="mb-5"
-      *ngFor="let element of data"
-    >
+    <div fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="space-between start" class="mb-5"
+      *ngFor="let element of data">
       <div fxLayout="column" fxFlex="40">
-        <div
-          fxLayout="row"
-          fxLayoutGap="10px"
-          fxLayoutAlign="start center"
-          class="mb-1"
-        >
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
           <h3 class="mb-0">
             <span class="font-bold">{{ element["hbl-number"] }}</span>
           </h3>
           <h5 class="mb-0">{{ element["customer-name"] }}</h5>
         </div>
-        <div
-          fxLayout="row"
-          fxLayoutGap="10px"
-          fxLayoutAlign="start center"
-          class="mb-1"
-        >
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="mb-1">
           <h6 class="mb-0">
             <span class="font-bold">BOE: {{ element["boe-no"] }}</span>
           </h6>
@@ -60,75 +33,49 @@
           </h6>
         </div>
       </div>
-      <div
-        class="md:overflow-hidden"
-        fxLayout="column"
-        fxLayoutAlign="start center"
-        fxFlex
-      >
-        <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="left">
-          <div
-            class="step-container"
-            *ngFor="
+      <div class="md:overflow-hidden" fxLayout="column" fxLayoutAlign="start center" fxFlex>
+        <div class="stepper mb-3" fxLayout="row">
+          <div class="step-container" *ngFor="
               let status of transitStatuses;
               last as isLast;
               let i = index
-            "
-            fxFlex
-          >
-            <div
-              class="step-joiner"
-              [class.highlight]="
+            " fxFlex>
+            <div class="step-joiner" [class.highlight]="
                 status.label === 'In transit' && element['eta-flag']
-              "
-              [class]="i <= element.statusIndex - 1 ? 'dark' : 'light'"
-            ></div>
+              " [class.dark]="!isLast && i <= element.statusIndex - 1"
+              [class.light]="!isLast && i > element.statusIndex - 1">
+            </div>
             <div class="step">
-              <mat-icon
-                *ngIf="status.value === element.status"
-                [class]="element.statusIndex > i ? 'dark' : 'light'"
+              <mat-icon *ngIf="status.value === element.status" [class]="element.statusIndex > i ? 'dark' : 'light'"
                 [svgIcon]="
                   element.mode === 'AIR' ? 'fresconflight' : 'fresconShip'
-                "
-              >
+                ">
                 <!-- {{ element.mode === "AIR" ? "flight" : "fresconShip" }} -->
               </mat-icon>
-              <mat-icon
-                *ngIf="status.value !== element.status"
-                [class.highlight]="
+              <mat-icon *ngIf="status.value !== element.status" [class.highlight]="
                   status.label === 'ETA delayed' && element['eta-flag']
-                "
-                [class.light]="i > element.statusIndex"
-              >
+                " [class.light]="i > element.statusIndex">
                 radio_button_unchecked
               </mat-icon>
             </div>
           </div>
         </div>
         <div class="stepper-labels mb-3" fxLayout="row" fxLayoutAlign="center">
-          <div
-            fxFlex
-            class="step-label-container mx-1 text-center"
-            *ngFor="
+          <div fxFlex class="step-label-container mx-1 text-center" *ngFor="
               let status of transitStatuses;
               first as isFirst;
               last as isLast;
               let i = index
-            "
-          >
-            <div
-              *ngIf="element.statusIndex > -1 && element.statusIndex >= i"
-              [class.highlight]="
+            ">
+            <div *ngIf="element.statusIndex > -1 && element.statusIndex >= i" [class.highlight]="
                 status.label === 'ETA delayed' && element['eta-flag']
-              "
-              [class]="i <= element.statusIndex ? 'dark' : 'light'"
-              [class.currentstatus]="status.value === element.status"
-            >
+              " [class]="i <= element.statusIndex ? 'dark' : 'light'"
+              [class.currentstatus]="status.value === element.status">
               <!-- {{ status.label }} -->
               {{
-                element.statusIndex > 4 && status.label === "ETA delayed"
-                  ? ""
-                  : status.label
+              element.statusIndex > 4 && status.label === "ETA delayed"
+              ? ""
+              : status.label
               }}
             </div>
           </div>
