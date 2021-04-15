@@ -10,7 +10,7 @@
         mat-stroked-button
         class="mat-elevation-z0"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
         *ngFor="let purchaseStatusType of ['UPCOMING', 'PICKED-UP']"
         [color]="
           purchaseStatusType == activePurchaseStatusType ? 'primary' : 'light'
@@ -19,7 +19,7 @@
       >
         {{ purchaseStatusType }}
       </button>
-      <!-- <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-md>
+      <!-- <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-sm>
         Picked-up
       </button> -->
     </div>
@@ -27,7 +27,7 @@
       View all
     </a>
   </div>
-  <div class="card-body" fxHide fxShow.gt-md>
+  <div class="card-body" fxHide fxShow.gt-sm>
     <div fxLayout="column" fxLayoutAlign="center space-between">
       <div
         fxLayout="row"
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="card-body" fxShow fxHide.gt-md>
+  <div class="card-body" fxShow fxHide.gt-sm>
     <!-- <div
       fxLayout="row"
       fxLayoutAlign="start center"

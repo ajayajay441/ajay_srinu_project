@@ -16,7 +16,10 @@ body {
 .mb-0 {
   margin-bottom: 0px !important;
 }
-
+.mat-typography {
+  max-width: 1440px;
+  margin: auto;
+}
 .mat-primary:not(button) {
   svg {
     fill: $fresonprimarycolor;

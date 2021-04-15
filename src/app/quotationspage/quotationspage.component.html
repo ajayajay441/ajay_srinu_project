@@ -7,7 +7,7 @@
   >
     <div
       fxFlex
-      fxFlex.gt-md="80"
+      fxFlex.gt-sm="80"
       fxLayout="row wrap"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
@@ -19,7 +19,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0">Type:</h3>
         <mat-form-field class="w-full">
@@ -39,7 +39,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div fxFlex fxFlex.gt-md="20" class="text-right pr-2">
+    <div fxFlex fxFlex.gt-sm="20" class="text-right pr-2">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a href="{{ quoteLink }}" target="_blank"> Request Quote </a>
@@ -57,7 +57,7 @@
           <h2 class="mb-0">Quotations</h2>
           <button
             fxHide
-            fxShow.gt-md
+            fxShow.gt-sm
             mat-stroked-button
             [color]="quotationType === _quotationType.value ? 'primary' : ''"
             [class.light-color-button]="quotationType !== _quotationType.value"
@@ -67,7 +67,7 @@
             {{ _quotationType.label }}
           </button>
         </div>
-        <div class="search-form" fxHide fxShow.gt-md>
+        <div class="search-form" fxHide fxShow.gt-sm>
           <form>
             <mat-form-field class="quotations-search-input">
               <mat-label class="">Search</mat-label>

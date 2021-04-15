@@ -18,7 +18,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0">Filter:</h3>
         <mat-form-field class="w-full">
@@ -55,7 +55,7 @@
     <div
       class="mb-9"
       fxLayout="column"
-      fxLayout.gt-md="row"
+      fxLayout.gt-sm="row"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
@@ -90,7 +90,7 @@
           <h2 class="mb-0">Invoices</h2>
           <button
             fxHide
-            fxShow.gt-md
+            fxShow.gt-sm
             mat-stroked-button
             *ngFor="let _invoiceType of invoiceTypes"
             [color]="
@@ -104,7 +104,7 @@
             {{ _invoiceType.label }}
           </button>
         </div>
-        <div class="search-form" fxHide fxShow.gt-md>
+        <div class="search-form" fxHide fxShow.gt-sm>
           <form>
             <mat-form-field class="quotations-search-input">
               <mat-label class="">Search</mat-label>
@@ -123,7 +123,7 @@
     </mat-card>
   </div>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div class="mb-10" *ngIf="!loading" fxHide fxShow.gt-md>
+  <div class="mb-10" *ngIf="!loading" fxHide fxShow.gt-sm>
     <table
       mat-table
       [dataSource]="dataSource"
@@ -203,7 +203,7 @@
               <mat-tab label="Documents">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
-                    <div fxHide fxShow.gt-md>
+                    <div fxHide fxShow.gt-sm>
                       <div
                         fxLayout="row"
                         fxLayoutGap="10px"
@@ -344,7 +344,7 @@
       showFirstLastButtons
     ></mat-paginator>
   </div>
-  <div class="mb-10" fxShow fxHide.gt-md>
+  <div class="mb-10" fxShow fxHide.gt-sm>
     <div
       fxLayout="column"
       fxLayoutAlign="space-between center"

@@ -7,7 +7,7 @@
   >
     <div
       fxFlex
-      fxFlex.gt-md="85"
+      fxFlex.gt-sm="85"
       fxLayout="row wrap"
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
@@ -19,7 +19,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">Status</h3>
         <mat-form-field class="w-full max100px">
@@ -39,7 +39,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">Mode</h3>
         <mat-form-field class="w-full max100px">
@@ -56,7 +56,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">From</h3>
         <mat-form-field appearance="fill" class="w-150">
@@ -80,7 +80,7 @@
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">To</h3>
         <mat-form-field appearance="fill" class="w-150">
@@ -99,7 +99,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div fxFlex fxFlex.gt-md="15" class="text-right">
+    <div fxFlex fxFlex.gt-sm="15" class="text-right">
       <button
         mat-raised-button
         color="primary"
@@ -111,7 +111,7 @@
     </div>
   </div>
 
-  <div class="mb-10" fxHide fxShow.gt-md>
+  <div class="mb-10" fxHide fxShow.gt-sm>
     <mat-card class="mat-elevation-z0">
       <div
         class="card-title mb-9"
@@ -122,7 +122,7 @@
           <h2 class="mb-0">Shipments</h2>
           <button
             fxHide
-            fxShow.gt-md
+            fxShow.gt-sm
             mat-stroked-button
             *ngFor="let shipmentStatusType of shipmentStatusTypes"
             [color]="
@@ -149,28 +149,28 @@
         <div fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
           <div
             fxLayout="column"
-            fxLayout.gt-md="row"
+            fxLayout.gt-sm="row"
             fxLayoutGap="15px"
-            fxLayoutGap.gt-md="50px"
+            fxLayoutGap.gt-sm="50px"
             fxLayoutAlign="center start"
-            fxLayoutAlign.gt-md="start center"
+            fxLayoutAlign.gt-sm="start center"
           >
             <div
               fxLayout="column"
-              fxLayout.gt-md="row"
+              fxLayout.gt-sm="row"
               fxLayoutGap="15px"
               fxLayoutAlign="center start"
-              fxLayoutAlign.gt-md="start center"
+              fxLayoutAlign.gt-sm="start center"
             >
               <h3 class="mb-0 fw-700">{{ shipment.booking_number }}</h3>
               <p class="mb-0">{{ shipment.customer_name }}</p>
             </div>
             <div
               fxLayout="column"
-              fxLayout.gt-md="row"
+              fxLayout.gt-sm="row"
               fxLayoutGap="15px"
               fxLayoutAlign="center start"
-              fxLayoutAlign.gt-md="start center"
+              fxLayoutAlign.gt-sm="start center"
             >
               <div>
                 <p class="mb-0">
@@ -200,18 +200,18 @@
           </div>
           <div
             fxLayout="column"
-            fxLayout.gt-md="row"
+            fxLayout.gt-sm="row"
             fxLayoutGap="15px"
-            fxLayoutGap.gt-md="50px"
+            fxLayoutGap.gt-sm="50px"
             fxLayoutAlign="center start"
-            fxLayoutAlign.gt-md="start center"
+            fxLayoutAlign.gt-sm="start center"
           >
             <div
               fxLayout="row"
               fxLayoutGap="5px"
               fxLayoutAlign="start center"
               fxHide
-              fxShow.gt-md
+              fxShow.gt-sm
             >
               <mat-icon> public </mat-icon>
               <p class="mb-0 font-xs">
@@ -244,7 +244,7 @@
               fxLayoutGap="5px"
               fxLayoutAlign="center start"
               fxShow
-              fxHide.gt-md
+              fxHide.gt-sm
             >
               <div fxLayout="row" fxLayoutGap="5px">
                 <mat-icon> public </mat-icon>
@@ -303,7 +303,7 @@
           <!-- BUTTONS -->
           <div
             fxHide
-            fxShow.gt-md
+            fxShow.gt-sm
             fxLayout="row"
             fxLayoutGap="15px"
             fxLayoutAlign="start center"
@@ -332,7 +332,7 @@
           </div>
           <div
             fxShow
-            fxHide.gt-md
+            fxHide.gt-sm
             fxLayout="column"
             fxLayoutGap="15px"
             fxLayoutAlign="center start"
@@ -373,7 +373,7 @@
         class="shipments-seemore"
         [class.my-10]="shipment.seemore"
         fxHide
-        fxShow.gt-md
+        fxShow.gt-sm
       >
         <mat-expansion-panel
           [expanded]="shipment.seemore"
@@ -420,7 +420,7 @@
       </div>
       <!-- // SEE MORE TABS -->
       <!-- SEE MORE MOBILE -->
-      <div fxShow fxHide.gt-md *ngIf="shipment.seemoreMobile">
+      <div fxShow fxHide.gt-sm *ngIf="shipment.seemoreMobile">
         <div *ngIf="shipment.seemoreMobile === 'Map'">
           <app-shipmentmapview></app-shipmentmapview>
         </div>
