@@ -186,7 +186,7 @@ export class AppComponent implements OnDestroy {
       )
     );
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
-      this.gtMd = !["xs", "sm", "md"].includes(change.mqAlias);
+      this.gtMd = !["xs", "sm"].includes(change.mqAlias);
     });
   }
 

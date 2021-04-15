@@ -31,11 +31,10 @@
       fxLayout="column"
       fxLayout.gt-md="row"
       fxLayoutAlign="space-between start"
-      fxLayoutGap="25px"
       class="mb-5"
       *ngFor="let element of data"
     >
-      <div fxLayout="column" fxFlex>
+      <div fxLayout="column" fxFlex="40">
         <div
           fxLayout="row"
           fxLayoutGap="10px"
@@ -70,21 +69,24 @@
         <div class="stepper mb-3" fxLayout="row" fxLayoutAlign="left">
           <div
             class="step-container"
-            *ngFor="let status of transitStatuses; last as isLast"
+            *ngFor="
+              let status of transitStatuses;
+              last as isLast;
+              let i = index
+            "
             fxFlex
           >
             <div
               class="step-joiner"
-              [class]="status.value === element.status ? 'highlight' : ''"
+              [class.highlight]="
+                status.label === 'In transit' && element['eta-flag']
+              "
+              [class]="i <= element.statusIndex - 1 ? 'dark' : 'light'"
             ></div>
             <div class="step">
               <mat-icon
                 *ngIf="status.value === element.status"
-                [class]="
-                  status.value === element.status
-                    ? 'highlight transform '
-                    : 'disable-text-color'
-                "
+                [class]="element.statusIndex > i ? 'dark' : 'light'"
                 [svgIcon]="
                   element.mode === 'AIR' ? 'fresconflight' : 'fresconShip'
                 "
@@ -93,13 +95,12 @@
               </mat-icon>
               <mat-icon
                 *ngIf="status.value !== element.status"
-                [class]="
-                  status.value === element.status
-                    ? 'highlight transform rotate-90'
-                    : 'disable-text-color'
+                [class.highlight]="
+                  status.label === 'ETA delayed' && element['eta-flag']
                 "
+                [class.light]="i > element.statusIndex"
               >
-                {{ "radio_button_unchecked" }}
+                radio_button_unchecked
               </mat-icon>
             </div>
           </div>
@@ -111,18 +112,24 @@
             *ngFor="
               let status of transitStatuses;
               first as isFirst;
-              last as isLast
+              last as isLast;
+              let i = index
             "
           >
             <div
-              class="status text-xs"
-              [class]="
-                status.value === element.status
-                  ? 'highlight'
-                  : 'disable-text-color'
+              *ngIf="element.statusIndex > -1 && element.statusIndex >= i"
+              [class.highlight]="
+                status.label === 'ETA delayed' && element['eta-flag']
               "
+              [class]="i <= element.statusIndex ? 'dark' : 'light'"
+              [class.currentstatus]="status.value === element.status"
             >
-              {{ status.label }}
+              <!-- {{ status.label }} -->
+              {{
+                element.statusIndex > 4 && status.label === "ETA delayed"
+                  ? ""
+                  : status.label
+              }}
             </div>
           </div>
         </div>
