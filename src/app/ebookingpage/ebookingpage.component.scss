@@ -20,11 +20,21 @@
   margin-top: 35px;
 }
 .shipment-name {
-  width: 50%;
+  width: 100%;
 }
 .buttons {
-  width: 9%;
+  width: 25%;
 }
+
+@media (min-width: 998px) {
+  .buttons {
+    width: 9%;
+  }
+  .shipment-name {
+    width: 50%;
+  }
+}
+
 .btn-item {
   width: 100%;
   height: 50px;
@@ -34,4 +44,22 @@
 }
 h3 {
   margin-bottom: 0px !important;
+}
+.label-text {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height, or 122% */
+
+  color: #313131;
+}
+.accordian-title {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 37px;
+  color: #313131;
 }

@@ -114,7 +114,7 @@ export class EbookingpageComponent implements OnInit {
     },
     {
       label: "sExportImport",
-      name: "Import/Export",
+      name: "Import / Export",
       options: ["Import", "Export"],
       selectedValue: "",
     },

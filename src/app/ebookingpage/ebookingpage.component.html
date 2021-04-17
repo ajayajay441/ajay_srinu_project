@@ -5,7 +5,7 @@
     class="mb-10"
     fxLayoutAlign="space-between center"
   >
-    <h1 class="mb-0">E-Booking</h1>
+    <h1 class="mb-0 accordian-title">E-Booking</h1>
   </div>
   <!-- Add a New Shipment -->
   <div class="mb-10">
@@ -13,12 +13,12 @@
       <mat-expansion-panel class="mat-elevation-z0" expanded="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Add a New Shipment</h1>
+            <h1 class="mb-2 accordian-title">Add a New Shipment</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
-          <div class="mb-0">
-            <h3>Shipment name</h3>
+          <div class="mb-2">
+            <h3 class="label-text">Shipment name</h3>
           </div>
           <div class="mb-1">
             <div>
@@ -29,8 +29,8 @@
           </div>
         </div>
         <div class="mb-3" *ngFor="let shipmentOption of shipmentOptions">
-          <div fxLayout="row" class="mb-0">
-            <h3>Select {{ shipmentOption.name }}</h3>
+          <div fxLayout="row" class="mb-2">
+            <h3 class="label-text">Select {{ shipmentOption.name }}</h3>
           </div>
           <div fxLayout="row wrap" fxLayoutGap="25px">
             <div
@@ -59,8 +59,8 @@
           </div>
         </div>
         <div>
-          <div fxLayout="row" class="mb-0">
-            <h3>Select Incoterms</h3>
+          <div fxLayout="row" class="mb-2">
+            <h3 class="label-text">Select Incoterms</h3>
           </div>
           <mat-form-field appearance="outline" class="no-bottom-padding">
             <mat-select [(ngModel)]="ebooking.sTosName">
@@ -95,12 +95,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Shipment Origin</h1>
+            <h1 class="mb-3 accordian-title">Shipment Origin</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
-          <div class="mb-0">
-            <h3>Origin Port</h3>
+          <div class="mb-2">
+            <h3 class="label-text">Origin Port</h3>
           </div>
           <div class="mb-1">
             <div
@@ -136,8 +136,8 @@
         </div>
 
         <div class="mb-0">
-          <div class="mb-0">
-            <h3>Pick-Up Location</h3>
+          <div class="mb-2">
+            <h3 class="label-text">Pick-Up Location</h3>
           </div>
           <div class="mb-1">
             <div
@@ -161,8 +161,8 @@
           </div>
         </div>
         <div class="mb-0">
-          <div class="mb-0">
-            <h3>Cargo Ready for Pickup Date</h3>
+          <div class="mb-2">
+            <h3 class="label-text">Cargo Ready for Pickup Date</h3>
           </div>
           <div class="mb-1">
             <div
@@ -201,12 +201,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Shipment Destination</h1>
+            <h1 class="mb-2 accordian-title">Shipment Destination</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
-          <div class="mb-0">
-            <h3>Destination Port</h3>
+          <div class="mb-2">
+            <h3 class="label-text">Destination Port</h3>
           </div>
           <div class="mb-1">
             <div
@@ -240,9 +240,9 @@
           </div>
         </div>
 
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Delivery Location</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Delivery Location</h3>
           </div>
           <div class="mb-1">
             <div
@@ -261,9 +261,9 @@
             </div>
           </div>
         </div>
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Cargo Ready for Delivery Date</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Cargo Ready for Delivery Date</h3>
           </div>
           <div class="mb-1">
             <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
@@ -297,7 +297,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Value added services</h1>
+            <h1 class="mb-3 accordian-title">Value added services</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div
@@ -306,8 +306,8 @@
           fxLayoutAlign="space-between start"
         >
           <div fxFlex *ngFor="let valueService of valueService">
-            <div fxLayout="row" class="mb-0">
-              <h3>{{ valueService.label }}</h3>
+            <div fxLayout="row" class="mb-2">
+              <h3 class="label-text">{{ valueService.label }}</h3>
             </div>
             <div class="mb-radio">
               <mat-radio-group
@@ -343,12 +343,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Enter Customer Informations</h1>
+            <h1 class="mb-3 accordian-title">Enter Customer Informations</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Shipper</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Shipper</h3>
           </div>
           <div class="mb-1">
             <div
@@ -382,9 +382,9 @@
           </div>
         </div>
 
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Address</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Address</h3>
           </div>
           <div class="mb-1">
             <div
@@ -413,12 +413,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Enter Consignee Informations</h1>
+            <h1 class="mb-3 accordian-title">Enter Consignee Informations</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Consignee</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Consignee</h3>
           </div>
           <div class="mb-1">
             <div
@@ -452,9 +452,9 @@
           </div>
         </div>
 
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Address</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Address</h3>
           </div>
           <div class="mb-1">
             <div
@@ -482,11 +482,11 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">First Notify Informations</h1>
+            <h1 class="mb-3 accordian-title">First Notify Informations</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="mb-0">
-          <div class="mb-0">
+        <div class="mb-2">
+          <div class="mb-2">
             <h3>First Notify</h3>
           </div>
           <div class="mb-5">
@@ -512,9 +512,9 @@
             </div>
           </div>
         </div>
-        <div class="mb-0">
-          <div class="mb-0">
-            <h3>Adderess</h3>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Adderess</h3>
           </div>
           <div class="mb-5">
             <div>
@@ -537,7 +537,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">Cargo & Container</h1>
+            <h1 class="mb-3 accordian-title">Cargo & Container</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <!-- <div
@@ -564,7 +564,7 @@
           >
             <div *ngFor="let field of cargoContainerType; let i = index">
               <div *ngIf="field.options">
-                <h5>{{ field.name }}</h5>
+                <h5 class="label-text">{{ field.name }}</h5>
                 <mat-form-field
                   appearance="outline"
                   class="no-bottom-padding w-150"
@@ -616,7 +616,7 @@
   <div class="mb-10" *ngIf="sailingData">
     <mat-card class="mat-elevation-z0">
       <div fxLayout="row" fxLayoutGap="25px">
-        <h2 class="mb-0">Schedules</h2>
+        <h2 class="mb-3 accordian-title">Schedules</h2>
       </div>
       <div
         class="card-title mb-9"
@@ -679,7 +679,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0">PO Details</h1>
+            <h1 class="mb-0 accordian-title">PO Details</h1>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="card-body">
