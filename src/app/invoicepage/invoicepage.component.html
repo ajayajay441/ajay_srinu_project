@@ -11,7 +11,7 @@
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <div class="mb-0 pl-2 invoice-header">Invoice</div>
+      <div class="mb-0 pl-2 invoice-header invoice-page-header">Invoice</div>
       <div
         fxLayout="row"
         fxLayoutGap="15px"
@@ -60,20 +60,20 @@
       fxLayoutAlign="start center"
     >
       <div class="inv_box">
-        <div class="my-3 mx-3 text-base"><strong>Total due amount</strong></div>
+        <div class="my-3 mx-3 text-base total-due-amt"><strong>Total due amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
           <strong>{{ currecny }} {{ totalDueAmount }}</strong>
         </div>
-        <div class="my-3 mx-3 text-base para">
+        <div class="my-3 mx-3 text-base para info-text">
           Number of unpaid invoices : {{ unPaidInvoice }}
         </div>
       </div>
       <div class="inv_box">
-        <div class="my-3 mx-3 text-base"><strong>Overdue amount</strong></div>
+        <div class="my-3 mx-3 text-base total-due-amt"><strong>Overdue amount</strong></div>
         <div class="my-3 mx-3 text-2xl">
           <strong>{{ currecny }} {{ overDueAmount }}</strong>
         </div>
-        <div class="my-3 mx-3 text-base para">
+        <div class="my-3 mx-3 text-base para info-text">
           Number of unpaid invoices : {{ unPaidInvoice }}
         </div>
       </div>
@@ -88,7 +88,7 @@
         fxLayoutAlign="space-between center"
       >
         <div fxLayout="row" fxLayoutGap="25px">
-          <h2 class="mb-0">Invoices</h2>
+          <h2 class="mb-0 invoice-page-header1">Invoices</h2>
           <button
             fxHide
             fxShow.gt-sm
@@ -134,8 +134,8 @@
     >
       <!-- Position Column -->
       <ng-container matColumnDef="inv_number">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Invoice N°</th>
-        <td mat-cell *matCellDef="let element">{{ element.inv_number }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="invoice-table-header">Invoice N°</th>
+        <td mat-cell *matCellDef="let element"  class="invoice-rows">{{ element.inv_number }}</td>
       </ng-container>
 
       <!-- for expansion panel every row expansion details -->
@@ -261,39 +261,39 @@
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="inv_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Date</th>
-        <td mat-cell *matCellDef="let element">{{ element.inv_date }}</td>
+      <ng-container matColumnDef="inv_date" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Invoice Date</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">{{ element.inv_date }}</td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="house_no">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>House N°</th>
-        <td mat-cell *matCellDef="let element">{{ element.house_no }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">House N°</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">{{ element.house_no }}</td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="due_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Due Date</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Due Date</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">
           {{ element.due_date }}
         </td>
       </ng-container>
       <ng-container matColumnDef="days">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Days</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Days</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">
           {{ element.days }}
         </td>
       </ng-container>
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Amount</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">
           {{ element.amount }}
         </td>
       </ng-container>
       <ng-container matColumnDef="balance">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Balance</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Balance</th>
+        <td mat-cell *matCellDef="let element" class="invoice-rows">
           {{ element.balance }}
         </td>
       </ng-container>
