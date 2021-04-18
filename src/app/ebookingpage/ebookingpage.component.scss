@@ -14,10 +14,21 @@
   }
 }
 .w-150 {
-  width: 120px;
+  width: 140px;
 }
 .bttn {
   margin-top: 35px;
+  height: 50px;
+  background: #f01e1e;
+  border-radius: 0px;
+}
+.bttn1 {
+  margin-top: 35px;
+  height: 50px;
+  border: 1px solid #f01e1e;
+  color: #f01e1e;
+  background-color: #ffffff;
+  border-radius: 0px;
 }
 .shipment-name {
   width: 100%;
@@ -49,10 +60,8 @@ h3 {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 22px;
-  /* identical to box height, or 122% */
-
   color: #313131;
 }
 .accordian-title {
@@ -61,5 +70,13 @@ h3 {
   font-weight: bold;
   font-size: 20px;
   // line-height: 30px;
+  color: #313131;
+}
+.accordian-title1 {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 37px;
   color: #313131;
 }

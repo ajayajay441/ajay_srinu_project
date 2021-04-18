@@ -28,9 +28,14 @@ const cargoContainerType = [
     selectedValue: null,
   },
   {
-    label: "No ofPieces",
-    name: "NoofPieces",
+    label: "No of Pieces",
+    name: "Number of Pieces",
     options: ["1", "2", "3"],
+    selectedValue: null,
+  },
+  {
+    label: "Length",
+    name: "Length",
     selectedValue: null,
   },
   {
@@ -44,13 +49,8 @@ const cargoContainerType = [
     selectedValue: null,
   },
   {
-    label: "Length",
-    name: "Length",
-    selectedValue: null,
-  },
-  {
     label: "GrossWeight",
-    name: "GrossWeight",
+    name: "Gross Weight",
     selectedValue: null,
   },
 ];
@@ -359,8 +359,13 @@ export class EbookingpageComponent implements OnInit {
       },
       {
         label: "NoofPieces",
-        name: "NoofPieces",
+        name: "Number of Pieces",
         options: ["1", "2", "3"],
+        selectedValue: null,
+      },
+      {
+        label: "Length",
+        name: "Length",
         selectedValue: null,
       },
       {
@@ -374,13 +379,8 @@ export class EbookingpageComponent implements OnInit {
         selectedValue: null,
       },
       {
-        label: "Length",
-        name: "Length",
-        selectedValue: null,
-      },
-      {
         label: "GrossWeight",
-        name: "GrossWeight",
+        name: "Gross Weight",
         selectedValue: null,
       },
     ]);

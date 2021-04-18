@@ -15,31 +15,13 @@ export class DashboardpageComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.getDashboardShipments();
+  ngOnInit(): void {}
+  linkFromShipments: any;
+  receiveLinkFromShipment(e: any) {
+    this.linkFromShipments = e;
   }
-
   goTo(routePageName: string) {
     this.router.navigate([`${routePageName}`]); // navigate to other page
   }
   data: any;
-
-  getDashboardShipments(value?: string) {
-    // this.data = /,
-    this.authenticationService
-      .refreshToken()
-      .pipe(
-        switchMap((userData: any) => {
-          return this.dashboardService.getDashboardShipments(
-            userData.Token,
-            "",
-            1
-          );
-        })
-      )
-      .subscribe((response: any) => {
-        console.log("ship resp", response.Request_Quote_link);
-        this.data = response.Request_Quote_link;
-      });
-  }
 }

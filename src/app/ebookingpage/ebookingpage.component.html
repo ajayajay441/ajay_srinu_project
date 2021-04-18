@@ -2,18 +2,18 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-10"
+    class="mb-6"
     fxLayoutAlign="space-between center"
   >
-    <h1 class="mb-0 accordian-title">E-Booking</h1>
+    <div class="mb-0 accordian-title1">E-Booking</div>
   </div>
   <!-- Add a New Shipment -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel class="mat-elevation-z0" expanded="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-2 accordian-title">Add a New Shipment</h1>
+            <div class="accordian-title">Add a New Shipment</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
@@ -62,7 +62,7 @@
           <div fxLayout="row" class="mb-2">
             <h3 class="label-text">Select Incoterms</h3>
           </div>
-          <mat-form-field appearance="outline" class="no-bottom-padding">
+          <mat-form-field appearance="outline" class="no-bottom-padding w-1/3">
             <mat-select [(ngModel)]="ebooking.sTosName">
               <!-- <mat-option [value]="sendto"> Others </mat-option> -->
               <mat-option value="CFR">C&F COST AND FREIGHT</mat-option>
@@ -86,7 +86,7 @@
   </div>
 
   <!-- Shipment Origin -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -95,7 +95,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">Shipment Origin</h1>
+            <div class="accordian-title">Shipment Origin</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
@@ -107,7 +107,7 @@
               fxLayout="column"
               fxLayout.gt-sm="row"
               fxLayoutGap="25px"
-              fxLayoutAlign="start start"
+              fxLayoutAlign="start end"
             >
               <mat-form-field appearance="outline" class="w-4/12">
                 <input
@@ -128,8 +128,8 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked">
-                Checked
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5">
+                Pick-up required
               </mat-checkbox>
             </div>
           </div>
@@ -192,7 +192,7 @@
   </div>
 
   <!-- Shipment Destination -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -201,7 +201,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-2 accordian-title">Shipment Destination</h1>
+            <div class="accordian-title">Shipment Destination</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
@@ -213,7 +213,7 @@
               fxLayout="column"
               fxLayout.gt-sm="row"
               fxLayoutGap="25px"
-              fxLayoutAlign="start start"
+              fxLayoutAlign="start end"
             >
               <mat-form-field appearance="outline">
                 <input
@@ -233,7 +233,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="m-3.5"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
                 >Delivery required</mat-checkbox
               >
             </div>
@@ -288,7 +288,7 @@
   </div>
 
   <!-- Value added services -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -297,7 +297,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">Value added services</h1>
+            <div class="accordian-title">Value added services</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div
@@ -316,7 +316,7 @@
                 [(ngModel)]="ebooking[valueService.name]"
               >
                 <mat-radio-button
-                  class="mr-3"
+                  class="mr-8"
                   [value]="option.value"
                   *ngFor="let option of valueService.options"
                 >
@@ -334,7 +334,7 @@
   </div>
 
   <!-- Enter Customer Informations -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -343,7 +343,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">Enter Customer Informations</h1>
+            <div class="accordian-title">Enter Customer Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
@@ -355,7 +355,7 @@
               fxLayout="column"
               fxLayout.gt-sm="row"
               fxLayoutGap="25px"
-              fxLayoutAlign="start start"
+              fxLayoutAlign="start end"
             >
               <mat-form-field appearance="outline">
                 <input
@@ -375,7 +375,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -404,7 +404,7 @@
   </div>
 
   <!-- Enter Consignee info -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -413,7 +413,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">Enter Consignee Informations</h1>
+            <div class="accordian-title">Enter Consignee Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
@@ -425,7 +425,7 @@
               fxLayout="column"
               fxLayout.gt-sm="row"
               fxLayoutGap="25px"
-              fxLayoutAlign="start start"
+              fxLayoutAlign="start end"
             >
               <mat-form-field appearance="outline">
                 <input
@@ -445,7 +445,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -473,7 +473,7 @@
     </mat-accordion>
   </div>
   <!--  First Notify Informations-->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -482,7 +482,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">First Notify Informations</h1>
+            <div class="accordian-title">First Notify Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
@@ -528,7 +528,7 @@
     </mat-accordion>
   </div>
   <!-- Cargo & Container -->
-  <div class="mb-10">
+  <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
         class="mat-elevation-z0"
@@ -537,7 +537,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-3 accordian-title">Cargo & Container</h1>
+            <div class="accordian-title">Cargo & Container</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <!-- <div
@@ -549,7 +549,7 @@
           "
         > -->
         <div
-          class="mb-1"
+          class="mb-3"
           *ngFor="
             let cargoContainerType of cargoContainerTypes;
             let isFirst = first;
@@ -580,12 +580,16 @@
                 </mat-form-field>
               </div>
               <div *ngIf="!field.options">
-                <h5>{{ field.name }}</h5>
+                <h5 class="label-text">{{ field.name }}</h5>
                 <mat-form-field
                   appearance="outline"
                   class="no-bottom-padding w-150"
                 >
-                  <input matInput [(ngModel)]="field.selectedValue" />
+                  <input
+                    matInput
+                    [(ngModel)]="field.selectedValue"
+                    placeholder="0                       cm"
+                  />
                 </mat-form-field>
               </div>
             </div>
@@ -596,12 +600,12 @@
               *ngIf="cargoContainerTypes.length < 5 && isLast"
               (click)="addCargotype()"
             >
-              add
+              Add +
             </button>
             <button
               mat-raised-button
               color="primary"
-              class="mat-elevation-z0 bttn"
+              class="mat-elevation-z0 bttn1"
               *ngIf="cargoContainerTypes.length > 1"
               (click)="removeCargoType()"
             >
@@ -613,10 +617,10 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <div class="mb-10" *ngIf="sailingData">
+  <div class="mb-6" *ngIf="sailingData">
     <mat-card class="mat-elevation-z0">
       <div fxLayout="row" fxLayoutGap="25px">
-        <h2 class="mb-3 accordian-title">Schedules</h2>
+        <div class="accordian-title">Schedules</div>
       </div>
       <div
         class="card-title mb-9"
@@ -679,7 +683,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <h1 class="mb-0 accordian-title">PO Details</h1>
+            <div class="accordian-title">PO Details</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="card-body">
