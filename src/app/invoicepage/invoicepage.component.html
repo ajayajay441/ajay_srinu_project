@@ -2,7 +2,7 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-10"
+    class="mb-4"
     fxLayoutAlign="space-between center"
   >
     <div
@@ -11,7 +11,7 @@
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <h1 class="mb-0 pl-2">Invoice</h1>
+      <div class="mb-0 pl-2 invoice-header">Invoice</div>
       <div
         fxLayout="row"
         fxLayoutGap="15px"
@@ -51,9 +51,9 @@
       </button>
     </div>
   </div>
-  <div class="mb-10">
+  <div class="">
     <div
-      class="mb-9"
+      class="mb-7"
       fxLayout="column"
       fxLayout.gt-sm="row"
       fxLayoutGap="25px"
@@ -79,10 +79,11 @@
       </div>
     </div>
   </div>
-  <div class="mb-10">
+  <div class = "mat-card pb-1">
+  <div class="">
     <mat-card class="mat-elevation-z0">
       <div
-        class="card-title mb-9"
+        class="card-title"
         fxLayout="row"
         fxLayoutAlign="space-between center"
       >
@@ -123,12 +124,12 @@
     </mat-card>
   </div>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div class="mb-10" *ngIf="!loading" fxHide fxShow.gt-sm>
+  <div class="" *ngIf="!loading" fxHide fxShow.gt-sm>
     <table
       mat-table
       [dataSource]="dataSource"
       matSort
-      class="w-full mat-elevation-z0"
+      class="w-97 mat-elevation-z0 m-auto"
       multiTemplateDataRows
     >
       <!-- Position Column -->
@@ -200,7 +201,7 @@
                   </div>
                 </mat-card>
               </mat-tab>
-              <mat-tab label="Documents">
+              <mat-tab label="Documents" class="details-header">
                 <mat-card class="mat-elevation-z0">
                   <div class="card-body">
                     <div fxHide fxShow.gt-sm>
@@ -344,7 +345,7 @@
       showFirstLastButtons
     ></mat-paginator>
   </div>
-  <div class="mb-10" fxShow fxHide.gt-sm>
+  <div class="mb-4" fxShow fxHide.gt-sm>
     <div
       fxLayout="column"
       fxLayoutAlign="space-between center"
@@ -393,4 +394,5 @@
       </p>
     </div>
   </div>
+</div>
 </div>

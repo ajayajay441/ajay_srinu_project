@@ -16,7 +16,10 @@
             ? 'primary'
             : 'light'
         "
-        class="mat-elevation-z0"
+        [class.light-color-button]="
+                  shipmentStatusType.value != activeShipmentStatusType
+                  "
+        class="mat-elevation-z0 status-buttons"
         (click)="getDashboardShipments(shipmentStatusType.value)"
       >
         {{ shipmentStatusType.value }}

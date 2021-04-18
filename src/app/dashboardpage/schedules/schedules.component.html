@@ -16,6 +16,7 @@
             ? 'primary'
             : 'light'
         "
+        [class.light-color-button] = "scheduleStatusType.value != activeScheduleStatusType"
         class="mat-elevation-z0"
         (click)="getDashboardSailings(scheduleStatusType.value)"
       >

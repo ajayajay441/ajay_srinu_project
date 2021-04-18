@@ -15,6 +15,7 @@
         [color]="
           purchaseStatusType == activePurchaseStatusType ? 'primary' : 'light'
         "
+        [class.light-color-button] = "purchaseStatusType != activePurchaseStatusType"
         (click)="getDashboardPO(purchaseStatusType)"
       >
         {{ purchaseStatusType }}

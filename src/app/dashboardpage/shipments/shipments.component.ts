@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
@@ -11,7 +11,11 @@ import { AuthenticationService } from "../../_services";
   templateUrl: "./shipments.component.html",
   styleUrls: ["./shipments.component.scss"],
 })
+
+
+
 export class ShipmentsComponent implements OnInit {
+  @Output() newItemEvent = new EventEmitter<string>();
   shipmentType = "booked";
   shipmentStatusTypes = [
     { label: "Arriving", value: "ARRIVING" },
@@ -51,6 +55,10 @@ export class ShipmentsComponent implements OnInit {
     );
   }
 
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+
   ngOnInit(): void {
     this.getDashboardShipments();
   }
@@ -76,6 +84,7 @@ export class ShipmentsComponent implements OnInit {
       )
       .subscribe((response: any) => {
         this.data = response.Shipments;
+        this.newItemEvent.emit(this.data);
         // this.data = [
         //   {
         //     "hbl-number": "HBL #120831000016",

@@ -105,8 +105,7 @@ export class InvoicepageComponent implements OnInit {
         switchMap((userData) => {
           return this.dashboardService.getDashboardInvoice(
             userData.Token,
-            this.activeInvoiceStatusType,
-            10
+            this.activeInvoiceStatusType
           );
         })
       )

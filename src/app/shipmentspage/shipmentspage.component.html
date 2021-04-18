@@ -2,7 +2,7 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-10"
+    class="mb-4"
     fxLayoutAlign="space-between center"
   >
     <div
@@ -59,7 +59,7 @@
         fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">From</h3>
-        <mat-form-field appearance="fill" class="w-150">
+        <mat-form-field class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input
             matInput
@@ -83,7 +83,7 @@
         fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">To</h3>
-        <mat-form-field appearance="fill" class="w-150">
+        <mat-form-field class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input
             matInput
@@ -111,7 +111,7 @@
     </div>
   </div>
 
-  <div class="mb-10" fxHide fxShow.gt-sm>
+  <div class="mb-5" fxHide fxShow.gt-sm>
     <mat-card class="mat-elevation-z0">
       <div
         class="card-title mb-9"
@@ -126,11 +126,14 @@
             mat-stroked-button
             *ngFor="let shipmentStatusType of shipmentStatusTypes"
             [color]="
-              shipmentStatusType.value == activeShipmentStatusType
-                ? 'primary'
-                : 'light'
-            "
-            class="mat-elevation-z0"
+                  shipmentStatusType.value == activeShipmentStatusType
+                  ? 'primary'
+                  : 'blue'
+                  "
+            [class.light-color-button]="
+                  shipmentStatusType.value != activeShipmentStatusType
+                  "
+            class="mat-elevation-z0 status-buttons"
             (click)="getShipmentDetails(shipmentStatusType.value)"
           >
             {{ shipmentStatusType.value }}
@@ -143,7 +146,7 @@
     </mat-card>
   </div>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div class="mb-10" *ngFor="let shipment of data">
+  <div class="mb-5" *ngFor="let shipment of data">
     <mat-card class="mat-elevation-z0" *ngIf="!loading">
       <div class="card-body">
         <div fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
