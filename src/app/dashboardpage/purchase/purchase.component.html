@@ -1,11 +1,11 @@
 <mat-card class="mat-elevation-z0">
   <div
-    class="card-title mb-9"
+    class="card-title mb-4"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <h2 class="mb-0">Purchase</h2>
+      <div class="mb-0 purchase-card-header">Purchase</div>
       <button
         mat-stroked-button
         class="mat-elevation-z0"
@@ -36,26 +36,26 @@
         fxLayoutGap="10px"
         class="py-3 purchases-table-header"
       >
-        <h3 fxFlex class="mb-0">Picked-up PO’s</h3>
-        <h3 fxFlex class="mb-0">Origins</h3>
-        <h3 fxFlex class="mb-0">Booked Number HBL</h3>
+        <div fxFlex class="mb-0 headers">Picked-up PO’s</div>
+        <div fxFlex class="mb-0 headers">Origins</div>
+        <div fxFlex class="mb-0 headers">Booked Number HBL</div>
       </div>
       <div
         fxLayout="row"
         fxLayoutAlign="start center"
         fxLayoutGap="10px"
-        class="my-3 purchase-item"
+        class="my-3 purchase-item rows-font"
         *ngFor="let element of data"
       >
-        <h5 fxFlex class="mb-0">
+        <div fxFlex class="mb-0">
           {{ element.ponumber }}
-        </h5>
-        <h5 fxFlex class="mb-0">
+        </div>
+        <div fxFlex class="mb-0">
           {{ element.origin }}
-        </h5>
-        <h5 fxFlex class="mb-0">
+        </div>
+        <div fxFlex class="mb-0">
           {{ element["hbl-number"] }}
-        </h5>
+        </div>
       </div>
     </div>
   </div>

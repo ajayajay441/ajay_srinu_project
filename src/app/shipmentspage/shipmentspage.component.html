@@ -12,7 +12,7 @@
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <h1 class="mb-0">Shipments</h1>
+      <div class="mb-0 shipments-header">Shipments</div>
       <div
         fxLayout="row"
         fxLayoutGap="15px"
@@ -119,7 +119,7 @@
         fxLayoutAlign="space-between center"
       >
         <div fxLayout="row" fxLayoutGap="25px">
-          <h2 class="mb-0">Shipments</h2>
+          <div class="mb-0 shipments-sub-header">Shipments</div>
           <button
             fxHide
             fxShow.gt-sm
@@ -156,7 +156,7 @@
             fxLayoutGap="15px"
             fxLayoutGap.gt-sm="50px"
             fxLayoutAlign="center start"
-            fxLayoutAlign.gt-sm="start center"
+            fxLayoutAlign.gt-sm="space-between center"
           >
             <div
               fxLayout="column"
@@ -165,31 +165,32 @@
               fxLayoutAlign="center start"
               fxLayoutAlign.gt-sm="start center"
             >
-              <h3 class="mb-0 fw-700">{{ shipment.booking_number }}</h3>
-              <p class="mb-0">{{ shipment.customer_name }}</p>
+              <div class="mb-0 fw-700 shipments-hbl">{{ shipment.booking_number }}</div>
+              <p class="mb-0 shipment-customer">{{ shipment.customer_name }}</p>
             </div>
             <div
               fxLayout="column"
               fxLayout.gt-sm="row"
               fxLayoutGap="15px"
               fxLayoutAlign="center start"
-              fxLayoutAlign.gt-sm="start center"
+              fxLayoutAlign.gt-sm="end center"
+              class="pr-1"
             >
-              <div>
+              <div class="">
                 <p class="mb-0">
-                  <span class="bold fw-700">Container No.</span> :
+                  <span class="bold fw-700 container">Container No.</span> :
                   {{ shipment.container_no }}
                 </p>
               </div>
               <div>
                 <p class="mb-0">
-                  <span class="bold fw-700">MBL No.</span> :
+                  <span class="bold fw-700 container">MBL No.</span> :
                   {{ shipment.master_no }}
                 </p>
               </div>
               <div>
                 <p class="mb-0">
-                  <span class="bold fw-700">Mode</span> :
+                  <span class="bold fw-700 container">Mode</span> :
                   {{ shipment.mode }}
                 </p>
               </div>
@@ -217,13 +218,13 @@
               fxShow.gt-sm
             >
               <mat-icon> public </mat-icon>
-              <p class="mb-0 font-xs">
+              <p class="mb-0 font-xs orign-shipment">
                 {{ shipment.origin }}:
                 <span class="font-bold"> {{ shipment.ETD }} </span>
               </p>
               <span class="font-bold mx-3"> To </span>
               <mat-icon> public </mat-icon>
-              <p class="mb-0 font-xs">
+              <p class="mb-0 font-xs orign-shipment">
                 {{ shipment.destination }}:
                 <span class="font-bold"> {{ shipment.ETA }} </span>
               </p>
@@ -403,12 +404,12 @@
               </div>
             </mat-tab>
 
-            <mat-tab label="Actions" *ngIf="updates">
+            <mat-tab label="Actions">
               <div class="mat-tab-content my-3">
                 <app-actions [updates]="updates"></app-actions>
               </div>
             </mat-tab>
-            <mat-tab label="Documents" *ngIf="documents">
+            <mat-tab label="Documents">
               <div class="mat-tab-content my-3">
                 <app-documents [documents]="documents"></app-documents>
               </div>

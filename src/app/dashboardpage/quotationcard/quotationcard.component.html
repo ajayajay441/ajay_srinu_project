@@ -4,19 +4,19 @@
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <h2 class="mb-0">Quotations</h2>
+    <div class="mb-0 quotations-header">Quotations</div>
     <a class="underline cursor-pointer" (click)="goTo('/quotes', 'data')">
       View all
     </a>
   </div>
   <div class="card-body">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <h3 class="mb-0 bold">
+      <div class="mb-0 bold quotation-number">
         {{ element["quotation-number"] }}
-      </h3>
-      <h5 class="mb-0">
+      </div>
+      <div class="mb-0 quote-customer-number">
         {{ element["customer_name"] }}
-      </h5>
+      </div>
     </div>
     <div
       fxLayout="row"
@@ -24,9 +24,9 @@
       fxLayoutGap="10px"
       class="mb-3"
     >
-      <h5 class="mb-0 bold">
+      <div class="origin mb-0 bold">
         {{ element.origin }}
-      </h5>
+      </div>
       <mat-icon *ngIf="element.mode === 'AIR'" class="transform rotate-90"
         >flight</mat-icon
       >
@@ -67,22 +67,22 @@
           fill="black"
         />
       </svg>
-      <h5 class="mb-0 bold">
+      <div class="origin mb-0 bold">
         {{ element.destination }}
-      </h5>
+      </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <h5 class="mb-0">
-        <span class="font-bold"> Place: </span><span>{{ element.places }}</span>
-      </h5>
-      <h5 class="mb-0">
-        <span class="font-bold"> Weight: </span
+      <div class="mb-0">
+        <span class="origin"> Place: </span><span>{{ element.places }}</span>
+      </div>
+      <div class="mb-0">
+        <span class="origin"> Weight: </span
         ><span>{{ element.weight }}</span>
-      </h5>
-      <h5 class="mb-0">
-        <span class="font-bold"> Volume: </span
+      </div>
+      <div class="mb-0">
+        <span class="origin"> Volume: </span
         ><span>{{ element.volume }}</span>
-      </h5>
+      </div>
     </div>
   </div>
 </mat-card>

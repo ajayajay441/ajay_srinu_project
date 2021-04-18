@@ -5,6 +5,35 @@
   padding-left: 16px;
   padding-right: 16px;
 }
+.purchase-card-header{
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 37px;
+}
 .purchase-item {
   height: 50px;
+}
+
+
+.headers{
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.center{
+  margin:auto;
+}
+
+.rows-font{
+  font-family: Helvetica;
+  font-size: 14px;
+  line-height: 26px;
+  /* identical to box height, or 173% */
+
+  letter-spacing: -0.5px;
 }

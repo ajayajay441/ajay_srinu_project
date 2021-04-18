@@ -8,3 +8,26 @@
 .schedule-item {
   height: 50px;
 }
+.schedule-card-header{
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 37px;
+}
+.schedules-header{
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.schedules-rows{
+  font-family: Helvetica;
+  font-size: 14px;
+  line-height: 26px;
+  /* identical to box height, or 173% */
+
+  letter-spacing: -0.5px;
+}
