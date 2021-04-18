@@ -21,10 +21,12 @@
   height: 50px;
   background: #f01e1e;
   border-radius: 0px;
+  width: 80px;
 }
 .bttn1 {
   margin-top: 35px;
   height: 50px;
+  width: 80px;
   border: 1px solid #f01e1e;
   color: #f01e1e;
   background-color: #ffffff;
@@ -34,9 +36,17 @@
   width: 100%;
 }
 .buttons {
-  width: 25%;
+  width: 24%;
 }
-
+.w-30 {
+  width: 100%;
+}
+.w-60 {
+  width: 80%;
+}
+.width-15 {
+  width: 17%;
+}
 @media (min-width: 998px) {
   .buttons {
     width: 9%;
@@ -44,8 +54,24 @@
   .shipment-name {
     width: 50%;
   }
+  .w-30 {
+    width: 30%;
+  }
+  .w-60 {
+    width: 65%;
+  }
 }
-
+.red {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #f01e1e;
+}
+.schedule-btn {
+  background: #f01e1e;
+  color: #ffffff;
+}
 .btn-item {
   width: 100%;
   height: 50px;
@@ -78,5 +104,13 @@ h3 {
   font-weight: bold;
   font-size: 24px;
   line-height: 37px;
+  color: #313131;
+}
+.schedules-table-header {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
   color: #313131;
 }

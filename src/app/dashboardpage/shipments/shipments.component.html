@@ -5,7 +5,7 @@
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <h2 class="mb-0">Shipments</h2>
+      <div class="mb-0 shipments-card-header">Shipments</div>
       <button
         fxHide
         fxShow.gt-sm
@@ -44,10 +44,10 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h3 class="mb-0">
+          <div class="mb-2 hbl-font">
             <span class="font-bold">{{ element["hbl-number"] }}</span>
-          </h3>
-          <h5 class="mb-0">{{ element["customer-name"] }}</h5>
+          </div>
+          <div class="mb-2 customer-name">{{ element["customer-name"] }}</div>
         </div>
         <div
           fxLayout="row"
@@ -55,12 +55,12 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <h6 class="mb-0">
+          <div class="mb-0  shipments-date">
             <span class="font-bold">BOE: {{ element["boe-no"] }}</span>
-          </h6>
-          <h6 class="mb-0">
+          </div>
+          <div class="mb-0 shipments-date">
             <span class="font-bold">CLR: {{ element["clr-no"] }} </span>
-          </h6>
+          </div>
         </div>
       </div>
       <div

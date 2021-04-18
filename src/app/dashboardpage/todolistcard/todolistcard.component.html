@@ -4,7 +4,7 @@
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <h2 class="mb-0">
+    <div class="mb-0 todolist-header">
       <span
         matBadge="4"
         matBadgeOverlap="false"
@@ -13,7 +13,7 @@
       >
         To-Do List
       </span>
-    </h2>
+    </div>
     <a class="underline cursor-pointer"> View all </a>
   </div>
   <div class="card-body">
@@ -23,20 +23,20 @@
       fxLayoutGap="25px"
       class="mb-3"
     >
-      <h3 class="mb-0">HBL #0938847</h3>
-      <h5 class="mb-0">27/01/21 - 1:54pm</h5>
+      <div class="mb-0 todo-list-hbl">HBL #0938847</div>
+      <div class="mb-0 todo-list-date">27/01/21 - 1:54pm</div>
     </div>
     <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
       <p>
         <mat-checkbox
           [(ngModel)]="test_checkbox"
           color="warn"
-          class="line-through"
+          class="line-through todo-list-date"
           >Checked</mat-checkbox
         >
       </p>
       <p>
-        <mat-checkbox>Unchecked</mat-checkbox>
+        <mat-checkbox class="todo-list-date">Unchecked</mat-checkbox>
       </p>
     </div>
   </div>

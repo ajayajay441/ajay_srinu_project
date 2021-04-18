@@ -1,11 +1,11 @@
 <mat-card class="mat-elevation-z0">
   <div
-    class="card-title mb-9"
+    class="card-title mb-4"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <h2 class="mb-0">Schedules</h2>
+      <div class="mb-0 schedule-card-header">Schedules</div>
       <button
         *ngFor="let scheduleStatusType of scheduleStatusTypes"
         fxHide
@@ -31,33 +31,33 @@
         fxLayout="row"
         fxLayoutAlign="start center"
         fxLayoutGap="10px"
-        class="py-3 schedules-table-header"
+        class="py-3 schedules-table-header schedules-header"
       >
-        <h3 fxFlex class="mb-0">Cut Off Date</h3>
-        <h3 fxFlex class="mb-0">Origin Date</h3>
-        <h3 fxFlex class="mb-0">Dest. City</h3>
-        <h3 fxFlex class="mb-0">Dest. Date</h3>
-        <h3 fxFlex class="mb-0"></h3>
+        <div fxFlex class="mb-0">Cut Off Date</div>
+        <div fxFlex class="mb-0">Origin Date</div>
+        <div fxFlex class="mb-0">Dest. City</div>
+        <div fxFlex class="mb-0">Dest. Date</div>
+        <div fxFlex class="mb-0"></div>
       </div>
       <div
         fxLayout="row"
         fxLayoutAlign="start center"
         fxLayoutGap="10px"
-        class="my-3 schedule-item"
+        class="my-3 schedule-item schedules-rows"
         *ngFor="let element of dataSource"
       >
-        <h5 fxFlex class="mb-0">
+        <div fxFlex class="mb-0">
           {{ element["cutoff-date"] }}
-        </h5>
-        <h5 fxFlex class="mb-0">
+        </div>
+        <div fxFlex class="mb-0">
           {{ element.ETA }}
-        </h5>
-        <h5 fxFlex class="mb-0">
+        </div>
+        <div fxFlex class="mb-0">
           {{ element.destination }}
-        </h5>
-        <h5 fxFlex class="mb-0">
+        </div>
+        <div fxFlex class="mb-0">
           {{ element.ETD }}
-        </h5>
+        </div>
         <div fxFlex>
           <button
             mat-raised-button

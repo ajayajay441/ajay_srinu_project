@@ -62,7 +62,7 @@
           <div fxLayout="row" class="mb-2">
             <h3 class="label-text">Select Incoterms</h3>
           </div>
-          <mat-form-field appearance="outline" class="no-bottom-padding w-1/3">
+          <mat-form-field appearance="outline" class="no-bottom-padding w-30">
             <mat-select [(ngModel)]="ebooking.sTosName">
               <!-- <mat-option [value]="sendto"> Others </mat-option> -->
               <mat-option value="CFR">C&F COST AND FREIGHT</mat-option>
@@ -109,7 +109,7 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start end"
             >
-              <mat-form-field appearance="outline" class="w-4/12">
+              <mat-form-field appearance="outline" class="w-30">
                 <input
                   type="text"
                   placeholder="Search Port"
@@ -128,7 +128,11 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5">
+              <mat-checkbox
+                color="warn"
+                [(ngModel)]="checked"
+                class="pb-5 w-30"
+              >
                 Pick-up required
               </mat-checkbox>
             </div>
@@ -146,16 +150,20 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <!-- <mat-select [(ngModel)]="ebooking.sPickupplace">
-                  <mat-option [value]="sendto"> Shipper </mat-option>
-                </mat-select> -->
-
-              <mat-form-field appearance="outline">
-                <input [(ngModel)]="ebooking.sPickupplace" matInput />
+              <mat-form-field appearance="outline" class="w-30">
+                <input
+                  [(ngModel)]="ebooking.sPickupplace"
+                  matInput
+                  placeholder="Search Address/City"
+                />
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
-                <input [(ngModel)]="ebooking.sPickupzipcode" matInput />
+              <mat-form-field appearance="outline" class="w-30">
+                <input
+                  [(ngModel)]="ebooking.sPickupzipcode"
+                  matInput
+                  placeholder="ZIP Code"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -171,7 +179,7 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <mat-label>MM/DD/YYYY</mat-label>
                 <input
                   matInput
@@ -215,7 +223,7 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start end"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <input
                   type="text"
                   matInput
@@ -233,7 +241,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
                 >Delivery required</mat-checkbox
               >
             </div>
@@ -251,12 +259,26 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input [(ngModel)]="ebooking.sDlylocation" matInput />
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input
+                  [(ngModel)]="ebooking.sDlylocation"
+                  matInput
+                  placeholder="Search Address/City"
+                />
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input [(ngModel)]="ebooking.sDlyzipcode" matInput />
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input
+                  [(ngModel)]="ebooking.sDlyzipcode"
+                  matInput
+                  placeholder="Zip code"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -267,7 +289,7 @@
           </div>
           <div class="mb-1">
             <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <mat-label>MM/DD/YYYY</mat-label>
                 <input
                   matInput
@@ -357,13 +379,14 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start end"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <input
                   type="text"
                   matInput
                   [(ngModel)]="ebooking.sShipperName"
                   (ngModelChange)="getShipperName($event)"
                   [matAutocomplete]="auto"
+                  placeholder="Select a Shipper"
                 />
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option
@@ -375,7 +398,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -393,9 +416,69 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline" class="no-bottom-padding">
-                <input matInput [(ngModel)]="ebooking.sShipperAddr" />
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input
+                  matInput
+                  [(ngModel)]="ebooking.sShipperAddr"
+                  placeholder="Enter your address"
+                />
               </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Email</h3>
+          </div>
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input matInput placeholder="Enter a valid email address" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign="start start"
+            >
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Phone</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Phone number" />
+                </mat-form-field>
+              </div>
+
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Mobile</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Mobile number" />
+                </mat-form-field>
+              </div>
             </div>
           </div>
         </div>
@@ -427,7 +510,7 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start end"
             >
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <input
                   type="text"
                   matInput
@@ -445,7 +528,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -463,9 +546,65 @@
               fxLayoutGap="25px"
               fxLayoutAlign="start start"
             >
-              <mat-form-field appearance="outline" class="no-bottom-padding">
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
                 <input matInput [(ngModel)]="ebooking.sConsigAddr" />
               </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Email</h3>
+          </div>
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input matInput placeholder="Enter a valid email address" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign="start start"
+            >
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Phone</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Phone number" />
+                </mat-form-field>
+              </div>
+
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Mobile</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Mobile number" />
+                </mat-form-field>
+              </div>
             </div>
           </div>
         </div>
@@ -487,17 +626,18 @@
         </mat-expansion-panel-header>
         <div class="mb-2">
           <div class="mb-2">
-            <h3>First Notify</h3>
+            <h3 class="label-text">First Notify</h3>
           </div>
-          <div class="mb-5">
+          <div class="mb-2">
             <div>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="w-30">
                 <input
                   type="text"
                   matInput
                   [(ngModel)]="ebooking.sFirstNotifyName"
                   (ngModelChange)="getNotifyName($event)"
                   [matAutocomplete]="notifyAuto"
+                  placeholder="Choose a first notify customer"
                 />
                 <mat-autocomplete #notifyAuto="matAutocomplete">
                   <mat-option
@@ -516,11 +656,68 @@
           <div class="mb-2">
             <h3 class="label-text">Adderess</h3>
           </div>
-          <div class="mb-5">
+          <div class="mb-2">
             <div>
-              <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="ebooking.sFirstNotifyAddr" />
+              <mat-form-field appearance="outline" class="w-30">
+                <input
+                  matInput
+                  [(ngModel)]="ebooking.sFirstNotifyAddr"
+                  placeholder="Enter your address"
+                />
               </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-2">
+            <h3 class="label-text">Email</h3>
+          </div>
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input matInput placeholder="Enter a valid email address" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign="start start"
+            >
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Phone</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Phone number" />
+                </mat-form-field>
+              </div>
+
+              <div>
+                <div class="mb-2">
+                  <h3 class="label-text">Mobile</h3>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Mobile number" />
+                </mat-form-field>
+              </div>
             </div>
           </div>
         </div>
@@ -540,14 +737,6 @@
             <div class="accordian-title">Cargo & Container</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <!-- <div
-          *ngFor="
-            let cargoContainer of cargoContainers;
-            last as isLast;
-            first as isFirst;
-            let i = index
-          "
-        > -->
         <div
           class="mb-3"
           *ngFor="
@@ -614,10 +803,50 @@
           </div>
           <!-- </div> -->
         </div>
+        <div class="mb-2">
+          <hr />
+        </div>
+        <div class="mb-2">
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign="start start"
+            >
+              <div class="mr-2">
+                <div class="mb-2">
+                  <h3 class="label-text">Total Items</h3>
+                </div>
+
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Total Items" />
+                </mat-form-field>
+              </div>
+              <div class="mr-2">
+                <div class="mb-2">
+                  <h3 class="label-text">Total Volumetric Weight</h3>
+                </div>
+
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Total  Weight" [value]="" />
+                </mat-form-field>
+              </div>
+              <div class="mr-2">
+                <div class="mb-2">
+                  <h3 class="label-text">Total Gross Weight</h3>
+                </div>
+
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Total Gross" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <div class="mb-6" *ngIf="sailingData">
+  <div class="mb-6">
     <mat-card class="mat-elevation-z0">
       <div fxLayout="row" fxLayoutGap="25px">
         <div class="accordian-title">Schedules</div>
@@ -663,11 +892,15 @@
             <h5 fxFlex class="mb-0">
               {{ element.VOYAGE_NO }}
             </h5>
-            <h5 fxFlex class="mb-0" color="warn">Fast</h5>
+            <h5 fxFlex class="mb-0 red" color="warn">Fast</h5>
             <div fxFlex>
-              <!-- <button mat-raised-button color="warn" class="mat-elevation-z0">
+              <button
+                mat-raised-button
+                color="warn"
+                class="mat-elevation-z0 schedule-btn"
+              >
                 Book
-              </button> -->
+              </button>
             </div>
           </div>
         </div>
