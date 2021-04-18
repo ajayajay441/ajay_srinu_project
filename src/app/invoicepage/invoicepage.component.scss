@@ -74,11 +74,11 @@ tr.detail-row {
 a {
   // color: #fff !important;
 }
-.w-table{
+.w-table {
   width: 95%;
 }
 
-.mat-tab-label-content{
+.mat-tab-label-content {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -86,15 +86,14 @@ a {
   line-height: 19px;
 }
 
-
-.invoice-page-header{
+.invoice-page-header {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
   font-size: 26px;
   line-height: 37px;
 }
-.invoice-page-header1{
+.invoice-page-header1 {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -102,7 +101,7 @@ a {
   line-height: 37px;
 }
 
-.total-due-amt{
+.total-due-amt {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -110,29 +109,24 @@ a {
   line-height: 22px;
 }
 
-.info-text{
+.info-text {
   font-family: Helvetica;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 19px;
   /* identical to box height */
-
-
 }
 
-.invoice-table-header{
+.invoice-table-header {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 19px;
 }
-.invoice-rows{
+.invoice-rows {
   font-family: Helvetica;
   font-size: 15px;
   line-height: 26px;
 }
-//::ng-deep .mat-form-field-underline {
-//  display: none;
-//}

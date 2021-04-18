@@ -122,6 +122,7 @@ export class PurchaseorderpageComponent implements OnInit {
       .subscribe((response: any) => {
         this.dataSource1 = new MatTableDataSource(response.purchase_order);
         this.Request_Quote_link = response.Request_Quote_link;
+        setTimeout(() => (this.dataSource1.sort = this.sort));
       });
   }
 

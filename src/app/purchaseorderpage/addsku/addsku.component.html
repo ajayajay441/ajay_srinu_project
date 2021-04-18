@@ -23,15 +23,15 @@
     <div class="mb-0">
       <h3>SKU</h3>
 
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Adderess" />
+      <mat-form-field appearance="outline" class="w-230">
+        <input matInput placeholder="Ex: CAM001" />
       </mat-form-field>
     </div>
     <div class="mb-0">
       <h3>Name</h3>
 
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Zipcode" />
+      <mat-form-field appearance="outline" class="w-230">
+        <input matInput placeholder="Ex: Camera" />
       </mat-form-field>
     </div>
   </div>
@@ -47,15 +47,26 @@
     <div class="mb-0">
       <h3>Package Type</h3>
 
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Adderess" />
+      <mat-form-field appearance="outline" class="w-230">
+        <mat-select [(ngModel)]="addSku.sTosName">
+          <!-- <mat-option [value]="sendto"> Others </mat-option> -->
+          <mat-option value="Box(S)">Box(S)</mat-option>
+          <mat-option value="Bundle(S)">Bundle(S)</mat-option>
+          <mat-option value="Carton(S)">Carton(S)</mat-option>
+          <mat-option value="Case(S)">Case(S)</mat-option>
+          <mat-option value="Container(S)">Container(S)</mat-option>
+          <mat-option value="Crate(S)">Crate(S)</mat-option>
+          <mat-option value="Package(S)">Package(S)</mat-option>
+          <mat-option value="Pallet(S)">Pallet(S)</mat-option>
+          <mat-option value="Piece(S)">Piece(S)</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="mb-0">
       <h3>Pieces</h3>
 
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Zipcode" />
+      <mat-form-field appearance="outline" class="w-230">
+        <input matInput placeholder="Ex: 50" />
       </mat-form-field>
     </div>
   </div>
@@ -64,6 +75,7 @@
     fxLayout.gt-sm="row"
     fxLayoutGap="25px"
     fxLayoutAlign="start start"
+    class="mb-5"
   >
     <div class="mb-0">
       <h3>Ready Date</h3>
@@ -97,15 +109,26 @@
     fxLayout.gt-sm="row"
     fxLayoutGap="25px"
     fxLayoutAlign="start start"
+    class=""
   >
     <div class="mb-0">
-      <button mat-raised-button color="" class="mat-elevation-z0">
-        <a href="" target="_blank">Cancel</a>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z0 rounded-none bttns-cancel"
+        (click)="onNoClick()"
+      >
+        Cancel
       </button>
     </div>
     <div class="mb-0">
-      <button mat-raised-button color="primary" class="mat-elevation-z0">
-        <a href="" target="_blank">Add SKU</a>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z0 rounded-none bttns-add"
+        (click)="onAddSku()"
+      >
+        Add SKU
       </button>
     </div>
   </div>

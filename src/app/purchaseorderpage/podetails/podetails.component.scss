@@ -1,0 +1,68 @@
+@import "./../../../variables.scss";
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 70px;
+}
+td.mat-cell,
+th.mat-header-cell,
+.mat-footer-cell {
+  border-bottom-style: none;
+  color: $fresonaccentcolor;
+}
+.mat-header-row {
+  background-color: $fresconheaderscolor;
+}
+tr.detail-row {
+  height: 0;
+}
+.light-color-button {
+  color: $fresonlightcolor !important;
+}
+.status-tracker-container {
+  width: 80%;
+  max-width: 800px;
+}
+::ng-deep {
+  .mat-tab-label-active {
+    .mat-tab-label-content {
+      color: $fresonprimarycolor !important;
+    }
+  }
+}
+mat-icon.search-icon {
+  top: 7px !important;
+  margin-right: 7px !important;
+  position: relative;
+}
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.w-20 {
+  width: 34px !important;
+}
+.details {
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 37px;
+  /* or 232% */
+
+  text-align: right;
+  text-decoration-line: underline;
+}
+tbody td {
+  font-family: Helvetica;
+  font-size: 15px;
+  line-height: 26px;
+  /* identical to box height, or 173% */
+
+  letter-spacing: -0.5px;
+
+  color: #313131;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}

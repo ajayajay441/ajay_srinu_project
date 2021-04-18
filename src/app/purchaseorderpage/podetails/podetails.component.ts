@@ -79,7 +79,7 @@ export class PodetailsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(AddskuComponent, {
       width: "550px",
-      height: "450px",
+      height: "550px",
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -101,31 +101,6 @@ export class PodetailsComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        // console.log("PO details", response.PO_detail);
-        // response.PO_detail = [
-        //   {
-        //     sku: "",
-        //     description: "",
-        //     shipmentno: "",
-        //     delivery_date: "",
-        //     Ordered: 5,
-        //     booked: 4,
-        //     closed: 2,
-        //     balance: 3,
-        //     actions: "",
-        //   },
-        //   {
-        //     sku: "",
-        //     description: "",
-        //     shipmentno: "",
-        //     delivery_date: "",
-        //     Ordered: 5,
-        //     booked: 4,
-        //     closed: 2,
-        //     balance: 5,
-        //     actions: "",
-        //   },
-        // ];
         this.dataSource = new MatTableDataSource(response.PO_detail);
       });
   }

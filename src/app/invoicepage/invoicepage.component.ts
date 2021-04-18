@@ -113,6 +113,7 @@ export class InvoicepageComponent implements OnInit {
         this.invoiceData = response["invoice-data"];
         this.dataSource = new MatTableDataSource(response["invoice-data"]);
         setTimeout(() => (this.dataSource.paginator = this.paginator));
+        setTimeout(() => (this.dataSource.sort = this.sort));
         this.dataSource.sort = this.sort;
         this.overDueAmount = response.Over_Due;
         this.currecny = response.Currency_Code;

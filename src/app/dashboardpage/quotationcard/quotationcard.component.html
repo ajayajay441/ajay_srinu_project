@@ -4,19 +4,19 @@
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <div class="mb-0 quotations-header">Quotations</div>
+    <h2 class="mb-0 quotations-header">Quotations</h2>
     <a class="underline cursor-pointer" (click)="goTo('/quotes', 'data')">
       View all
     </a>
   </div>
   <div class="card-body">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <div class="mb-0 bold quotation-number">
+      <h3 class="mb-0 bold">
         {{ element["quotation-number"] }}
-      </div>
-      <div class="mb-0 quote-customer-number">
+      </h3>
+      <h5 class="mb-0">
         {{ element["customer_name"] }}
-      </div>
+      </h5>
     </div>
     <div
       fxLayout="row"
@@ -24,9 +24,9 @@
       fxLayoutGap="10px"
       class="mb-3"
     >
-      <div class="origin mb-0 bold">
+      <h5 class="mb-0 bold">
         {{ element.origin }}
-      </div>
+      </h5>
       <mat-icon *ngIf="element.mode === 'AIR'" class="transform rotate-90"
         >flight</mat-icon
       >
@@ -67,22 +67,22 @@
           fill="black"
         />
       </svg>
-      <div class="origin mb-0 bold">
+      <h5 class="mb-0 bold">
         {{ element.destination }}
-      </div>
+      </h5>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <div class="mb-0">
-        <span class="origin"> Place: </span><span>{{ element.places }}</span>
-      </div>
-      <div class="mb-0">
-        <span class="origin"> Weight: </span
+      <h5 class="mb-0">
+        <span class="font-bold"> Place: </span><span>{{ element.places }}</span>
+      </h5>
+      <h5 class="mb-0">
+        <span class="font-bold"> Weight: </span
         ><span>{{ element.weight }}</span>
-      </div>
-      <div class="mb-0">
-        <span class="origin"> Volume: </span
+      </h5>
+      <h5 class="mb-0">
+        <span class="font-bold"> Volume: </span
         ><span>{{ element.volume }}</span>
-      </div>
+      </h5>
     </div>
   </div>
 </mat-card>
