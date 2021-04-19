@@ -104,6 +104,10 @@ export class PodetailsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(response.PO_detail);
       });
   }
+  goToPo(routePageName: string) {
+    // console.log("data", data);
+    this.router.navigate([`${routePageName}`]); // navigate to other page
+  }
   goTo(routePageName: string, data: any) {
     // console.log("goTo::data", data.isError);
     if (data.isError) {

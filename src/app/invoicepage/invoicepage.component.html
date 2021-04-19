@@ -60,7 +60,9 @@
       fxLayoutAlign="start center"
     >
       <div class="inv_box">
-        <div class="my-3 mx-3 text-base total-due-amt"><strong>Total due amount</strong></div>
+        <div class="my-3 mx-3 text-base total-due-amt">
+          <strong>Total due amount</strong>
+        </div>
         <div class="my-3 mx-3 text-2xl">
           <strong>{{ currecny }} {{ totalDueAmount }}</strong>
         </div>
@@ -69,7 +71,9 @@
         </div>
       </div>
       <div class="inv_box">
-        <div class="my-3 mx-3 text-base total-due-amt"><strong>Overdue amount</strong></div>
+        <div class="my-3 mx-3 text-base total-due-amt">
+          <strong>Overdue amount</strong>
+        </div>
         <div class="my-3 mx-3 text-2xl">
           <strong>{{ currecny }} {{ overDueAmount }}</strong>
         </div>
@@ -79,320 +83,382 @@
       </div>
     </div>
   </div>
-  <div class = "mat-card pb-1">
-  <div class="">
-    <mat-card class="mat-elevation-z0">
-      <div
-        class="card-title"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
-        <div fxLayout="row" fxLayoutGap="25px">
-          <h2 class="mb-0 invoice-page-header1">Invoices</h2>
-          <button
-            fxHide
-            fxShow.gt-sm
-            mat-stroked-button
-            *ngFor="let _invoiceType of invoiceTypes"
-            [color]="
-              _invoiceType.value == activeInvoiceStatusType
-                ? 'primary'
-                : 'light'
-            "
-            class="mat-elevation-z0"
-            (click)="getDashboardInvoice(_invoiceType.value)"
-          >
-            {{ _invoiceType.label }}
-          </button>
-        </div>
-        <div class="search-form" fxHide fxShow.gt-sm>
-          <form>
-            <mat-form-field class="quotations-search-input">
-              <mat-label class="">Search</mat-label>
-              <mat-icon matPrefix class="search-icon">search</mat-icon>
-              <input
-                type="search"
-                matInput
-                [ngModel]="filter"
-                name="filterField"
-                (ngModelChange)="filterChanged($event)"
-              />
-            </mat-form-field>
-          </form>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div class="" *ngIf="!loading" fxHide fxShow.gt-sm>
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      matSort
-      class="w-97 mat-elevation-z0 m-auto"
-      multiTemplateDataRows
-    >
-      <!-- Position Column -->
-      <ng-container matColumnDef="inv_number">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="invoice-table-header">Invoice N°</th>
-        <td mat-cell *matCellDef="let element"  class="invoice-rows">{{ element.inv_number }}</td>
-      </ng-container>
-
-      <!-- for expansion panel every row expansion details -->
-      <ng-container matColumnDef="expandedDetail">
-        <td
-          mat-cell
-          *matCellDef="let element"
-          [attr.colspan]="displayedColumns.length"
+  <div class="mat-card pb-1">
+    <div class="">
+      <mat-card class="mat-elevation-z0">
+        <div
+          class="card-title"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
         >
-          <div
-            class="element-detail"
-            [@detailExpand]="
-              element == expandedElement ? 'expanded' : 'collapsed'
-            "
-          >
-            <mat-tab-group
-              mat-align-tabs="start"
-              color="primary"
-              class="w-full"
+          <div fxLayout="row" fxLayoutGap="25px">
+            <h2 class="mb-0 invoice-page-header1">Invoices</h2>
+            <button
+              fxHide
+              fxShow.gt-sm
+              mat-stroked-button
+              *ngFor="let _invoiceType of invoiceTypes"
+              [color]="
+                _invoiceType.value == activeInvoiceStatusType
+                  ? 'primary'
+                  : 'light'
+              "
+              class="mat-elevation-z0 status-buttons"
+              [class.light-color-button]="
+                _invoiceType.value != activeInvoiceStatusType
+              "
+              (click)="getDashboardInvoice(_invoiceType.value)"
             >
-              <mat-tab label="PO">
-                <mat-card class="mat-elevation-z0">
-                  <div class="card-body">
-                    <div fxLayout="column" fxLayoutAlign="center space-between">
+              {{ _invoiceType.label }}
+            </button>
+          </div>
+          <div class="search-form" fxHide fxShow.gt-sm>
+            <form>
+              <mat-form-field class="quotations-search-input">
+                <!-- <mat-label class="">Search</mat-label> -->
+                <mat-icon matPrefix class="search-icon">search</mat-icon>
+                <input
+                  type="search"
+                  matInput
+                  [ngModel]="filter"
+                  name="filterField"
+                  (ngModelChange)="filterChanged($event)"
+                  placeholder="Search (PO, Invoices…)"
+                />
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+    <div class="" *ngIf="!loading" fxHide fxShow.gt-sm>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        class="w-97 mat-elevation-z0 m-auto"
+        multiTemplateDataRows
+      >
+        <!-- Position Column -->
+        <ng-container matColumnDef="inv_number">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            Invoice N°
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.inv_number }}
+          </td>
+        </ng-container>
+
+        <!-- for expansion panel every row expansion details -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div
+              class="element-detail"
+              [@detailExpand]="
+                element == expandedElement ? 'expanded' : 'collapsed'
+              "
+            >
+              <mat-tab-group
+                mat-align-tabs="start"
+                color="primary"
+                class="w-full"
+              >
+                <mat-tab label="PO">
+                  <mat-card class="mat-elevation-z0">
+                    <div class="card-body">
                       <div
-                        fxLayout="row"
-                        fxLayoutAlign="start center"
-                        fxLayoutGap="10px"
-                        class="py-3 schedules-table-header"
+                        fxLayout="column"
+                        fxLayoutAlign="center space-between"
                       >
-                        <h5 fxFlex class="mb-0">Ref. Number</h5>
-                        <h5 fxFlex class="mb-0">PO N°</h5>
-                        <h5 fxFlex class="mb-0">Origin</h5>
-                        <h5 fxFlex class="mb-0">Destination</h5>
-                        <h5 fxFlex class="mb-0">Chargeable weight</h5>
-                        <h5 fxFlex class="mb-0">Supplier</h5>
-                        <h5 fxFlex class="mb-0">Container Number</h5>
-                        <h5 fxFlex class="mb-0">Mode</h5>
-                        <h5 fxFlex class="mb-0">Shipment</h5>
-                      </div>
-                      <div
-                        fxLayout="row"
-                        fxLayoutAlign="start center"
-                        fxLayoutGap="10px"
-                        class="my-3 schedule-item"
-                        *ngFor="let po of invoice_po"
-                      >
-                        <h5 fxFlex class="mb-0">{{ po.invoiceno }}</h5>
-                        <h5 fxFlex class="mb-0">{{ po.order_no }}</h5>
-                        <h5 fxFlex class="mb-0">
-                          {{ po.originport.portname }}
-                        </h5>
-                        <h5 fxFlex class="mb-0">
-                          {{ po.destinationport.portname }}
-                        </h5>
-                        <h5 fxFlex class="mb-0">{{ po.gross_weight }}</h5>
-                        <h5 fxFlex class="mb-0">{{ po.customername }}</h5>
-                        <h5 fxFlex class="mb-0">{{ po.container_no }}</h5>
-                        <h5 fxFlex class="mb-0">{{ po.shipmentby }}</h5>
-                        <h5 fxFlex class="mb-0">{{ po.shipmenttype }}</h5>
-                      </div>
-                    </div>
-                  </div>
-                </mat-card>
-              </mat-tab>
-              <mat-tab label="Documents" class="details-header">
-                <mat-card class="mat-elevation-z0">
-                  <div class="card-body">
-                    <div fxHide fxShow.gt-sm>
-                      <div
-                        fxLayout="row"
-                        fxLayoutGap="10px"
-                        fxLayoutAlign="start center"
-                        class="py-3 header-row"
-                      >
-                        <div fxFlex="250px" class="px-3">Document Date</div>
-                        <div fxFlex class="px-3">Document Name</div>
-                      </div>
-                      <div
-                        fxLayout="row"
-                        fxLayoutAlign="start center"
-                        fxLayoutGap="10px"
-                        class="py-3"
-                        *ngFor="let document of invoice_documents"
-                      >
-                        <div fxFlex="250px" class="px-3">
-                          {{ document.document_date }}
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          fxLayoutGap="10px"
+                          class="py-3 schedules-table-header"
+                        >
+                          <h5 fxFlex class="mb-0">Ref. Number</h5>
+                          <h5 fxFlex class="mb-0">PO N°</h5>
+                          <h5 fxFlex class="mb-0">Origin</h5>
+                          <h5 fxFlex class="mb-0">Destination</h5>
+                          <h5 fxFlex class="mb-0">Chargeable weight</h5>
+                          <h5 fxFlex class="mb-0">Supplier</h5>
+                          <h5 fxFlex class="mb-0">Container Number</h5>
+                          <h5 fxFlex class="mb-0">Mode</h5>
+                          <h5 fxFlex class="mb-0">Shipment</h5>
                         </div>
                         <div
-                          fxFlex
-                          class="px-3"
                           fxLayout="row"
-                          fxLayoutAlign="space-between center"
+                          fxLayoutAlign="start center"
                           fxLayoutGap="10px"
+                          class="my-3 schedule-item"
+                          *ngFor="let po of invoice_po"
                         >
-                          <div fxFlex>
-                            <p>{{ document.document_name }}</p>
+                          <h5 fxFlex class="mb-0">{{ po.invoiceno }}</h5>
+                          <h5 fxFlex class="mb-0">{{ po.order_no }}</h5>
+                          <h5 fxFlex class="mb-0">
+                            {{ po.originport.portname }}
+                          </h5>
+                          <h5 fxFlex class="mb-0">
+                            {{ po.destinationport.portname }}
+                          </h5>
+                          <h5 fxFlex class="mb-0">{{ po.gross_weight }}</h5>
+                          <h5 fxFlex class="mb-0">{{ po.customername }}</h5>
+                          <h5 fxFlex class="mb-0">{{ po.container_no }}</h5>
+                          <h5 fxFlex class="mb-0">{{ po.shipmentby }}</h5>
+                          <h5 fxFlex class="mb-0">{{ po.shipmenttype }}</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card>
+                </mat-tab>
+                <mat-tab label="Documents" class="details-header">
+                  <mat-card class="mat-elevation-z0">
+                    <div class="card-body">
+                      <div fxHide fxShow.gt-sm>
+                        <div
+                          fxLayout="row"
+                          fxLayoutGap="10px"
+                          fxLayoutAlign="start center"
+                          class="py-3 header-row"
+                        >
+                          <div fxFlex="250px" class="px-3">Document Date</div>
+                          <div fxFlex class="px-3">Document Name</div>
+                        </div>
+                        <div
+                          fxLayout="row"
+                          fxLayoutAlign="start center"
+                          fxLayoutGap="10px"
+                          class="py-3"
+                          *ngFor="let document of invoice_documents"
+                        >
+                          <div fxFlex="250px" class="px-3">
+                            {{ document.document_date }}
                           </div>
-                          <div fxFlex class="text-right">
-                            <button
-                              mat-raised-button
-                              color="primary"
-                              class="mat-elevation-z0"
-                            >
-                              <mat-icon
-                                [svgIcon]="'download'"
-                                class="pr-2"
-                              ></mat-icon>
-                              <a href="{{ document.link }}" target="_blank">
-                                Download</a
+                          <div
+                            fxFlex
+                            class="px-3"
+                            fxLayout="row"
+                            fxLayoutAlign="space-between center"
+                            fxLayoutGap="10px"
+                          >
+                            <div fxFlex>
+                              <p>{{ document.document_name }}</p>
+                            </div>
+                            <div fxFlex class="text-right">
+                              <button
+                                mat-raised-button
+                                color="primary"
+                                class="mat-elevation-z0"
                               >
-                            </button>
+                                <mat-icon
+                                  [svgIcon]="'download'"
+                                  class="pr-2"
+                                ></mat-icon>
+                                <a href="{{ document.link }}" target="_blank">
+                                  Download</a
+                                >
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </mat-card>
-              </mat-tab>
-            </mat-tab-group>
-          </div>
-        </td>
-      </ng-container>
+                  </mat-card>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="inv_date" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Invoice Date</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">{{ element.inv_date }}</td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="house_no">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">House N°</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">{{ element.house_no }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="due_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Due Date</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">
-          {{ element.due_date }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="days">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Days</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">
-          {{ element.days }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Amount</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">
-          {{ element.amount }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="balance">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="invoice-table-header">Balance</th>
-        <td mat-cell *matCellDef="let element" class="invoice-rows">
-          {{ element.balance }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="download">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-        <td mat-cell *matCellDef="let element">
-          <!-- <button mat-raised-button color="primary" class="mat-elevation-z0"> -->
-          <a
-            class="underline cursor-pointer mat-primary"
-            target="_blank"
-            href="{{ element.invoicelink }}"
-            >Download</a
+        <!-- Name Column -->
+        <ng-container matColumnDef="inv_date">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
           >
-          <!-- </button> -->
-        </td>
-      </ng-container>
+            Invoice Date
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.inv_date }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="details">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-        <td mat-cell *matCellDef="let element">
+        <!-- Weight Column -->
+        <ng-container matColumnDef="house_no">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            House N°
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.house_no }}
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="due_date">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            Due Date
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.due_date }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="days">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            Days
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.days }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            Amount
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.amount }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="balance">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="invoice-table-header"
+          >
+            Balance
+          </th>
+          <td mat-cell *matCellDef="let element" class="invoice-rows">
+            {{ element.balance }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="download">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let element">
+            <!-- <button mat-raised-button color="primary" class="mat-elevation-z0"> -->
+            <a
+              class="cursor-pointer details-btn"
+              target="_blank"
+              href="{{ element.invoicelink }}"
+              >Download</a
+            >
+            <!-- </button> -->
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              class="cursor-pointer details-btn"
+              (click)="
+                expandedElement = expandedElement === element ? null : element;
+                getinvoicedetail(element.inv_number)
+              "
+            >
+              Details
+            </span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns"
+          class="element-row"
+          [class.expanded-row]="expandedElement === element"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="detail-row"
+        ></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+    <div class="mb-4" fxShow fxHide.gt-sm>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        class="my-3 ml-3 purchase-item"
+        *ngFor="let element of invoiceData"
+      >
+        <p fxFlex>
+          <span class="font-bold">Invoice N°: </span>
+          <span>{{ element.inv_number }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> Invoice Date : </span>
+          <span>{{ element.inv_date }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> House N° :</span>
+          <span>{{ element.house_no }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> Due Date :</span>
+          <span>{{ element.due_date }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> Days :</span>
+          <span>{{ element.days }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> Amount :</span>
+          <span>{{ element.amount }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold"> Balance :</span>
+          <span>{{ element.balance }}</span>
+        </p>
+
+        <p fxFlex>
           <a
             class="underline cursor-pointer mat-primary"
             (click)="
-              expandedElement = expandedElement === element ? null : element;
-              getinvoicedetail(element.inv_number)
+              expandedElement = expandedElement === element ? null : element
             "
           >
-            See Details
+            Details
           </a>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
-      <tr
-        mat-row
-        *matRowDef="let element; columns: displayedColumns"
-        class="element-row"
-        [class.expanded-row]="expandedElement === element"
-      ></tr>
-
-      <tr
-        mat-row
-        *matRowDef="let row; columns: ['expandedDetail']"
-        class="detail-row"
-      ></tr>
-    </table>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
-  </div>
-  <div class="mb-4" fxShow fxHide.gt-sm>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="space-between center"
-      fxLayoutGap="10px"
-      class="my-3 purchase-item"
-      *ngFor="let element of invoiceData"
-    >
-      <p fxFlex>
-        <span class="font-bold">Invoice N°: </span>
-        <span>{{ element.inv_number }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> Invoice Date : </span>
-        <span>{{ element.inv_date }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> House N° :</span>
-        <span>{{ element.house_no }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> Due Date :</span>
-        <span>{{ element.due_date }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> Days :</span>
-        <span>{{ element.days }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> Amount :</span>
-        <span>{{ element.amount }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold"> Balance :</span>
-        <span>{{ element.balance }}</span>
-      </p>
-
-      <p fxFlex>
-        <a
-          class="underline cursor-pointer mat-primary"
-          (click)="
-            expandedElement = expandedElement === element ? null : element
-          "
-        >
-          Details
-        </a>
-      </p>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </div>

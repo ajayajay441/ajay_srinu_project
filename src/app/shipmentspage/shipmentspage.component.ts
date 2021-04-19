@@ -33,7 +33,7 @@ export class ShipmentspageComponent implements OnInit {
     { label: "IN TRANSIT", value: "IN TRANSIT" },
     { label: "ARRIVED", value: "ARRIVED" },
   ];
-  activeShipmentStatusType: any = "";
+  activeShipmentStatusType: any = "ARRIVED";
   constructor(
     private router: Router,
     private http: HttpClient,
