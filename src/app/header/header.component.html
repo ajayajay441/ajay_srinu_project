@@ -2,7 +2,7 @@
   <div fxFlex.gt-sm="250px" fxFlex class="logo">
     <!-- <img src="./../../assets/logo.png" class="m-auto" /> -->
     <svg
-      class=""
+      class="m-auto"
       width="123"
       height="65"
       viewBox="0 0 123 25"
@@ -21,11 +21,15 @@
     fxLayoutAlign="end center"
     fxLayoutAlign.gt-sm="space-between center"
   >
-    <div class="search-form" fxHide fxShow.gt-sm>
+    <div class="search-form pl-5" fxHide fxShow.gt-sm>
       <form>
         <mat-form-field class="search-input">
-          <mat-label class="">Search</mat-label>
-          <mat-icon matPrefix class="search-icon">search</mat-icon>
+          <mat-label class="">Search ...</mat-label>
+          <mat-icon
+            matPrefix
+            class="search-icon"
+            [svgIcon]="'searchIcon'"
+          ></mat-icon>
           <input type="search" matInput />
         </mat-form-field>
       </form>

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from "@angular/core";
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private domSanitizer: DomSanitizer,
+    private matIconRegistry: MatIconRegistry
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      "searchIcon",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/search-icon.svg"
+      )
+    );
   }
 
+  ngOnInit(): void {}
 }

@@ -8,18 +8,20 @@
 }
 .drawer-menu {
   width: 250px;
+  border-right: 1px solid #ccc;
 }
 .drawer-content {
   background-color: #f7f8fa;
-  width: 97%;
+  // width: 97%;
 }
 .menu-button.mat-button,
 .menu-button.mat-flat-button {
   padding: 7px;
   text-align: left;
+  margin-left: 1rem;
 }
 .menu-tab {
-  border-left: 2px solid transparent;
+  border-left: 3px solid transparent;
 }
 .menu-tab.active {
   border-left-color: $fresonprimarycolor;

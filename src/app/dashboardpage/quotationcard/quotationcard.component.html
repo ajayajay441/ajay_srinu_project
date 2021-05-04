@@ -4,29 +4,25 @@
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <h2 class="mb-0 quotations-header">Quotations</h2>
-    <a class="underline cursor-pointer" (click)="goTo('/quotes', 'data')">
-      View all
-    </a>
+    <div class="mb-0 main-header">Quotations</div>
+    <a class="view-all-link" (click)="goTo('/quotes', 'data')"> View all </a>
   </div>
   <div class="card-body">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <h3 class="mb-0 bold">
-        {{ element["quotation-number"] }}
-      </h3>
-      <h5 class="mb-0">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-5">
+      <div class="mb-0 sub-header">QT {{ element["quotation-number"] }}</div>
+      <div class="mb-0 plain-text">
         {{ element["customer_name"] }}
-      </h5>
+      </div>
     </div>
     <div
       fxLayout="row"
       fxLayoutAlign="space-between center"
       fxLayoutGap="10px"
-      class="mb-3"
+      class="mb-5"
     >
-      <h5 class="mb-0 bold">
+      <div class="mb-0 bold-text">
         {{ element.origin }}
-      </h5>
+      </div>
       <mat-icon *ngIf="element.mode === 'AIR'" class="transform rotate-90"
         >flight</mat-icon
       >
@@ -67,22 +63,23 @@
           fill="black"
         />
       </svg>
-      <h5 class="mb-0 bold">
+      <div class="mb-0 bold-text">
         {{ element.destination }}
-      </h5>
+      </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
-      <h5 class="mb-0">
-        <span class="font-bold"> Place: </span><span>{{ element.places }}</span>
-      </h5>
-      <h5 class="mb-0">
+      <div class="mb-0">
+        <span class="bold-text"> Pieces: </span
+        ><span class="plain-text">{{ element.places }}</span>
+      </div>
+      <div class="mb-0">
         <span class="font-bold"> Weight: </span
-        ><span>{{ element.weight }}</span>
-      </h5>
-      <h5 class="mb-0">
-        <span class="font-bold"> Volume: </span
-        ><span>{{ element.volume }}</span>
-      </h5>
+        ><span class="plain-text">{{ element.weight }}</span>
+      </div>
+      <div class="mb-0">
+        <span class="bold-text"> Volume: </span
+        ><span class="plain-text">{{ element.volume }}</span>
+      </div>
     </div>
   </div>
 </mat-card>

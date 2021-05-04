@@ -7,18 +7,19 @@
 html,
 body {
   height: 100%;
+  font-family: Helvetica;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mb-0 {
   margin-bottom: 0px !important;
 }
 .mat-typography {
-  max-width: 1440px;
-  margin: auto;
+  // max-width: 1440px;
+  // margin: auto;
 }
 .mat-primary:not(button) {
   svg {
@@ -72,7 +73,7 @@ a.mat-primary {
   height: 12px;
 }
 
-.status-buttons{
+.status-buttons {
   width: 7.5rem;
   font-family: Helvetica;
   font-style: normal;
@@ -85,10 +86,165 @@ a.mat-primary {
   color: #c4c4c4;
 }
 
-.mat-tab-label-content{
+.mat-tab-label-content {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 19px;
+}
+button {
+  border-radius: unset !important;
+}
+.mat-card {
+  border-radius: unset !important;
+}
+.dashboard-page {
+  .mat-card {
+    border: 1px solid #efe9e9;
+  }
+}
+
+// 1600px  & 2000px
+@media (min-width: 1600px) {
+  .dashboard-map {
+    height: 465px;
+  }
+  .main-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 37px;
+    color: #313131;
+  }
+  .sub-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 19px;
+    color: #313131;
+  }
+  .plain-text {
+    font-size: 15px;
+    line-height: 19px;
+    color: #313131;
+  }
+  .bold-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #313131;
+  }
+  .button-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    color: #ffffff;
+  }
+  .view-all-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 37px;
+    text-decoration-line: underline;
+    color: #313131;
+    cursor: pointer;
+  }
+}
+// 1153 to 1440
+@media (min-width: 1153px) and (max-width: 1440px) {
+  .dashboard-map {
+    height: 350px;
+  }
+  .main-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    color: #313131;
+  }
+  .sub-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 16px;
+    color: #313131;
+  }
+  .plain-text {
+    font-size: 13px;
+    line-height: 16px;
+    color: #313131;
+  }
+  .bold-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: #313131;
+  }
+  .button-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+  }
+  .view-all-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    text-decoration-line: underline;
+    color: #313131;
+    cursor: pointer;
+  }
+}
+
+//1153 px
+
+@media (min-width: 1024px) and (max-width: 1153px) {
+  .main-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #313131;
+  }
+  .sub-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 12px;
+    color: #313131;
+  }
+  .plain-text {
+    font-size: 11px;
+    line-height: 12px;
+    color: #313131;
+  }
+  .bold-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 12px;
+    color: #313131;
+  }
+  .button-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    color: #f01e1e;
+  }
+  .view-all-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: #313131;
+    cursor: pointer;
+  }
 }

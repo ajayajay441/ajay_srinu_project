@@ -23,7 +23,10 @@
       >
         <h3 class="mb-0 secondary">Status</h3>
         <mat-form-field class="w-full max100px">
-          <mat-select (selectionChange)="onStatusChange($event.value)">
+          <mat-select
+            (selectionChange)="onStatusChange($event.value)"
+            [(ngModel)]="activeShipmentStatusType"
+          >
             <mat-option
               *ngFor="let status of filters.status"
               [value]="status.value"

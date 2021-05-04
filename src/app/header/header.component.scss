@@ -44,3 +44,8 @@ mat-icon.search-icon {
 .user-name {
   letter-spacing: 0.5px;
 }
+.search-form {
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+}
