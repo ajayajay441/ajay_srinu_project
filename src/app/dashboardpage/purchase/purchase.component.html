@@ -5,7 +5,7 @@
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <div class="mb-0 purchase-card-header">Purchase</div>
+      <div class="mb-0 main-header">Purchase</div>
       <button
         mat-stroked-button
         class="mat-elevation-z0"
@@ -15,7 +15,9 @@
         [color]="
           purchaseStatusType == activePurchaseStatusType ? 'primary' : 'light'
         "
-        [class.light-color-button] = "purchaseStatusType != activePurchaseStatusType"
+        [class.light-color-button]="
+          purchaseStatusType != activePurchaseStatusType
+        "
         (click)="getDashboardPO(purchaseStatusType)"
       >
         {{ purchaseStatusType }}
@@ -24,9 +26,7 @@
         Picked-up
       </button> -->
     </div>
-    <a class="underline accent cursor-pointer" (click)="goTo('/po', 'data')">
-      View all
-    </a>
+    <a class="view-all-link" (click)="goTo('/po', 'data')"> View all </a>
   </div>
   <div class="card-body" fxHide fxShow.gt-sm>
     <div fxLayout="column" fxLayoutAlign="center space-between">
@@ -36,9 +36,9 @@
         fxLayoutGap="10px"
         class="py-3 purchases-table-header"
       >
-        <div fxFlex class="mb-0 headers">Picked-up PO’s</div>
-        <div fxFlex class="mb-0 headers">Origins</div>
-        <div fxFlex class="mb-0 headers">Booked Number HBL</div>
+        <div fxFlex class="mb-0 bold-text">Picked-up PO’s</div>
+        <div fxFlex class="mb-0 bold-text">Origins</div>
+        <div fxFlex class="mb-0 bold-text">Booked Number HBL</div>
       </div>
       <div
         fxLayout="row"
@@ -47,13 +47,13 @@
         class="my-3 purchase-item rows-font"
         *ngFor="let element of data"
       >
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element.ponumber }}
         </div>
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element.origin }}
         </div>
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element["hbl-number"] }}
         </div>
       </div>

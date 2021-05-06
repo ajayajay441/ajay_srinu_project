@@ -5,7 +5,7 @@
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <div class="mb-0 schedule-card-header">Schedules</div>
+      <div class="mb-0 main-header">Schedules</div>
       <button
         *ngFor="let scheduleStatusType of scheduleStatusTypes"
         fxHide
@@ -16,8 +16,10 @@
             ? 'primary'
             : 'light'
         "
-        [class.light-color-button] = "scheduleStatusType.value != activeScheduleStatusType"
-        class="mat-elevation-z0"
+        [class.light-color-button]="
+          scheduleStatusType.value != activeScheduleStatusType
+        "
+        class="mat-elevation-z0 status-buttons"
         (click)="getDashboardSailings(scheduleStatusType.value)"
       >
         {{ scheduleStatusType.value }}
@@ -33,11 +35,11 @@
         fxLayoutGap="10px"
         class="py-3 schedules-table-header schedules-header"
       >
-        <div fxFlex class="mb-0">Cut Off Date</div>
-        <div fxFlex class="mb-0">Origin Date</div>
-        <div fxFlex class="mb-0">Dest. City</div>
-        <div fxFlex class="mb-0">Dest. Date</div>
-        <div fxFlex class="mb-0"></div>
+        <div fxFlex class="mb-0 bold-text">Cut Off Date</div>
+        <div fxFlex class="mb-0 bold-text">Origin Date</div>
+        <div fxFlex class="mb-0 bold-text">Dest. City</div>
+        <div fxFlex class="mb-0 bold-text">Dest. Date</div>
+        <div fxFlex class="mb-0 bold-text"></div>
       </div>
       <div
         fxLayout="row"
@@ -46,16 +48,16 @@
         class="my-3 schedule-item schedules-rows"
         *ngFor="let element of dataSource"
       >
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element["cutoff-date"] }}
         </div>
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element.ETA }}
         </div>
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element.destination }}
         </div>
-        <div fxFlex class="mb-0">
+        <div fxFlex class="mb-0 plain-text">
           {{ element.ETD }}
         </div>
         <div fxFlex>

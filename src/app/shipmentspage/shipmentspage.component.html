@@ -2,7 +2,7 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-4"
+    class="mb-5"
     fxLayoutAlign="space-between center"
   >
     <div
@@ -12,16 +12,16 @@
       fxLayoutGap="25px"
       fxLayoutAlign="start center"
     >
-      <div class="mb-0 shipments-header">Shipments</div>
+      <div class="mb-0 page-header">Shipments</div>
       <div
         fxLayout="row"
-        fxLayoutGap="15px"
+        fxLayoutGap="10px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">Status</h3>
+        <h3 class="mb-0 secondary">Status:</h3>
         <mat-form-field class="w-full max100px">
           <mat-select
             (selectionChange)="onStatusChange($event.value)"
@@ -38,13 +38,13 @@
       </div>
       <div
         fxLayout="row"
-        fxLayoutGap="15px"
+        fxLayoutGap="5px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">Mode</h3>
+        <h3 class="mb-0 secondary">Mode:</h3>
         <mat-form-field class="w-full max100px">
           <mat-select (selectionChange)="onModeChange($event.value)">
             <mat-option *ngFor="let mode of filters.mode" [value]="mode.value">
@@ -55,13 +55,13 @@
       </div>
       <div
         fxLayout="row"
-        fxLayoutGap="15px"
+        fxLayoutGap="10px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">From</h3>
+        <h3 class="mb-0 secondary">From:</h3>
         <mat-form-field class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input
@@ -79,13 +79,13 @@
       </div>
       <div
         fxLayout="row"
-        fxLayoutGap="15px"
+        fxLayoutGap="10px"
         fxLayoutAlign="space-between center"
         class="shipments-page-selectbox"
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">To</h3>
+        <h3 class="mb-0 secondary">To:</h3>
         <mat-form-field class="w-150">
           <mat-label>MM/DD/YYYY</mat-label>
           <input

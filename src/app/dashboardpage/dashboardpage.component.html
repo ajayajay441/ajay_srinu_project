@@ -1,15 +1,21 @@
 <div class="dashboard-page">
-  <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center">
-    <div class="mb-10">
-      <div class="mb-0 text-xl font-bold">Overview</div>
+  <div
+    fxLayout="row"
+    fxLayoutGap="15px"
+    fxLayoutAlign="space-between center"
+    class="mb-5 my-3"
+  >
+    <div class="">
+      <div class="mb-0 page-header">Overview</div>
     </div>
-    <div class="mb-10">
+    <div class="">
       <button mat-raised-button color="primary" class="mat-elevation-z0">
         <mat-icon [svgIcon]="'download'" class="pr-2"></mat-icon>
         <a href="{{ linkFromShipments }}" target="_blank">Request Quote</a>
       </button>
     </div>
   </div>
+
   <div
     fxLayout="column"
     fxLayout.gt-sm="row"

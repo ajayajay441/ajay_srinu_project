@@ -5,7 +5,7 @@
     fxLayoutAlign="space-between center"
   >
     <div fxLayout="row" fxLayoutGap="25px">
-      <div class="mb-0 shipments-card-header">Shipments</div>
+      <div class="mb-0 main-header">Shipments</div>
       <button
         fxHide
         fxShow.gt-sm
@@ -17,17 +17,15 @@
             : 'light'
         "
         [class.light-color-button]="
-                  shipmentStatusType.value != activeShipmentStatusType
-                  "
+          shipmentStatusType.value != activeShipmentStatusType
+        "
         class="mat-elevation-z0 status-buttons"
         (click)="getDashboardShipments(shipmentStatusType.value)"
       >
         {{ shipmentStatusType.value }}
       </button>
     </div>
-    <a class="underline cursor-pointer" (click)="goTo('/shipments', 'data')">
-      View all
-    </a>
+    <a class="view-all-link" (click)="goTo('/shipments', 'data')"> View all </a>
   </div>
   <div class="card-body">
     <div
@@ -37,17 +35,17 @@
       class="mb-5"
       *ngFor="let element of data"
     >
-      <div fxLayout="column" fxFlex="40">
+      <div fxLayout="column" fxFlex="45">
         <div
           fxLayout="row"
           fxLayoutGap="10px"
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <div class="mb-2 hbl-font">
+          <div class="mb-2 sub-header">
             <span class="font-bold">{{ element["hbl-number"] }}</span>
           </div>
-          <div class="mb-2 customer-name">{{ element["customer-name"] }}</div>
+          <div class="mb-2 plain-text">{{ element["customer-name"] }}</div>
         </div>
         <div
           fxLayout="row"
@@ -55,10 +53,10 @@
           fxLayoutAlign="start center"
           class="mb-1"
         >
-          <div class="mb-0  shipments-date">
+          <div class="mb-0 bold-text">
             <span class="font-bold">BOE: {{ element["boe-no"] }}</span>
           </div>
-          <div class="mb-0 shipments-date">
+          <div class="mb-0 bold-text">
             <span class="font-bold">CLR: {{ element["clr-no"] }} </span>
           </div>
         </div>

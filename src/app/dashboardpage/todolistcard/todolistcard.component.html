@@ -1,20 +1,14 @@
 <mat-card class="mat-elevation-z0">
   <div
-    class="card-title mb-7"
+    class="card-title mb-6"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <div class="mb-0 todolist-header">
-      <span
-        matBadge="4"
-        matBadgeOverlap="false"
-        matBadgePosition="after"
-        matBadgeColor="warn"
-      >
-        To-Do List
-      </span>
-    </div>
-    <a class="underline cursor-pointer"> View all </a>
+    <div class="mb-0 main-header">To-Do List</div>
+    <span class="badge-item">4</span>
+    <span></span>
+    <span></span>
+    <a class="view-all-link"> View all </a>
   </div>
   <div class="card-body">
     <div
@@ -23,20 +17,20 @@
       fxLayoutGap="25px"
       class="mb-3"
     >
-      <div class="mb-0 todo-list-hbl">HBL #0938847</div>
-      <div class="mb-0 todo-list-date">27/01/21 - 1:54pm</div>
+      <div class="mb-0 sub-header">HBL #0938847</div>
+      <div class="mb-0 plain-text">27/01/21 - 1:54pm</div>
     </div>
     <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
       <p>
         <mat-checkbox
           [(ngModel)]="test_checkbox"
           color="warn"
-          class="line-through todo-list-date"
+          class="line-through plain-text"
           >Checked</mat-checkbox
         >
       </p>
       <p>
-        <mat-checkbox class="todo-list-date">Unchecked</mat-checkbox>
+        <mat-checkbox class="plain-text">Unchecked</mat-checkbox>
       </p>
     </div>
   </div>
