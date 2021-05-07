@@ -294,3 +294,16 @@ button {
     cursor: pointer;
   }
 }
+.shipments-page {
+  .mat-datepicker-toggle {
+    button {
+      vertical-align: middle !important;
+    }
+  }
+}
+.invoice-type,
+.quote-type {
+  .mat-form-field-wrapper {
+    width: 50%;
+  }
+}

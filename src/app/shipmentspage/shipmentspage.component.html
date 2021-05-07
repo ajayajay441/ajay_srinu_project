@@ -62,9 +62,11 @@
         fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">From:</h3>
-        <mat-form-field class="w-150">
-          <mat-label>MM/DD/YYYY</mat-label>
+        <mat-form-field class="w-120">
+          <!-- <mat-label>MM/DD/YYYY</mat-label> -->
           <input
+            class="inputDate"
+            placeholder="MM-DD-YYYY"
             matInput
             [matDatepicker]="picker"
             [(ngModel)]="shipmentFromDate"
@@ -86,10 +88,11 @@
         fxShow.gt-sm
       >
         <h3 class="mb-0 secondary">To:</h3>
-        <mat-form-field class="w-150">
-          <mat-label>MM/DD/YYYY</mat-label>
+        <mat-form-field class="w-120">
+          <!-- <mat-label>MM/DD/YYYY</mat-label> -->
           <input
             matInput
+            placeholder="MM-DD-YYYY"
             [matDatepicker]="Topicker"
             [(ngModel)]="shipmentToDate"
             (ngModelChange)="shipmentToDateChange(shipmentToDate)"

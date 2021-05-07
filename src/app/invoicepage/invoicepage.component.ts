@@ -60,13 +60,14 @@ export class InvoicepageComponent implements OnInit {
     { label: "Pending", value: "pending" },
     { label: "Overdue", value: "overdue" },
     { label: "Paid", value: "paid" },
+    { label: "ALL", value: "ALL" },
   ];
   activeInvoiceStatusType: any = "";
   quotationType = "";
   filter: string = "";
   invoice_po = new Array();
   invoice_documents = new Array();
-  invoiceFilter: string = "";
+  invoiceFilter: string = "ALL";
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -80,7 +81,9 @@ export class InvoicepageComponent implements OnInit {
       .subscribe((filter) => (this.filter = filter));
   }
   onInvoiceFilterSelect(invoiceFilter: string) {
-    console.log(invoiceFilter);
+    if (invoiceFilter === "ALL") {
+      invoiceFilter = "";
+    }
     this.getDashboardInvoice(invoiceFilter);
   }
   filterChanged(filter: string) {

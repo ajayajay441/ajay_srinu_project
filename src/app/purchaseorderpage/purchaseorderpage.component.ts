@@ -60,7 +60,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class PurchaseorderpageComponent implements OnInit {
   data: any;
-  poFilter: string = "";
+  poFilter: string = "ALL";
   displayedColumns: string[] = [
     "sku",
     "description",
@@ -104,6 +104,9 @@ export class PurchaseorderpageComponent implements OnInit {
   }
 
   onPoFilterSelect(val: string) {
+    if (val === "ALL") {
+      val = "";
+    }
     this.getpurchaseorder(val);
   }
   getpurchaseorder(value?: string) {

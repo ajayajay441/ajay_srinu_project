@@ -139,3 +139,11 @@ a {
   text-decoration-line: underline;
   color: #000000;
 }
+.invoice-page {
+  mat-select {
+    padding-top: 6px;
+  }
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+}

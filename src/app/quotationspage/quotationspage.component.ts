@@ -50,12 +50,21 @@ export class QuotationspageComponent implements OnInit {
   }
   //type
   quoteLink: any;
-  quotationFilters: string[] = ["Approved", "Expired", "Pending", "Declined"];
+  quotationFilters: string[] = [
+    "Approved",
+    "Expired",
+    "Pending",
+    "Declined",
+    "ALL",
+  ];
   // Approved, Expired, Pending, Declined
-  sfilter_status: string = "";
+  sfilter_status: string = "ALL";
   //Filter change
   onQuotationFilterSelect(quotationFilter: string) {
     // console.log(quotationFilter);
+    if (quotationFilter === "ALL") {
+      quotationFilter = "";
+    }
     this.getDashboardQuotation(quotationFilter);
   }
   getDashboardQuotation(value?: string) {
