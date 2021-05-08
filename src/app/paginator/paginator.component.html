@@ -9,12 +9,12 @@
             {{page}}
         </button>
     </div>
-    <button color="primary" mat-stroked-button *ngIf="!((currentpage+1)==totalpages || (currentpage+2)==totalpages || (currentpage+3)==totalpages))" (click)="setCurrentPage(totalpages)">
+    <button color="primary" mat-stroked-button *ngIf="totalpages-3>=currentpage" (click)="setCurrentPage(totalpages)">
         {{totalpages}}
     </button>
-    <button color="primary" mat-stroked-button disabled>
-        {{currentpage}}/<sub>{{totalpages}}</sub>
-    </button>
+    <!--<button color="primary" mat-stroked-button disabled>-->
+        <!--{{currentpage}}/<sub>{{totalpages}}</sub>-->
+    <!--</button>-->
     <div>
         <button mat-stroked-button [disabled]="currentpage === totalpages" (click)="setCurrentPage(currentpage+1)">
             Next Page
