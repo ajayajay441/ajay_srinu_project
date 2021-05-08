@@ -66,8 +66,8 @@ export class QuotationslistComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(RejectquoteComponent, {
-      width: "550px",
-      height: "550px",
+      width: "650px",
+      height: "auto",
     });
 
     dialogRef.afterClosed().subscribe((result) => {

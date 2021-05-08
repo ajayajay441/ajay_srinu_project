@@ -24,14 +24,22 @@
       <h3>SKU</h3>
 
       <mat-form-field appearance="outline" class="w-230">
-        <input matInput placeholder="Ex: CAM001" [(ngModel)]="addSku.Itemdesc"/>
+        <input
+          matInput
+          placeholder="Ex: CAM001"
+          [(ngModel)]="addSku.Itemdesc"
+        />
       </mat-form-field>
     </div>
     <div class="mb-0">
       <h3>Name</h3>
 
       <mat-form-field appearance="outline" class="w-230">
-        <input matInput placeholder="Ex: Camera" [(ngModel)]="addSku.itemname"/>
+        <input
+          matInput
+          placeholder="Ex: Camera"
+          [(ngModel)]="addSku.itemname"
+        />
       </mat-form-field>
     </div>
   </div>
@@ -61,7 +69,7 @@
       <h3>Pieces</h3>
 
       <mat-form-field appearance="outline" class="w-230">
-        <input matInput placeholder="Ex: 50" [(ngModel)]="addSku.Pieces"/>
+        <input matInput placeholder="Ex: 50" [(ngModel)]="addSku.Pieces" />
       </mat-form-field>
     </div>
   </div>
@@ -77,7 +85,11 @@
 
       <mat-form-field appearance="outline">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="readyDatePicker" [(ngModel)]="addSku.cargo_ready_date"/>
+        <input
+          matInput
+          [matDatepicker]="readyDatePicker"
+          [(ngModel)]="addSku.cargo_ready_date"
+        />
         <mat-datepicker-toggle
           matSuffix
           [for]="readyDatePicker"
@@ -90,7 +102,11 @@
 
       <mat-form-field appearance="outline">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="DatePicker" [(ngModel)]="addSku.delivery_date"/>
+        <input
+          matInput
+          [matDatepicker]="DatePicker"
+          [(ngModel)]="addSku.delivery_date"
+        />
         <mat-datepicker-toggle
           matSuffix
           [for]="DatePicker"
@@ -100,7 +116,7 @@
     </div>
   </div>
   <div
-    fxLayout="column"
+    fxLayout="row"
     fxLayout.gt-sm="row"
     fxLayoutGap="25px"
     fxLayoutAlign="start start"
