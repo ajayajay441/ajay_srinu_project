@@ -50,7 +50,7 @@ export class PaginatorComponent implements OnInit {
         let initialPages: any = [...new Array(this.totalpages).keys()].map(
             (x) => ++x
         );
-        [...new Array(this.currentpage-3).keys()].forEach(() => {initialPages.shift()});
+        {this.totalpages-2 >= this.currentpage ? [...new Array(this.currentpage-3).keys()].forEach(() => {initialPages.shift()}): [...new Array(initialPages.length-5).keys()].forEach(() => {initialPages.shift()});}
         return initialPages;
       }
     }
