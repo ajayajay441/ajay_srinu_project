@@ -7,11 +7,16 @@
 html,
 body {
   height: 100%;
+  font-family: Helvetica !important;
 }
 body {
   margin: 0;
-  font-family: Helvetica;
   font-style: normal;
+}
+.mat-card,
+.mat-h5,
+.mat-h6 {
+  font-family: Helvetica !important;
 }
 .mapboxgl-popup-content {
   font-family: Helvetica !important;
@@ -113,14 +118,18 @@ button {
   }
 }
 .user-data {
+  display: block;
+  font-family: Helvetica !important;
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 14px;
   letter-spacing: 0.1px;
   color: #171725;
 }
 .user-role {
+  display: block;
+  font-family: Helvetica !important;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
