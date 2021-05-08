@@ -100,9 +100,54 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     const size: any = 200;
 
-    function description(): any {
-      const value: any = `./map-component.component.html`;
-      return `<div></div>`;
+    function description(e: any): any {
+        const flexContainer: any = {
+            display: 'flex',
+            flexWrap: 'nowrap',
+            backgroundColor: 'DodgerBlue'
+        }
+        const value: any = `./map-component.component.html`;
+        const value1: any = e['country-name'];
+        return `<div class="row flex-container" fxLayout="row" style="display: flex;
+                          flex-wrap: nowrap;
+                          background-color: DodgerBlue;">
+                                          <div class="col-lg-2 col-sm-2 col-md-2 test" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e['country-name']}</div>
+                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e.country_code}</div>
+                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e.destination}</div>
+                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e.hbl_no}</div>
+                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e.ETA}</div>
+                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
+                          width: 50px;
+                          margin: 10px;
+                          text-align: center;
+                          line-height: 15px;
+                          font-size: 10px;">${e.ponumber}</div>
+               </div>`;
     }
     function pulsingDot(a: any): any {
       map.addImage(
@@ -182,7 +227,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         const a = {
           type: "Feature",
           properties: {
-            description: "",
+            description: description(e),
             icon: pulsingDot(Number(e.no_of_shipments)),
           },
           geometry: {
