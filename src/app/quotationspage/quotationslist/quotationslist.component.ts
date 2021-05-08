@@ -15,6 +15,8 @@ import { Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../../_services";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatDialog } from "@angular/material/dialog";
+import { RejectquoteComponent } from "../rejectquote/rejectquote.component";
 @Component({
   selector: "app-quotationslist",
   templateUrl: "./quotationslist.component.html",
@@ -53,6 +55,7 @@ export class QuotationslistComponent implements OnInit {
 
   loading = true;
   constructor(
+    public dialog: MatDialog,
     private http: HttpClient,
     private dashboardService: DashboardService,
     private authenticationService: AuthenticationService,
@@ -61,7 +64,16 @@ export class QuotationslistComponent implements OnInit {
     this.filter = "";
     // console.log("... a new instance of LandComponent has been created");
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RejectquoteComponent, {
+      width: "550px",
+      height: "550px",
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
   ngOnChanges(changes: any) {
     const filterValue = changes.filter.currentValue;
     this.dataSource.filter = filterValue.trim().toLowerCase();

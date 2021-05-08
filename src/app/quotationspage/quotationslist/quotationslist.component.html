@@ -9,10 +9,15 @@
   >
     <!-- Position Column -->
     <ng-container matColumnDef="quotation-number">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="quotation-number" class="quotation-table-header">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header="quotation-number"
+        class="quotation-table-header"
+      >
         QT No
       </th>
-      <td mat-cell *matCellDef="let element"  class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
         {{ element["quotation-number"] }}
       </td>
     </ng-container>
@@ -142,7 +147,14 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="reference-number">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Reference</th>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Reference
+      </th>
       <td mat-cell *matCellDef="let element" class="quotation-table-rows">
         {{ element["reference-number"] }}
       </td>
@@ -150,37 +162,101 @@
 
     <!-- Weight Column -->
     <ng-container matColumnDef="origin">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Origin</th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">{{ element.origin }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Origin
+      </th>
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+        {{ element.origin }}
+      </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="destination">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Destination</th>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Destination
+      </th>
       <td mat-cell *matCellDef="let element" class="quotation-table-rows">
         {{ element.destination }}
       </td>
     </ng-container>
     <ng-container matColumnDef="expiry_date">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">QT Expiry</th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">{{ element.expiry_date }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        QT Expiry
+      </th>
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+        {{ element.expiry_date }}
+      </td>
     </ng-container>
     <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Amount</th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">{{ element.amount }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Amount
+      </th>
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+        {{ element.amount }}
+      </td>
     </ng-container>
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="quotation-table-header">Weight</th>
-      <td mat-cell *matCellDef="let element"  class="quotation-table-rows">{{ element.weight }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Weight
+      </th>
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+        {{ element.weight }}
+      </td>
     </ng-container>
     <ng-container matColumnDef="service">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Service</th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">{{ element.service }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Service
+      </th>
+      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+        {{ element.service }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="quotation-table-header">Status</th>
-      <td mat-cell *matCellDef="let element" classs="font-bold quotation-table-rows">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="quotation-table-header"
+      >
+        Status
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        classs="font-bold quotation-table-rows"
+        (click)="openDialog()"
+      >
         {{ element.status }}
       </td>
     </ng-container>

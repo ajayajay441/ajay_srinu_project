@@ -101,53 +101,44 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     const size: any = 200;
 
     function description(e: any): any {
-        const flexContainer: any = {
-            display: 'flex',
-            flexWrap: 'nowrap',
-            backgroundColor: 'DodgerBlue'
-        }
-        const value: any = `./map-component.component.html`;
-        const value1: any = e['country-name'];
-        return `<div class="row flex-container" fxLayout="row" style="display: flex;
-                          flex-wrap: nowrap;
-                          background-color: DodgerBlue;">
-                                          <div class="col-lg-2 col-sm-2 col-md-2 test" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e['country-name']}</div>
-                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e.country_code}</div>
-                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e.destination}</div>
-                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e.hbl_no}</div>
-                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e.ETA}</div>
-                                          <div class="col-lg-2 col-sm-2 col-md-2" style="background-color: #f1f1f1;
-                          width: 50px;
-                          margin: 10px;
-                          text-align: center;
-                          line-height: 15px;
-                          font-size: 10px;">${e.ponumber}</div>
-               </div>`;
+      const flexContainer: any = {
+        display: "flex",
+        flexWrap: "nowrap",
+        backgroundColor: "DodgerBlue",
+      };
+      const value: any = `./map-component.component.html`;
+      const value1: any = e["country-name"];
+      return `<table style="table-layout: fixed;">
+        <tr style="height:50px;">
+          <td style="font-size: 16px; font-weight:700; ">
+           ${e["country-name"]}
+          </td>
+          <td>
+          <span style="height: 20px;
+          background-color: red;
+          border-radius: 12px;
+          padding:8px 8px;">1</span>
+          </td>
+          <td style="font-size: 14px; font-weight:500;padding-left: 20px;"><a href="/#/shipments" style="text-align:right; text-decoration: underline;"> view all</a></td>
+        </tr>
+        <tr style="height:30px;">
+          <td style="font-size: 16px; font-weight:700">
+           ${e.hbl_no}
+          </td>
+        </tr>
+         <tr style="font-size: 16px; font-weight:700; height:25px;">
+          <td>
+          ${e.destination} - ${e.ETA}
+          </td>
+        </tr>
+        <tr style="height:30px;">
+          <td >
+          <span style="border: 1px solid #c4c4c4; padding:3px 6px; color:#c4c4c4;">${
+            e.ponumber ? e.ponumber : "pooooooo"
+          }</span>
+          </td>
+        </tr>
+      </table>`;
     }
     function pulsingDot(a: any): any {
       map.addImage(

@@ -7,19 +7,26 @@
 html,
 body {
   height: 100%;
-  font-family: Helvetica;
 }
 body {
   margin: 0;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Helvetica;
+  font-style: normal;
+}
+.mapboxgl-popup-content {
+  font-family: Helvetica !important;
+  background-color: #171725 !important;
+  width: 360px !important;
+  height: auto !important;
+  max-height: 200px !important;
+  color: white !important;
+}
+.mapboxgl-popup-close-button {
+  display: none !important;
 }
 
 .mb-0 {
   margin-bottom: 0px !important;
-}
-.mat-typography {
-  // max-width: 1440px;
-  // margin: auto;
 }
 .mat-primary:not(button) {
   svg {
@@ -98,7 +105,7 @@ button {
 }
 .mat-card {
   border-radius: unset !important;
-  padding: 10px 16px 0px 16px !important;
+  // padding: 10px 16px 0px 16px !important;
 }
 .dashboard-page {
   .mat-card {
@@ -106,7 +113,6 @@ button {
   }
 }
 .user-data {
-  font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -115,38 +121,28 @@ button {
   color: #171725;
 }
 .user-role {
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
-  /* identical to box height, or 100% */
-
   letter-spacing: 0.1px;
-
   color: #92929d;
 }
 // 1600px  & 2000px
 @media (min-width: 1600px) {
   .page-header {
-    font-family: Helvetica;
-    font-style: normal;
     font-weight: bold;
     font-size: 28px;
     line-height: 37px;
-    /* or 132% */
-
     color: #313131;
   }
   .main-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 26px;
     line-height: 37px;
     color: #313131;
   }
   .sub-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 21px;
     line-height: 19px;
@@ -158,21 +154,18 @@ button {
     color: #313131;
   }
   .bold-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
     color: #313131;
   }
   .button-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 15px;
     line-height: 19px;
     color: #ffffff;
   }
   .view-all-link {
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 37px;
@@ -184,25 +177,40 @@ button {
 
 // 1153 to 1440
 @media (min-width: 1153px) and (max-width: 1440px) {
-  .page-header {
-    font-family: Helvetica;
+  .shipment-filter-type {
     font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #92929d;
+  }
+  .shipment-filter-value {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #92929d;
+  }
+  .dashboard-page {
+    .mat-card {
+      padding: 10px 16px 0px 16px !important;
+    }
+  }
+  .page-header {
     font-weight: bold;
     font-size: 26px;
     line-height: 32px;
-    /* identical to box height, or 125% */
-
     color: #313131;
   }
   .main-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 32px;
     color: #313131;
   }
   .sub-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 16px;
@@ -214,21 +222,18 @@ button {
     color: #313131;
   }
   .bold-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 13px;
     line-height: 16px;
     color: #313131;
   }
   .button-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
     color: #ffffff;
   }
   .view-all-link {
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 32px;
@@ -241,9 +246,10 @@ button {
 //1153 px
 
 @media (min-width: 1024px) and (max-width: 1153px) {
+  .mat-card {
+    padding: 10px 16px 0px 16px !important;
+  }
   .page-header {
-    font-family: Helvetica;
-    font-style: normal;
     font-weight: bold;
     font-size: 18.0865px;
     line-height: 24px;
@@ -252,14 +258,12 @@ button {
     color: #313131;
   }
   .main-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
     color: #313131;
   }
   .sub-header {
-    font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 12px;
@@ -271,21 +275,18 @@ button {
     color: #313131;
   }
   .bold-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 11px;
     line-height: 12px;
     color: #313131;
   }
   .button-text {
-    font-style: normal;
     font-weight: bold;
     font-size: 15px;
     line-height: 19px;
     color: #f01e1e;
   }
   .view-all-link {
-    font-style: normal;
     font-weight: 500;
     font-size: 11px;
     line-height: 24px;
@@ -294,10 +295,59 @@ button {
     cursor: pointer;
   }
 }
+@media (min-width: 320px) and (max-width: 768px) {
+  .page-header {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 110%;
+    color: #313131;
+  }
+  .main-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21.769px;
+    line-height: 31px;
+    color: #313131;
+  }
+  .sub-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17.5827px;
+    line-height: 16px;
+    color: #313131;
+  }
+  .plain-text {
+    font-size: 10.0472px;
+    line-height: 16px;
+    color: #313131;
+  }
+  .bold-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13.3963px;
+    line-height: 23px;
+    color: #313131;
+  }
+  .button-text {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    color: #f01e1e;
+  }
+  .view-all-link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.3963px;
+    line-height: 31px;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #313131;
+  }
+}
 .shipments-page {
   .mat-datepicker-toggle {
     button {
-      vertical-align: middle !important;
+      vertical-align: bottom !important;
     }
   }
 }

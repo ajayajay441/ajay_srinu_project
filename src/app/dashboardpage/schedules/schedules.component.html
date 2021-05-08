@@ -27,7 +27,7 @@
     </div>
     <!-- <a class="underline"> View all </a> -->
   </div>
-  <div class="card-body">
+  <div class="card-body" fxHide fxShow.gt-sm>
     <div fxLayout="column" fxLayoutAlign="center space-between">
       <div
         fxLayout="row"
@@ -71,6 +71,32 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="card-body" fxShow fxHide.gt-sm>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center start"
+      fxLayoutGap="10px"
+      class="my-3 purchase-item"
+      *ngIf="dataSource && dataSource[0]"
+    >
+      <p fxFlex>
+        <span class="font-bold">Cut-off Date :</span>
+        <span>{{ dataSource[0]["cutoff-date"] }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Origin Date :</span>
+        <span>{{ dataSource[0].ETA }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Destination City :</span>
+        <span>{{ dataSource[0].destination }}</span>
+      </p>
+      <p fxFlex>
+        <span class="font-bold">Destination Date :</span>
+        <span>{{ dataSource[0].ETD }}</span>
+      </p>
     </div>
   </div>
 </mat-card>
