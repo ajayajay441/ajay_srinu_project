@@ -25,23 +25,47 @@ export class PaginatorComponent implements OnInit {
   }
 
   getPagesInView() {
-    let initialPages: any = [...new Array(this.noOfPagesInView).keys()].map(
-      (x) => ++x
-    );
+    // let initialPages: any = [...new Array(this.noOfPagesInView).keys()].map(
+    //   (x) => ++x
+    // );
     if (this.currentpage < this.noOfPagesInView) {
+      let pages:any = 5;
+      let initialPages: any = [...new Array(pages).keys()].map(
+          (x) => ++x
+      );
+      // if (initialPages.length > 5){
+      //   [...new Array(4).keys()].forEach(initialPages.shift());
+      // }
+      // [...new Array(this.currentpage-3).keys()].forEach(()=>{initialPages.shift()});
       return initialPages;
-    } else if (this.currentpage != this.totalpages) {
-      // console.log(
-      //   "aaa",
-      //   this.changeBy,
-      //   this.pagesInView.map((el) => el + this.changeBy)
-      // );
-      return this.pagesInView.length
-        ? this.pagesInView.map((el) => el + this.changeBy)
-        : initialPages;
-    } else {
-      return this.pagesInView.length ? this.pagesInView : initialPages;
+    }else if(this.currentpage<=this.totalpages){
+      let pages:any = this.currentpage + 2;
+      if(pages <= this.totalpages){
+      let initialPages: any = [...new Array(pages).keys()].map(
+          (x) => ++x
+      );
+      [...new Array(this.currentpage-3).keys()].forEach(() => {initialPages.shift()});
+      return initialPages;
+      }else{
+        let initialPages: any = [...new Array(this.totalpages).keys()].map(
+            (x) => ++x
+        );
+        [...new Array(this.currentpage-3).keys()].forEach(() => {initialPages.shift()});
+        return initialPages;
+      }
     }
+    // } else if (this.currentpage != this.totalpages) {
+    //   // console.log(
+    //   //   "aaa",
+    //   //   this.changeBy,
+    //   //   this.pagesInView.map((el) => el + this.changeBy)
+    //   // );
+    //   return this.pagesInView.length
+    //     ? this.pagesInView.map((el) => el + this.changeBy)
+    //     : initialPages;
+    // } else {
+    //   return this.pagesInView.length ? this.pagesInView : initialPages;
+    // }
 
     // 1 => 12345
     // 2 => 12345
