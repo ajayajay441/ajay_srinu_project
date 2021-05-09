@@ -89,21 +89,25 @@ a.mat-primary {
   width: 7.5rem;
   font-family: Helvetica;
   font-style: normal;
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 14px;
   line-height: 19px;
 }
 
 .light-color-button {
   color: #c4c4c4;
+  font-weight: 500 !important;
 }
-
+.mat-tab-label {
+  opacity: 1 !important;
+}
 .mat-tab-label-content {
   font-family: Helvetica;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 18px;
   line-height: 19px;
+  color: #313131;
 }
 button {
   border-radius: unset !important;
@@ -183,7 +187,10 @@ button {
     cursor: pointer;
   }
 }
-
+.status-buttons {
+  font-weight: bold;
+  font-size: 15px;
+}
 // 1153 to 1440
 @media (min-width: 1153px) and (max-width: 1440px) {
   .shipment-filter-type {
@@ -354,6 +361,9 @@ button {
   }
 }
 .shipments-page {
+  .mat-tab-header {
+    font-weight: 500 !important;
+  }
   .mat-datepicker-toggle {
     button {
       vertical-align: bottom !important;

@@ -62,7 +62,7 @@ export class InvoicepageComponent implements OnInit {
     { label: "Paid", value: "paid" },
     { label: "ALL", value: "ALL" },
   ];
-  activeInvoiceStatusType: any = "";
+  activeInvoiceStatusType: any = "ALL";
   quotationType = "";
   filter: string = "";
   invoice_po = new Array();

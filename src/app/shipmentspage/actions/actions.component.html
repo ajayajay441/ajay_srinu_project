@@ -5,8 +5,8 @@
     fxLayoutAlign="start center"
     class="py-3 header-row"
   >
-    <div fxFlex="250px" class="px-3">Date</div>
-    <div fxFlex class="px-3">Things Todo</div>
+    <div fxFlex="250px" class="px-3 bold-text">Date</div>
+    <div fxFlex class="px-3 bold-text">Things Todo</div>
   </div>
   <div
     fxLayout="row"
@@ -15,13 +15,14 @@
     class="py-3"
     *ngFor="let update of updates"
   >
-    <div fxFlex="250px" class="px-3">{{ update.remarks_date }}</div>
+    <div fxFlex="250px" class="px-3 plain-text">{{ update.remarks_date }}</div>
     <div
       fxFlex
       class="px-3"
       fxLayout="row"
       fxLayoutAlign="space-between center"
       fxLayoutGap="10px"
+      class="plain-text"
     >
       <p>{{ update.remarks_description }}</p>
     </div>

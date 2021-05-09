@@ -5,8 +5,8 @@
     fxLayoutAlign="start center"
     class="py-3 header-row"
   >
-    <div fxFlex="250px" class="px-3">Document Date</div>
-    <div fxFlex class="px-3">Document Name</div>
+    <div fxFlex="250px" class="px-3 bold-text">Document Date</div>
+    <div fxFlex class="px-3 bold-text">Document Name</div>
   </div>
   <div
     fxLayout="row"
@@ -15,7 +15,7 @@
     class="py-3"
     *ngFor="let doc of documents"
   >
-    <div fxFlex="250px" class="px-3">{{ doc.document_date }}</div>
+    <div fxFlex="250px" class="px-3 plain-text">{{ doc.document_date }}</div>
     <div
       fxFlex
       class="px-3"
@@ -24,7 +24,7 @@
       fxLayoutGap="10px"
     >
       <div fxFlex>
-        <p>{{ doc.document_name }}</p>
+        <p class="plain-text">{{ doc.document_name }}</p>
       </div>
       <div fxFlex class="text-right">
         <button mat-raised-button color="primary" class="mat-elevation-z0">

@@ -8,10 +8,24 @@
 }
 .drawer-menu {
   width: 250px;
+  font-family: Helvetica !important;
   border-right: 1px solid #ccc;
+}
+.page-container {
+  button {
+    font-family: Helvetica !important;
+    // font-style: normal;
+    // font-weight: 500;
+    // font-size: 14px;
+    // // line-height: 19px;
+    // letter-spacing: 0.1px;
+    // color: #313131;
+    // margin-bottom: 1rem;
+  }
 }
 .drawer-content {
   background-color: #f7f8fa;
+
   // width: 97%;
 }
 .menu-button.mat-button,
@@ -24,6 +38,9 @@
   border-left: 3px solid transparent;
 }
 .menu-tab.active {
+  button {
+    font-weight: bold;
+  }
   border-left-color: $fresonprimarycolor;
 }
 .menu-item-icon {
