@@ -60,8 +60,8 @@
     >
       <!-- Position Column -->
       <ng-container matColumnDef="PO No">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>PO No</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">PO No</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.po_number }}
         </td>
       </ng-container>
@@ -70,46 +70,46 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="Origin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Origin</th>
-        <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Origin</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">{{ element.origin }}</td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="Destination">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Destination</th>
-        <td mat-cell *matCellDef="let element">{{ element.destination }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Destination</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">{{ element.destination }}</td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="Supplier">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Supplier</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Supplier</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.supplier }}
         </td>
       </ng-container>
       <ng-container matColumnDef="Number of SKU’s">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Number of SKU’s
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Number of SKU’s</span>
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.no_of_sku }}
         </td>
       </ng-container>
       <ng-container matColumnDef="Order Pcs">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Pcs</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Order Pcs</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.orderpieces }}
         </td>
       </ng-container>
       <ng-container matColumnDef="In Transit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>In Transit</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">In Transit</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.intransit }}
         </td>
       </ng-container>
       <ng-container matColumnDef="Closed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Closed</th>
-        <td mat-cell *matCellDef="let element">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Closed</span></th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.closed }}
         </td>
       </ng-container>
@@ -118,7 +118,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let element">
           <a
-            class="underline cursor-pointer details"
+            class="underline cursor-pointer  bold-text"
             (click)="getpurchaseorderdetail(element.po_number)"
           >
             Details
