@@ -41,10 +41,14 @@
     border-bottom: none;
   }
 }
+.mat-tab-list {
+  font-weight: 500 !important;
+}
 
 ::ng-deep {
   .mat-tab-label-active {
     .mat-tab-label-content {
+      font-weight: bold;
       color: $fresonprimarycolor !important;
     }
   }
