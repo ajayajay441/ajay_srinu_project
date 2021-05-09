@@ -13,11 +13,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header="quotation-number"
-        class="quotation-table-header"
+        class="bold-text"
       >
         QT No
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element["quotation-number"] }}
       </td>
     </ng-container>
@@ -51,15 +51,15 @@
                       fxLayoutGap="10px"
                       class="py-3 header-row"
                     >
-                      <h5 fxFlex class="mb-0 font-bold">Ref. Number</h5>
-                      <h5 fxFlex class="mb-0 font-bold">PO N°</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Origin</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Destination</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Chargeable weight</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Supplier</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Container Number</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Mode</h5>
-                      <h5 fxFlex class="mb-0 font-bold">Shipment</h5>
+                      <div fxFlex class="mb-0 bold-text">Ref. Number</div>
+                      <div fxFlex class="mb-0 bold-text">PO N°</div>
+                      <div fxFlex class="mb-0 bold-text">Origin</div>
+                      <div fxFlex class="mb-0 bold-text">Destination</div>
+                      <div fxFlex class="mb-0 bold-text">Chargeable weight</div>
+                      <div fxFlex class="mb-0 bold-text">Supplier</div>
+                      <div fxFlex class="mb-0 bold-text">Container Number</div>
+                      <div fxFlex class="mb-0 bold-text">Mode</div>
+                      <div fxFlex class="mb-0 bold-text">Shipment</div>
                     </div>
                     <div
                       fxLayout="row"
@@ -68,19 +68,19 @@
                       class="my-3 schedule-item"
                       *ngFor="let item of po"
                     >
-                      <h5 fxFlex class="mb-0">{{ item.ref_no }}</h5>
-                      <h5 fxFlex class="mb-0">{{ item.container_no }}</h5>
-                      <h5 fxFlex class="mb-0">
+                      <div fxFlex class="mb-0 plain-text">{{ item.ref_no }}</div>
+                      <div fxFlex class="mb-0 plain-text">{{ item.container_no }}</div>
+                      <div fxFlex class="mb-0 plain-text">
                         {{ item.originport.portname }}
-                      </h5>
-                      <h5 fxFlex class="mb-0">
+                      </div>
+                      <div fxFlex class="mb-0 plain-text">
                         {{ item.destinationport.portname }}
-                      </h5>
-                      <h5 fxFlex class="mb-0">Parallel Inc.</h5>
-                      <h5 fxFlex class="mb-0">gggg</h5>
-                      <h5 fxFlex class="mb-0">{{ item.container_no }}</h5>
-                      <h5 fxFlex class="mb-0">{{ item.shipmentby }}</h5>
-                      <h5 fxFlex class="mb-0">{{ item.shipmenttype }}</h5>
+                      </div>
+                      <div fxFlex class="mb-0 plain-text">Parallel Inc.</div>
+                      <div fxFlex class="mb-0 plain-text">gggg</div>
+                      <div fxFlex class="mb-0 plain-text">{{ item.container_no }}</div>
+                      <div fxFlex class="mb-0 plain-text">{{ item.shipmentby }}</div>
+                      <div fxFlex class="mb-0 plain-text">{{ item.shipmenttype }}</div>
                     </div>
                   </div>
                 </div>
@@ -151,11 +151,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Reference
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element["reference-number"] }}
       </td>
     </ng-container>
@@ -166,11 +166,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Origin
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.origin }}
       </td>
     </ng-container>
@@ -181,11 +181,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Destination
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.destination }}
       </td>
     </ng-container>
@@ -194,11 +194,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         QT Expiry
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.expiry_date }}
       </td>
     </ng-container>
@@ -207,11 +207,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Amount
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.amount }}
       </td>
     </ng-container>
@@ -220,11 +220,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Weight
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.weight }}
       </td>
     </ng-container>
@@ -233,11 +233,11 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Service
       </th>
-      <td mat-cell *matCellDef="let element" class="quotation-table-rows">
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.service }}
       </td>
     </ng-container>
@@ -247,14 +247,14 @@
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        class="quotation-table-header"
+        class="bold-text"
       >
         Status
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        classs="font-bold quotation-table-rows"
+        class="plain-text bold"
         (click)="openDialog()"
       >
         {{ element.status }}
@@ -264,7 +264,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let element">
         <a
-          class="underline cursor-pointer mat-primary"
+          class="underline cursor-pointer mat-primary bold-text"
           (click)="
             expandedElement = expandedElement === element ? null : element;
             getQuoteDetail(element['quotation-number'])

@@ -186,6 +186,12 @@ button {
     color: #313131;
     cursor: pointer;
   }
+  .header-18{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 .status-buttons {
   font-weight: bold;
@@ -257,6 +263,12 @@ button {
     color: #313131;
     cursor: pointer;
   }
+  .header-18{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 //1153 px
@@ -310,6 +322,12 @@ button {
     color: #313131;
     cursor: pointer;
   }
+  .header-18{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 @media (min-width: 320px) and (max-width: 768px) {
   .page-header {
@@ -358,6 +376,12 @@ button {
     text-align: right;
     text-decoration-line: underline;
     color: #313131;
+  }
+  .header-18{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 .shipments-page {

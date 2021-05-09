@@ -53,8 +53,8 @@
         fxLayout="row"
         fxLayoutAlign="space-between center"
       >
-        <div fxLayout="row" fxLayoutGap="25px">
-          <div class="mb-0 quotation-sub-header">Quotations</div>
+        <div fxLayout="row">
+          <div class="mb-0 main-header mr-24">Quotations</div>
           <button
             fxHide
             fxShow.gt-sm
@@ -63,6 +63,7 @@
             [class.light-color-button]="quotationType !== _quotationType.value"
             (click)="quotationType = _quotationType.value"
             *ngFor="let _quotationType of quotationTypes"
+            class="margin-header-22px"
           >
             {{ _quotationType.label }}
           </button>
