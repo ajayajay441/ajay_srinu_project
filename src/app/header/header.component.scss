@@ -19,7 +19,13 @@ mat-icon.search-icon {
   margin-right: 7px !important;
   position: relative;
 }
+.image-icon {
+  margin: auto;
+}
 @media (min-width: 998px) {
+  .image-icon {
+    margin-left: 2.5rem;
+  }
   .notifications-user {
     min-width: 300px;
   }
