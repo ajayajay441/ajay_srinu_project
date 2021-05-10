@@ -12,7 +12,6 @@ import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { DashboardService } from "../_services/dashboard.service";
-import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
