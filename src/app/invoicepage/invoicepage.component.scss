@@ -139,11 +139,70 @@ a {
   text-decoration-line: underline;
   color: #000000;
 }
+
+::ng-deep .mat-sort-header-arrow[style] {
+  // Hide default arrow stem
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+
+    // Hide default arrow as its composed of left, right and middle
+    .mat-sort-header-pointer-left,
+    .mat-sort-header-pointer-right,
+    .mat-sort-header-pointer-middle {
+      display: none;
+    }
+  }
+}
+
+// My custom ascending arrow
+[aria-sort="ascending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid #313131;
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+// My custom descending arrow
+[aria-sort="descending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #313131;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
 .invoice-page {
   mat-select {
     padding-top: 6px;
   }
   ::ng-deep .mat-form-field-underline {
     display: none;
+  }
+  ::ng-deep
+    .mat-sort-header-container:not(.mat-sort-header-sorted)
+    .mat-sort-header-arrow {
+    opacity: 0.54 !important;
+    transform: translateY(0px) !important;
   }
 }

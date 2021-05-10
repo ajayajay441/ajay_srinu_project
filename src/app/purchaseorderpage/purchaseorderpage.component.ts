@@ -11,7 +11,6 @@ import {
 import { MatTableDataSource } from "@angular/material/table";
 import { HttpClient } from "@angular/common/http";
 import { DashboardService } from "../_services/dashboard.service";
-import { Subscription } from "rxjs/index";
 import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
 // import { RouterModule } from "@angular/router";
@@ -29,19 +28,19 @@ export interface PeriodicElement {
   isChecked?: boolean;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    Ordered: 5,
-    balance: 2,
-    booked: 4,
-    closed: 3,
-    delivery_date: "13-FEB-21",
-    description: "ITEM1 Description",
-    po_number: "115422",
-    shipmentno: "238907954",
-    sku: "ITEM1",
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     Ordered: 5,
+//     balance: 2,
+//     booked: 4,
+//     closed: 3,
+//     delivery_date: "13-FEB-21",
+//     description: "ITEM1 Description",
+//     po_number: "115422",
+//     shipmentno: "238907954",
+//     sku: "ITEM1",
+//   },
+// ];
 
 @Component({
   selector: "app-purchaseorderpage",
@@ -86,7 +85,7 @@ export class PurchaseorderpageComponent implements OnInit {
   ];
 
   Request_Quote_link: any;
-  dataSource1 = new MatTableDataSource();
+  // dataSource = new MatTableDataSource();
   expandedElement: PeriodicElement1 | null = null;
   constructor(
     private http: HttpClient,
@@ -123,9 +122,9 @@ export class PurchaseorderpageComponent implements OnInit {
         })
       )
       .subscribe((response: any) => {
-        this.dataSource1 = new MatTableDataSource(response.purchase_order);
+        this.dataSource = new MatTableDataSource(response.purchase_order);
         this.Request_Quote_link = response.Request_Quote_link;
-        setTimeout(() => (this.dataSource1.sort = this.sort));
+        setTimeout(() => (this.dataSource.sort = this.sort));
       });
   }
 

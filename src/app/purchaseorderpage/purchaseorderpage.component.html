@@ -53,14 +53,16 @@
   <div class="p-8 mat-card">
     <table
       mat-table
-      [dataSource]="dataSource1"
+      [dataSource]="dataSource"
       matSort
       class="w-full mat-elevation-z0"
       multiTemplateDataRows
     >
       <!-- Position Column -->
       <ng-container matColumnDef="PO No">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">PO No</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">PO No</span>
+        </th>
         <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.po_number }}
         </td>
@@ -70,19 +72,29 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="Origin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Origin</span></th>
-        <td mat-cell *matCellDef="let element" class="plain-text">{{ element.origin }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Origin</span>
+        </th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
+          {{ element.origin }}
+        </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="Destination">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Destination</span></th>
-        <td mat-cell *matCellDef="let element" class="plain-text">{{ element.destination }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Destination</span>
+        </th>
+        <td mat-cell *matCellDef="let element" class="plain-text">
+          {{ element.destination }}
+        </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="Supplier">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Supplier</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Supplier</span>
+        </th>
         <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.supplier }}
         </td>
@@ -96,19 +108,25 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="Order Pcs">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Order Pcs</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Order Pcs</span>
+        </th>
         <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.orderpieces }}
         </td>
       </ng-container>
       <ng-container matColumnDef="In Transit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">In Transit</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">In Transit</span>
+        </th>
         <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.intransit }}
         </td>
       </ng-container>
       <ng-container matColumnDef="Closed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text"><span class="bold-text">Closed</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
+          <span class="bold-text">Closed</span>
+        </th>
         <td mat-cell *matCellDef="let element" class="plain-text">
           {{ element.closed }}
         </td>
@@ -118,7 +136,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let element">
           <a
-            class="underline cursor-pointer  bold-text"
+            class="underline cursor-pointer bold-text"
             (click)="getpurchaseorderdetail(element.po_number)"
           >
             Details
