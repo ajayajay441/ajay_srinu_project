@@ -7,19 +7,13 @@
 html,
 body {
   height: 100%;
-  font-family: Helvetica !important;
 }
 body {
   margin: 0;
   font-style: normal;
 }
-.mat-card,
-.mat-h5,
-.mat-h6 {
-  font-family: Helvetica !important;
-}
+
 .mapboxgl-popup-content {
-  font-family: Helvetica !important;
   background-color: #171725 !important;
   width: 360px !important;
   height: auto !important;
@@ -87,7 +81,6 @@ a.mat-primary {
 
 .status-buttons {
   width: 7.5rem;
-  font-family: Helvetica;
   font-style: normal;
   // font-weight: bold;
   font-size: 14px;
@@ -102,7 +95,6 @@ a.mat-primary {
   opacity: 1 !important;
 }
 .mat-tab-label-content {
-  font-family: Helvetica;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -123,7 +115,6 @@ button {
 }
 .user-data {
   display: block;
-  font-family: Helvetica !important;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -133,7 +124,6 @@ button {
 }
 .user-role {
   display: block;
-  font-family: Helvetica !important;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -186,7 +176,7 @@ button {
     color: #313131;
     cursor: pointer;
   }
-  .header-18{
+  .header-18 {
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -263,7 +253,7 @@ button {
     color: #313131;
     cursor: pointer;
   }
-  .header-18{
+  .header-18 {
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -322,7 +312,7 @@ button {
     color: #313131;
     cursor: pointer;
   }
-  .header-18{
+  .header-18 {
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -377,7 +367,7 @@ button {
     text-decoration-line: underline;
     color: #313131;
   }
-  .header-18{
+  .header-18 {
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -399,4 +389,10 @@ button {
   .mat-form-field-wrapper {
     width: 50%;
   }
+}
+::ng-deep
+  .mat-sort-header-container:not(.mat-sort-header-sorted)
+  .mat-sort-header-arrow {
+  opacity: 0.54 !important;
+  transform: translateY(0px) !important;
 }

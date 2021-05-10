@@ -146,4 +146,10 @@ a {
   ::ng-deep .mat-form-field-underline {
     display: none;
   }
+  ::ng-deep
+    .mat-sort-header-container:not(.mat-sort-header-sorted)
+    .mat-sort-header-arrow {
+    opacity: 0.54 !important;
+    transform: translateY(0px) !important;
+  }
 }

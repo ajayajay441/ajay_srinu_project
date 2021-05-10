@@ -10,6 +10,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
+$custom-typography: mat-typography-config(
+  $font-family: "Helvetica",
+);
 $mat-fresconprimary: (
   50: #fde4e4,
   100: #fbbcbc,
@@ -110,36 +113,36 @@ $mat-fresconaccent: (
 );
 /* For use in src/lib/core/theming/_palette.scss */
 $mat-fresconlight: (
-        50 : #f2f2f3,
-        100 : #dedee2,
-        200 : #c9c9ce,
-        300 : #b3b3ba,
-        400 : #a2a2ac,
-        500 : #92929d,
-        600 : #8a8a95,
-        700 : #7f7f8b,
-        800 : #757581,
-        900 : #63636f,
-        A100 : #e6e6fd,
-        A200 : #b7b7fa,
-        A400 : #7f7fff,
-        A700 : #6565ff,
-        contrast: (
-                50 : #000000,
-                100 : #000000,
-                200 : #000000,
-                300 : #000000,
-                400 : #000000,
-                500 : #000000,
-                600 : #000000,
-                700 : #000000,
-                800 : #ffffff,
-                900 : #ffffff,
-                A100 : #000000,
-                A200 : #000000,
-                A400 : #000000,
-                A700 : #ffffff,
-        )
+  50: #f2f2f3,
+  100: #dedee2,
+  200: #c9c9ce,
+  300: #b3b3ba,
+  400: #a2a2ac,
+  500: #92929d,
+  600: #8a8a95,
+  700: #7f7f8b,
+  800: #757581,
+  900: #63636f,
+  A100: #e6e6fd,
+  A200: #b7b7fa,
+  A400: #7f7fff,
+  A700: #6565ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
 );
 
 $frescon-light: mat-palette($mat-fresconlight);
@@ -159,7 +162,7 @@ $frescon-theme: mat-light-theme(
       light: $frescon-light,
       accent: $frescon-accent,
       warn: $frescon-warn,
-      secondary: $frescon-secondary
+      secondary: $frescon-secondary,
     ),
   )
 );
@@ -168,5 +171,11 @@ $frescon-theme: mat-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($frescon-theme);
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+@include mat-base-typography($custom-typography);
 
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($custom-typography);
 
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
