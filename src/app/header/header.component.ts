@@ -10,14 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private domSanitizer: DomSanitizer,
     private matIconRegistry: MatIconRegistry
-  ) {
-    this.matIconRegistry.addSvgIcon(
-      "searchIcon",
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "../../assets/icons/search-icon.svg"
-      )
-    );
-  }
+  ) {}
 
   ngOnInit(): void {}
 }

@@ -68,11 +68,17 @@
             {{ _quotationType.label }}
           </button>
         </div>
-        <div class="search-form" fxHide fxShow.gt-sm>
+        <div class="search-form" fxFlex="30" fxHide fxShow.gt-sm>
           <form>
-            <mat-form-field class="quotations-search-input">
-              <mat-label class="">Search Quote by Ref No, Origin, Destination...</mat-label>
-              <mat-icon matPrefix class="search-icon">search</mat-icon>
+            <mat-form-field class="quotations-search-input w-full">
+              <mat-label class=""
+                >Search Quote by Ref No, Origin, Destination...</mat-label
+              >
+              <mat-icon
+                matPrefix
+                class="search-icon"
+                [svgIcon]="'searchIcon'"
+              ></mat-icon>
               <input
                 type="search"
                 matInput

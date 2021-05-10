@@ -185,6 +185,12 @@ export class AppComponent implements OnDestroy {
         "./../assets/icons/support.svg"
       )
     );
+    this.matIconRegistry.addSvgIcon(
+      "searchIcon",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "./../assets/icons/search-icon.svg"
+      )
+    );
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
       this.gtMd = !["xs", "sm"].includes(change.mqAlias);
     });
