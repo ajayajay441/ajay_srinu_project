@@ -34,6 +34,8 @@ export class ShipmentspageComponent implements OnInit {
     { label: "ARRIVED", value: "ARRIVED" },
   ];
   activeShipmentStatusType: any = "ARRIVED";
+  shipmentFromDate: any;
+  shipmentToDate: any;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -41,6 +43,10 @@ export class ShipmentspageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
   ) {
+    const d: any = new Date();
+    d.setMonth(d.getMonth() - 6);
+    this.shipmentFromDate = d;
+    this.shipmentToDate = new Date();
     // console.log("Constructor");
   }
   shipmentDetailSubscription: any;
@@ -69,8 +75,8 @@ export class ShipmentspageComponent implements OnInit {
             pageNo,
             5,
             this.modeVal,
-            fromDate ? toShortFormat(fromDate) : "",
-            toDate ? toShortFormat(toDate) : ""
+            fromDate ? toShortFormat(fromDate) : toShortFormat(this.shipmentFromDate),
+            toDate ? toShortFormat(toDate) : toShortFormat(this.shipmentToDate)
           );
         })
       )
@@ -100,8 +106,8 @@ export class ShipmentspageComponent implements OnInit {
         this.filters = response;
       });
   }
-  shipmentFromDate: any;
-  shipmentToDate: any;
+
+
   shipmentFromDateChange(shipmentFromDate: any) {
     console.log(toShortFormat(shipmentFromDate));
     if (this.shipmentToDate) {
