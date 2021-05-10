@@ -63,7 +63,7 @@
             [class.light-color-button]="quotationType !== _quotationType.value"
             (click)="quotationType = _quotationType.value"
             *ngFor="let _quotationType of quotationTypes"
-            class="margin-header-22px"
+            class="margin-header-22px status-buttons"
           >
             {{ _quotationType.label }}
           </button>
@@ -71,7 +71,7 @@
         <div class="search-form" fxHide fxShow.gt-sm>
           <form>
             <mat-form-field class="quotations-search-input">
-              <mat-label class="">Search</mat-label>
+              <mat-label class="">Search Quote by Ref No, Origin, Destination...</mat-label>
               <mat-icon matPrefix class="search-icon">search</mat-icon>
               <input
                 type="search"

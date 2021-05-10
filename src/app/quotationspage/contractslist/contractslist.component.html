@@ -8,8 +8,8 @@
   >
     <!-- Position Column -->
     <ng-container matColumnDef="reference-number">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Contract Ref</th>
-      <td mat-cell *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">Contract Ref</th>
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element["reference-number"] }}
       </td>
     </ng-container>
@@ -73,20 +73,20 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="valid_from">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
-      <td mat-cell *matCellDef="let element">{{ element.valid_from }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">Valid From</th>
+      <td mat-cell *matCellDef="let element" class="plain-text">{{ element.valid_from }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="expiry_date">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid To</th>
-      <td mat-cell *matCellDef="let element">{{ element.expiry_date }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">Valid To</th>
+      <td mat-cell *matCellDef="let element" class="plain-text">{{ element.expiry_date }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="approved_by">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Signed by</th>
-      <td mat-cell *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">Signed by</th>
+      <td mat-cell *matCellDef="let element" class="plain-text">
         {{ element.approved_by }}
       </td>
     </ng-container>
@@ -94,7 +94,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let element">
         <a
-          class="underline cursor-pointer mat-primary"
+          class="underline cursor-pointer mat-primary bold-text"
           (click)="
             expandedElement = expandedElement === element ? null : element
           "

@@ -5,7 +5,7 @@
     class="mb-6"
     fxLayoutAlign="space-between center"
   >
-    <div class="mb-0 accordian-title1">E-Booking</div>
+    <div class="mb-0 page-header">E-Booking</div>
   </div>
   <!-- Add a New Shipment -->
   <div class="mb-6">
@@ -13,12 +13,12 @@
       <mat-expansion-panel class="mat-elevation-z0" expanded="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Add a New Shipment</div>
+            <div class="main-header">Add a New Shipment</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
           <div class="mb-2">
-            <h3 class="label-text">Shipment name</h3>
+            <div class="header-18">Shipment name</div>
           </div>
           <div class="mb-1">
             <div>
@@ -30,7 +30,7 @@
         </div>
         <div class="mb-3" *ngFor="let shipmentOption of shipmentOptions">
           <div fxLayout="row" class="mb-2">
-            <h3 class="label-text">Select {{ shipmentOption.name }}</h3>
+            <div class="header-18">Select {{ shipmentOption.name }}</div>
           </div>
           <div fxLayout="row wrap" fxLayoutGap="25px">
             <div
@@ -60,7 +60,7 @@
         </div>
         <div>
           <div fxLayout="row" class="mb-2">
-            <h3 class="label-text">Select Incoterms</h3>
+            <div class="header-18">Select Incoterms</div>
           </div>
           <mat-form-field appearance="outline" class="no-bottom-padding w-30">
             <mat-select [(ngModel)]="ebooking.sTosName">
@@ -95,12 +95,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Shipment Origin</div>
+            <div class="main-header">Shipment Origin</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
           <div class="mb-2">
-            <h3 class="label-text">Origin Port</h3>
+            <div class="header-18">Origin Port</div>
           </div>
           <div class="mb-1">
             <div
@@ -141,7 +141,7 @@
 
         <div class="mb-0">
           <div class="mb-2">
-            <h3 class="label-text">Pick-Up Location</h3>
+            <div class="header-18">Pick-Up Location</div>
           </div>
           <div class="mb-1">
             <div
@@ -170,7 +170,7 @@
         </div>
         <div class="mb-0">
           <div class="mb-2">
-            <h3 class="label-text">Cargo Ready for Pickup Date</h3>
+            <div class="header-18">Cargo Ready for Pickup Date</div>
           </div>
           <div class="mb-1">
             <div
@@ -209,12 +209,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Shipment Destination</div>
+            <div class="main-header">Shipment Destination</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-0">
           <div class="mb-2">
-            <h3 class="label-text">Destination Port</h3>
+            <div class="header-18">Destination Port</div>
           </div>
           <div class="mb-1">
             <div
@@ -241,7 +241,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
                 >Delivery required</mat-checkbox
               >
             </div>
@@ -250,7 +250,7 @@
 
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Delivery Location</h3>
+            <div class="header-18">Delivery Location</div>
           </div>
           <div class="mb-1">
             <div
@@ -285,7 +285,7 @@
         </div>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Cargo Ready for Delivery Date</h3>
+            <div class="header-18">Cargo Ready for Delivery Date</div>
           </div>
           <div class="mb-1">
             <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start end">
@@ -319,7 +319,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Value added services</div>
+            <div class="main-header">Value added services</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div
@@ -329,7 +329,7 @@
         >
           <div fxFlex *ngFor="let valueService of valueService">
             <div fxLayout="row" class="mb-2">
-              <h3 class="label-text">{{ valueService.label }}</h3>
+              <div class="header-18">{{ valueService.label }}</div>
             </div>
             <div class="mb-radio">
               <mat-radio-group
@@ -338,7 +338,7 @@
                 [(ngModel)]="ebooking[valueService.name]"
               >
                 <mat-radio-button
-                  class="mr-8"
+                  class="mr-8 plain-text"
                   [value]="option.value"
                   *ngFor="let option of valueService.options"
                 >
@@ -365,12 +365,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Enter Customer Informations</div>
+            <div class="main-header">Enter Customer Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Shipper</h3>
+            <div class="header-18">Shipper</div>
           </div>
           <div class="mb-1">
             <div
@@ -398,7 +398,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -407,7 +407,7 @@
 
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Address</h3>
+            <div class="header-18">Address</div>
           </div>
           <div class="mb-1">
             <div
@@ -431,7 +431,7 @@
         </div>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Email</h3>
+            <div class="header-18">Email</div>
           </div>
           <div class="mb-1">
             <div
@@ -458,7 +458,7 @@
             >
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Phone</h3>
+                  <div class="header-18">Phone</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -470,7 +470,7 @@
 
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Mobile</h3>
+                  <div class="header-18">Mobile</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -496,12 +496,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Enter Consignee Informations</div>
+            <div class="main-header">Enter Consignee Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Consignee</h3>
+            <div class="header-18">Consignee</div>
           </div>
           <div class="mb-1">
             <div
@@ -528,7 +528,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30"
+              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -537,7 +537,7 @@
 
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Address</h3>
+            <div class="header-18">Address</div>
           </div>
           <div class="mb-1">
             <div
@@ -557,7 +557,7 @@
         </div>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Email</h3>
+            <div class="header-18">Email</div>
           </div>
           <div class="mb-1">
             <div
@@ -584,7 +584,7 @@
             >
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Phone</h3>
+                  <div class="header-18">Phone</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -596,7 +596,7 @@
 
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Mobile</h3>
+                  <div class="header-18">Mobile</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -621,12 +621,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">First Notify Informations</div>
+            <div class="main-header">First Notify Informations</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">First Notify</h3>
+            <div class="header-18">First Notify</div>
           </div>
           <div class="mb-2">
             <div>
@@ -654,7 +654,7 @@
         </div>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Adderess</h3>
+            <div class="header-18">Adderess</div>
           </div>
           <div class="mb-2">
             <div>
@@ -670,7 +670,7 @@
         </div>
         <div class="mb-2">
           <div class="mb-2">
-            <h3 class="label-text">Email</h3>
+            <div class="header-18">Email</div>
           </div>
           <div class="mb-1">
             <div
@@ -697,7 +697,7 @@
             >
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Phone</h3>
+                  <div class="header-18">Phone</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -709,7 +709,7 @@
 
               <div>
                 <div class="mb-2">
-                  <h3 class="label-text">Mobile</h3>
+                  <div class="header-18">Mobile</div>
                 </div>
                 <mat-form-field appearance="outline" class="width-15 mr-2">
                   <input matInput placeholder="+33" />
@@ -734,7 +734,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="accordian-title">Cargo & Container</div>
+            <div class="main-header">Cargo & Container</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div
@@ -753,7 +753,7 @@
           >
             <div *ngFor="let field of cargoContainerType; let i = index">
               <div *ngIf="field.options">
-                <h5 class="label-text">{{ field.name }}</h5>
+                <div class="header-18">{{ field.name }}</div>
                 <mat-form-field
                   appearance="outline"
                   class="no-bottom-padding w-150"
@@ -769,7 +769,7 @@
                 </mat-form-field>
               </div>
               <div *ngIf="!field.options">
-                <h5 class="label-text">{{ field.name }}</h5>
+                <div class="header-18">{{ field.name }}</div>
                 <mat-form-field
                   appearance="outline"
                   class="no-bottom-padding w-150"
@@ -815,7 +815,7 @@
             >
               <div class="mr-2">
                 <div class="mb-2">
-                  <h3 class="label-text">Total Items</h3>
+                  <div class="header-18">Total Items</div>
                 </div>
 
                 <mat-form-field appearance="outline">
@@ -824,7 +824,7 @@
               </div>
               <div class="mr-2">
                 <div class="mb-2">
-                  <h3 class="label-text">Total Volumetric Weight</h3>
+                  <div class="header-18">Total Volumetric Weight</div>
                 </div>
 
                 <mat-form-field appearance="outline">
@@ -833,7 +833,7 @@
               </div>
               <div class="mr-2">
                 <div class="mb-2">
-                  <h3 class="label-text">Total Gross Weight</h3>
+                  <div class="header-18">Total Gross Weight</div>
                 </div>
 
                 <mat-form-field appearance="outline">
