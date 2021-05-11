@@ -115,3 +115,11 @@
     }
   }
 }
+
+.flag-row {
+  ::ng-deep .mat-icon {
+    svg {
+      border-radius: 50%;
+    }
+  }
+}

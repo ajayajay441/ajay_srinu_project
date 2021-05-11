@@ -7,7 +7,8 @@ import { switchMap } from "rxjs/operators";
 import { AuthenticationService } from "../_services";
 import { DashboardService } from "../_services/dashboard.service";
 import { toShortFormat } from "./../utilities";
-
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
 @Component({
   selector: "app-shipmentspage",
   templateUrl: "./shipmentspage.component.html",
@@ -37,6 +38,8 @@ export class ShipmentspageComponent implements OnInit {
   shipmentFromDate: any;
   shipmentToDate: any;
   constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
     private router: Router,
     private http: HttpClient,
     private shipmentService: ShipmentService,
@@ -48,6 +51,39 @@ export class ShipmentspageComponent implements OnInit {
     this.shipmentFromDate = d;
     this.shipmentToDate = new Date();
     // console.log("Constructor");
+
+    //flags
+
+    this.matIconRegistry.addSvgIcon(
+      "IN",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/flags/IND.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      "AE",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/flags/AE.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      "CN",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/flags/Chaina.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      "US",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/flags/US.svg"
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      "SG",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "../../assets/icons/flags/SG.svg"
+      )
+    );
   }
   shipmentDetailSubscription: any;
   ngOnInit(): void {
@@ -75,7 +111,9 @@ export class ShipmentspageComponent implements OnInit {
             pageNo,
             5,
             this.modeVal,
-            fromDate ? toShortFormat(fromDate) : toShortFormat(this.shipmentFromDate),
+            fromDate
+              ? toShortFormat(fromDate)
+              : toShortFormat(this.shipmentFromDate),
             toDate ? toShortFormat(toDate) : toShortFormat(this.shipmentToDate)
           );
         })
@@ -106,7 +144,6 @@ export class ShipmentspageComponent implements OnInit {
         this.filters = response;
       });
   }
-
 
   shipmentFromDateChange(shipmentFromDate: any) {
     console.log(toShortFormat(shipmentFromDate));
