@@ -2,10 +2,17 @@
   <div
     fxLayout="row"
     fxLayoutGap="15px"
-    class="mb-6"
+    class="mb-10"
     fxLayoutAlign="space-between center"
   >
-    <div class="mb-0 page-header">E-Booking</div>
+    <div
+      fxFlex="80"
+      fxLayout="row wrap"
+      fxLayoutGap="25px"
+      fxLayoutAlign="start center"
+    >
+      <div class="mb-0 page-header pl-2 mt-4">E-Booking</div>
+    </div>
   </div>
   <!-- Add a New Shipment -->
   <div class="mb-6">
@@ -241,7 +248,10 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
+              <mat-checkbox
+                color="warn"
+                [(ngModel)]="checked"
+                class="pb-5 w-30 plain-text"
                 >Delivery required</mat-checkbox
               >
             </div>
@@ -398,7 +408,10 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
+              <mat-checkbox
+                color="warn"
+                [(ngModel)]="checked"
+                class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -528,7 +541,10 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox color="warn" [(ngModel)]="checked" class="pb-5 w-30 plain-text"
+              <mat-checkbox
+                color="warn"
+                [(ngModel)]="checked"
+                class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, ViewChild } from "@angular/core";
 import { MatSort } from "@angular/material/sort";
 import {
   animate,
@@ -32,9 +32,10 @@ import { RejectquoteComponent } from "../rejectquote/rejectquote.component";
     ]),
   ],
 })
-export class QuotationslistComponent implements OnInit {
+export class QuotationslistComponent implements OnInit, OnChanges {
   @Input() filter: string;
   @Input() data: any;
+
   displayedColumns: string[] = [
     "quotation-number",
     "reference-number",
@@ -75,8 +76,16 @@ export class QuotationslistComponent implements OnInit {
     });
   }
   ngOnChanges(changes: any) {
-    const filterValue = changes.filter.currentValue;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (changes.filter) {
+      const filterValue = changes.filter.currentValue;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
+    if (changes.data) {
+      this.dataSource = new MatTableDataSource(changes.data.currentValue);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    }
   }
 
   @ViewChild(MatSort)
