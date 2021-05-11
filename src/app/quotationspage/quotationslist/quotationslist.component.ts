@@ -37,13 +37,13 @@ export class QuotationslistComponent implements OnInit {
   @Input() data: any;
   displayedColumns: string[] = [
     "quotation-number",
-    "weight",
+    "reference-number",
     "origin",
     "destination",
-    "reference-number",
     "expiry_date",
-    "service",
     "amount",
+    "weight",
+    "service",
     "status",
     "details",
   ];

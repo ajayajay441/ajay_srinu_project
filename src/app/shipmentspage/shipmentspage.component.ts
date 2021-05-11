@@ -26,9 +26,9 @@ export class ShipmentspageComponent implements OnInit {
   loading: boolean = true;
   currentPage: any;
   lastPage: any;
-  filters: any = { status: [] };
+  filters: any = { status: [], mode: [] };
   sendto: string = "";
-  modeVal: string = "";
+  modeVal: any = "";
   shipmentStatusTypes = [
     { label: "Booked", value: "BOOKED" },
     { label: "IN TRANSIT", value: "IN TRANSIT" },

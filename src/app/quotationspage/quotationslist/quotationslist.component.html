@@ -68,8 +68,12 @@
                       class="my-3 schedule-item"
                       *ngFor="let item of po"
                     >
-                      <div fxFlex class="mb-0 plain-text">{{ item.ref_no }}</div>
-                      <div fxFlex class="mb-0 plain-text">{{ item.container_no }}</div>
+                      <div fxFlex class="mb-0 plain-text">
+                        {{ item.ref_no }}
+                      </div>
+                      <div fxFlex class="mb-0 plain-text">
+                        {{ item.container_no }}
+                      </div>
                       <div fxFlex class="mb-0 plain-text">
                         {{ item.originport.portname }}
                       </div>
@@ -78,9 +82,15 @@
                       </div>
                       <div fxFlex class="mb-0 plain-text">Parallel Inc.</div>
                       <div fxFlex class="mb-0 plain-text">gggg</div>
-                      <div fxFlex class="mb-0 plain-text">{{ item.container_no }}</div>
-                      <div fxFlex class="mb-0 plain-text">{{ item.shipmentby }}</div>
-                      <div fxFlex class="mb-0 plain-text">{{ item.shipmenttype }}</div>
+                      <div fxFlex class="mb-0 plain-text">
+                        {{ item.container_no }}
+                      </div>
+                      <div fxFlex class="mb-0 plain-text">
+                        {{ item.shipmentby }}
+                      </div>
+                      <div fxFlex class="mb-0 plain-text">
+                        {{ item.shipmenttype }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -96,7 +106,9 @@
                       fxLayoutAlign="start center"
                       class="py-3 header-row"
                     >
-                      <div fxFlex="250px" class="px-3 bold-text">Document Date</div>
+                      <div fxFlex="250px" class="px-3 bold-text">
+                        Document Date
+                      </div>
                       <div fxFlex class="px-3 bold-text">Document Name</div>
                     </div>
                     <div
@@ -147,12 +159,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="reference-number">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Reference
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -162,12 +169,7 @@
 
     <!-- Weight Column -->
     <ng-container matColumnDef="origin">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Origin
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -177,12 +179,7 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="destination">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Destination
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -190,12 +187,7 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="expiry_date">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         QT Expiry
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -203,12 +195,7 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="amount">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Amount
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -216,25 +203,15 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="weight">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Weight
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
-        {{ element.weight }}
+        {{ element.weight }} {{ element.weight_unit }}
       </td>
     </ng-container>
     <ng-container matColumnDef="service">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Service
       </th>
       <td mat-cell *matCellDef="let element" class="plain-text">
@@ -243,12 +220,7 @@
     </ng-container>
 
     <ng-container matColumnDef="status">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        class="bold-text"
-      >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="bold-text">
         Status
       </th>
       <td

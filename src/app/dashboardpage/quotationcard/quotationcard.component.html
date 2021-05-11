@@ -70,15 +70,19 @@
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-3">
       <div class="mb-0">
         <span class="bold-text"> Pieces: </span
-        ><span class="plain-text">{{ element.places }}</span>
+        ><span class="plain-text">{{ element.pieces }}</span>
       </div>
       <div class="mb-0">
         <span class="font-bold"> Weight: </span
-        ><span class="plain-text">{{ element.weight }} kg</span>
+        ><span class="plain-text"
+          >{{ element.weight }} {{ element.weight_unit }}</span
+        >
       </div>
       <div class="mb-0">
         <span class="bold-text"> Volume: </span
-        ><span class="plain-text">{{ element.volume }}</span>
+        ><span class="plain-text"
+          >{{ element.volume }} {{ element.volume_unit }}</span
+        >
       </div>
     </div>
   </div>

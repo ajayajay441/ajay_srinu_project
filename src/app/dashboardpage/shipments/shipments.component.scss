@@ -11,13 +11,23 @@
     position: relative;
     z-index: 1;
     text-align: center;
+    .material-icons {
+      font-size: 1rem;
+    }
+    .mat-icon {
+      height: 13px;
+    }
+  }
+  .radio-ship {
+    height: 12px;
+    width: 12px;
   }
   .step-joiner {
     height: 0px;
     border-bottom: 2px dotted #ddd;
     position: relative;
     left: 50%;
-    top: 14px;
+    top: 10px;
   }
   .step-joiner.highlight {
     border-bottom-color: #aaa;
@@ -69,7 +79,7 @@
   font-weight: bold;
 }
 
-.shipments-card-header{
+.shipments-card-header {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -77,7 +87,7 @@
   line-height: 37px;
 }
 
-.shipments-date{
+.shipments-date {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -85,7 +95,7 @@
   line-height: 18px;
 }
 
-.hbl-font{
+.hbl-font {
   font-family: Helvetica;
   font-style: normal;
   font-weight: bold;
@@ -93,7 +103,7 @@
   line-height: 17px;
 }
 
-.customer-name{
+.customer-name {
   font-family: Helvetica;
   font-size: 12px;
   line-height: 19px;

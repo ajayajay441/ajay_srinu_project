@@ -26,13 +26,18 @@
       <div class="cargo-deatil">
         <p class="mb-0">
           <span class="bold-text mr-2">Gross Weight: </span>
-          <span class="plain-text">{{ cargoDetails.gross_weight }}</span>
+          <span class="plain-text"
+            >{{ cargoDetails.gross_weight }}
+            {{ cargoDetails.gross_weight_unit }}</span
+          >
         </p>
       </div>
       <div class="cargo-deatil">
         <p class="mb-0">
           <span class="bold-text mr-2">Volume: </span>
-          <span class="plain-text">{{ cargoDetails.volume }}</span>
+          <span class="plain-text"
+            >{{ cargoDetails.volume }} {{ cargoDetails.volume_unit }}</span
+          >
         </p>
       </div>
       <div class="cargo-deatil">

@@ -46,7 +46,10 @@
       >
         <h3 class="mb-0 secondary">Mode:</h3>
         <mat-form-field class="w-full max100px">
-          <mat-select (selectionChange)="onModeChange($event.value)">
+          <mat-select
+            (selectionChange)="onModeChange($event.value)"
+            [(ngModel)]="modeVal"
+          >
             <mat-option *ngFor="let mode of filters.mode" [value]="mode.value">
               {{ mode.name }}
             </mat-option>
@@ -226,13 +229,13 @@
             >
               <mat-icon [svgIcon]="shipment.origin_country_code"> </mat-icon>
               <p class="plain-text mb-0">
-                {{ shipment.origin_country_name }}, {{ shipment.origin }}:
+                {{ shipment.origin }}, {{ shipment.origin_country_name }}:
                 <span class="bold-text"> {{ shipment.ETD }} </span>
               </p>
               <span class="bold-text"> To </span>
               <mat-icon [svgIcon]="shipment.dest_country_code"> </mat-icon>
               <p class="plain-text mb-0">
-                {{ shipment.dest_country_name }}, {{ shipment.destination }}:
+                {{ shipment.destination }}, {{ shipment.dest_country_name }}:
                 <span class="bold-text"> {{ shipment.ETA }} </span>
               </p>
             </div>
