@@ -251,7 +251,7 @@ export class EbookingpageComponent implements OnInit {
         return;
       }
     }
-    if (val.length >= 4) {
+    if (val.length >= 3) {
       this.authenticationService
         .refreshToken()
         .pipe(
@@ -274,7 +274,7 @@ export class EbookingpageComponent implements OnInit {
 
   //
   getShipperName(val: any) {
-    if (val.length >= 6) {
+    if (val.length >= 3) {
       this.authenticationService
         .refreshToken()
         .pipe(
@@ -296,7 +296,7 @@ export class EbookingpageComponent implements OnInit {
   //getebooking_consignee
   consigneeNameList: any;
   getConsigneeName(val: any) {
-    if (val.length >= 6) {
+    if (val.length >= 3) {
       this.authenticationService
         .refreshToken()
         .pipe(
@@ -318,7 +318,7 @@ export class EbookingpageComponent implements OnInit {
   //notify
   notifyNameList: any;
   getNotifyName(val: any) {
-    if (val.length >= 6) {
+    if (val.length >= 3) {
       this.authenticationService
         .refreshToken()
         .pipe(
