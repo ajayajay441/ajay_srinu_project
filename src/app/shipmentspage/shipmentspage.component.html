@@ -172,8 +172,22 @@
               fxLayoutAlign="center start"
               fxLayoutAlign.gt-sm="start center"
             >
-              <div class="mb-0 fw-700 sub-header">
-                {{ shipment.shipment_number }}
+              <div
+                class="mb-0 fw-700 sub-header"
+                [matTooltip]="
+                  (shipment.hbl_flag === 'Y' ? 'HBL #' : 'BKG #').concat(
+                    shipment.shipment_number
+                  )
+                "
+              >
+                {{
+                  truncate(
+                    (shipment.hbl_flag === "Y" ? "HBL #" : "BKG #").concat(
+                      shipment.shipment_number
+                    ),
+                    18
+                  )
+                }}
               </div>
               <p class="mb-0 plain-text">{{ shipment.customer_name }}</p>
             </div>

@@ -142,6 +142,7 @@
         mat-table
         [dataSource]="dataSource"
         matSort
+        matSortDirection="asc"
         class="w-97 mat-elevation-z0 m-auto"
         multiTemplateDataRows
       >
@@ -418,6 +419,23 @@
             >
               Details
             </a>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="arrow">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="cursor-pointer bold-text"
+          >
+            <mat-icon
+              (click)="
+                expandedElement = expandedElement === element ? null : element
+              "
+              >{{
+                expandedElement === element ? "expand_less" : "expand_more"
+              }}</mat-icon
+            >
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

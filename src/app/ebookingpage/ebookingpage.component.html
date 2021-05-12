@@ -135,11 +135,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox
-                color="warn"
-                [(ngModel)]="checked"
-                class="pb-5 w-30"
-              >
+              <mat-checkbox color="warn" class="pb-5 w-30">
                 Pick-up required
               </mat-checkbox>
             </div>
@@ -248,10 +244,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox
-                color="warn"
-                [(ngModel)]="checked"
-                class="pb-5 w-30 plain-text"
+              <mat-checkbox color="warn" class="pb-5 w-30 plain-text"
                 >Delivery required</mat-checkbox
               >
             </div>
@@ -318,53 +311,6 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-
-  <!-- Value added services -->
-  <div class="mb-6">
-    <mat-accordion>
-      <mat-expansion-panel
-        class="mat-elevation-z0"
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="main-header">Value added services</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div
-          fxLayout="column"
-          fxLayout.gt-sm="row"
-          fxLayoutAlign="space-between start"
-        >
-          <div fxFlex *ngFor="let valueService of valueService">
-            <div fxLayout="row" class="mb-2">
-              <div class="header-18">{{ valueService.label }}</div>
-            </div>
-            <div class="mb-radio">
-              <mat-radio-group
-                color="primary"
-                aria-label="Select an option"
-                [(ngModel)]="ebooking[valueService.name]"
-              >
-                <mat-radio-button
-                  class="mr-8 plain-text"
-                  [value]="option.value"
-                  *ngFor="let option of valueService.options"
-                >
-                  {{ option.label }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-          </div>
-        </div>
-        <!-- <button class="mat-raised-button" (click)="getalueAndServicesSelectedValues()">
-          Test
-        </button> -->
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-
   <!-- Enter Customer Informations -->
   <div class="mb-6">
     <mat-accordion>
@@ -408,10 +354,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox
-                color="warn"
-                [(ngModel)]="checked"
-                class="pb-5 w-30 plain-text"
+              <mat-checkbox color="warn" class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -541,10 +484,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-checkbox
-                color="warn"
-                [(ngModel)]="checked"
-                class="pb-5 w-30 plain-text"
+              <mat-checkbox color="warn" class="pb-5 w-30 plain-text"
                 >Pick-up required</mat-checkbox
               >
             </div>
@@ -627,7 +567,8 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <!--  First Notify Informations-->
+
+  <!-- Value added services -->
   <div class="mb-6">
     <mat-accordion>
       <mat-expansion-panel
@@ -637,109 +578,42 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="main-header">First Notify Informations</div>
+            <div class="main-header">Value added services</div>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="mb-2">
-          <div class="mb-2">
-            <div class="header-18">First Notify</div>
-          </div>
-          <div class="mb-2">
-            <div>
-              <mat-form-field appearance="outline" class="w-30">
-                <input
-                  type="text"
-                  matInput
-                  [(ngModel)]="ebooking.sFirstNotifyName"
-                  (ngModelChange)="getNotifyName($event)"
-                  [matAutocomplete]="notifyAuto"
-                  placeholder="Choose a first notify customer"
-                />
-                <mat-autocomplete #notifyAuto="matAutocomplete">
-                  <mat-option
-                    *ngFor="let item of notifyNameList"
-                    [value]="item.name"
-                    (click)="onNotifyDataListSelect(item)"
-                  >
-                    {{ item.name }}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
+        <div
+          fxLayout="column"
+          fxLayout.gt-sm="row"
+          fxLayoutAlign="space-between start"
+        >
+          <div fxFlex *ngFor="let valueService of valueService">
+            <div fxLayout="row" class="mb-2">
+              <div class="header-18">{{ valueService.label }}</div>
             </div>
-          </div>
-        </div>
-        <div class="mb-2">
-          <div class="mb-2">
-            <div class="header-18">Adderess</div>
-          </div>
-          <div class="mb-2">
-            <div>
-              <mat-form-field appearance="outline" class="w-30">
-                <input
-                  matInput
-                  [(ngModel)]="ebooking.sFirstNotifyAddr"
-                  placeholder="Enter your address"
-                />
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-        <div class="mb-2">
-          <div class="mb-2">
-            <div class="header-18">Email</div>
-          </div>
-          <div class="mb-1">
-            <div
-              fxLayout="column"
-              fxLayout.gt-sm="row"
-              fxLayoutGap="25px"
-              fxLayoutAlign="start start"
-            >
-              <mat-form-field
-                appearance="outline"
-                class="no-bottom-padding w-30"
+            <div class="mb-radio">
+              <mat-radio-group
+                color="primary"
+                aria-label="Select an option"
+                [(ngModel)]="ebooking[valueService.name]"
               >
-                <input matInput placeholder="Enter a valid email address" />
-              </mat-form-field>
+                <mat-radio-button
+                  class="mr-8 plain-text"
+                  [value]="option.value"
+                  *ngFor="let option of valueService.options"
+                >
+                  {{ option.label }}
+                </mat-radio-button>
+              </mat-radio-group>
             </div>
           </div>
         </div>
-        <div class="mb-2">
-          <div class="mb-1">
-            <div
-              fxLayout="column"
-              fxLayout.gt-sm="row"
-              fxLayoutAlign="start start"
-            >
-              <div>
-                <div class="mb-2">
-                  <div class="header-18">Phone</div>
-                </div>
-                <mat-form-field appearance="outline" class="width-15 mr-2">
-                  <input matInput placeholder="+33" />
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="w-60">
-                  <input matInput placeholder="Phone number" />
-                </mat-form-field>
-              </div>
-
-              <div>
-                <div class="mb-2">
-                  <div class="header-18">Mobile</div>
-                </div>
-                <mat-form-field appearance="outline" class="width-15 mr-2">
-                  <input matInput placeholder="+33" />
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="w-60">
-                  <input matInput placeholder="Mobile number" />
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- <button class="mat-raised-button" (click)="getalueAndServicesSelectedValues()">
+          Test
+        </button> -->
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
   <!-- Cargo & Container -->
   <div class="mb-6">
     <mat-accordion>
@@ -862,7 +736,121 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <div class="mb-6" *ngIf="sailingData">
+  <!--  First Notify Informations-->
+  <div class="mb-6">
+    <mat-accordion>
+      <mat-expansion-panel
+        class="mat-elevation-z0"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="main-header">First Notify Informations</div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mb-2">
+          <div class="mb-2">
+            <div class="header-18">First Notify</div>
+          </div>
+          <div class="mb-2">
+            <div>
+              <mat-form-field appearance="outline" class="w-30">
+                <input
+                  type="text"
+                  matInput
+                  [(ngModel)]="ebooking.sFirstNotifyName"
+                  (ngModelChange)="getNotifyName($event)"
+                  [matAutocomplete]="notifyAuto"
+                  placeholder="Choose a first notify customer"
+                />
+                <mat-autocomplete #notifyAuto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let item of notifyNameList"
+                    [value]="item.name"
+                    (click)="onNotifyDataListSelect(item)"
+                  >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-2">
+            <div class="header-18">Adderess</div>
+          </div>
+          <div class="mb-2">
+            <div>
+              <mat-form-field appearance="outline" class="w-30">
+                <input
+                  matInput
+                  [(ngModel)]="ebooking.sFirstNotifyAddr"
+                  placeholder="Enter your address"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-2">
+            <div class="header-18">Email</div>
+          </div>
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutGap="25px"
+              fxLayoutAlign="start start"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="no-bottom-padding w-30"
+              >
+                <input matInput placeholder="Enter a valid email address" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-1">
+            <div
+              fxLayout="column"
+              fxLayout.gt-sm="row"
+              fxLayoutAlign="start start"
+            >
+              <div>
+                <div class="mb-2">
+                  <div class="header-18">Phone</div>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Phone number" />
+                </mat-form-field>
+              </div>
+
+              <div>
+                <div class="mb-2">
+                  <div class="header-18">Mobile</div>
+                </div>
+                <mat-form-field appearance="outline" class="width-15 mr-2">
+                  <input matInput placeholder="+33" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-60">
+                  <input matInput placeholder="Mobile number" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="mb-6" *ngIf="sailingData.length > 0">
     <mat-card class="mat-elevation-z0">
       <div fxLayout="row" fxLayoutGap="25px">
         <div class="accordian-title">Schedules</div>

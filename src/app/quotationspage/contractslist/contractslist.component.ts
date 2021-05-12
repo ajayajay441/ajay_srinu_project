@@ -35,6 +35,7 @@ export class ContractslistComponent implements OnInit {
     "expiry_date",
     "approved_by",
     "details",
+    "arrow",
   ];
   // ELEMENT_DATA: PeriodicElement[] = [
   //   {

@@ -217,4 +217,12 @@ export class ShipmentspageComponent implements OnInit {
     this.loading = true;
     this.getShipmentDetails(status, page);
   }
+
+  truncate(str: any, n: any): any {
+    if (str.length > n) {
+      var string: any = str.substring(0, n - 1) + "...";
+      return string;
+    }
+    return str;
+  }
 }

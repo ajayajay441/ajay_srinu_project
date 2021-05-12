@@ -43,8 +43,25 @@
           fxLayoutAlign="start start"
           class="mb-1"
         >
-          <div class="mb-2 sub-header" fxFlex="40">
-            <span class="font-bold">{{ element["hbl-number"] }}</span>
+          <div
+            class="mb-2 sub-header"
+            fxFlex="40"
+            [matTooltip]="
+              (element.hbl_flag === 'Y' ? 'HBL #' : 'BKG #').concat(
+                element['hbl-number']
+              )
+            "
+          >
+            <span class="font-bold">
+              {{
+                truncate(
+                  (element.hbl_flag === "Y" ? "HBL #" : "BKG #").concat(
+                    element["hbl-number"]
+                  ),
+                  18
+                )
+              }}</span
+            >
           </div>
           <div class="mb-2 plain-text" fxFlex="60">
             {{ element["customer-name"] }}

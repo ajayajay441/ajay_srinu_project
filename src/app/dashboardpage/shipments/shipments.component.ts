@@ -93,4 +93,11 @@ export class ShipmentsComponent implements OnInit {
         console.log("ship resp", response.Shipments);
       });
   }
+  truncate(str: any, n: any): any {
+    if (str.length > n) {
+      var string: any = str.substring(0, n - 1) + "...";
+      return string;
+    }
+    return str;
+  }
 }

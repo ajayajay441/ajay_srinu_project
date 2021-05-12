@@ -42,6 +42,7 @@ export class InvoicepageComponent implements OnInit {
     "balance",
     "download",
     "details",
+    "arrow",
   ];
 
   dataSource = new MatTableDataSource();
@@ -91,6 +92,8 @@ export class InvoicepageComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   ngOnInit(): void {
+    console.log("Loading");
+
     this.getDashboardInvoice();
     this.dataSource.paginator = this.paginator;
   }
@@ -154,5 +157,6 @@ export interface PeriodicElement {
   house_no: string;
   inv_date: string;
   details: string;
+  arrow: string;
   isExpanded?: boolean;
 }

@@ -20,6 +20,7 @@ export class SchedulesComponent implements OnInit {
   error: any;
   loading = true;
   activeScheduleStatusType: any = "AIR";
+  sailData: any;
   subscription: Subscription | undefined;
   constructor(
     private http: HttpClient,
@@ -31,10 +32,16 @@ export class SchedulesComponent implements OnInit {
   ngOnInit(): void {
     this.getDashboardSailings();
   }
+
   goTo(routePageName: string, data: any) {
-    // console.log("data", data);
-    this.router.navigate([`${routePageName}`]); // navigate to other page
+    if (data.isError) {
+      return;
+    }
+    this.router.navigate([`${routePageName}`], {
+      state: data,
+    });
   }
+
   getDashboardSailings(value?: string) {
     if (value) this.activeScheduleStatusType = value;
     this.authenticationService
@@ -44,7 +51,7 @@ export class SchedulesComponent implements OnInit {
           return this.dashboardService.getDashboardSailings(
             userData.Token,
             this.activeScheduleStatusType,
-            2
+            1
           );
         })
       )

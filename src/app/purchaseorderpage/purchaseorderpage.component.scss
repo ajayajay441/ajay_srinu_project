@@ -86,7 +86,7 @@ tbody td {
     color: black;
     font-weight: bold;
 
-    // Hide default arrow as its composed of left, right and middle
+    //Hide default arrow as its composed of left, right and middle
     .mat-sort-header-pointer-left,
     .mat-sort-header-pointer-right,
     .mat-sort-header-pointer-middle {
@@ -95,9 +95,34 @@ tbody td {
   }
 }
 
-// My custom ascending arrow
+::ng-deep .mat-sort-header-arrow {
+  transform: none !important;
+  opacity: 1 !important;
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-pointer-middle {
+    display: none;
+  }
+}
+
+//My custom ascending arrow
+[aria-sort="none"] {
+  ::ng-deep .mat-sort-header-arrow {
+    transform: none !important;
+    .mat-sort-header-indicator {
+      transform: none !important;
+      /* Vector 11 */
+      &::after {
+        content: url("../../assets/icons/triangle.svg");
+        height: 5px;
+      }
+    }
+  }
+}
 [aria-sort="ascending"] {
   ::ng-deep .mat-sort-header-arrow {
+    transform: none !important;
     .mat-sort-header-indicator {
       &::before {
         content: "";
@@ -107,6 +132,7 @@ tbody td {
         border-right: 5px solid transparent;
         border-bottom: 7px solid #313131;
         margin-top: 4px;
+        display: inline-block;
       }
     }
   }
@@ -115,6 +141,7 @@ tbody td {
 // My custom descending arrow
 [aria-sort="descending"] {
   ::ng-deep .mat-sort-header-arrow {
+    transform: none !important;
     .mat-sort-header-indicator {
       &::before {
         content: "";

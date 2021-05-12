@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
+import {
+  ActivatedRoute,
+  Router,
+  ɵassignExtraOptionsToRouter,
+} from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ShipmentService } from "../_services/shipments.service";
 import { Subscription } from "rxjs/index";
@@ -68,7 +72,7 @@ export class EbookingpageComponent implements OnInit {
   originDataList: any;
   destinationDataList: any;
   shipperNameList: any;
-  sailingData: any;
+  sailingData: any = [];
   shipperDataList: any;
   valueService: any = [
     {
@@ -139,10 +143,12 @@ export class EbookingpageComponent implements OnInit {
   ) {
     // console.log("eBooking route data", this.router);
     this.poData = this.router.getCurrentNavigation()?.extras.state;
-    console.log(
-      "route data collected as state",
-      this.router.getCurrentNavigation()?.extras.state
-    );
+    // let val =
+    this.router.getCurrentNavigation()?.extras.state?.page == "sailing"
+      ? (this.sailingData[0] = this.router.getCurrentNavigation()?.extras.state?.element)
+      : (this.sailingData = []);
+    // this.sailingData = val;
+    // console.log("route data collected as state", this.sailingData);
   }
   onOriginDataListSelect(originData: any) {
     this.ebooking.sPOL = originData.port_code;
@@ -205,7 +211,9 @@ export class EbookingpageComponent implements OnInit {
         });
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.sailingData);
+  }
   getalueAndServicesSelectedValues() {
     // console.log("ebooking", this.ebooking);
   }
