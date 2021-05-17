@@ -133,6 +133,12 @@ button {
 }
 // 1600px  & 2000px
 @media (min-width: 1600px) {
+  .purchase-card,
+  .schedule-card {
+    .mat-card {
+      height: 278px;
+    }
+  }
   .page-header {
     font-weight: bold;
     font-size: 28px;
@@ -189,6 +195,12 @@ button {
 }
 // 1153 to 1440
 @media (min-width: 1153px) and (max-width: 1440px) {
+  .purchase-card,
+  .schedule-card {
+    .mat-card {
+      height: 252px;
+    }
+  }
   .shipment-filter-type {
     font-style: normal;
     font-weight: 500;

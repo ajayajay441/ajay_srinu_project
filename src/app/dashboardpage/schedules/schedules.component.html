@@ -1,102 +1,104 @@
-<mat-card class="mat-elevation-z0">
-  <div
-    class="card-title mb-4"
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-  >
-    <div fxLayout="row" fxLayoutGap="25px">
-      <div class="mb-0 main-header">Schedules</div>
-      <button
-        *ngFor="let scheduleStatusType of scheduleStatusTypes"
-        fxHide
-        fxShow.gt-sm
-        mat-stroked-button
-        [color]="
-          scheduleStatusType.value == activeScheduleStatusType
-            ? 'primary'
-            : 'light'
-        "
-        [class.light-color-button]="
-          scheduleStatusType.value != activeScheduleStatusType
-        "
-        class="mat-elevation-z0 status-buttons"
-        (click)="getDashboardSailings(scheduleStatusType.value)"
-      >
-        {{ scheduleStatusType.value }}
-      </button>
-    </div>
-    <!-- <a class="underline"> View all </a> -->
-  </div>
-  <div class="card-body" fxHide fxShow.gt-sm>
-    <div fxLayout="column" fxLayoutAlign="center space-between">
-      <div
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        fxLayoutGap="10px"
-        class="py-3 schedules-table-header schedules-header"
-      >
-        <div fxFlex class="mb-0 bold-text">Cut Off Date</div>
-        <div fxFlex class="mb-0 bold-text">Origin Date</div>
-        <div fxFlex class="mb-0 bold-text">Dest. City</div>
-        <div fxFlex class="mb-0 bold-text">Dest. Date</div>
-        <div fxFlex class="mb-0 bold-text"></div>
-      </div>
-      <div
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        fxLayoutGap="10px"
-        class="my-3 schedule-item schedules-rows"
-        *ngFor="let element of dataSource"
-      >
-        <div fxFlex class="mb-0 plain-text">
-          {{ element["cutoff-date"] }}
-        </div>
-        <div fxFlex class="mb-0 plain-text">
-          {{ element.ETA }}
-        </div>
-        <div fxFlex class="mb-0 plain-text">
-          {{ element.destination }}
-        </div>
-        <div fxFlex class="mb-0 plain-text">
-          {{ element.ETD }}
-        </div>
-        <div fxFlex>
-          <button
-            mat-raised-button
-            color="warn"
-            class="mat-elevation-z0"
-            (click)="goTo('/ebooking', { element: element, page: 'sailing' })"
-          >
-            Book
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card-body" fxShow fxHide.gt-sm>
+<div class="schedule-card">
+  <mat-card class="mat-elevation-z0">
     <div
-      fxLayout="column"
-      fxLayoutAlign="center start"
-      fxLayoutGap="10px"
-      class="my-3 purchase-item"
-      *ngIf="dataSource && dataSource[0]"
+      class="card-title mb-4"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
     >
-      <p fxFlex>
-        <span class="font-bold">Cut-off Date :</span>
-        <span>{{ dataSource[0]["cutoff-date"] }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold">Origin Date :</span>
-        <span>{{ dataSource[0].ETA }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold">Destination City :</span>
-        <span>{{ dataSource[0].destination }}</span>
-      </p>
-      <p fxFlex>
-        <span class="font-bold">Destination Date :</span>
-        <span>{{ dataSource[0].ETD }}</span>
-      </p>
+      <div fxLayout="row" fxLayoutGap="25px">
+        <div class="mb-0 main-header">Schedules</div>
+        <button
+          *ngFor="let scheduleStatusType of scheduleStatusTypes"
+          fxHide
+          fxShow.gt-sm
+          mat-stroked-button
+          [color]="
+            scheduleStatusType.value == activeScheduleStatusType
+              ? 'primary'
+              : 'light'
+          "
+          [class.light-color-button]="
+            scheduleStatusType.value != activeScheduleStatusType
+          "
+          class="mat-elevation-z0 status-buttons"
+          (click)="getDashboardSailings(scheduleStatusType.value)"
+        >
+          {{ scheduleStatusType.value }}
+        </button>
+      </div>
+      <!-- <a class="underline"> View all </a> -->
     </div>
-  </div>
-</mat-card>
+    <div class="card-body" fxHide fxShow.gt-sm>
+      <div fxLayout="column" fxLayoutAlign="center space-between">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="10px"
+          class="py-3 schedules-table-header schedules-header"
+        >
+          <div fxFlex class="mb-0 bold-text">Cut Off Date</div>
+          <div fxFlex class="mb-0 bold-text">Origin Date</div>
+          <div fxFlex class="mb-0 bold-text">Dest. City</div>
+          <div fxFlex class="mb-0 bold-text">Dest. Date</div>
+          <div fxFlex class="mb-0 bold-text"></div>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="10px"
+          class="my-3 schedule-item schedules-rows"
+          *ngFor="let element of dataSource"
+        >
+          <div fxFlex class="mb-0 plain-text">
+            {{ element["cutoff-date"] }}
+          </div>
+          <div fxFlex class="mb-0 plain-text">
+            {{ element.ETA }}
+          </div>
+          <div fxFlex class="mb-0 plain-text">
+            {{ element.destination }}
+          </div>
+          <div fxFlex class="mb-0 plain-text">
+            {{ element.ETD }}
+          </div>
+          <div fxFlex>
+            <button
+              mat-raised-button
+              color="warn"
+              class="mat-elevation-z0"
+              (click)="goTo('/ebooking', { element: element, page: 'sailing' })"
+            >
+              Book
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" fxShow fxHide.gt-sm>
+      <div
+        fxLayout="column"
+        fxLayoutAlign="center start"
+        fxLayoutGap="10px"
+        class="my-3 purchase-item"
+        *ngIf="dataSource && dataSource[0]"
+      >
+        <p fxFlex>
+          <span class="font-bold">Cut-off Date :</span>
+          <span>{{ dataSource[0]["cutoff-date"] }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold">Origin Date :</span>
+          <span>{{ dataSource[0].ETA }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold">Destination City :</span>
+          <span>{{ dataSource[0].destination }}</span>
+        </p>
+        <p fxFlex>
+          <span class="font-bold">Destination Date :</span>
+          <span>{{ dataSource[0].ETD }}</span>
+        </p>
+      </div>
+    </div>
+  </mat-card>
+</div>
