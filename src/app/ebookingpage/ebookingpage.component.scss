@@ -114,3 +114,9 @@ h3 {
   line-height: 19px;
   color: #313131;
 }
+.ebooking-page {
+  ::ng-deep .mat-checkbox-inner-container {
+    height: 20px !important;
+    width: 20px !important;
+  }
+}

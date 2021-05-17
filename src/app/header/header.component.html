@@ -1,5 +1,10 @@
 <div class="header" fxLayout="row">
-  <div fxFlex.gt-sm="250px" fxFlex class="logo">
+  <div
+    fxFlex.gt-sm="250px"
+    fxFlex
+    class="logo cursor-pointer"
+    (click)="goTo('/dashboard')"
+  >
     <!-- <img src="./../../assets/logo.png" class="m-auto" /> -->
     <svg
       class="image-icon"

@@ -133,6 +133,11 @@ button {
 }
 // 1600px  & 2000px
 @media (min-width: 1600px) {
+  .checkbox-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+  }
   .purchase-card,
   .schedule-card {
     .mat-card {
@@ -195,6 +200,11 @@ button {
 }
 // 1153 to 1440
 @media (min-width: 1153px) and (max-width: 1440px) {
+  .checkbox-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+  }
   .purchase-card,
   .schedule-card {
     .mat-card {
@@ -459,4 +469,7 @@ button {
       }
     }
   }
+}
+.mat-ripple-element {
+  transition-duration: 0ms !important;
 }
