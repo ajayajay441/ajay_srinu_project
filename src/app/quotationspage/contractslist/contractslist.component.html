@@ -22,6 +22,7 @@
         mat-cell
         *matCellDef="let element"
         [attr.colspan]="displayedColumns.length"
+        class="expanded-column"
       >
         <div
           class="element-detail"
@@ -51,7 +52,7 @@
               fxLayout="row"
               fxLayoutAlign="start center"
               fxLayoutGap="10px"
-              class="my-3 purchase-item"
+              class="my-3 purchase-item p-4"
             >
               <h5 fxFlex class="mb-0">{{ element.service }}</h5>
               <h5 fxFlex class="mb-0">{{ element.origin }}</h5>

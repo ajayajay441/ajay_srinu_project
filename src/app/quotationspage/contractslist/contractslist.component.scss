@@ -22,6 +22,7 @@ tr.detail-row {
 }
 .Accordian-table-header {
   background-color: #f7f8fa;
+  padding: 16px !important;
 }
 .card-body1 {
   width: 100% !important;
@@ -107,4 +108,7 @@ tr.detail-row {
 }
 .w-80 {
   width: 120px !important;
+}
+.expanded-column {
+  padding: 0 !important;
 }

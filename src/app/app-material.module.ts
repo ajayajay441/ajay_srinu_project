@@ -34,6 +34,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { MAT_RIPPLE_GLOBAL_OPTIONS } from "@angular/material/core/ripple/ripple";
+import { MatRippleModule } from "@angular/material/core";
+
 import { LayoutModule } from "@angular/cdk/layout";
 
 @NgModule({
@@ -74,6 +77,7 @@ import { LayoutModule } from "@angular/cdk/layout";
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatRippleModule,
     LayoutModule,
   ],
   exports: [
@@ -112,6 +116,7 @@ import { LayoutModule } from "@angular/cdk/layout";
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatRippleModule,
     LayoutModule,
   ],
 })

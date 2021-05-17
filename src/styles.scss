@@ -473,3 +473,10 @@ button {
 .mat-ripple-element {
   transition-duration: 0ms !important;
 }
+.mat-checkbox .mat-checkbox-ripple {
+  position: unset !important;
+}
+// .mat-expansion-panel:not(.mat-expanded)
+//   .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+//    background: red;
+// }

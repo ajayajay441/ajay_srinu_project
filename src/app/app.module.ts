@@ -20,6 +20,7 @@ import { InvoicepageModule } from "./invoicepage/invoicepage.module";
 import { PurchaseorderpageModule } from "./purchaseorderpage/purchaseorderpage.module";
 
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { MAT_RIPPLE_GLOBAL_OPTIONS } from "@angular/material/core";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -36,7 +37,10 @@ import { LocationStrategy, HashLocationStrategy } from "@angular/common";
     InvoicepageModule,
     PurchaseorderpageModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -28,6 +28,7 @@
         mat-cell
         *matCellDef="let element"
         [attr.colspan]="displayedColumns.length"
+        class="expanded-column"
       >
         <div
           class="element-detail"
@@ -42,59 +43,63 @@
             *ngIf="po"
           >
             <mat-tab label="PO">
-              <mat-card class="mat-elevation-z0">
-                <div class="card-body">
-                  <div fxLayout="column" fxLayoutAlign="center space-between">
-                    <div
-                      fxLayout="row"
-                      fxLayoutAlign="start center"
-                      fxLayoutGap="10px"
-                      class="py-3 header-row"
-                    >
-                      <div fxFlex class="mb-0 bold-text">Ref. Number</div>
-                      <div fxFlex class="mb-0 bold-text">PO N°</div>
-                      <div fxFlex class="mb-0 bold-text">Origin</div>
-                      <div fxFlex class="mb-0 bold-text">Destination</div>
-                      <div fxFlex class="mb-0 bold-text">Chargeable weight</div>
-                      <div fxFlex class="mb-0 bold-text">Supplier</div>
-                      <div fxFlex class="mb-0 bold-text">Container Number</div>
-                      <div fxFlex class="mb-0 bold-text">Mode</div>
-                      <div fxFlex class="mb-0 bold-text">Shipment</div>
+              <!-- <mat-card class="mat-elevation-z0"> -->
+              <div class="card-body">
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="center space-between"
+                  class="py-4"
+                >
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="10px"
+                    class="header-row p-4"
+                  >
+                    <div fxFlex class="mb-0 bold-text">Ref. Number</div>
+                    <div fxFlex class="mb-0 bold-text">PO N°</div>
+                    <div fxFlex class="mb-0 bold-text">Origin</div>
+                    <div fxFlex class="mb-0 bold-text">Destination</div>
+                    <div fxFlex class="mb-0 bold-text">Chargeable weight</div>
+                    <div fxFlex class="mb-0 bold-text">Supplier</div>
+                    <div fxFlex class="mb-0 bold-text">Container Number</div>
+                    <div fxFlex class="mb-0 bold-text">Mode</div>
+                    <div fxFlex class="mb-0 bold-text">Shipment</div>
+                  </div>
+                  <div
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="10px"
+                    class="my-3 schedule-item p-4"
+                    *ngFor="let item of po"
+                  >
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.ref_no }}
                     </div>
-                    <div
-                      fxLayout="row"
-                      fxLayoutAlign="start center"
-                      fxLayoutGap="10px"
-                      class="my-3 schedule-item"
-                      *ngFor="let item of po"
-                    >
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.ref_no }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.container_no }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.originport.portname }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.destinationport.portname }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">Parallel Inc.</div>
-                      <div fxFlex class="mb-0 plain-text">gggg</div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.container_no }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.shipmentby }}
-                      </div>
-                      <div fxFlex class="mb-0 plain-text">
-                        {{ item.shipmenttype }}
-                      </div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.container_no }}
+                    </div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.originport.portname }}
+                    </div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.destinationport.portname }}
+                    </div>
+                    <div fxFlex class="mb-0 plain-text">Parallel Inc.</div>
+                    <div fxFlex class="mb-0 plain-text">gggg</div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.container_no }}
+                    </div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.shipmentby }}
+                    </div>
+                    <div fxFlex class="mb-0 plain-text">
+                      {{ item.shipmenttype }}
                     </div>
                   </div>
                 </div>
-              </mat-card>
+              </div>
+              <!-- </mat-card> -->
             </mat-tab>
             <mat-tab label="Documents">
               <mat-card class="mat-elevation-z0">
