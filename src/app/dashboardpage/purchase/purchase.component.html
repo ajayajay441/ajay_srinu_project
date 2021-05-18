@@ -3,10 +3,12 @@
     <div
       class="card-title mb-4"
       fxLayout="row"
-      fxLayoutAlign="space-between center"
+      fxLayoutAlign="space-between end"
     >
-      <div fxLayout="row" fxLayoutGap="35px">
+      <div fxLayout="row">
         <div class="mb-0 main-header">Purchase</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="25px">
         <button
           mat-stroked-button
           class="mat-elevation-z0 status-buttons"
@@ -26,8 +28,8 @@
         <!-- <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-sm>
         Picked-up
       </button> -->
+        <a class="view-all-link" (click)="goTo('/po', 'data')"> View all </a>
       </div>
-      <a class="view-all-link" (click)="goTo('/po', 'data')"> View all </a>
     </div>
     <div class="card-body" fxHide fxShow.gt-sm>
       <div fxLayout="column" fxLayoutAlign="center space-between">

@@ -21,8 +21,8 @@
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">Status:</h3>
-        <mat-form-field class="w-full max100px">
+        <div class="mb-0 shiment-status secondary">Status:</div>
+        <mat-form-field class="w-full max100px shiment-status">
           <mat-select
             (selectionChange)="onStatusChange($event.value)"
             [(ngModel)]="activeShipmentStatusType"
@@ -44,8 +44,8 @@
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">Mode:</h3>
-        <mat-form-field class="w-full max100px">
+        <h3 class="mb-0 secondary shiment-status">Mode:</h3>
+        <mat-form-field class="w-full max100px shiment-status">
           <mat-select
             (selectionChange)="onModeChange($event.value)"
             [(ngModel)]="modeVal"
@@ -64,8 +64,8 @@
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">From:</h3>
-        <mat-form-field class="w-120 shipdates">
+        <h3 class="mb-0 secondary shiment-status">From:</h3>
+        <mat-form-field class="w-120 shipdates shiment-status">
           <!-- <mat-label>MM/DD/YYYY</mat-label> -->
           <input
             class="inputDate"
@@ -90,8 +90,8 @@
         fxHide
         fxShow.gt-sm
       >
-        <h3 class="mb-0 secondary">To:</h3>
-        <mat-form-field class="w-120 shipdates">
+        <h3 class="mb-0 secondary shiment-status">To:</h3>
+        <mat-form-field class="w-120 shipdates shiment-status">
           <!-- <mat-label>MM/DD/YYYY</mat-label> -->
           <input
             matInput

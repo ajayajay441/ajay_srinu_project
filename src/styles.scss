@@ -193,6 +193,12 @@ button {
     font-size: 18px;
     line-height: 22px;
   }
+  .shiment-status {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+  }
 }
 .status-buttons {
   font-weight: bold;
@@ -200,6 +206,12 @@ button {
 }
 // 1153 to 1440
 @media (min-width: 1153px) and (max-width: 1440px) {
+  .shiment-status {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+  }
   .checkbox-text {
     font-weight: 500;
     font-size: 16px;
@@ -437,6 +449,20 @@ button {
   }
 }
 
+//My custom ascending arrow
+[aria-sort="none"] {
+  ::ng-deep .mat-sort-header-arrow {
+    transform: none !important;
+    .mat-sort-header-indicator {
+      /* Vector 11 */
+      transform: none !important;
+      &::after {
+        content: url("./assets/icons/triangle.svg");
+        height: 5px;
+      }
+    }
+  }
+}
 // My custom ascending arrow
 [aria-sort="ascending"] {
   ::ng-deep .mat-sort-header-arrow {
@@ -470,13 +496,31 @@ button {
     }
   }
 }
+
+///Disabling material styles
 .mat-ripple-element {
   transition-duration: 0ms !important;
 }
-.mat-checkbox .mat-checkbox-ripple {
+.mat-radio-button .mat-radio-ripple,
+.mat-checkbox .mat-checkbox-ripple,
+.mat-button-ripple.mat-ripple,
+.mat-button-focus-overlay {
   position: unset !important;
 }
-// .mat-expansion-panel:not(.mat-expanded)
-//   .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
-//    background: red;
+.mat-expansion-panel:not(.mat-expanded)
+  .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+  background: transparent;
+}
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  background-color: transparent !important;
+}
+// .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+//   color: #e5e7eb !important;
+// }
+// .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+//   // color: #e5e7eb !important;
+// }
+// .mat-form-field-appearance-outline:not(.mat-form-field-disabled)
+//   .mat-form-field-flex:hover {
+//   color: #e5e7eb !important;
 // }

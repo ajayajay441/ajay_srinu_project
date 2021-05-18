@@ -33,6 +33,7 @@ import { MatPaginator } from "@angular/material/paginator";
 })
 export class InvoicepageComponent implements OnInit {
   displayedColumns: string[] = [
+    "checkbox",
     "inv_number",
     "inv_date",
     "house_no",
@@ -102,35 +103,61 @@ export class InvoicepageComponent implements OnInit {
   }
   invoiceData: any;
   currecny: any;
-  getDashboardInvoice(value?: string) {
+  pagenumber = 1;
+  totalPages: any;
+  lastpage: any;
+  pageNo: any;
+  currencyIndicator: any;
+  getDashboardInvoice(value?: string, spagesize?: any) {
     if (value) this.activeInvoiceStatusType = value;
+    if (spagesize) this.pagenumber = spagesize;
     this.authenticationService
       .refreshToken()
       .pipe(
         switchMap((userData) => {
           return this.dashboardService.getDashboardInvoice(
             userData.Token,
-            this.activeInvoiceStatusType
+            this.activeInvoiceStatusType,
+            "",
+            5,
+            this.pagenumber
           );
         })
       )
       .subscribe((response: any) => {
         this.invoiceData = response["invoice-data"];
         this.dataSource = new MatTableDataSource(response["invoice-data"]);
-        setTimeout(() => (this.dataSource.paginator = this.paginator));
+        this.totalPages = response.total;
+        // for(let i =5; i<response.total; i++){
+        //   this.dataSource[i] = {};
+        // }
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource._updateChangeSubscription();
+        });
         setTimeout(() => (this.dataSource.sort = this.sort));
         this.dataSource.sort = this.sort;
         this.overDueAmount = response.Over_Due;
         this.currecny = response.Currency_Code;
         this.totalDueAmount = response.Total_Due;
         this.unPaidInvoice = response.UnpaidInvoice;
+        this.lastpage = response.lastPage;
         this.loading = false;
         this.downloadLink = response.outstanding_link;
         this.agingLink = response.Ageing_Report_link;
         window.dispatchEvent(new Event("resize"));
       });
   }
+
+  pageChanged(event: any) {
+    debugger;
+    this.pagenumber = event.pageIndex + 1;
+    this.getDashboardInvoice(this.activeInvoiceStatusType, this.pagenumber);
+  }
+
   getinvoicedetail(sinvoice_no?: any) {
+    this.invoice_po = [];
+    this.invoice_documents = [];
     this.authenticationService
       .refreshToken()
       .pipe(

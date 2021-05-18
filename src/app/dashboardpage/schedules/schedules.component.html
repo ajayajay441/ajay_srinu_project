@@ -3,10 +3,12 @@
     <div
       class="card-title mb-4"
       fxLayout="row"
-      fxLayoutAlign="space-between center"
+      fxLayoutAlign="space-between end"
     >
-      <div fxLayout="row" fxLayoutGap="25px">
+      <div fxLayout="row">
         <div class="mb-0 main-header">Schedules</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="25px">
         <button
           *ngFor="let scheduleStatusType of scheduleStatusTypes"
           fxHide
@@ -25,6 +27,7 @@
         >
           {{ scheduleStatusType.value }}
         </button>
+        <div></div>
       </div>
       <!-- <a class="underline"> View all </a> -->
     </div>

@@ -22,7 +22,7 @@
         class="mat-elevation-z0 status-buttons"
         (click)="getDashboardShipments(shipmentStatusType.value)"
       >
-        {{ shipmentStatusType.value }}
+        {{ shipmentStatusType.label }}
       </button>
     </div>
     <a class="view-all-link" (click)="goTo('/shipments', 'data')"> View all </a>
