@@ -11,6 +11,8 @@ import { AuthenticationService } from "../../_services";
 })
 export class TodolistcardComponent implements OnInit {
   test_checkbox = true;
+  second_checkbox = false;
+  checked = true;
   loading = true;
   data = [];
   error: any;

@@ -1,7 +1,7 @@
 <div class="purchase-card">
   <mat-card class="mat-elevation-z0">
     <div
-      class="card-title mb-4"
+      class="card-title mb-4 ml-3 mr-3"
       fxLayout="row"
       fxLayoutAlign="space-between end"
     >
@@ -14,16 +14,18 @@
           class="mat-elevation-z0 status-buttons"
           fxHide
           fxShow.gt-sm
-          *ngFor="let purchaseStatusType of ['UPCOMING', 'PICKED-UP']"
+          *ngFor="let purchaseStatusType of poStatusTypes"
           [color]="
-            purchaseStatusType == activePurchaseStatusType ? 'primary' : 'light'
+            purchaseStatusType.value == activePurchaseStatusType
+              ? 'primary'
+              : 'light'
           "
           [class.light-color-button]="
             purchaseStatusType != activePurchaseStatusType
           "
-          (click)="getDashboardPO(purchaseStatusType)"
+          (click)="getDashboardPO(purchaseStatusType.value)"
         >
-          {{ purchaseStatusType }}
+          {{ purchaseStatusType.label }}
         </button>
         <!-- <button mat-stroked-button class="mat-elevation-z0" fxHide fxShow.gt-sm>
         Picked-up
@@ -31,7 +33,7 @@
         <a class="view-all-link" (click)="goTo('/po', 'data')"> View all </a>
       </div>
     </div>
-    <div class="card-body" fxHide fxShow.gt-sm>
+    <div class="card-body ml-3 mr-3" fxHide fxShow.gt-sm>
       <div fxLayout="column" fxLayoutAlign="center space-between">
         <div
           fxLayout="row"

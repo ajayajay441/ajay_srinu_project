@@ -12,6 +12,10 @@ import { AuthenticationService } from "../../_services";
   styleUrls: ["./purchase.component.scss"],
 })
 export class PurchaseComponent implements OnInit {
+  poStatusTypes = [
+    { label: "Upcoming", value: "UPCOMING" },
+    { label: "Picked-up", value: "PICKED-UP" },
+  ];
   activePurchaseStatusType: any = "UPCOMING";
   data: any = [];
   error: any;

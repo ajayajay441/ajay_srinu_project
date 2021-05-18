@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z0">
   <div
-    class="card-title mb-9"
+    class="card-title mb-9 ml-3 mr-3"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
@@ -27,7 +27,7 @@
     </div>
     <a class="view-all-link" (click)="goTo('/shipments', 'data')"> View all </a>
   </div>
-  <div class="card-body">
+  <div class="card-body ml-3 mr-3">
     <div
       fxLayout="column"
       fxLayout.gt-sm="row"
@@ -87,7 +87,7 @@
         fxLayoutAlign="start center"
         fxFlex
       >
-        <div class="stepper mb-3" fxLayout="row">
+        <div class="stepper mb-3 ml-6" fxLayout="row">
           <div
             class="step-container"
             *ngFor="
@@ -128,7 +128,11 @@
             </div>
           </div>
         </div>
-        <div class="stepper-labels mb-3" fxLayout="row" fxLayoutAlign="center">
+        <div
+          class="stepper-labels mb-3 ml-6"
+          fxLayout="row"
+          fxLayoutAlign="center"
+        >
           <div
             fxFlex
             class="step-label-container mx-1 text-center"

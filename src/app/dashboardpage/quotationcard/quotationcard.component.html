@@ -1,13 +1,13 @@
 <mat-card class="mat-elevation-z0" *ngFor="let element of data">
   <div
-    class="card-title mb-7"
+    class="card-title mb-7 ml-3 mr-3"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
     <div class="mb-0 main-header">Quotations</div>
     <a class="view-all-link" (click)="goTo('/quotes', 'data')"> View all </a>
   </div>
-  <div class="card-body">
+  <div class="card-body ml-3 mr-3">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-5">
       <div class="mb-0 sub-header">QT {{ element["quotation-number"] }}</div>
       <div class="mb-0 plain-text">

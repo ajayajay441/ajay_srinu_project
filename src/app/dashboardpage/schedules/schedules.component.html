@@ -1,7 +1,7 @@
 <div class="schedule-card">
   <mat-card class="mat-elevation-z0">
     <div
-      class="card-title mb-4"
+      class="card-title mb-4 ml-3 mr-3"
       fxLayout="row"
       fxLayoutAlign="space-between end"
     >
@@ -25,13 +25,13 @@
           class="mat-elevation-z0 status-buttons"
           (click)="getDashboardSailings(scheduleStatusType.value)"
         >
-          {{ scheduleStatusType.value }}
+          {{ scheduleStatusType.label }}
         </button>
         <div></div>
       </div>
       <!-- <a class="underline"> View all </a> -->
     </div>
-    <div class="card-body" fxHide fxShow.gt-sm>
+    <div class="card-body ml-3 mr-3" fxHide fxShow.gt-sm>
       <div fxLayout="column" fxLayoutAlign="center space-between">
         <div
           fxLayout="row"

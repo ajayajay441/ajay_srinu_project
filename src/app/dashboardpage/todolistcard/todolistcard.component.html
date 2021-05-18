@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z0">
   <div
-    class="card-title mb-6"
+    class="card-title mb-6 ml-3 mr-3"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
@@ -10,7 +10,7 @@
     <span></span>
     <a class="view-all-link"> View all </a>
   </div>
-  <div class="card-body">
+  <div class="card-body ml-3 mr-3">
     <div
       fxLayout="row"
       fxLayoutAlign="space-between center"
@@ -25,12 +25,17 @@
         <mat-checkbox
           [(ngModel)]="test_checkbox"
           color="warn"
-          class="line-through plain-text"
+          [class]="test_checkbox ? 'line-through plain-text' : 'plain-text'"
           >Collect & Research Data</mat-checkbox
         >
       </p>
       <p>
-        <mat-checkbox class="plain-text">Create Moodboard</mat-checkbox>
+        <mat-checkbox
+          color="warn"
+          [(ngModel)]="second_checkbox"
+          [class]="second_checkbox ? 'line-through plain-text' : 'plain-text'"
+          >Create Moodboard</mat-checkbox
+        >
       </p>
     </div>
   </div>

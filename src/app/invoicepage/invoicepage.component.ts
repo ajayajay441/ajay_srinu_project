@@ -61,14 +61,14 @@ export class InvoicepageComponent implements OnInit {
     { label: "Pending", value: "pending" },
     { label: "Overdue", value: "overdue" },
     { label: "Paid", value: "paid" },
-    { label: "ALL", value: "ALL" },
+    { label: "ALL", value: "" },
   ];
   activeInvoiceStatusType: any = "ALL";
   quotationType = "";
   filter: string = "";
   invoice_po = new Array();
   invoice_documents = new Array();
-  invoiceFilter: string = "ALL";
+  invoiceFilter: string = "";
   modelChanged: Subject<string> = new Subject<string>();
   constructor(
     private http: HttpClient,
@@ -109,7 +109,10 @@ export class InvoicepageComponent implements OnInit {
   pageNo: any;
   currencyIndicator: any;
   getDashboardInvoice(value?: string, spagesize?: any) {
-    if (value) this.activeInvoiceStatusType = value;
+    value
+      ? (this.activeInvoiceStatusType = value)
+      : (this.activeInvoiceStatusType = "");
+    value ? (this.invoiceFilter = value) : (this.invoiceFilter = "");
     if (spagesize) this.pagenumber = spagesize;
     this.authenticationService
       .refreshToken()
@@ -150,7 +153,6 @@ export class InvoicepageComponent implements OnInit {
   }
 
   pageChanged(event: any) {
-    debugger;
     this.pagenumber = event.pageIndex + 1;
     this.getDashboardInvoice(this.activeInvoiceStatusType, this.pagenumber);
   }
